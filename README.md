@@ -16,3 +16,6 @@ libPhoneNumber for iOS
 2. phonenumberutil.js 함수들 확인 필요함. call by ref 에 대한 처리 등이 빠짐
 3. metadata.js 무결정 체크 (phonenumberutil.js 에서 포팅도중 빠진 데이터 프로퍼티들이 있음)
 
+
+[포팅 규칙]
+.js 파일들의 모양새 (주석 위치 등등)을 최대한 변형 하지 않기~

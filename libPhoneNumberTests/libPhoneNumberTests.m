@@ -258,8 +258,8 @@
     STAssertEqualObjects(@"49", metadata.countryCode, nil);
     STAssertEqualObjects(@"00", metadata.internationalPrefix, nil);
     STAssertEqualObjects(@"0", metadata.nationalPrefix, nil);
-    STAssertEquals(6, [metadata.numberFormats count], nil);
-    STAssertEquals(1, [((NBNumberFormat*)metadata.numberFormats[5]).leadingDigitsPattern count], nil);
+    STAssertEquals(6, (int)[metadata.numberFormats count], nil);
+    STAssertEquals(1, (int)[((NBNumberFormat*)metadata.numberFormats[5]).leadingDigitsPattern count], nil);
     STAssertEqualObjects(@"900", ((NBNumberFormat*)metadata.numberFormats[5]).leadingDigitsPattern[0], nil);
     STAssertEqualObjects(@"(\\d{3})(\\d{3,4})(\\d{4})", ((NBNumberFormat*)metadata.numberFormats[5]).pattern, nil);
     STAssertEqualObjects(@"$1 $2 $3", ((NBNumberFormat*)metadata.numberFormats[5]).format, nil);

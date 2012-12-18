@@ -10,7 +10,7 @@
 
 @implementation NBPhoneNumberDesc
 
-@synthesize name, fullName, nationalNumberPattern, possibleNumberPattern, exampleNumber;
+@synthesize nationalNumberPattern, possibleNumberPattern, exampleNumber;
 
 - (id)init
 {
@@ -18,8 +18,6 @@
     
     if (self)
     {
-        [self setName:@"PhoneNumberDesc"];
-        [self setFullName:@"i18n.phonenumbers.PhoneNumberDesc"];
         [self setNationalNumberPattern:@"NA"];
         [self setPossibleNumberPattern:@"NA"];
     }
@@ -30,8 +28,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"[%@ (%@)] - %@ [%@ (ex)%@]",
-            self.name, self.fullName, self.nationalNumberPattern, self.possibleNumberPattern, self.exampleNumber];
+    return [NSString stringWithFormat:@"%@ [%@ (ex)%@]", self.nationalNumberPattern, self.possibleNumberPattern, self.exampleNumber];
 }
 
 

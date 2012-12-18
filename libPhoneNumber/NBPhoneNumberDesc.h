@@ -10,7 +10,6 @@
 
 @interface NBPhoneNumberDesc : NSObject
 
-@property (nonatomic, strong, readwrite) NSString *name, *fullName;
 @property (nonatomic, strong, readwrite) NSString *nationalNumberPattern, *possibleNumberPattern, *exampleNumber;
 
 @end

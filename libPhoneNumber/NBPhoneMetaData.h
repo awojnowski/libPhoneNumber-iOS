@@ -12,7 +12,6 @@
 
 @interface NBPhoneMetaData : NSObject
 
-@property (nonatomic, strong, readwrite) NSString *name, *fullName;
 @property (nonatomic, strong, readwrite) NSString *carrierCodeFormattingRule;
 @property (nonatomic, strong, readwrite) NSNumber *nationalPrefixOptionalWhenFormatting;
 
@@ -20,12 +19,15 @@
 - (BOOL)setChilds:(id)data;
 
 // from phonemetadata.pb.js
-@property (nonatomic, strong, readwrite) NBPhoneNumberDesc *generalDesc, *fixedLine, *mobile, *tollFree, *premiumRate, *sharedCost, *personalNumber, *voip, *pager, *uan, *emergency, *voicemail, *noInternationalDialling ;
+@property (nonatomic, strong, readwrite) NBPhoneNumberDesc *generalDesc, *fixedLine, *mobile, *tollFree, *premiumRate, *sharedCost, *personalNumber, *voip, *pager, *uan, *emergency, *voicemail, *noInternationalDialling;
 @property (nonatomic, strong, readwrite) NSString *codeID, *countryCode;
 @property (nonatomic, strong, readwrite) NSString *preferredInternationalPrefix, *internationalPrefix, *leadingDigits;
 @property (nonatomic, strong, readwrite) NSString *nationalPrefix, *preferredExtnPrefix, *nationalPrefixForParsing, *nationalPrefixTransformRule, *nationalPrefixFormattingRule;
 @property (nonatomic, strong, readwrite) NSNumber *sameMobileAndFixedLinePattern, *mainCountryForCode, *leadingZeroPossible;
 @property (nonatomic, strong, readwrite) NSMutableArray *numberFormats;
 @property (nonatomic, strong, readwrite) NSMutableArray *intlNumberFormats;
+
+- (void)setNumberFormatsData:(id)data;
+- (void)setNumberDescData:(id)data;
 
 @end

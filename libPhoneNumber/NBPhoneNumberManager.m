@@ -120,10 +120,12 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     {
         int currentPosition = match.range.location;
         
+        /*
         if (currentPosition <= previousPosition)
         {
             continue;
         }
+        */
         
         NSString *subString = [sourceString substringWithRange:NSMakeRange(previousPosition, currentPosition)];
         NSLog(@"-componentsSeparatedByRegex [%@]", subString);
@@ -133,7 +135,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
             [resArray addObject:subString];
         }
         
-        previousPosition = match.range.location + match.range.length;
+        //previousPosition = match.range.location + match.range.length;
     }
     
     return resArray;

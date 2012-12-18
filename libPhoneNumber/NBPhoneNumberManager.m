@@ -15,63 +15,6 @@
 #import "math.h"
 
 
-#pragma mark - Enum -
-typedef enum {
-    E164 = 0,
-    INTERNATIONAL = 1,
-    NATIONAL = 2,
-    RFC3966 = 3
-} NBPhoneNumberFormat;
-
-typedef enum {
-    FIXED_LINE = 0,
-    MOBILE = 1,
-    // In some regions (e.g. the USA), it is impossible to distinguish between
-    // fixed-line and mobile numbers by looking at the phone number itself.
-    FIXED_LINE_OR_MOBILE = 2,
-    // Freephone lines
-    TOLL_FREE = 3,
-    PREMIUM_RATE = 4,
-    // The cost of this call is shared between the caller and the recipient, and
-    // is hence typically less than PREMIUM_RATE calls. See
-    // http://en.wikipedia.org/wiki/Shared_Cost_Service for more information.
-    SHARED_COST = 5,
-    // Voice over IP numbers. This includes TSoIP (Telephony Service over IP).
-    VOIP = 6,
-    // A personal number is associated with a particular person, and may be routed
-    // to either a MOBILE or FIXED_LINE number. Some more information can be found
-    // here = http://en.wikipedia.org/wiki/Personal_Numbers
-    PERSONAL_NUMBER = 7,
-    PAGER = 8,
-    // Used for 'Universal Access Numbers' or 'Company Numbers'. They may be
-    // further routed to specific offices, but allow one number to be used for a
-    // company.
-    UAN = 9,
-    // Used for 'Voice Mail Access Numbers'.
-    VOICEMAIL = 10,
-    // A phone number is of type UNKNOWN when it does not fit any of the known
-    // patterns for a specific region.
-    UNKNOWN = -1
-} NBPhoneNumberType;
-
-
-typedef enum {
-    NOT_A_NUMBER = 0,
-    NO_MATCH = 1,
-    SHORT_NSN_MATCH = 2,
-    NSN_MATCH = 3,
-    EXACT_MATCH = 4
-} NBMatchType;
-
-
-typedef enum {
-    IS_POSSIBLE = 0,
-    INVALID_COUNTRY_CODE = 1,
-    TOO_SHORT = 2,
-    TOO_LONG = 3
-} NBValidationResult;
-
-
 #pragma mark - Static Int variables -
 const static int MIN_LENGTH_FOR_NSN_ = 2;
 const static int MAX_LENGTH_FOR_NSN_ = 16;
@@ -128,7 +71,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
 @property (nonatomic, strong, readonly) NSRegularExpression *UNWANTED_END_CHAR_PATTERN_, *VALID_PHONE_NUMBER_PATTERN_;
 @property (nonatomic, strong, readonly) NSString *LEADING_PLUS_CHARS_PATTERN_, *EXTN_PATTERN_;
 
-@property (nonatomic, strong, readonly) NSDictionary *ALPHA_MAPPINGS_, *ALL_NORMALIZATION_MAPPINGS_, *DIGIT_MAPPINGS, *DIALLABLE_CHAR_MAPPINGS_;
+@property (nonatomic, strong, readonly) NSDictionary *ALPHA_MAPPINGS_, *ALL_NORMALIZATION_MAPPINGS_, *DIGIT_MAPPINGS, *DIALLABLE_CHAR_MAPPINGS_, *ALL_PLUS_NUMBER_GROUPING_SYMBOLS_;
 
 @property (nonatomic, strong, readwrite) NSMutableDictionary *mapCCode2CN;
 @property (nonatomic, strong, readwrite) NSMutableDictionary *mapCN2CCode;
@@ -498,6 +441,17 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
                                     @"2", @"A", @"2", @"B", @"2", @"C", @"3", @"D", @"3", @"E", @"3", @"F", @"4", @"G", @"4", @"H", @"4", @"I", @"5", @"J",
                                     @"5", @"K", @"5", @"L", @"6", @"M", @"6", @"N", @"6", @"O", @"7", @"P", @"7", @"Q", @"7", @"R", @"7", @"S", @"8", @"T",
                                     @"8", @"U", @"8", @"V", @"9", @"W", @"9", @"X", @"9", @"Y", @"9", @"Z", nil];
+    
+    _ALL_PLUS_NUMBER_GROUPING_SYMBOLS_ = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                          @"0", @"0", @"1", @"1", @"2", @"2", @"3", @"3", @"4", @"4", @"5", @"5", @"6", @"6", @"7", @"7", @"8", @"8", @"9", @"9",
+                                          @"A", @"A", @"B", @"B", @"C", @"C", @"D", @"D", @"E", @"E", @"F", @"F", @"G", @"G", @"H", @"H", @"I", @"I", @"J", @"J",
+                                          @"K", @"K", @"L", @"L", @"M", @"M", @"N", @"N", @"O", @"O", @"P", @"P", @"Q", @"Q", @"R", @"R", @"S", @"S", @"T", @"T",
+                                          @"U", @"U", @"V", @"V", @"W", @"W", @"X", @"X", @"Y", @"Y", @"Z", @"Z", @"A", @"a", @"B", @"b", @"C", @"c", @"D", @"d",
+                                          @"E", @"e", @"F", @"f", @"G", @"g", @"H", @"h", @"I", @"i", @"J", @"j", @"K", @"k", @"L", @"l", @"M", @"m", @"N", @"n",
+                                          @"O", @"o", @"P", @"p", @"Q", @"q", @"R", @"r", @"S", @"s", @"T", @"t", @"U", @"u", @"V", @"v", @"W", @"w", @"X", @"x",
+                                          @"Y", @"y", @"Z", @"z", @"-", @"-", @"-", @"\uFF0D", @"-", @"\u2010", @"-", @"\u2011", @"-", @"\u2012", @"-", @"\u2013", @"-", @"\u2014", @"-", @"\u2015",
+                                          @"-", @"\u2212", @"/", @"/", @"/", @"\uFF0F", @" ", @" ", @" ", @"\u3000", @" ", @"\u2060", @".", @".", @".", @"\uFF0E", nil];
+
 }
 
 
@@ -638,8 +592,8 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  * extractPossibleNumber.
  *
  * @param {string} number string to be checked for viability as a phone number.
- * @return {boolean} true if the number could be a phone number of some sort,
- *     otherwise false.
+ * @return {boolean} NO if the number could be a phone number of some sort,
+ *     otherwise NO.
  */
 - (BOOL)isViablePhoneNumber:(NSString*)phoneNumber
 {
@@ -760,7 +714,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  * of how this could be used:
  *
  * <pre>
- * var phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance();
+ * var phoneUtil = getInstance();
  * var number = phoneUtil.parse('16502530000', 'US');
  * var nationalSignificantNumber =
  *     phoneUtil.getNationalSignificantNumber(number);
@@ -832,7 +786,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
 * subscriber number part that follows. An example of how this could be used:
 *
 * <pre>
-* var phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance();
+* var phoneUtil = getInstance();
 * var number = phoneUtil.parse('18002530000', 'US');
 * var nationalSignificantNumber =
 *     phoneUtil.getNationalSignificantNumber(number);
@@ -923,14 +877,14 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
 /**
  * Normalizes a string of characters representing a phone number by replacing
  * all characters found in the accompanying map with the values therein, and
- * stripping all other characters if removeNonMatches is true.
+ * stripping all other characters if removeNonMatches is NO.
  *
  * @param {string} number a string of characters representing a phone number.
  * @param {!Object.<string, string>} normalizationReplacements a mapping of
  *     characters to what they should be replaced by in the normalized version
  *     of the phone number.
  * @param {boolean} removeNonMatches indicates whether characters that are not
- *     able to be replaced should be stripped from the number. If this is false,
+ *     able to be replaced should be stripped from the number. If this is NO,
  *     they will be left unchanged in the number.
  * @return {string} the normalized string version of the phone number.
  * @private
@@ -955,7 +909,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         {
             [normalizedNumber appendString:[NSString stringWithFormat: @"%C", character]];
         }
-        // If neither of the above are true, we remove this character.
+        // If neither of the above are NO, we remove this character.
     }
     
     return normalizedNumber;
@@ -968,7 +922,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  *
  * @param {string} nationalPrefixFormattingRule The formatting rule for the
  *     national prefix.
- * @return {boolean} true if the national prefix formatting rule has the first
+ * @return {boolean} NO if the national prefix formatting rule has the first
  *     group only.
  */
 - (BOOL)formattingRuleHasFirstGroupOnly:(NSString*)nationalPrefixFormattingRule
@@ -989,12 +943,12 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  * to. Note that this doesn't verify if the number is actually in use.
  *
  * @param {i18n.phonenumbers.PhoneNumber} phoneNumber The phone number to test.
- * @return {boolean} true if the phone number has a geographical association.
+ * @return {boolean} NO if the phone number has a geographical association.
  * @private
  */
 - (BOOL)isNumberGeographical:(NBPhoneNumber*)phoneNumber
 {
-    NBPhoneNumberType numberType = [self getNumberType:phoneNumber];
+    NBEPhoneNumberType numberType = [self getNumberType:phoneNumber];
     // TODO: Include mobile phone numbers from countries like Indonesia, which
     // has some mobile numbers that are geographical.
     return numberType == FIXED_LINE || numberType == FIXED_LINE_OR_MOBILE;
@@ -1002,10 +956,10 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
 
 
 /**
- * Helper function to check region code is not unknown or null.
+ * Helper function to check region code is not unknown or nil.
  *
  * @param {?string} regionCode the ISO 3166-1 two-letter region code.
- * @return {boolean} true if region code is valid.
+ * @return {boolean} NO if region code is valid.
  * @private
  */
 - (BOOL)isValidRegionCode:(NSString*)regionCode
@@ -1017,7 +971,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     // countryToMetadata but since for non-geographical country calling codes
     // (e.g. +800) we use the country calling codes instead of the region code as
     // key in the map we have to make sure regionCode is not a number to prevent
-    // returning true for non-geographical country calling codes.
+    // returning NO for non-geographical country calling codes.
     return [self hasValue:regionCode] && [self isNaN:regionCode] && [self getMetadataForRegion:regionCode.uppercaseString] != nil;
 }
 
@@ -1026,7 +980,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  * Helper function to check the country calling code is valid.
  *
  * @param {number} countryCallingCode the country calling code.
- * @return {boolean} true if country calling code code is valid.
+ * @return {boolean} NO if country calling code code is valid.
  * @private
  */
 - (BOOL)hasValidCountryCallingCode:(NSString*)countryCallingCode
@@ -1058,7 +1012,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  *     phone number should be formatted into.
  * @return {string} the formatted phone number.
  */
-- (NSString*)format:(NBPhoneNumber*)phoneNumber numberFormat:(NBPhoneNumberFormat)numberFormat
+- (NSString*)format:(NBPhoneNumber*)phoneNumber numberFormat:(NBEPhoneNumberFormat)numberFormat
 {
     if (phoneNumber.nationalNumber == 0 && phoneNumber.rawInput)
     {
@@ -1098,7 +1052,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     NSArray *regionCodeArray = [self regionCodeFromCountryCode:countryCallingCode];
     NSString *regionCode = [regionCodeArray objectAtIndex:0];
     
-    // Metadata cannot be null because the country calling code is valid (which
+    // Metadata cannot be nil because the country calling code is valid (which
     // means that the region code cannot be ZZ and must be one of our supported
     // region codes).
     NBPhoneMetaData *metadata = [self getMetadataForRegionOrCallingCode:countryCallingCode regionCode:regionCode];
@@ -1125,7 +1079,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  *     rules specified by clients.
  * @return {string} the formatted phone number.
  */
-- (NSString*)formatByPattern:(NBPhoneNumber*)number numberFormat:(NBPhoneNumberFormat)numberFormat userDefinedFormats:(NSArray*)userDefinedFormats
+- (NSString*)formatByPattern:(NBPhoneNumber*)number numberFormat:(NBEPhoneNumberFormat)numberFormat userDefinedFormats:(NSArray*)userDefinedFormats
 {
     NSString *countryCallingCode = number.countryCode;
     NSString *nationalSignificantNumber = [self getNationalSignificantNumber:number];
@@ -1146,7 +1100,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         regionCode = [regionCodes objectAtIndex:0];
     }
     
-    // Metadata cannot be null because the country calling code is valid
+    // Metadata cannot be nil because the country calling code is valid
     /** @type {i18n.phonenumbers.PhoneMetadata} */
     NBPhoneMetaData *metadata = [self getMetadataForRegionOrCallingCode:countryCallingCode regionCode:regionCode];
 
@@ -1223,7 +1177,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     // region for performance reasons. For example, for NANPA regions it will be
     // contained in the metadata for US.
     NSString *regionCode = [self getRegionCodeForCountryCode:countryCallingCode];
-    // Metadata cannot be null because the country calling code is valid.
+    // Metadata cannot be nil because the country calling code is valid.
     NBPhoneMetaData *metadata = [self getMetadataForRegionOrCallingCode:countryCallingCode regionCode:regionCode];
     NSString *formattedExtension = [self maybeGetFormattedExtension:number metadata:metadata numberFormat:NATIONAL];
     NSString *formattedNationalNumber = [self formatNsn:nationalSignificantNumber metadata:metadata phoneNumberFormat:NATIONAL carrierCode:carrierCode];
@@ -1297,14 +1251,15 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     // the main number.
     NBPhoneNumber *numberNoExt = [number copy];
     numberNoExt.extension = @"";
-    NBPhoneNumberType numberType = [self getNumberType:numberNoExt];
+    NBEPhoneNumberType numberType = [self getNumberType:numberNoExt];
 
     NSString *regionCode = [self getRegionCodeForCountryCode:countryCallingCode];
     if ([regionCode isEqualToString:@"CO"] && [regionCallingFrom isEqualToString:@"CO"])
     {
         if (numberType == FIXED_LINE)
         {
-            formattedNumber = [self formatNationalNumberWithCarrierCode:numberNoExt carrierCode:COLOMBIA_MOBILE_TO_FIXED_LINE_PREFIX_];
+            formattedNumber = [self formatNationalNumberWithCarrierCode:numberNoExt
+                                                            carrierCode:COLOMBIA_MOBILE_TO_FIXED_LINE_PREFIX_];
         }
         else
         {
@@ -1397,7 +1352,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         // http://www.petitfute.com/voyage/225-info-pratiques-reunion
         return [self format:number numberFormat:NATIONAL];
     }
-    // Metadata cannot be null because we checked 'isValidRegionCode()' above.
+    // Metadata cannot be nil because we checked 'isValidRegionCode()' above.
     NBPhoneMetaData *metadataForRegionCallingFrom = [self getMetadataForRegion:regionCallingFrom];
     NSString *internationalPrefix = metadataForRegionCallingFrom.internationalPrefix;
     
@@ -1415,7 +1370,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     }
     
     NSString *regionCode = [self getRegionCodeForCountryCode:countryCallingCode];
-    // Metadata cannot be null because the country calling code is valid.
+    // Metadata cannot be nil because the country calling code is valid.
     NBPhoneMetaData *metadataForRegion = [self getMetadataForRegionOrCallingCode:countryCallingCode regionCode:regionCode];
     NSString *formattedNationalNumber = [self formatNsn:nationalSignificantNumber metadata:metadataForRegion
                                       phoneNumberFormat:INTERNATIONAL carrierCode:nil];
@@ -1440,7 +1395,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  * @return {string} the formatted phone number.
  * @private
  */
-- (NSString*)prefixNumberWithCountryCallingCode:(NSString*)countryCallingCode phoneNumberFormat:(NBPhoneNumberFormat)numberFormat
+- (NSString*)prefixNumberWithCountryCallingCode:(NSString*)countryCallingCode phoneNumberFormat:(NBEPhoneNumberFormat)numberFormat
                         formattedNationalNumber:(NSString*)formattedNationalNumber
                              formattedExtension:(NSString*)formattedExtension
 {
@@ -1455,6 +1410,328 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         case NATIONAL:
         default:
             return [NSString stringWithFormat:@"%@%@", formattedNationalNumber, formattedExtension];
+    }
+}
+
+
+/**
+ * Formats a phone number using the original phone number format that the number
+ * is parsed from. The original format is embedded in the country_code_source
+ * field of the PhoneNumber object passed in. If such information is missing,
+ * the number will be formatted into the NATIONAL format by default. When the
+ * number contains a leading zero and this is unexpected for this country, or we
+ * don't have a formatting pattern for the number, the method returns the raw
+ * input when it is available.
+ *
+ * Note this method guarantees no digit will be inserted, removed or modified as
+ * a result of formatting.
+ *
+ * @param {i18n.phonenumbers.PhoneNumber} number the phone number that needs to
+ *     be formatted in its original number format.
+ * @param {string} regionCallingFrom the region whose IDD needs to be prefixed
+ *     if the original number has one.
+ * @return {string} the formatted phone number in its original number format.
+ */
+- (NSString*)formatInOriginalFormat:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom
+{
+    if ([self hasValue:number.rawInput] && ([self hasUnexpectedItalianLeadingZero:number] || [self hasFormattingPatternForNumber:number ] == NO))
+    {
+            // We check if we have the formatting pattern because without that, we might
+            // format the number as a group without national prefix.
+            return number.rawInput;
+    }
+    
+    if (number.countryCodeSource != 0)
+    {
+        return [self format:number numberFormat:NATIONAL];
+    }
+    
+    NSString *formattedNumber = @"";
+    
+    switch (number.countryCodeSource)
+    {
+        case FROM_NUMBER_WITH_PLUS_SIGN:
+            formattedNumber = [self format:number numberFormat:INTERNATIONAL];
+            break;
+        case FROM_NUMBER_WITH_IDD:
+            formattedNumber = [self formatOutOfCountryCallingNumber:number regionCallingFrom:regionCallingFrom];
+            break;
+        case FROM_NUMBER_WITHOUT_PLUS_SIGN:
+            formattedNumber = [[self format:number numberFormat:INTERNATIONAL] substringToIndex:1];
+            break;
+        case FROM_DEFAULT_COUNTRY:
+            // Fall-through to default case.
+        default:
+        {
+            NSString *regionCode = [self getRegionCodeForCountryCode:number.countryCode];
+            // We strip non-digits from the NDD here, and from the raw input later,
+            // so that we can compare them easily.
+            NSString *nationalPrefix = [self getNddPrefixForRegion:regionCode stripNonDigits:YES];
+            NSString *nationalFormat = [self format:number numberFormat:NATIONAL];
+            if (nationalPrefix == nil || nationalPrefix.length == 0)
+            {
+                // If the region doesn't have a national prefix at all, we can safely
+                // return the national format without worrying about a national prefix
+                // being added.
+                formattedNumber = nationalFormat;
+                break;
+            }
+            // Otherwise, we check if the original number was entered with a national
+            // prefix.
+            if ([self rawInputContainsNationalPrefix:number.rawInput nationalPrefix:nationalPrefix regionCode:regionCode])
+            {
+                // If so, we can safely return the national format.
+                formattedNumber = nationalFormat;
+                break;
+            }
+            // Metadata cannot be nil here because getNddPrefixForRegion() (above)
+            // returns nil if there is no metadata for the region.
+            NBPhoneMetaData *metadata = [self getMetadataForRegion:regionCode];
+            NSString *nationalNumber = [self getNationalSignificantNumber:number];
+            NBNumberFormat *formatRule = [self chooseFormattingPatternForNumber:metadata.numberFormats nationalNumber:nationalNumber];
+            // The format rule could still be nil here if the national number was 0
+            // and there was no raw input (this should not be possible for numbers
+            // generated by the phonenumber library as they would also not have a
+            // country calling code and we would have exited earlier).
+            if (formatRule == nil)
+            {
+                formattedNumber = nationalFormat;
+                break;
+            }
+            // When the format we apply to this number doesn't contain national
+            // prefix, we can just return the national format.
+            // TODO: Refactor the code below with the code in
+            // isNationalPrefixPresentIfRequired.
+            NSString *candidateNationalPrefixRule = formatRule.nationalPrefixFormattingRule;
+            // We assume that the first-group symbol will never be _before_ the
+            // national prefix.
+            int indexOfFirstGroup = [self stringPositionByRegex:candidateNationalPrefixRule regex:@"$1"];
+            if (indexOfFirstGroup <= 0)
+            {
+                formattedNumber = nationalFormat;
+                break;
+            }
+            candidateNationalPrefixRule = [candidateNationalPrefixRule substringWithRange:NSMakeRange(0, indexOfFirstGroup)];
+            candidateNationalPrefixRule = [self normalizeDigitsOnly:candidateNationalPrefixRule];
+            if (candidateNationalPrefixRule.length == 0)
+            {
+                // National prefix not used when formatting this number.
+                formattedNumber = nationalFormat;
+                break;
+            }
+            // Otherwise, we need to remove the national prefix from our output.
+            NBNumberFormat *numFormatCopy = [formatRule copy];
+            numFormatCopy.nationalPrefixFormattingRule = nil;
+            formattedNumber = [self formatByPattern:number numberFormat:NATIONAL userDefinedFormats:@[numFormatCopy]];
+            break;
+        }
+    }
+
+    NSString *rawInput = number.rawInput;
+    // If no digit is inserted/removed/modified as a result of our formatting, we
+    // return the formatted phone number; otherwise we return the raw input the
+    // user entered.
+    if (formattedNumber != nil && rawInput.length > 0)
+    {
+        NSString *normalizedFormattedNumber = [self normalizeHelper:formattedNumber normalizationReplacements:_DIALLABLE_CHAR_MAPPINGS_ removeNonMatches:YES];
+        /** @type {string} */
+        NSString *normalizedRawInput =[self normalizeHelper:rawInput normalizationReplacements:_DIALLABLE_CHAR_MAPPINGS_ removeNonMatches:YES];
+
+        if (normalizedFormattedNumber != normalizedRawInput)
+        {
+            formattedNumber = rawInput;
+        }
+    }
+    return formattedNumber;
+}
+
+
+/**
+ * Check if rawInput, which is assumed to be in the national format, has a
+ * national prefix. The national prefix is assumed to be in digits-only form.
+ * @param {string} rawInput
+ * @param {string} nationalPrefix
+ * @param {string} regionCode
+ * @return {boolean}
+ * @private
+ */
+- (BOOL)rawInputContainsNationalPrefix:(NSString*)rawInput nationalPrefix:(NSString*)nationalPrefix regionCode:(NSString*)regionCode
+{
+    NSString *normalizedNationalNumber = [self normalizeDigitsOnly:rawInput];
+    if ([self isStartingStringByRegex:normalizedNationalNumber regex:nationalPrefix])
+    {
+        @try {
+            // Some Japanese numbers (e.g. 00777123) might be mistaken to contain the
+            // national prefix when written without it (e.g. 0777123) if we just do
+            // prefix matching. To tackle that, we check the validity of the number if
+            // the assumed national prefix is removed (777123 won't be valid in
+            // Japan).
+            NSString *subString = [normalizedNationalNumber substringToIndex:nationalPrefix.length];
+            return [self isValidNumber:[self parse:subString defaultRegion:regionCode]];
+        }
+        @catch (NSException *ex) {
+            return NO;
+        }
+    }
+    return NO;
+}
+
+
+/**
+ * Returns NO if a number is from a region whose national significant number
+ * couldn't contain a leading zero, but has the italian_leading_zero field set
+ * to NO.
+ * @param {i18n.phonenumbers.PhoneNumber} number
+ * @return {boolean}
+ * @private
+ */
+- (BOOL)hasUnexpectedItalianLeadingZero:(NBPhoneNumber*)number
+{    
+    return number.italianLeadingZero && [self isLeadingZeroPossible:number.countryCode] == NO;
+}
+
+
+/**
+ * @param {i18n.phonenumbers.PhoneNumber} number
+ * @return {boolean}
+ * @private
+ */
+- (BOOL)hasFormattingPatternForNumber:(NBPhoneNumber*)number
+{
+    NSString *countryCallingCode = number.countryCode;
+    NSString *phoneNumberRegion = [self getRegionCodeForCountryCode:countryCallingCode];
+    NBPhoneMetaData *metadata = [self getMetadataForRegionOrCallingCode:countryCallingCode regionCode:phoneNumberRegion];
+    
+    if (metadata == nil)
+    {
+        return NO;
+    }
+
+    NSString *nationalNumber = [self getNationalSignificantNumber:number];
+    NBNumberFormat *formatRule = [self chooseFormattingPatternForNumber:metadata.numberFormats nationalNumber:nationalNumber];
+    return formatRule != nil;
+}
+
+
+/**
+ * Formats a phone number for out-of-country dialing purposes.
+ *
+ * Note that in this version, if the number was entered originally using alpha
+ * characters and this version of the number is stored in raw_input, this
+ * representation of the number will be used rather than the digit
+ * representation. Grouping information, as specified by characters such as '-'
+ * and ' ', will be retained.
+ *
+ * <p><b>Caveats:</b></p>
+ * <ul>
+ * <li>This will not produce good results if the country calling code is both
+ * present in the raw input _and_ is the start of the national number. This is
+ * not a problem in the regions which typically use alpha numbers.
+ * <li>This will also not produce good results if the raw input has any grouping
+ * information within the first three digits of the national number, and if the
+ * function needs to strip preceding digits/words in the raw input before these
+ * digits. Normally people group the first three digits together so this is not
+ * a huge problem - and will be fixed if it proves to be so.
+ * </ul>
+ *
+ * @param {i18n.phonenumbers.PhoneNumber} number the phone number that needs to
+ *     be formatted.
+ * @param {string} regionCallingFrom the region where the call is being placed.
+ * @return {string} the formatted phone number.
+ */
+- (NSString*)formatOutOfCountryKeepingAlphaChars:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom
+{
+    NSString *rawInput = number.rawInput;
+    // If there is no raw input, then we can't keep alpha characters because there
+    // aren't any. In this case, we return formatOutOfCountryCallingNumber.
+    if (rawInput.length == 0)
+    {
+        return [self formatOutOfCountryCallingNumber:number regionCallingFrom:regionCallingFrom];
+    }
+
+    NSString *countryCode = number.countryCode;
+    if ([self hasValidCountryCallingCode:countryCode] == NO)
+    {
+        return rawInput;
+    }
+    // Strip any prefix such as country calling code, IDD, that was present. We do
+    // this by comparing the number in raw_input with the parsed number. To do
+    // this, first we normalize punctuation. We retain number grouping symbols
+    // such as ' ' only.
+    rawInput = [self normalizeHelper:rawInput normalizationReplacements:_ALL_PLUS_NUMBER_GROUPING_SYMBOLS_ removeNonMatches:NO];
+    // Now we trim everything before the first three digits in the parsed number.
+    // We choose three because all valid alpha numbers have 3 digits at the start
+    // - if it does not, then we don't trim anything at all. Similarly, if the
+    // national number was less than three digits, we don't trim anything at all.
+    NSString *nationalNumber = [self getNationalSignificantNumber:number];
+    if (nationalNumber.length > 3)
+    {
+        int firstNationalNumberDigit = [self indexOfStringByString:rawInput target:[nationalNumber substringWithRange:NSMakeRange(0, 3)]];
+        if (firstNationalNumberDigit != -1)
+        {
+            rawInput = [rawInput substringToIndex:firstNationalNumberDigit];
+        }
+    }
+
+    NBPhoneMetaData *metadataForRegionCallingFrom = [self getMetadataForRegion:regionCallingFrom];
+    if (countryCode == NANPA_COUNTRY_CODE_)
+    {
+        if ([self isNANPACountry:regionCallingFrom])
+        {
+            return [NSString stringWithFormat:@"%@ %@", countryCode, rawInput];
+        }
+    }
+    else if (metadataForRegionCallingFrom != nil && [countryCode isEqualToString:[self getCountryCodeForValidRegion:regionCallingFrom]])
+    {
+        NBNumberFormat *formattingPattern = [self chooseFormattingPatternForNumber:metadataForRegionCallingFrom.numberFormats
+                                                                         nationalNumber:nationalNumber];
+        if (formattingPattern == nil)
+        {
+            // If no pattern above is matched, we format the original input.
+            return rawInput;
+        }
+
+        NBNumberFormat *newFormat = [formattingPattern copy];
+        // The first group is the first group of digits that the user wrote
+        // together.
+        newFormat.pattern = @"(\\d+)(.*)";
+        // Here we just concatenate them back together after the national prefix
+        // has been fixed.
+        newFormat.format = @"$1$2";
+        // Now we format using this pattern instead of the default pattern, but
+        // with the national prefix prefixed if necessary.
+        // This will not work in the cases where the pattern (and not the leading
+        // digits) decide whether a national prefix needs to be used, since we have
+        // overridden the pattern to match anything, but that is not the case in the
+        // metadata to date.
+        return [self formatNsnUsingPattern:rawInput formattingPattern:newFormat numberFormat:NATIONAL carrierCode:nil];
+    }
+
+    NSString *internationalPrefixForFormatting = @"";
+    // If an unsupported region-calling-from is entered, or a country with
+    // multiple international prefixes, the international format of the number is
+    // returned, unless there is a preferred international prefix.
+    if (metadataForRegionCallingFrom != nil)
+    {
+        NSString *internationalPrefix = metadataForRegionCallingFrom.internationalPrefix;
+        internationalPrefixForFormatting =
+            [self matchesEntirely:UNIQUE_INTERNATIONAL_PREFIX_ string:internationalPrefix] ? internationalPrefix : metadataForRegionCallingFrom.internationalPrefix;
+    }
+
+    NSString *regionCode = [self getRegionCodeForCountryCode:countryCode];
+    // Metadata cannot be nil because the country calling code is valid.
+    NBPhoneMetaData *metadataForRegion = [self getMetadataForRegionOrCallingCode:countryCode regionCode:regionCode];
+    NSString *formattedExtension = [self maybeGetFormattedExtension:number metadata:metadataForRegion numberFormat:INTERNATIONAL];
+    if (internationalPrefixForFormatting.length > 0)
+    {
+        return [NSString stringWithFormat:@"%@ %@ %@%@", internationalPrefixForFormatting, countryCode, rawInput, formattedExtension];
+    }
+    else
+    {
+        // Invalid region entered as country-calling-from (so no metadata was found
+        // for it) or the region chosen has multiple international dialling
+        // prefixes.
+        return [self prefixNumberWithCountryCallingCode:countryCode phoneNumberFormat:INTERNATIONAL formattedNationalNumber:rawInput formattedExtension:formattedExtension];
     }
 }
 
@@ -1475,7 +1752,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  * @return {string} the formatted phone number.
  * @private
  */
-- (NSString*)formatNsn:(NSString*)phoneNumber metadata:(NBPhoneMetaData*)metadata phoneNumberFormat:(NBPhoneNumberFormat)numberFormat carrierCode:(NSString*)opt_carrierCode
+- (NSString*)formatNsn:(NSString*)phoneNumber metadata:(NBPhoneMetaData*)metadata phoneNumberFormat:(NBEPhoneNumberFormat)numberFormat carrierCode:(NSString*)opt_carrierCode
 {
     NSMutableArray *intlNumberFormats = [[NSMutableArray alloc] init];
     for (NBNumberFormat *nf in metadata.numberFormats)
@@ -1487,9 +1764,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     }
     // When the intlNumberFormats exists, we use that to format national number
     // for the INTERNATIONAL format instead of using the numberDesc.numberFormats.
-    /** @type {Array.<i18n.phonenumbers.NumberFormat>} */
     NSArray *availableFormats = ([intlNumberFormats count] <= 0 || numberFormat == NATIONAL) ? metadata.numberFormats : intlNumberFormats;
-    /** @type {i18n.phonenumbers.NumberFormat} */
     NBNumberFormat *formattingPattern = [self chooseFormattingPatternForNumber:availableFormats nationalNumber:phoneNumber];
     return (formattingPattern == nil) ? phoneNumber : [self formatNsnUsingPattern:phoneNumber formattingPattern:formattingPattern numberFormat:numberFormat carrierCode:opt_carrierCode];
 }
@@ -1522,7 +1797,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
 
 
 /**
- * Note that carrierCode is optional - if null or an empty string, no carrier
+ * Note that carrierCode is optional - if nil or an empty string, no carrier
  * code replacement will take place.
  *
  * @param {string} nationalNumber a string of characters representing a phone
@@ -1535,7 +1810,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  * @return {string} the formatted phone number.
  * @private
  */
-- (NSString*)formatNsnUsingPattern:(NSString*)nationalNumber formattingPattern:(NBNumberFormat*)formattingPattern numberFormat:(NBPhoneNumberFormat)numberFormat carrierCode:(NSString*)opt_carrierCode
+- (NSString*)formatNsnUsingPattern:(NSString*)nationalNumber formattingPattern:(NBNumberFormat*)formattingPattern numberFormat:(NBEPhoneNumberFormat)numberFormat carrierCode:(NSString*)opt_carrierCode
 {
     NSString *numberFormatRule = formattingPattern.format;
     NSString *domesticCarrierCodeFormattingRule = formattingPattern.domesticCarrierCodeFormattingRule;
@@ -1598,7 +1873,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  *
  * @param {string} regionCode the region for which an example number is needed.
  * @return {i18n.phonenumbers.PhoneNumber} a valid fixed-line number for the
- *     specified region. Returns null when the metadata does not contain such
+ *     specified region. Returns nil when the metadata does not contain such
  *     information, or the region 001 is passed in. For 001 (representing non-
  *     geographical numbers), call {@link #getExampleNumberForNonGeoEntity}
  *     instead.
@@ -1616,12 +1891,12 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  * @param {i18n.phonenumbers.PhoneNumberType} type the type of number that is
  *     needed.
  * @return {i18n.phonenumbers.PhoneNumber} a valid number for the specified
- *     region and type. Returns null when the metadata does not contain such
+ *     region and type. Returns nil when the metadata does not contain such
  *     information or if an invalid region or region 001 was entered.
  *     For 001 (representing non-geographical numbers), call
  *     {@link #getExampleNumberForNonGeoEntity} instead.
  */
-- (NBPhoneNumber*)getExampleNumberForType:(NSString*)regionCode type:(NBPhoneNumberType)type
+- (NBPhoneNumber*)getExampleNumberForType:(NSString*)regionCode type:(NBEPhoneNumberType)type
 {
     // Check the region code is valid.
     if ([self isValidRegionCode:regionCode] == NO)
@@ -1652,7 +1927,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  * @param {number} countryCallingCode the country calling code for a
  *     non-geographical entity.
  * @return {i18n.phonenumbers.PhoneNumber} a valid number for the
- *     non-geographical entity. Returns null when the metadata does not contain
+ *     non-geographical entity. Returns nil when the metadata does not contain
  *     such information, or the country calling code passed in does not belong
  *     to a non-geographical entity.
  */
@@ -1690,7 +1965,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  * @return {string} the formatted extension if any.
  * @private
  */
-- (NSString*)maybeGetFormattedExtension:(NBPhoneNumber*)number metadata:(NBPhoneMetaData*)metadata numberFormat:(NBPhoneNumberFormat)numberFormat
+- (NSString*)maybeGetFormattedExtension:(NBPhoneNumber*)number metadata:(NBPhoneMetaData*)metadata numberFormat:(NBEPhoneNumberFormat)numberFormat
 {
     if ([self hasValue:number.extension] == NO)
     {
@@ -1723,7 +1998,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  * @return {i18n.phonenumbers.PhoneNumberDesc}
  * @private
  */
-- (NBPhoneNumberDesc*)getNumberDescByType:(NBPhoneMetaData*)metadata type:(NBPhoneNumberType)type
+- (NBPhoneNumberDesc*)getNumberDescByType:(NBPhoneMetaData*)metadata type:(NBEPhoneNumberType)type
 {
     switch (type)
     {
@@ -1760,7 +2035,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  *     to know the type.
  * @return {i18n.phonenumbers.PhoneNumberType} the type of the phone number.
  */
-- (NBPhoneNumberType)getNumberType:(NBPhoneNumber*)phoneNumber
+- (NBEPhoneNumberType)getNumberType:(NBPhoneNumber*)phoneNumber
 {
     NSString *regionCode = [self getRegionCodeForNumber:phoneNumber];
     NBPhoneMetaData *metadata = [self getMetadataForRegionOrCallingCode:phoneNumber.countryCode regionCode:regionCode];
@@ -1780,7 +2055,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  * @return {i18n.phonenumbers.PhoneNumberType}
  * @private
  */
-- (NBPhoneNumberType)getNumberTypeHelper:(NSString*)nationalNumber metadata:(NBPhoneMetaData*)metadata
+- (NBEPhoneNumberType)getNumberTypeHelper:(NSString*)nationalNumber metadata:(NBPhoneMetaData*)metadata
 {
     NBPhoneNumberDesc *generalNumberDesc = metadata.generalDesc;
     
@@ -1852,7 +2127,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
 
 
 /**
- * Returns the metadata for the given region code or {@code null} if the region
+ * Returns the metadata for the given region code or {@code nil} if the region
  * code is invalid or unknown.
  *
  * @param {?string} regionCode
@@ -1920,7 +2195,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  * Tests whether a phone number is valid for a certain region. Note this doesn't
  * verify the number is actually in use, which is impossible to tell by just
  * looking at a number itself. If the country calling code is not the same as
- * the country calling code for the region, this immediately exits with false.
+ * the country calling code for the region, this immediately exits with NO.
  * After this, the specific number pattern rules for the region are examined.
  * This is useful for determining for example whether a particular number is
  * valid for Canada, rather than just a valid NANPA number.
@@ -1946,7 +2221,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     {
             // Either the region code was invalid, or the country calling code for this
             // number does not match that of the region code.
-            return false;
+            return NO;
     }
     
     NBPhoneNumberDesc *generalNumDesc = metadata.generalDesc;
@@ -1972,7 +2247,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the phone number whose origin
  *     we want to know.
- * @return {?string} the region where the phone number is from, or null
+ * @return {?string} the region where the phone number is from, or nil
  *     if no region matches this calling code.
  */
 - (NSString*)getRegionCodeForNumber:(NBPhoneNumber*)phoneNumber
@@ -2111,9 +2386,9 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
 /**
  * Returns the national dialling prefix for a specific region. For example, this
  * would be 1 for the United States, and 0 for New Zealand. Set stripNonDigits
- * to true to strip symbols like '~' (which indicates a wait for a dialling
+ * to NO to strip symbols like '~' (which indicates a wait for a dialling
  * tone) from the prefix returned. If no national prefix is present, we return
- * null.
+ * nil.
  *
  * <p>Warning: Do not use this method for do-your-own formatting - for some
  * regions, the national dialling prefix is used only for certain types of
@@ -2122,20 +2397,21 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  *
  * @param {?string} regionCode the region that we want to get the dialling
  *     prefix for.
- * @param {boolean} stripNonDigits true to strip non-digits from the national
+ * @param {boolean} stripNonDigits NO to strip non-digits from the national
  *     dialling prefix.
  * @return {?string} the dialling prefix for the region denoted by
  *     regionCode.
  */
 - (NSString*)getNddPrefixForRegion:(NSString*)regionCode stripNonDigits:(BOOL)stripNonDigits
 {
-    NBPhoneMetaData *metadata = [self getMetadataForRegion:regionCode];
-    if (metadata == nil) {
+    NBPhoneMetaData *metadata = [self getMetadataForRegion:regionCode ];
+    if (metadata == nil)
+    {
         return nil;
     }
 
     NSString *nationalPrefix = metadata.nationalPrefix;
-    // If no national prefix was found, we return null.
+    // If no national prefix was found, we return nil.
     if (nationalPrefix.length == 0)
     {
         return nil;
@@ -2156,7 +2432,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  * Administration (NANPA).
  *
  * @param {?string} regionCode the ISO 3166-1 two-letter region code.
- * @return {boolean} true if regionCode is one of the regions under NANPA.
+ * @return {boolean} NO if regionCode is one of the regions under NANPA.
  */
 - (BOOL)isNANPACountry:(NSString*)regionCode
 {
@@ -2178,7 +2454,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
 /**
  * Checks whether countryCode represents the country calling code from a region
  * whose national significant number could contain a leading zero. An example of
- * such a region is Italy. Returns false if no metadata for the country is
+ * such a region is Italy. Returns NO if no metadata for the country is
  * found.
  *
  * @param {number} countryCallingCode the country calling code.
@@ -2202,7 +2478,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  * {@link #isValidNumber} should be used.
  *
  * @param {string} number the number that needs to be checked.
- * @return {boolean} true if the number is a valid vanity number.
+ * @return {boolean} NO if the number is a valid vanity number.
  */
 - (BOOL)isAlphaNumber:(NSString*)number
 {
@@ -2225,7 +2501,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the number that needs to be
  *     checked.
- * @return {boolean} true if the number is possible.
+ * @return {boolean} NO if the number is possible.
  */
 - (BOOL)isPossibleNumber:(NBPhoneNumber*)number
 {    
@@ -2242,10 +2518,10 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  *
  * @param {string} numberPattern
  * @param {string} number
- * @return {i18n.phonenumbers.PhoneNumberUtil.ValidationResult}
+ * @return {ValidationResult}
  * @private
  */
-- (NBValidationResult)testNumberLengthAgainstPattern:(NSString*)numberPattern number:(NSString*)number
+- (NBEValidationResult)testNumberLengthAgainstPattern:(NSString*)numberPattern number:(NSString*)number
 {
     if ([self matchesEntirely:numberPattern string:number])
     {
@@ -2275,20 +2551,20 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  * <li>For fixed line numbers, many regions have the concept of area code, which
  * together with subscriber number constitute the national significant number.
  * It is sometimes okay to dial the subscriber number only when dialing in the
- * same area. This function will return true if the subscriber-number-only
+ * same area. This function will return NO if the subscriber-number-only
  * version is passed in. On the other hand, because isValidNumber validates
  * using information on both starting digits (for fixed line numbers, that would
  * most likely be area codes) and length (obviously includes the length of area
- * codes for fixed line numbers), it will return false for the
+ * codes for fixed line numbers), it will return NO for the
  * subscriber-number-only version.
  * </ol>
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the number that needs to be
  *     checked.
- * @return {i18n.phonenumbers.PhoneNumberUtil.ValidationResult} a
+ * @return {ValidationResult} a
  *     ValidationResult object which indicates whether the number is possible.
  */
-- (NBValidationResult)isPossibleNumberWithReason:(NBPhoneNumber*)number
+- (NBEValidationResult)isPossibleNumberWithReason:(NBPhoneNumber*)number
 {
     NSString *nationalNumber = [self getNationalSignificantNumber:number];
     NSString *countryCode = number.countryCode;
@@ -2303,7 +2579,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     }
     
     NSString *regionCode = [self getRegionCodeForCountryCode:countryCode];
-    // Metadata cannot be null because the country calling code is valid.
+    // Metadata cannot be nil because the country calling code is valid.
     NBPhoneMetaData *metadata = [self getMetadataForRegionOrCallingCode:countryCode regionCode:regionCode];
     NBPhoneNumberDesc *generalNumDesc = metadata.generalDesc;
     
@@ -2352,7 +2628,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  *     650 253 0000, it can only be dialed from within the US, and when written
  *     as 253 0000, it can only be dialed from within a smaller area in the US
  *     (Mountain View, CA, to be more specific).
- * @return {boolean} true if the number is possible.
+ * @return {boolean} NO if the number is possible.
  */
 - (BOOL)isPossibleNumberString:(NSString*)number regionDialingFrom:(NSString*)regionDialingFrom
 {
@@ -2361,7 +2637,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     }
     @catch (NSException *e)
     {
-        return false;
+        return NO;
     }
 }
 
@@ -2373,7 +2649,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  * be modified.
  * @param {i18n.phonenumbers.PhoneNumber} number a PhoneNumber object which
  *     contains a number that is too long to be valid.
- * @return {boolean} true if a valid phone number can be successfully extracted.
+ * @return {boolean} NO if a valid phone number can be successfully extracted.
  */
 - (BOOL)truncateTooLongNumber:(NBPhoneNumber*)number
 {    
@@ -2395,7 +2671,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     while ([self isValidNumber:numberCopy] == NO);
     
     number.nationalNumber = [NSString stringWithFormat:@"%d", nationalNumber];
-    return true;
+    return NO;
 }
 
 
@@ -2466,12 +2742,12 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  *     the national significant number in, in the case that a country calling
  *     code was extracted. The number is appended to any existing contents. If
  *     no country calling code was extracted, this will be left unchanged.
- * @param {boolean} keepRawInput true if the country_code_source and
+ * @param {boolean} keepRawInput NO if the country_code_source and
  *     preferred_carrier_code fields of phoneNumber should be populated.
  * @param {i18n.phonenumbers.PhoneNumber} phoneNumber the PhoneNumber object
  *     where the country_code and country_code_source need to be populated.
  *     Note the country_code is always populated, whereas country_code_source is
- *     only populated when keepCountryCodeSource is true.
+ *     only populated when keepCountryCodeSource is NO.
  * @return {number} the country calling code extracted or 0 if none could be
  *     extracted.
  * @throws {i18n.phonenumbers.Error}
@@ -2498,8 +2774,8 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         possibleCountryIddPrefix = @"NonMatch";
     }
     
-    /** @type {i18n.phonenumbers.PhoneNumber.CountryCodeSource} */
-    CountryCodeSource countryCodeSource = [self maybeStripInternationalPrefixAndNormalize:fullNumber possibleIddPrefix:possibleCountryIddPrefix];
+    /** @type {CountryCodeSource} */
+    NBECountryCodeSource countryCodeSource = [self maybeStripInternationalPrefixAndNormalize:fullNumber possibleIddPrefix:possibleCountryIddPrefix];
     
     if (keepRawInput)
     {
@@ -2544,7 +2820,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
             NBPhoneNumberDesc *generalDesc = defaultRegionMetadata.generalDesc;
             
             NSString *validNumberPattern = generalDesc.nationalNumberPattern;
-            // Passing null since we don't need the carrier code.
+            // Passing nil since we don't need the carrier code.
             [self maybeStripNationalPrefixAndCarrierCode:potentialNationalNumber metadata:defaultRegionMetadata carrierCode:nil];
 
             NSString *potentialNationalNumberStr = [potentialNationalNumber copy];
@@ -2581,7 +2857,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  *     prefix.
  * @param {!goog.string.StringBuffer} number the phone number that we wish to
  *     strip any international dialing prefix from.
- * @return {boolean} true if an international prefix was present.
+ * @return {boolean} NO if an international prefix was present.
  * @private
  */
 - (BOOL)parsePrefixAsIdd:(NSString*)iddPattern sourceString:(NSString*)number
@@ -2603,14 +2879,14 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
             NSString *normalizedGroup = [self normalizeDigitsOnly:[matchedGroups objectAtIndex:1]];
             if ([normalizedGroup isEqualToString:@"0"])
             {
-                return false;
+                return NO;
             }
         }
         
         number = [NSString stringWithFormat:@"%@", subString];
-        return true;
+        return NO;
     }
-    return false;
+    return NO;
 }
 
 
@@ -2623,12 +2899,12 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  *     that we wish to strip any international dialing prefix from.
  * @param {string} possibleIddPrefix the international direct dialing prefix
  *     from the region we think this number may be dialed in.
- * @return {i18n.phonenumbers.PhoneNumber.CountryCodeSource} the corresponding
+ * @return {CountryCodeSource} the corresponding
  *     CountryCodeSource if an international dialing prefix could be removed
  *     from the number, otherwise CountryCodeSource.FROM_DEFAULT_COUNTRY if
  *     the number did not seem to be in international format.
  */
-- (CountryCodeSource)maybeStripInternationalPrefixAndNormalize:(NSString*)numberStr possibleIddPrefix:(NSString*)possibleIddPrefix
+- (NBECountryCodeSource)maybeStripInternationalPrefixAndNormalize:(NSString*)numberStr possibleIddPrefix:(NSString*)possibleIddPrefix
 {
     if (numberStr.length == 0)
     {
@@ -2662,7 +2938,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  *     region that we think this number is from.
  * @param {goog.string.StringBuffer} carrierCode a place to insert the carrier
  *     code if one is extracted.
- * @return {boolean} true if a national prefix or carrier code (or both) could
+ * @return {boolean} NO if a national prefix or carrier code (or both) could
  *     be extracted.
  */
 - (NSString *)maybeStripNationalPrefixAndCarrierCode:(NSString*)numberStr metadata:(NBPhoneMetaData*)metadata carrierCode:(NSString*)carrierCode
@@ -2685,7 +2961,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     if (prefixMatcher && prefixMatcher.count > 0)
     {
         NSString *nationalNumberRule = metadata.generalDesc.nationalNumberPattern;
-        // prefixMatcher[numOfGroups] == null implies nothing was captured by the
+        // prefixMatcher[numOfGroups] == nil implies nothing was captured by the
         // capturing groups in possibleNationalPrefix; therefore, no transformation
         // is necessary, and we just remove the national prefix.
         int numOfGroups = prefixMatcher.count - 1;
@@ -2773,13 +3049,13 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  * @param {string} numberToParse number that we are attempting to parse.
  * @param {?string} defaultRegion region that we are expecting the number to be
  *     from.
- * @return {boolean} false if it cannot use the region provided and the region
+ * @return {boolean} NO if it cannot use the region provided and the region
  *     cannot be inferred.
  * @private
  */
 - (BOOL)checkRegionForParsing:(NSString*)numberToParse defaultRegion:(NSString*)defaultRegion
 {
-    // If the number is null or empty, we can't infer the region.
+    // If the number is nil or empty, we can't infer the region.
     return [self isValidRegionCode:defaultRegion] ||
         (numberToParse != nil && numberToParse.length > 0 && [self isStartingStringByRegex:numberToParse regex:self.LEADING_PLUS_CHARS_PATTERN_]);
 }
@@ -2800,7 +3076,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  *     international format. The country_code for the number in this case would
  *     be stored as that of the default region supplied. If the number is
  *     guaranteed to start with a '+' followed by the country calling code, then
- *     'ZZ' or null can be supplied.
+ *     'ZZ' or nil can be supplied.
  * @return {i18n.phonenumbers.PhoneNumber} a phone number proto buffer filled
  *     with the parsed number.
  * @throws {i18n.phonenumbers.Error} if the string is not considered to be a
@@ -2849,7 +3125,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
 /**
  * Parses a string and returns it in proto buffer format. This method is the
  * same as the public {@link #parse} method, with the exception that it allows
- * the default region to be null, for use by {@link #isNumberMatch}.
+ * the default region to be nil, for use by {@link #isNumberMatch}.
  *
  * @param {?string} numberToParse number that we are attempting to parse. This
  *     can contain formatting such as +, ( and -, as well as a phone number
@@ -2860,8 +3136,8 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  *     case would be stored as that of the default region supplied.
  * @param {boolean} keepRawInput whether to populate the raw_input field of the
  *     phoneNumber with numberToParse.
- * @param {boolean} checkRegion should be set to false if it is permitted for
- *     the default coregion to be null or unknown ('ZZ').
+ * @param {boolean} checkRegion should be set to NO if it is permitted for
+ *     the default coregion to be nil or unknown ('ZZ').
  * @return {i18n.phonenumbers.PhoneNumber} a phone number proto buffer filled
  *     with the parsed number.
  * @throws {i18n.phonenumbers.Error}
@@ -2959,7 +3235,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         NSString *phoneNumberRegion = [self getRegionCodeForCountryCode:countryCode];
         if (phoneNumberRegion != defaultRegion)
         {
-            // Metadata cannot be null because the country calling code is valid.
+            // Metadata cannot be nil because the country calling code is valid.
             regionMetadata = [self getMetadataForRegionOrCallingCode:countryCode regionCode:phoneNumberRegion];
         }
     }
@@ -3119,11 +3395,11 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  * @param {i18n.phonenumbers.PhoneNumber|string} secondNumberIn second number to
  *     compare. If it is a string it can contain formatting, and can have
  *     country calling code specified with + at the start.
- * @return {i18n.phonenumbers.PhoneNumberUtil.MatchType} NOT_A_NUMBER, NO_MATCH,
+ * @return {MatchType} NOT_A_NUMBER, NO_MATCH,
  *     SHORT_NSN_MATCH, NSN_MATCH or EXACT_MATCH depending on the level of
  *     equality of the two numbers, described in the method definition.
  */
-- (NBMatchType)isNumberMatch:(id)firstNumberIn second:(id)secondNumberIn
+- (NBEMatchType)isNumberMatch:(id)firstNumberIn second:(id)secondNumberIn
 {
     
     // If the input arguements are strings parse them to a proto buffer format.
@@ -3159,7 +3435,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
                         return NOT_A_NUMBER;
                     }
                     
-                    NBMatchType match = [self isNumberMatch:firstNumber second:secondNumberIn];
+                    NBEMatchType match = [self isNumberMatch:firstNumber second:secondNumberIn];
                     if (match == EXACT_MATCH)
                     {
                         return NSN_MATCH;
@@ -3270,36 +3546,36 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
 
 
 /**
- * Returns true when one national number is the suffix of the other or both are
+ * Returns NO when one national number is the suffix of the other or both are
  * the same.
  *
  * @param {i18n.phonenumbers.PhoneNumber} firstNumber the first PhoneNumber
  *     object.
  * @param {i18n.phonenumbers.PhoneNumber} secondNumber the second PhoneNumber
  *     object.
- * @return {boolean} true if one PhoneNumber is the suffix of the other one.
+ * @return {boolean} NO if one PhoneNumber is the suffix of the other one.
  * @private
  */
 - (BOOL)isNationalNumberSuffixOfTheOther:(NBPhoneNumber*)firstNumber second:(NBPhoneNumber*)secondNumber
 {
     NSString *firstNumberNationalNumber = firstNumber.nationalNumber;
     NSString *secondNumberNationalNumber = secondNumber.nationalNumber;
-    // Note that endsWith returns true if the numbers are equal.
+    // Note that endsWith returns NO if the numbers are equal.
     return [firstNumberNationalNumber hasSuffix:secondNumberNationalNumber] ||
         [secondNumberNationalNumber hasSuffix:firstNumberNationalNumber];
 }
 
 
 /**
- * Returns true if the number can be dialled from outside the region, or
+ * Returns NO if the number can be dialled from outside the region, or
  * unknown. If the number can only be dialled from within the region, returns
- * false. Does not check the number is a valid number.
+ * NO. Does not check the number is a valid number.
  * TODO: Make this method public when we have enough metadata to make it
  * worthwhile. Currently visible for testing purposes only.
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the phone-number for which we
  *     want to know whether it is diallable from outside the region.
- * @return {boolean} true if the number can only be dialled from within the
+ * @return {boolean} NO if the number can only be dialled from within the
  *     country.
  */
 - (BOOL)canBeInternationallyDialled:(NBPhoneNumber*)number
@@ -3309,7 +3585,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     {
         // Note numbers belonging to non-geographical entities (e.g. +800 numbers)
         // are always internationally diallable, and will be caught here.
-        return true;
+        return NO;
     }
     NSString *nationalSignificantNumber = [self getNationalSignificantNumber:number];
     return [self isNumberMatchingDesc:nationalSignificantNumber numberDesc:metadata.noInternationalDialling] == NO;
@@ -3322,7 +3598,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  *
  * @param {!RegExp|string} regex the regular expression to match against.
  * @param {string} str the string to test.
- * @return {boolean} true if str can be matched entirely against regex.
+ * @return {boolean} NO if str can be matched entirely against regex.
  * @private
  */
 - (BOOL)matchesEntirely:(NSString*)regex string:(NSString*)str

@@ -13,14 +13,14 @@ typedef enum {
     FROM_NUMBER_WITH_IDD = 5,
     FROM_NUMBER_WITHOUT_PLUS_SIGN = 10,
     FROM_DEFAULT_COUNTRY = 20
-} CountryCodeSource;
+} NBECountryCodeSource;
 
 @interface NBPhoneNumber : NSObject
 
 @property (nonatomic, strong, readwrite) NSString *countryCode, *nationalNumber, *extension;
 @property (nonatomic, assign, readwrite) BOOL italianLeadingZero;
 @property (nonatomic, strong, readwrite) NSString *rawInput;
-@property (nonatomic, assign, readwrite) CountryCodeSource countryCodeSource;
+@property (nonatomic, assign, readwrite) NBECountryCodeSource countryCodeSource;
 @property (nonatomic, strong, readwrite) NSString *PreferredDomesticCarrierCode;
 
 - (void)clearCountryCodeSource;

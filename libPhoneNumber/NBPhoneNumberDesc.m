@@ -20,6 +20,8 @@
     {
         [self setName:@"PhoneNumberDesc"];
         [self setFullName:@"i18n.phonenumbers.PhoneNumberDesc"];
+        [self setNationalNumberPattern:@"NA"];
+        [self setPossibleNumberPattern:@"NA"];
     }
     
     return self;

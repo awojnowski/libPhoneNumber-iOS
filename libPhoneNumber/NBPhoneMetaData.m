@@ -26,7 +26,7 @@
 @synthesize nationalPrefix, nationalPrefixForParsing, nationalPrefixTransformRule;
 @synthesize preferredExtnPrefix, nationalPrefixFormattingRule, carrierCodeFormattingRule;
 @synthesize mainCountryForCode, nationalPrefixOptionalWhenFormatting, leadingZeroPossible;
-@synthesize numberFormats;
+@synthesize numberFormats, intlNumberFormats;
 
 - (id)init
 {
@@ -35,6 +35,7 @@
     if (self)
     {
         [self setNumberFormats:[[NSMutableArray alloc] init]];
+        [self setIntlNumberFormats:[[NSMutableArray alloc] init]];
         [self setNumberDescriptions:[[NSMutableDictionary alloc] init]];
         
         [self setName:@"PhoneMetadata"];

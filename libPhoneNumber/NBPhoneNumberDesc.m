@@ -28,8 +28,24 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"%@ [%@ (ex)%@]", self.nationalNumberPattern, self.possibleNumberPattern, self.exampleNumber];
+    return [NSString stringWithFormat:@"\n          natnumpat[%@]\n          posnumpat[%@]\n          ex[%@]", self.nationalNumberPattern, self.possibleNumberPattern, self.exampleNumber];
 }
 
+- (id)copyWithZone:(NSZone *)zone
+{
+	NBPhoneNumberDesc *phoneDescCopy = [[NBPhoneNumberDesc allocWithZone:zone] init];
+    
+    phoneDescCopy.nationalNumberPattern = [self.nationalNumberPattern copy];
+    phoneDescCopy.possibleNumberPattern = [self.possibleNumberPattern copy];
+    phoneDescCopy.exampleNumber = [self.exampleNumber copy];
+    
+	return phoneDescCopy;
+}
+
+- (BOOL)isEqual:(id)object
+{
+#warning to do implements this object
+    return YES;
+}
 
 @end

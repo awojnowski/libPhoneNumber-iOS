@@ -264,7 +264,12 @@
             }
         }
         
-        NSString *countryKey = [NSString stringWithFormat:@"%@", newTerritory.codeID != nil ? newTerritory.codeID : newTerritory.countryCode];
+        NSString *countryKey = newTerritory.codeID ;
+        if (newTerritory.codeID == nil || newTerritory.codeID.length > 2 || newTerritory.codeID.length <= 0)
+        {
+            countryKey = newTerritory.countryCode;
+        }
+
         [coreMetaData setObject:newTerritory forKey:countryKey];
     }
     

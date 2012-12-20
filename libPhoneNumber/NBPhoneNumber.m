@@ -38,12 +38,18 @@
     phoneNumberCopy.nationalNumber = [self.nationalNumber copy];
     phoneNumberCopy.extension = [self.extension copy];
     
-    phoneNumberCopy.italianLeadingZero = self.italianLeadingZero;
+    phoneNumberCopy.italianLeadingZero = [self.italianLeadingZero copy];
     phoneNumberCopy.rawInput = [self.rawInput copy];
     phoneNumberCopy.countryCodeSource = self.countryCodeSource;
     phoneNumberCopy.PreferredDomesticCarrierCode = [self.PreferredDomesticCarrierCode copy];
     
 	return phoneNumberCopy;
+}
+
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"(countryCode [%@], nationalNumber [%@], extension [%@])", self.countryCode, self.nationalNumber, self.extension];
 }
 
 @end

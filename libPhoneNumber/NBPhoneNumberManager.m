@@ -53,7 +53,7 @@ NSString *SEPARATOR_PATTERN_ = @"[%@]+";
 NSString *FIRST_GROUP_ONLY_PREFIX_PATTERN_ = @"^\\(?\\$1\\)?$";
 NSString *NP_PATTERN_ = @"\\$NP";
 NSString *FG_PATTERN_ = @"\\$FG";
-NSString *VALID_ALPHA_PHONE_PATTERN_ = @"(?:.*?[A-Za-z]){3}.*";
+NSString *VALID_ALPHA_PHONE_PATTERN_STRING = @"(?:.*?[A-Za-z]){3}.*";
 NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)?";
 
 
@@ -108,36 +108,9 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
 
 - (NSArray*)componentsSeparatedByRegex:(NSString*)sourceString regex:(NSString*)pattern
 {
-    NSMutableArray *resArray = [[NSMutableArray alloc] init];
-    NSError *error = nil;
-    
-    int previousPosition = 0;
-    
-    NSRegularExpression *currentPattern = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:&error];
-    NSArray *matches = [currentPattern matchesInString:sourceString options:0 range:NSMakeRange(0, sourceString.length)];
-    
-    for(NSTextCheckingResult *match in matches)
-    {
-        int currentPosition = match.range.location;
-        
-        /*
-        if (currentPosition <= previousPosition)
-        {
-            continue;
-        }
-        */
-        
-        NSString *subString = [sourceString substringWithRange:NSMakeRange(previousPosition, currentPosition)];
-        NSLog(@"-componentsSeparatedByRegex [%@]", subString);
-        
-        if ([self hasValue:subString])
-        {
-            [resArray addObject:subString];
-        }
-        
-        //previousPosition = match.range.location + match.range.length;
-    }
-    
+    NSString *replacedString = [self replaceStringByRegex:sourceString regex:pattern withTemplate:@"<SEP>"];
+    NSMutableArray *resArray = (NSMutableArray *)[replacedString componentsSeparatedByString:@"<SEP>"];
+    [resArray removeObject:@""];    
     return resArray;
 }
 
@@ -150,13 +123,10 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     
     int foundPosition = -1;
     
-    for(NSTextCheckingResult *match in matches)
+    if (matches.count > 0)
     {
-        foundPosition = match.range.location;
-        if (foundPosition >= 0)
-        {
-            break;
-        }
+        NSTextCheckingResult *match = [matches objectAtIndex:0];
+        return match.range.location;
     }
     
     return foundPosition;
@@ -185,7 +155,6 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     replacementResult = [currentPattern stringByReplacingMatchesInString:[sourceString mutableCopy] options:0
                                                                    range:NSMakeRange(0, sourceString.length)
                                                             withTemplate:templateString];
-    
     return replacementResult;
 }
 
@@ -219,22 +188,22 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
 
 - (NSString*)stringByReplacingOccurrencesString:(NSString *)sourceString withMap:(NSDictionary *)dicMap removeNonMatches:(BOOL)bRemove
 {
-    NSMutableString *targetString = [[NSMutableString alloc] init];
+    NSMutableString *targetString = [[NSMutableString alloc] initWithString:@""];
     
     for(int i=0; i<sourceString.length; i++)
     {
         unichar oneChar = [sourceString characterAtIndex:i];
         NSString *keyString = [NSString stringWithCharacters:&oneChar length:1];
         NSString *mappedValue = [dicMap valueForKey:keyString];
-        if (mappedValue)
+        if (mappedValue != nil)
         {
-            [targetString stringByAppendingString:mappedValue];
+            [targetString appendString:mappedValue];
         }
         else
         {
             if (bRemove == NO)
             {
-                [targetString stringByAppendingString:keyString];
+                [targetString appendString:keyString];
             }
         }
     }
@@ -276,7 +245,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
 
 - (NSString*)getNationalSignificantNumber:(NBPhoneNumber*)phoneNumber
 {
-    if (phoneNumber.italianLeadingZero)
+    if (phoneNumber.italianLeadingZero && [phoneNumber.italianLeadingZero boolValue])
     {
         return [NSString stringWithFormat:@"0%@", phoneNumber.nationalNumber];
     }
@@ -369,8 +338,9 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     _VALID_START_CHAR_PATTERN_ =
         [NSRegularExpression regularExpressionWithPattern:[NSString stringWithFormat:@"[%@%@]", PLUS_CHARS_, VALID_DIGITS_] options:0 error:&error];
     
-    _SECOND_NUMBER_START_PATTERN_ =
-        [NSRegularExpression regularExpressionWithPattern:@"[\\\\\\/] *x" options:0 error:&error];
+    _SECOND_NUMBER_START_PATTERN_ = [NSRegularExpression regularExpressionWithPattern:@"[\\\\\\/] *x" options:0 error:&error];
+    
+    _VALID_ALPHA_PHONE_PATTERN_ = [NSRegularExpression regularExpressionWithPattern:VALID_ALPHA_PHONE_PATTERN_STRING options:0 error:&error];
     
     _UNWANTED_END_CHAR_PATTERN_ =
         [NSRegularExpression regularExpressionWithPattern:[NSString stringWithFormat:@"[^%@%@#]+$", VALID_DIGITS_, VALID_ALPHA_]
@@ -611,7 +581,6 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     {
         NSTextCheckingResult *currentMatch = [matches objectAtIndex:0];
         NSString *founds = [phoneNumber substringWithRange:currentMatch.range];
-        NSLog(@"isViablePhoneNumbe matches [%@]", founds);
         return [founds isEqualToString:phoneNumber];
     }
     
@@ -636,24 +605,15 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  * @param {string} number a string of characters representing a phone number.
  * @return {string} the normalized string version of the phone number.
  */
-- (NSString*)normalizePhoneNumber:(NSString*)phoneNumber
+- (NSString*)normalizePhoneNumber:(NSString*)number
 {
-    NSRegularExpression *currentPattern = self.VALID_ALPHA_PHONE_PATTERN_;
-    NSArray *matches = [currentPattern matchesInString:phoneNumber options:0 range:NSMakeRange(0, phoneNumber.length)];
-    
-    if (matches && [matches count] > 0)
+    if ([self matchesEntirely:VALID_ALPHA_PHONE_PATTERN_STRING string:number])
     {
-        NSTextCheckingResult *currentMatch = [matches objectAtIndex:0];
-        NSString *founds = [phoneNumber substringWithRange:currentMatch.range];
-        
-        if ([founds isEqualToString:phoneNumber])
-        {
-            return [self stringByReplacingOccurrencesString:founds withMap:self.ALL_NORMALIZATION_MAPPINGS_ removeNonMatches:YES];
-        }
-        else
-        {
-            return [self normalizeDigitsOnly:founds];
-        }
+        return [self normalizeHelper:number normalizationReplacements:self.ALL_NORMALIZATION_MAPPINGS_ removeNonMatches:true];
+    }
+    else
+    {
+        return [self normalizeDigitsOnly:number];
     }
     
     return nil;
@@ -756,6 +716,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
 - (int)getLengthOfGeographicalAreaCode:(NBPhoneNumber*)phoneNumber
 {
     NSString *regionCode = [self getRegionCodeForNumber:phoneNumber];
+    NSLog(@"getLengthOfGeographicalAreaCode.regionCode [%@ / %@]", regionCode, phoneNumber);
     NBPhoneMetaData *metadata = [self getMetadataForRegion:regionCode];
     
     if (metadata == nil)
@@ -765,7 +726,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     // If a country doesn't use a national prefix, and this number doesn't have
     // an Italian leading zero, we assume it is a closed dialling plan with no
     // area codes.
-    if (metadata.nationalPrefix == nil && phoneNumber.italianLeadingZero == NO)
+    if (metadata.nationalPrefix == nil && [phoneNumber.italianLeadingZero boolValue] == NO)
     {
         return 0;
     }
@@ -775,6 +736,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         return 0;
     }
     
+    NSLog(@"getLengthOfGeographicalAreaCode.getLengthOfNationalDestinationCode");
     return [self getLengthOfNationalDestinationCode:phoneNumber];
 }
 
@@ -1127,8 +1089,11 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
             if (nationalPrefix.length > 0)
             {
                 // Replace $NP with national prefix and $FG with the first group ($1).
+                NSLog(@"^^^^^ nationalPrefixFormattingRule 0 [%@]", nationalPrefixFormattingRule);
                 nationalPrefixFormattingRule = [self replaceStringByRegex:nationalPrefixFormattingRule regex:NP_PATTERN_ withTemplate:nationalPrefix];
+                NSLog(@"^^^^^ nationalPrefixFormattingRule 1 [%@]", nationalPrefixFormattingRule);
                 nationalPrefixFormattingRule = [self replaceStringByRegex:nationalPrefixFormattingRule regex:FG_PATTERN_ withTemplate:@"$1"];
+                NSLog(@"^^^^^ nationalPrefixFormattingRule 2 [%@]", nationalPrefixFormattingRule);
                 numFormatCopy.nationalPrefixFormattingRule = nationalPrefixFormattingRule;
             }
             else
@@ -1404,11 +1369,11 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     switch (numberFormat)
     {
         case E164:
-            return [NSString stringWithFormat:@"%@%@%@%@", @"+", countryCallingCode, formattedNationalNumber, formattedExtension];
+            return [NSString stringWithFormat:@"+%@%@%@", countryCallingCode, formattedNationalNumber, formattedExtension];
         case INTERNATIONAL:
-            return [NSString stringWithFormat:@"%@%@ %@%@", @"+", countryCallingCode, formattedNationalNumber, formattedExtension];
+            return [NSString stringWithFormat:@"+%@ %@%@", countryCallingCode, formattedNationalNumber, formattedExtension];
         case RFC3966:
-            return [NSString stringWithFormat:@"%@%@%@-%@%@", RFC3966_PREFIX_, @"+", countryCallingCode, formattedNationalNumber, formattedExtension];
+            return [NSString stringWithFormat:@"%@+%@-%@%@", RFC3966_PREFIX_, countryCallingCode, formattedNationalNumber, formattedExtension];
         case NATIONAL:
         default:
             return [NSString stringWithFormat:@"%@%@", formattedNationalNumber, formattedExtension];
@@ -1459,7 +1424,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
             formattedNumber = [self formatOutOfCountryCallingNumber:number regionCallingFrom:regionCallingFrom];
             break;
         case FROM_NUMBER_WITHOUT_PLUS_SIGN:
-            formattedNumber = [[self format:number numberFormat:INTERNATIONAL] substringToIndex:1];
+            formattedNumber = [[self format:number numberFormat:INTERNATIONAL] substringFromIndex:1];
             break;
         case FROM_DEFAULT_COUNTRY:
             // Fall-through to default case.
@@ -1568,7 +1533,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
             // prefix matching. To tackle that, we check the validity of the number if
             // the assumed national prefix is removed (777123 won't be valid in
             // Japan).
-            NSString *subString = [normalizedNationalNumber substringToIndex:nationalPrefix.length];
+            NSString *subString = [normalizedNationalNumber substringFromIndex:nationalPrefix.length];
             return [self isValidNumber:[self parse:subString defaultRegion:regionCode]];
         }
         @catch (NSException *ex) {
@@ -1589,7 +1554,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  */
 - (BOOL)hasUnexpectedItalianLeadingZero:(NBPhoneNumber*)number
 {    
-    return number.italianLeadingZero && [self isLeadingZeroPossible:number.countryCode] == NO;
+    return [number.italianLeadingZero boolValue] && [self isLeadingZeroPossible:number.countryCode] == NO;
 }
 
 
@@ -1646,7 +1611,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     NSString *rawInput = number.rawInput;
     // If there is no raw input, then we can't keep alpha characters because there
     // aren't any. In this case, we return formatOutOfCountryCallingNumber.
-    if (rawInput.length == 0)
+    if (rawInput == nil || rawInput.length == 0)
     {
         return [self formatOutOfCountryCallingNumber:number regionCallingFrom:regionCallingFrom];
     }
@@ -1661,6 +1626,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     // this, first we normalize punctuation. We retain number grouping symbols
     // such as ' ' only.
     rawInput = [self normalizeHelper:rawInput normalizationReplacements:_ALL_PLUS_NUMBER_GROUPING_SYMBOLS_ removeNonMatches:NO];
+    NSLog(@"---- formatOutOfCountryKeepingAlphaChars normalizeHelper rawInput [%@]", rawInput);
     // Now we trim everything before the first three digits in the parsed number.
     // We choose three because all valid alpha numbers have 3 digits at the start
     // - if it does not, then we don't trim anything at all. Similarly, if the
@@ -1671,7 +1637,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         int firstNationalNumberDigit = [self indexOfStringByString:rawInput target:[nationalNumber substringWithRange:NSMakeRange(0, 3)]];
         if (firstNationalNumberDigit != -1)
         {
-            rawInput = [rawInput substringToIndex:firstNationalNumberDigit];
+            rawInput = [rawInput substringFromIndex:firstNationalNumberDigit];
         }
     }
 
@@ -1706,6 +1672,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         // digits) decide whether a national prefix needs to be used, since we have
         // overridden the pattern to match anything, but that is not the case in the
         // metadata to date.
+        
         return [self formatNsnUsingPattern:rawInput formattingPattern:newFormat numberFormat:NATIONAL carrierCode:nil];
     }
 
@@ -1717,7 +1684,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     {
         NSString *internationalPrefix = metadataForRegionCallingFrom.internationalPrefix;
         internationalPrefixForFormatting =
-            [self matchesEntirely:UNIQUE_INTERNATIONAL_PREFIX_ string:internationalPrefix] ? internationalPrefix : metadataForRegionCallingFrom.internationalPrefix;
+            [self matchesEntirely:UNIQUE_INTERNATIONAL_PREFIX_ string:internationalPrefix] ? internationalPrefix : metadataForRegionCallingFrom.preferredInternationalPrefix;
     }
 
     NSString *regionCode = [self getRegionCodeForCountryCode:countryCode];
@@ -1786,7 +1753,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     {
         int size = [numFormat.leadingDigitsPattern count];
         // We always use the last leading_digits_pattern, as it is the most detailed.
-        if (size == 0 || [self stringPositionByRegex:nationalNumber regex:[numFormat.leadingDigitsPattern lastObject]])
+        if (size == 0 || [self stringPositionByRegex:nationalNumber regex:[numFormat.leadingDigitsPattern lastObject]] == 0)
         {
             if ([self matchesEntirely:numFormat.pattern string:nationalNumber])
             {
@@ -2061,46 +2028,69 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
 {
     NBPhoneNumberDesc *generalNumberDesc = metadata.generalDesc;
     
+    NSLog(@"+++++++++++++++ getNumberTypeHelper - [%@]", generalNumberDesc);
+
+    NSLog(@"getNumberTypeHelper - UNKNOWN 1");
     if ([self hasValue:generalNumberDesc.nationalNumberPattern] == NO ||
         [self isNumberMatchingDesc:nationalNumber numberDesc:generalNumberDesc] == NO)
     {
+        NSLog(@"getNumberTypeHelper - UNKNOWN 2");
         return UNKNOWN;
     }
-    
+
+    NSLog(@"getNumberTypeHelper - PREMIUM_RATE 1");
     if ([self isNumberMatchingDesc:nationalNumber numberDesc:metadata.premiumRate])
     {
+        NSLog(@"getNumberTypeHelper - PREMIUM_RATE 2");
         return PREMIUM_RATE;
     }
     
+    NSLog(@"getNumberTypeHelper - TOLL_FREE 1");
     if ([self isNumberMatchingDesc:nationalNumber numberDesc:metadata.tollFree])
     {
+        NSLog(@"getNumberTypeHelper - TOLL_FREE 2");
         return TOLL_FREE;
     }
     
+    NSLog(@"getNumberTypeHelper - SHARED_COST 1");
     if ([self isNumberMatchingDesc:nationalNumber numberDesc:metadata.sharedCost])
     {
+        NSLog(@"getNumberTypeHelper - SHARED_COST 2");
         return SHARED_COST;
     }
     
+    NSLog(@"getNumberTypeHelper - VOIP 1");
     if ([self isNumberMatchingDesc:nationalNumber numberDesc:metadata.voip])
     {
+        NSLog(@"getNumberTypeHelper - VOIP 2");
         return VOIP;
     }
     
+    NSLog(@"getNumberTypeHelper - PERSONAL_NUMBER 1");
     if ([self isNumberMatchingDesc:nationalNumber numberDesc:metadata.personalNumber])
     {
+        NSLog(@"getNumberTypeHelper - PERSONAL_NUMBER 2");
         return PERSONAL_NUMBER;
     }
     
-    if ([self isNumberMatchingDesc:nationalNumber numberDesc:metadata.pager]) {
+    NSLog(@"getNumberTypeHelper - PAGER 1");
+    if ([self isNumberMatchingDesc:nationalNumber numberDesc:metadata.pager])
+    {
+        NSLog(@"getNumberTypeHelper - PAGER 2");
         return PAGER;
     }
     
-    if ([self isNumberMatchingDesc:nationalNumber numberDesc:metadata.uan]) {
+    NSLog(@"getNumberTypeHelper - UAN 1");
+    if ([self isNumberMatchingDesc:nationalNumber numberDesc:metadata.uan])
+    {
+        NSLog(@"getNumberTypeHelper - UAN 2");
         return UAN;
     }
     
-    if ([self isNumberMatchingDesc:nationalNumber numberDesc:metadata.voicemail]) {
+    NSLog(@"getNumberTypeHelper - VOICEMAIL 1");
+    if ([self isNumberMatchingDesc:nationalNumber numberDesc:metadata.voicemail])
+    {
+        NSLog(@"getNumberTypeHelper - VOICEMAIL 2");
         return VOICEMAIL;
     }
     
@@ -2108,12 +2098,15 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     {
         if (metadata.sameMobileAndFixedLinePattern)
         {
+            NSLog(@"getNumberTypeHelper - FIXED_LINE_OR_MOBILE");
             return FIXED_LINE_OR_MOBILE;
         }
         else if ([self isNumberMatchingDesc:nationalNumber numberDesc:metadata.mobile])
         {
+            NSLog(@"getNumberTypeHelper - FIXED_LINE_OR_MOBILE");
             return FIXED_LINE_OR_MOBILE;
         }
+        NSLog(@"getNumberTypeHelper - FIXED_LINE");
         return FIXED_LINE;
     }
     
@@ -2145,10 +2138,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     regionCode = [regionCode uppercaseString];
     
     NBPhoneMetaData *metadata = [self.coreMetaData objectForKey:regionCode];
-    if (metadata == nil)
-    {
-        return nil;
-    }
+    
     return metadata;
 }
 
@@ -2171,6 +2161,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  */
 - (BOOL)isNumberMatchingDesc:(NSString*)nationalNumber numberDesc:(NBPhoneNumberDesc*)numberDesc
 {
+    NSLog(@"isNumberMatchingDesc (%@) [%@] [%@]", nationalNumber, numberDesc.possibleNumberPattern, numberDesc.nationalNumberPattern);
     return [self matchesEntirely:numberDesc.possibleNumberPattern string:nationalNumber] &&
     [self matchesEntirely:numberDesc.nationalNumberPattern string:nationalNumber];
 }
@@ -2281,6 +2272,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  * @param {Array.<string>} regionCodes
  * @return {?string}
  * @private
+
  */
 - (NSString*)getRegionCodeForNumberFromRegionList:(NBPhoneNumber*)phoneNumber regionCodes:(NSArray*)regionCodes
 {
@@ -2290,17 +2282,22 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     for (int i = 0; i<regionCodesCount; i++)
     {
         NSString *regionCode = [regionCodes objectAtIndex:i];
+        NSLog(@"&&&&&&&&&&&& regionCode[%@], [%@]", regionCode, phoneNumber);
         NBPhoneMetaData *metadata = [self getMetadataForRegion:regionCode];
+        
+        NSLog(@" --- [%@][%@]", nationalNumber, metadata.leadingDigits);
         
         if ([self hasValue:metadata.leadingDigits])
         {
             if ([self stringPositionByRegex:nationalNumber regex:metadata.leadingDigits] == 0)
             {
+                NSLog(@" ------1 [%@]", regionCode);
                 return regionCode;
             }
         }
         else if ([self getNumberTypeHelper:nationalNumber metadata:metadata] != UNKNOWN)
         {
+            NSLog(@" ------2 [%@]", regionCode);
             return regionCode;
         }
     }
@@ -2493,7 +2490,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     /** @type {!goog.string.StringBuffer} */
     NSString *strippedNumber = [self maybeStripExtension:number];
     
-    return [self matchesEntirely:VALID_ALPHA_PHONE_PATTERN_ string:strippedNumber];
+    return [self matchesEntirely:VALID_ALPHA_PHONE_PATTERN_STRING string:strippedNumber];
 }
 
 
@@ -2689,7 +2686,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  */
 - (NSString*)extractCountryCode:(NSString*)fullNumber nationalNumber:(NSString*)nationalNumber
 {
-    if ((fullNumber.length == 0) || ([[fullNumber substringToIndex:1] isEqualToString:@"0"]))
+    if ((fullNumber.length == 0) || ([[fullNumber substringFromIndex:1] isEqualToString:@"0"]))
     {
         // Country codes do not begin with a '0'.
         return nil;
@@ -2705,7 +2702,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         
         if (regionCodes != nil && regionCodes.count > 0)
         {
-            nationalNumber = [NSString stringWithFormat:@"%@%@", nationalNumber, [fullNumber substringToIndex:i]];
+            nationalNumber = [NSString stringWithFormat:@"%@%@", nationalNumber, [fullNumber substringFromIndex:i]];
             return potentialCountryCode;
         }
     }
@@ -2818,7 +2815,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         
         if ([normalizedNumber hasPrefix:defaultCountryCode] && defaultCountryCode.length > 0)
         {
-            NSString *potentialNationalNumber = [normalizedNumber substringToIndex:defaultCountryCode.length - 1];
+            NSString *potentialNationalNumber = [normalizedNumber substringFromIndex:defaultCountryCode.length - 1];
             NBPhoneNumberDesc *generalDesc = defaultRegionMetadata.generalDesc;
             
             NSString *validNumberPattern = generalDesc.nationalNumberPattern;
@@ -2870,7 +2867,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     {
         NSTextCheckingResult *matched = [[self matchesByRegex:numberStr regex:iddPattern] objectAtIndex:0];
         int matchEnd = matched.range.length;
-        NSString *subString = [numberStr substringToIndex:matchEnd];
+        NSString *subString = [numberStr substringFromIndex:matchEnd];
         
         NSRegularExpression *currentPattern = self.CAPTURING_DIGIT_PATTERN;
         NSArray *matchedGroups = [currentPattern matchesInString:subString options:0 range:NSMakeRange(0, subString.length)];
@@ -2974,7 +2971,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         if (noTransform)
         {
             NSString *prefixString = [prefixMatcher objectAtIndex:0];
-            transformedNumber = [numberStr substringToIndex:prefixString.length];
+            transformedNumber = [numberStr substringFromIndex:prefixString.length];
         }
         else
         {
@@ -3018,7 +3015,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     
     // If we find a potential extension, and the number preceding this is a viable
     // number, we assume it is an extension.
-    if (mStart >= 0 && [self isViablePhoneNumber:[numberStr substringToIndex:mStart]])
+    if (mStart >= 0 && [self isViablePhoneNumber:[numberStr substringFromIndex:mStart]])
     {
         // The numbers are captured into groups in the regular expression.
         NSArray *matchedGroups = [self matchesByRegex:numberStr regex:self.EXTN_PATTERN_];
@@ -3299,7 +3296,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     
     if ([normalizedNationalNumberStr hasPrefix:@"0"])
     {
-        phoneNumber.italianLeadingZero = YES;
+        phoneNumber.italianLeadingZero = [NSNumber numberWithBool:YES];
     }
     
     phoneNumber.nationalNumber = normalizedNationalNumberStr;
@@ -3609,15 +3606,23 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     NSRegularExpression *currentPattern = [NSRegularExpression regularExpressionWithPattern:regex options:0 error:&error];
     NSArray *matches = [currentPattern matchesInString:str options:0 range:NSMakeRange(0, str.length)];
     
-    if (matches && [matches count] > 0)
+    NSLog(@"[%@] == %@", str, matches);
+    
+    if (matches != nil && [matches count] > 0)
     {
         NSTextCheckingResult *currentMatch = [matches objectAtIndex:0];
         NSString *founds = [str substringWithRange:currentMatch.range];
+        
+        NSLog(@"==== [%@]:[%@]", founds, str);
+        
         if ([founds isEqualToString:str])
         {
+            NSLog(@"===== matchesEntirely YES");
             return YES;
         }
     }
+    
+    NSLog(@"===== matchesEntirely NO");
     return NO;
 }
 

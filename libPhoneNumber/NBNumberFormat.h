@@ -10,7 +10,6 @@
 
 @interface NBNumberFormat : NSObject
 
-@property (nonatomic, strong, readwrite) NSString *name, *fullName;
 @property (nonatomic, strong, readwrite) NSString *intlFormat, *carrierCodeFormattingRule;
 
 // from phonemetadata.pb.js

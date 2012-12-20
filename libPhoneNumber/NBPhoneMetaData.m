@@ -54,14 +54,14 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"--------------------------------------------------------------------------------------------------\n--- %@ (%@) leadingDigits[%@], pEP:(%@), iP(%@), nP(%@), nPFP(%@), nPTR(%@), nPFR(%@), cCFR(%@)]\n--- mCFC[%@], nPOWF[%@], lZP[%@]\n--- AavailableFormats:%@\n--- [%@,%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@]",
+    return [NSString stringWithFormat:@"--------------------------------------------------------------------------------------------------\n--- %@ (%@) leadingDigits[%@], pEP:(%@), iP(%@), nP(%@), nPFP(%@), nPTR(%@), nPFR(%@), cCFR(%@)]\n--- mCFC[%@], nPOWF[%@], lZP[%@]\n--- AavailableFormats:%@\n---  generalDesc - %@\n fixedLine - %@\n mobile - %@\n tollFree - %@\n premiumRate - %@\n sharedCost - %@\n personalNumber - %@\n voip - %@\n pager - %@\n uan - %@\n emergency - %@\n voicemail - %@\n noInternationalDialling - %@\n--- Intlnumberformats:%@",
             self.codeID, self.countryCode, self.leadingDigits, self.preferredExtnPrefix, self.internationalPrefix,
             self.nationalPrefix, self.nationalPrefixForParsing, self.nationalPrefixTransformRule,
             self.nationalPrefixFormattingRule, self.carrierCodeFormattingRule,
             [self.mainCountryForCode boolValue]?@"Y":@"N",
             [self.nationalPrefixOptionalWhenFormatting boolValue]?@"Y":@"N",
             [self.leadingZeroPossible boolValue]?@"Y":@"N", self.numberFormats,
-            self.generalDesc, self.fixedLine, self.mobile, self.tollFree, self.premiumRate, self.sharedCost, self.personalNumber, self.voip, self.pager, self.uan, self.emergency, self.voicemail, self.noInternationalDialling];
+            self.generalDesc, self.fixedLine, self.mobile, self.tollFree, self.premiumRate, self.sharedCost, self.personalNumber, self.voip, self.pager, self.uan, self.emergency, self.voicemail, self.noInternationalDialling, self.intlNumberFormats];
 }
 
 

@@ -11,7 +11,7 @@
 
 @implementation NBNumberFormat
 
-@synthesize name, fullName, leadingDigitsPattern, pattern, format, nationalPrefixFormattingRule, carrierCodeFormattingRule, intlFormat;
+@synthesize leadingDigitsPattern, pattern, format, nationalPrefixFormattingRule, carrierCodeFormattingRule, intlFormat;
 
 - (id)init
 {
@@ -19,8 +19,6 @@
     
     if (self)
     {
-        [self setName:@"NumberFormat"];
-        [self setFullName:@"i18n.phonenumbers.NumberFormat"];
         [self setLeadingDigitsPattern:[[NSMutableArray alloc] init]];
     }
     
@@ -30,8 +28,25 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"[%@ (%@) : %@, %@] - %@(%@) intlFormat[%@] leadingDigits[%@] [%@]",
-            self.name, self.fullName, self.nationalPrefixFormattingRule, self.carrierCodeFormattingRule, self.pattern, self.format, self.intlFormat, self.leadingDigitsPattern, [self.nationalPrefixOptionalWhenFormatting boolValue]?@"Y":@"N"];
+    return [NSString stringWithFormat:@"[%@, %@] - %@(%@) intlFormat[%@] leadingDigits[%@] [%@]",
+            self.nationalPrefixFormattingRule, self.carrierCodeFormattingRule, self.pattern, self.format, self.intlFormat, self.leadingDigitsPattern, [self.nationalPrefixOptionalWhenFormatting boolValue]?@"Y":@"N"];
+}
+
+
+- (id)copyWithZone:(NSZone *)zone
+{
+	NBNumberFormat *phoneFormatCopy = [[NBNumberFormat allocWithZone:zone] init];
+    
+    phoneFormatCopy.intlFormat = [self.intlFormat copy];
+    phoneFormatCopy.carrierCodeFormattingRule = [self.carrierCodeFormattingRule copy];
+    phoneFormatCopy.pattern = [self.pattern copy];
+    phoneFormatCopy.nationalPrefixFormattingRule = [self.nationalPrefixFormattingRule copy];
+    phoneFormatCopy.domesticCarrierCodeFormattingRule = [self.domesticCarrierCodeFormattingRule copy];
+    phoneFormatCopy.format = [self.format copy];
+    phoneFormatCopy.nationalPrefixOptionalWhenFormatting = [self.nationalPrefixOptionalWhenFormatting copy];
+    phoneFormatCopy.leadingDigitsPattern = [self.leadingDigitsPattern copy];
+    
+	return phoneFormatCopy;
 }
 
 @end

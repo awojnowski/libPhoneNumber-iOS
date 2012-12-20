@@ -109,7 +109,7 @@
     NBPhoneNumber *IT_NUMBER = [[NBPhoneNumber alloc] init];
     IT_NUMBER.countryCode = @"39";
     IT_NUMBER.nationalNumber = @"236618300";
-    IT_NUMBER.italianLeadingZero = YES;
+    IT_NUMBER.italianLeadingZero = [NSNumber numberWithBool:YES];
     
     
     
@@ -233,8 +233,26 @@
     UNKNOWN_COUNTRY_CODE_NO_RAW_INPUT.nationalNumber = @"12345";
  
 
+#pragma mark - simple test
+    NSError *error = nil;
+    NSString *pattern = @"(?:2(?:0[1-35-9]|1[02-9]|2[4589]|3[149]|4[08]|5[1-46]|6[0279]|7[06]|8[13])|3(?:0[1-57-9]|1[02-9]|2[0135]|3[014679]|47|5[12]|6[01]|8[056])|4(?:0[124-9]|1[02-579]|2[3-5]|3[0245]|4[0235]|58|69|7[0589]|8[04])|5(?:0[1-57-9]|1[0235-8]|20|3[0149]|4[01]|5[19]|6[1-37]|7[013-5]|8[056])|6(?:0[1-35-9]|1[024-9]|2[036]|3[016]|4[16]|5[017]|6[0-279]|78|8[12])|7(?:0[1-46-8]|1[02-9]|2[047]|3[124]|4[07]|5[47]|6[02359]|7[02-59]|8[156])|8(?:0[1-68]|1[02-8]|28|3[0-25]|4[3578]|5[06-9]|6[02-5]|7[028])|9(?:0[1346-9]|1[02-9]|2[0589]|3[1678]|4[0179]|5[1246]|7[0-3589]|8[0459]))[2-9]\\d{6}";
+    
+    NSString *sourceString = @"2015550123";
+    
+    NSRegularExpression *currentPattern = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:&error];
+    NSArray *matches = [currentPattern matchesInString:sourceString options:0 range:NSMakeRange(0, sourceString.length)];
+    
+    for(NSTextCheckingResult *match in matches)
+    {
+        NSString *subString = [sourceString substringWithRange:match.range];
+        NSLog(@"[%@]", subString);
+    }
+    
+    
 #pragma mark - testGetInstanceLoadUSMetadata
     NBPhoneMetaData *metadata = [phoneUtil getMetadataForRegion:@"US"];
+
+    NSLog(@"---%@---", metadata);
     STAssertEqualObjects(@"US", metadata.codeID, nil);
     STAssertEqualObjects(@"1", metadata.countryCode, nil);
     STAssertEqualObjects(@"011", metadata.internationalPrefix, nil);
@@ -251,7 +269,6 @@
     STAssertEqualObjects(@"NA", metadata.sharedCost.nationalNumberPattern, nil);
     STAssertEqualObjects(@"NA", metadata.sharedCost.possibleNumberPattern, nil);
                                        
-
 #pragma mark - testGetInstanceLoadDEMetadata
     metadata = [phoneUtil getMetadataForRegion:@"DE"];
     STAssertEqualObjects(@"DE", metadata.codeID, nil);
@@ -279,8 +296,9 @@
     STAssertEqualObjects(@"0(?:(11|343|3715)15)?", metadata.nationalPrefixForParsing, nil);
     STAssertEqualObjects(@"9$1", metadata.nationalPrefixTransformRule, nil);
     STAssertEqualObjects(@"$2 15 $3-$4", ((NBNumberFormat*)metadata.numberFormats[2]).format, nil);
+    NSLog(@"[%@][%@]",@"$2 15 $3-$4", ((NBNumberFormat*)metadata.numberFormats[2]).format);
     STAssertEqualObjects(@"(9)(\\d{4})(\\d{2})(\\d{4})", ((NBNumberFormat*)metadata.numberFormats[3]).pattern, nil);
-    STAssertEqualObjects(@"(9)(\\d{4})(\\d{2})(\\d{4})", ((NBNumberFormat*)metadata.intlNumberFormats[3]).pattern, nil);
+    STAssertEqualObjects(@"(9)(\\d{4})(\\d{2})(\\d{4})", ((NBNumberFormat*)metadata.numberFormats[3]).intlFormat, nil);
     STAssertEqualObjects(@"$1 $2 $3 $4", ((NBNumberFormat*)metadata.intlNumberFormats[3]).format, nil);
 
 
@@ -431,26 +449,26 @@
 #pragma mark - testNormaliseRemovePunctuation
     NSString *inputNumber = @"034-56&+#2\u00AD34";
     expectedOutput = @"03456234";
-    STAssertEqualObjects(@"Conversion did not correctly remove punctuation", expectedOutput, [phoneUtil normalizePhoneNumber:inputNumber], nil);
+    STAssertEqualObjects(expectedOutput, [phoneUtil normalizePhoneNumber:inputNumber], @"Conversion did not correctly remove punctuation");
 
 #pragma mark - testNormaliseReplaceAlphaCharacters
     inputNumber = @"034-I-am-HUNGRY";
     expectedOutput = @"034426486479";
-    STAssertEqualObjects(@"Conversion did not correctly replace alpha characters", expectedOutput, [phoneUtil normalizePhoneNumber:inputNumber], nil);
+    STAssertEqualObjects(expectedOutput, [phoneUtil normalizePhoneNumber:inputNumber], @"Conversion did not correctly replace alpha characters");
 
 #pragma mark - testNormaliseOtherDigits
     inputNumber = @"\uFF125\u0665";
     expectedOutput = @"255";
-    STAssertEqualObjects(@"Conversion did not correctly replace non-latin digits", expectedOutput, [phoneUtil normalizePhoneNumber:inputNumber], nil);
+    STAssertEqualObjects(expectedOutput, [phoneUtil normalizePhoneNumber:inputNumber], @"Conversion did not correctly replace non-latin digits");
     // Eastern-Arabic digits.
     inputNumber = @"\u06F52\u06F0";
     expectedOutput = @"520";
-    STAssertEqualObjects(@"Conversion did not correctly replace non-latin digits", expectedOutput, [phoneUtil normalizePhoneNumber:inputNumber], nil);
+    STAssertEqualObjects(expectedOutput, [phoneUtil normalizePhoneNumber:inputNumber], @"Conversion did not correctly replace non-latin digits");
 
 #pragma mark - testNormaliseStripAlphaCharacters
     inputNumber = @"034-56&+a#234";
     expectedOutput = @"03456234";
-    STAssertEqualObjects(@"Conversion did not correctly remove alpha character", expectedOutput, [phoneUtil normalizeDigitsOnly:inputNumber], nil);
+    STAssertEqualObjects(expectedOutput, [phoneUtil normalizeDigitsOnly:inputNumber], @"Conversion did not correctly remove alpha character");
 
 #pragma mark - testFormatUSNumber
     STAssertEqualObjects(@"650 253 0000", [phoneUtil format:US_NUMBER numberFormat:NATIONAL], nil);
@@ -719,83 +737,35 @@
     STAssertEqualObjects(@"424 123 1234", [phoneUtil format:usNumber numberFormat:NATIONAL], nil);
     STAssertEqualObjects(@"424 123 1234", [phoneUtil formatNationalNumberWithPreferredCarrierCode:usNumber fallbackCarrierCode:@"15"], nil);
 
-/*
 #pragma mark - testFormatNumberForMobileDialing
     // US toll free numbers are marked as noInternationalDialling in the test
     // metadata for testing purposes.
-    STAssertEqualObjects(@"800 253 0000",
-                 [phoneUtil formatNumberForMobileDialing(US_TOLLFREE, @"US", YES], nil);
-
-    STAssertEqualObjects(@"",
-                 [phoneUtil formatNumberForMobileDialing(US_TOLLFREE, @"CN", YES], nil);
-
-    STAssertEqualObjects(@"+1 650 253 0000",
-                 [phoneUtil formatNumberForMobileDialing(US_NUMBER, @"US", YES], nil);
-
-
+    STAssertEqualObjects(@"800 253 0000", [phoneUtil formatNumberForMobileDialing:US_TOLLFREE regionCallingFrom:@"US" withFormatting:YES], nil);
+    STAssertEqualObjects(@"", [phoneUtil formatNumberForMobileDialing:US_TOLLFREE regionCallingFrom:@"CN" withFormatting:YES], nil);
+    STAssertEqualObjects(@"+1 650 253 0000", [phoneUtil formatNumberForMobileDialing:US_TOLLFREE regionCallingFrom:@"US" withFormatting:YES], nil);
     
     id usNumberWithExtn = [US_NUMBER copy];
     [usNumberWithExtn setExtension:@"1234"];
-    STAssertEqualObjects(@"+1 650 253 0000",
-                 [phoneUtil formatNumberForMobileDialing(usNumberWithExtn,
-                                                        @"US", YES], nil);
-    
-    STAssertEqualObjects(@"8002530000",
-                 [phoneUtil formatNumberForMobileDialing(US_TOLLFREE,
-                                                        @"US", NO], nil);
+    STAssertEqualObjects(@"+1 650 253 0000", [phoneUtil formatNumberForMobileDialing:usNumberWithExtn regionCallingFrom:@"US" withFormatting:YES], nil);
+    STAssertEqualObjects(@"8002530000", [phoneUtil formatNumberForMobileDialing:US_TOLLFREE regionCallingFrom:@"US" withFormatting:NO], nil);
+    STAssertEqualObjects(@"", [phoneUtil formatNumberForMobileDialing:US_TOLLFREE regionCallingFrom:@"CN" withFormatting:NO], nil);
+    STAssertEqualObjects(@"+16502530000", [phoneUtil formatNumberForMobileDialing:US_NUMBER regionCallingFrom:@"US" withFormatting:NO], nil);
+    STAssertEqualObjects(@"+16502530000", [phoneUtil formatNumberForMobileDialing:usNumberWithExtn regionCallingFrom:@"US" withFormatting:NO], nil);
 
 
-    STAssertEqualObjects(@"",
-                 [phoneUtil formatNumberForMobileDialing(US_TOLLFREE,
-                                                        @"CN", NO], nil);
-
-
-    STAssertEqualObjects(@"+16502530000",
-                 [phoneUtil formatNumberForMobileDialing(US_NUMBER, @"US", NO], nil);
-
-
-    STAssertEqualObjects(@"+16502530000",
-                 [phoneUtil formatNumberForMobileDialing(usNumberWithExtn,
-                                                        @"US", NO], nil);
-
-
-    
     // An invalid US number, which is one digit too long.
-    STAssertEqualObjects(@"+165025300001",
-                 [phoneUtil formatNumberForMobileDialing(US_LONG_NUMBER,
-                                                        @"US", NO], nil);
+    STAssertEqualObjects(@"+165025300001", [phoneUtil formatNumberForMobileDialing:US_LONG_NUMBER regionCallingFrom:@"US" withFormatting:NO], nil);
+    STAssertEqualObjects(@"+1 65025300001", [phoneUtil formatNumberForMobileDialing:US_LONG_NUMBER regionCallingFrom:@"US" withFormatting:YES], nil);
 
 
-    STAssertEqualObjects(@"+1 65025300001",
-                 [phoneUtil formatNumberForMobileDialing(US_LONG_NUMBER,
-                                                        @"US", YES], nil);
-
-
-    
     // Star numbers. In real life they appear in Israel, but we have them in JP
     // in our test metadata.
-    STAssertEqualObjects(@"*2345",
-                 [phoneUtil formatNumberForMobileDialing(JP_STAR_NUMBER,
-                                                        @"JP", NO], nil);
+    STAssertEqualObjects(@"*2345", [phoneUtil formatNumberForMobileDialing:JP_STAR_NUMBER regionCallingFrom:@"JP" withFormatting:NO], nil);
+    STAssertEqualObjects(@"*2345", [phoneUtil formatNumberForMobileDialing:JP_STAR_NUMBER regionCallingFrom:@"JP" withFormatting:YES], nil);
+    STAssertEqualObjects(@"+80012345678", [phoneUtil formatNumberForMobileDialing:INTERNATIONAL_TOLL_FREE regionCallingFrom:@"JP" withFormatting:NO], nil);
+    STAssertEqualObjects(@"+800 1234 5678", [phoneUtil formatNumberForMobileDialing:INTERNATIONAL_TOLL_FREE regionCallingFrom:@"JP" withFormatting:YES], nil);
 
-
-    STAssertEqualObjects(@"*2345",
-                 [phoneUtil formatNumberForMobileDialing(JP_STAR_NUMBER,
-                                                        @"JP", YES], nil);
-
-
-    
-    STAssertEqualObjects(@"+80012345678",
-                 [phoneUtil formatNumberForMobileDialing(INTERNATIONAL_TOLL_FREE,
-                                                        @"JP", NO], nil);
-
-
-    STAssertEqualObjects(@"+800 1234 5678",
-                 [phoneUtil formatNumberForMobileDialing(INTERNATIONAL_TOLL_FREE,
-                                                        @"JP", YES], nil);
-
-
-
+/*
 #pragma mark - testFormatByPattern
 
     

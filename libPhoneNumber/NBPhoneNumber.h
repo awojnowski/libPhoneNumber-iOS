@@ -18,7 +18,7 @@ typedef enum {
 @interface NBPhoneNumber : NSObject
 
 @property (nonatomic, strong, readwrite) NSString *countryCode, *nationalNumber, *extension;
-@property (nonatomic, assign, readwrite) BOOL italianLeadingZero;
+@property (nonatomic, strong, readwrite) NSNumber *italianLeadingZero;
 @property (nonatomic, strong, readwrite) NSString *rawInput;
 @property (nonatomic, assign, readwrite) NBECountryCodeSource countryCodeSource;
 @property (nonatomic, strong, readwrite) NSString *PreferredDomesticCarrierCode;

@@ -2374,10 +2374,13 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     NBPhoneMetaData *metadata = [self getMetadataForRegion:regionCode];
     if (metadata == nil)
     {
+        /*
         NSException* metaException = [NSException exceptionWithName:@"FileNotFoundException"
                                                              reason:[NSString stringWithFormat:@"Invalid region code:%@", regionCode]
                                                            userInfo:nil];
         @throw metaException;
+        */
+        return nil;
     }
     return metadata.countryCode;
 }
@@ -2787,10 +2790,12 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     {
         if (fullNumber.length <= MIN_LENGTH_FOR_NSN_)
         {
+            /*
             NSException* metaException = [NSException exceptionWithName:TOO_SHORT_AFTER_IDD_STR
                                                                  reason:[NSString stringWithFormat:@"TOO_SHORT_AFTER_IDD %@", fullNumber]
                                                                userInfo:nil];
             @throw metaException;
+             */
         }
 
         NSString *potentialCountryCode = [self extractCountryCode:fullNumber nationalNumber:nationalNumber];
@@ -2802,10 +2807,13 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         
         // If this fails, they must be using a strange country calling code that we
         // don't recognize, or that doesn't exist.
+        /*
         NSException* metaException = [NSException exceptionWithName:INVALID_COUNTRY_CODE_STR
                                                              reason:[NSString stringWithFormat:@"INVALID_COUNTRY_CODE %@", potentialCountryCode]
                                                            userInfo:nil];
         @throw metaException;
+         */
+        return nil;
     }
     else if (defaultRegionMetadata != nil)
     {
@@ -2822,7 +2830,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
             
             NSString *validNumberPattern = generalDesc.nationalNumberPattern;
             // Passing nil since we don't need the carrier code.
-            [self maybeStripNationalPrefixAndCarrierCode:potentialNationalNumber metadata:defaultRegionMetadata carrierCode:nil];
+            potentialNationalNumber = [self maybeStripNationalPrefixAndCarrierCode:potentialNationalNumber metadata:defaultRegionMetadata carrierCode:nil];
 
             NSString *potentialNationalNumberStr = [potentialNationalNumber copy];
 
@@ -2968,11 +2976,12 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         int numOfGroups = prefixMatcher.count - 1;
         NSString *transformRule = metadata.nationalPrefixTransformRule;
         NSString *transformedNumber = nil;
-        BOOL noTransform = [self hasValue:transformRule] || [self hasValue:prefixMatcher[numOfGroups]];
+        NSTextCheckingResult *curMatcher = prefixMatcher[numOfGroups];
+        BOOL noTransform = [self hasValue:transformRule] || [self hasValue:[numberStr substringWithRange:curMatcher.range]];
         
         if (noTransform)
         {
-            NSString *prefixString = [prefixMatcher objectAtIndex:0];
+            NSString *prefixString = [numberStr substringWithRange:((NSTextCheckingResult *)[prefixMatcher objectAtIndex:0]).range];
             transformedNumber = [numberStr substringFromIndex:prefixString.length];
         }
         else
@@ -2986,11 +2995,12 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         {
             return carrierCode;
         }
-        if ((noTransform && numOfGroups > 0 && prefixMatcher[1] != nil) || (!noTransform && numOfGroups > 1))
+        
+        if ((noTransform && numOfGroups > 0 && [numberStr substringWithRange:((NSTextCheckingResult *)prefixMatcher[1]).range] != nil) || (!noTransform && numOfGroups > 1))
         {
             if (carrierCode != nil)
             {
-                [carrierCode stringByAppendingString:prefixMatcher[1]];
+                [carrierCode stringByAppendingString:[numberStr substringWithRange:((NSTextCheckingResult *)prefixMatcher[1]).range]];
             }
         }
         
@@ -3113,10 +3123,13 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     {
         if (numberToParse.length > 0 && [numberToParse hasPrefix:@"+"])
         {
+            /*
             NSException* metaException = [NSException exceptionWithName:@"INVALID_COUNTRY_CODE"
                                                                  reason:[NSString stringWithFormat:@"Invalid country code:%@", numberToParse]
                                                                userInfo:nil];
             @throw metaException;
+            */
+            return nil;
         }
     }
     return [self parseHelper:numberToParse defaultRegion:defaultRegion keepRawInput:YES checkRegion:YES];
@@ -3149,17 +3162,23 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
 {    
     if (numberToParse == nil)
     {
+        /*
         NSException* metaException = [NSException exceptionWithName:@"NOT_A_NUMBER"
                                                              reason:[NSString stringWithFormat:@"NOT_A_NUMBER:%@", numberToParse]
                                                            userInfo:nil];
         @throw metaException;
+         */
+        return nil;
     }
     else if (numberToParse.length > MAX_INPUT_STRING_LENGTH_)
     {
+        /*
         NSException* metaException = [NSException exceptionWithName:@"TOO_LONG"
                                                              reason:[NSString stringWithFormat:@"TOO_LONG:%@", numberToParse]
                                                            userInfo:nil];
         @throw metaException;
+        */
+        return nil;
     }
     
     NSMutableString *nationalNumber = [[NSMutableString alloc] init];
@@ -3167,20 +3186,26 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     
     if ([self isViablePhoneNumber:nationalNumber] == NO)
     {
+        /*
         NSException* metaException = [NSException exceptionWithName:@"NOT_A_NUMBER"
                                                              reason:[NSString stringWithFormat:@"NOT_A_NUMBER:%@", nationalNumber]
                                                            userInfo:nil];
         @throw metaException;
+        */
+        return nil;
     }
     
     // Check the region supplied is valid, or that the extracted number starts
     // with some sort of + sign so the number's region can be determined.
     if (checkRegion && [self checkRegionForParsing:nationalNumber defaultRegion:defaultRegion] == NO)
     {
+        /*
         NSException* metaException = [NSException exceptionWithName:@"INVALID_COUNTRY_CODE"
                                                              reason:[NSString stringWithFormat:@"INVALID_COUNTRY_CODE:%@", defaultRegion]
                                                            userInfo:nil];
         @throw metaException;
+         */
+        return nil;
     }
     
     NBPhoneNumber *phoneNumber = [[NBPhoneNumber alloc] init];
@@ -3222,12 +3247,14 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
                                             phoneNumber:phoneNumber];
             if ([countryCode isEqualToString:@"0"])
             {
-                @throw e;
+                //@throw e;
+                return nil;
             }
         }
         else
         {
-            @throw e;
+            //@throw e;
+            return nil;
         }
     }
     
@@ -3245,7 +3272,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         // If no extracted country calling code, use the region supplied instead.
         // The national number is just the normalized version of the number we were
         // given to parse.
-        [self normalizeSB:nationalNumber];
+        nationalNumber = [[self normalizeSB:nationalNumber] copy];
         normalizedNationalNumber = [NSString stringWithFormat:@"%@%@", normalizedNationalNumber, nationalNumber];
         
         if (defaultRegion != nil)
@@ -3261,10 +3288,13 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     
     if (normalizedNationalNumber.length < MIN_LENGTH_FOR_NSN_)
     {
+        /*
         NSException* metaException = [NSException exceptionWithName:@"TOO_SHORT_NSN"
                                                              reason:[NSString stringWithFormat:@"TOO_SHORT_NSN:%@", normalizedNationalNumber]
                                                            userInfo:nil];
         @throw metaException;
+        */
+        return nil;
     }
     
     if (regionMetadata != nil)
@@ -3282,18 +3312,24 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     int lengthOfNationalNumber = normalizedNationalNumberStr.length;
     if (lengthOfNationalNumber < MIN_LENGTH_FOR_NSN_)
     {
+        /*
         NSException* metaException = [NSException exceptionWithName:@"TOO_SHORT_NSN"
                                                              reason:[NSString stringWithFormat:@"TOO_SHORT_NSN:%@", normalizedNationalNumberStr]
                                                            userInfo:nil];
         @throw metaException;
+        */
+        return nil;
     }
     
     if (lengthOfNationalNumber > MAX_LENGTH_FOR_NSN_)
     {
+        /*
         NSException* metaException = [NSException exceptionWithName:@"TOO_LONG"
                                                              reason:[NSString stringWithFormat:@"TOO_LONG:%@", normalizedNationalNumberStr]
                                                            userInfo:nil];
         @throw metaException;
+        */
+        return nil;
     }
     
     if ([normalizedNationalNumberStr hasPrefix:@"0"])

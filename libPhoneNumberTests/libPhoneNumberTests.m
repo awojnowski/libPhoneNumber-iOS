@@ -1371,6 +1371,7 @@
 
 
 #pragma mark - testIsViablePhoneNumber
+    NSLog(@"-------------- testIsViablePhoneNumber");
     STAssertFalse([phoneUtil isViablePhoneNumber:@"1"], nil);
     // Only one or two digits before strange non-possible punctuation.
     STAssertFalse([phoneUtil isViablePhoneNumber:@"1+1+1"], nil);
@@ -1388,6 +1389,7 @@
 
 
 #pragma mark - testIsViablePhoneNumberNonAscii
+    NSLog(@"-------------- testIsViablePhoneNumberNonAscii");
     // Only one or two digits before possible punctuation followed by more digits.
     STAssertTrue([phoneUtil isViablePhoneNumber:@"1\u300034"], nil);
     STAssertFalse([phoneUtil isViablePhoneNumber:@"1\u30003+4"], nil);
@@ -1399,6 +1401,7 @@
 
 
 #pragma mark - testExtractPossibleNumber
+    NSLog(@"-------------- testExtractPossibleNumber");
     // Removes preceding funky punctuation and letters but leaves the rest
     // untouched.
     STAssertEqualObjects(@"0800-345-600", [phoneUtil extractPossibleNumber:@"Tel:0800-345-600"], nil);
@@ -1420,8 +1423,9 @@
     // This case has a trailing RTL char.
     STAssertEqualObjects(@"650) 253-0000", [phoneUtil extractPossibleNumber:@"(650) 253-0000\u200F"], nil);
 
-#pragma mark - testMaybeStripNationalPrefix
     
+#pragma mark - testMaybeStripNationalPrefix
+    NSLog(@"-------------- testMaybeStripNationalPrefix");
     metadata = [[NBPhoneMetaData alloc] init];
     [metadata setNationalPrefixForParsing:@"34"];
     
@@ -1481,6 +1485,7 @@
 
 
 #pragma mark - testMaybeStripInternationalPrefix
+    NSLog(@"-------------- testMaybeStripInternationalPrefix");
     NSString *internationalPrefix = @"00[39]";
     
     numberToStrip = [[NBPhoneNumber alloc] init];
@@ -1530,197 +1535,161 @@
                                                                             possibleIddPrefix:internationalPrefix], nil);
 
 #pragma mark - testMaybeExtractCountryCode
+    NSLog(@"-------------- testMaybeExtractCountryCode");
     number = [[NBPhoneNumber alloc] init];
     metadata = [phoneUtil getMetadataForRegion:@"US"];
     
     // Note that for the US, the IDD is 011.
-    @try {
-        NSString *phoneNumber = @"011112-3456789";
-        NSString *strippedNumber = @"123456789";
-        NSString *countryCallingCode = @"1";
-        
-        NBPhoneNumber *numberToFill =  [[NBPhoneNumber alloc] init];
-        
-        STAssertEqualObjects(countryCallingCode, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
-                                                                     nationalNumber:numberToFill.rawInput keepRawInput:YES phoneNumber:number], nil);
-        STAssertEquals(FROM_NUMBER_WITH_IDD, number.countryCodeSource, @"Did not figure out CountryCodeSource correctly");
-        // Should strip and normalize national significant number.
-        STAssertEqualObjects(strippedNumber, numberToFill.rawInput, @"Did not strip off the country calling code correctly.");
-    } @catch (NSException *ex)
-    {
-        NSLog(@"Should not have thrown an exception: %@", ex);
-    }
-             
-    number = [[NBPhoneNumber alloc] init];
-    @try {
-        NSString *phoneNumber = @"+6423456789";
-        NSString *countryCallingCode = @"64";
-        NBPhoneNumber *numberToFill =  [[NBPhoneNumber alloc] init];
-        STAssertEqualObjects(countryCallingCode, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
-                                                                     nationalNumber:numberToFill.rawInput keepRawInput:YES phoneNumber:number], nil);
-        STAssertEquals(FROM_NUMBER_WITH_PLUS_SIGN, number.countryCodeSource, @"Did not figure out CountryCodeSource correctly");
-    } @catch (NSException *ex) {
-        NSLog(@"Should not have thrown an exception: %@", ex);
-    }
-                             
-    number = [[NBPhoneNumber alloc] init];
-    @try {
-        NSString *phoneNumber = @"+80012345678";
-        NSString *countryCallingCode = @"800";
-        NBPhoneNumber *numberToFill =  [[NBPhoneNumber alloc] init];
-        STAssertEqualObjects(countryCallingCode, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
-                                                 nationalNumber:numberToFill.rawInput keepRawInput:YES phoneNumber:number], nil);
-        STAssertEquals(FROM_NUMBER_WITH_PLUS_SIGN, number.countryCodeSource, @"Did not figure out CountryCodeSource correctly");
-    } @catch (NSException *ex) {
-        NSLog(@"Should not have thrown an exception: %@", ex);
-    }
+    NSString *phoneNumber = @"011112-3456789";
+    strippedNumber = @"123456789";
+    NSString *countryCallingCode = @"1";
+    
+    NBPhoneNumber *numberToFill =  [[NBPhoneNumber alloc] init];
+    
+    STAssertEqualObjects(countryCallingCode, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
+                                                                 nationalNumber:numberToFill.rawInput keepRawInput:YES phoneNumber:number], nil);
+    STAssertEquals(FROM_NUMBER_WITH_IDD, number.countryCodeSource, @"Did not figure out CountryCodeSource correctly");
+    // Should strip and normalize national significant number.
+    STAssertEqualObjects(strippedNumber, numberToFill.rawInput, @"Did not strip off the country calling code correctly.");
     
     number = [[NBPhoneNumber alloc] init];
-    @try {
-        NSString *phoneNumber = @"2345-6789";
-        NBPhoneNumber *numberToFill =  [[NBPhoneNumber alloc] init];
-        STAssertEqualObjects(phoneNumber, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
-                                                 nationalNumber:numberToFill.rawInput keepRawInput:YES phoneNumber:number], nil);
-        STAssertEquals(FROM_DEFAULT_COUNTRY, number.countryCodeSource, @"Did not figure out CountryCodeSource correctly");
-    } @catch (NSException *ex) {
-        NSLog(@"Should not have thrown an exception: %@", ex);
-    }
-                             
-    number = [[NBPhoneNumber alloc] init];
-    @try {
-        NSString *phoneNumber = @"0119991123456789";
-        NBPhoneNumber *numberToFill =  [[NBPhoneNumber alloc] init];
-        [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
-                            nationalNumber:numberToFill.rawInput keepRawInput:true phoneNumber:number];
-        STFail(@"Should have thrown an exception, no valid country calling code present.");
-    } @catch (NSException *ex) {
-        // Expected.
-        STAssertEquals(INVALID_COUNTRY_CODE, ex.name, @"Wrong error type stored in exception.");
-    }
+    phoneNumber = @"+6423456789";
+    countryCallingCode = @"64";
+    numberToFill =  [[NBPhoneNumber alloc] init];
+    STAssertEqualObjects(countryCallingCode, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
+                                                                 nationalNumber:numberToFill.rawInput keepRawInput:YES phoneNumber:number], nil);
+    STAssertEquals(FROM_NUMBER_WITH_PLUS_SIGN, number.countryCodeSource, @"Did not figure out CountryCodeSource correctly");
     
     number = [[NBPhoneNumber alloc] init];
-    @try {
-        NSString *phoneNumber = @"(1 610) 619 4466";
-        NSString *countryCallingCode = @"1";
-        NBPhoneNumber *numberToFill =  [[NBPhoneNumber alloc] init];
-        STAssertEqualObjects(@"Should have extracted the country calling code of the region passed in",
-                     countryCallingCode,
-                     [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata nationalNumber:numberToFill.rawInput keepRawInput:YES phoneNumber:number], nil);
-        STAssertEquals(FROM_NUMBER_WITHOUT_PLUS_SIGN, number.countryCodeSource, @"Did not figure out CountryCodeSource correctly");
-    } @catch (NSException *ex) {
-        NSLog(@"Should not have thrown an exception: %@", ex);
-    }
-                             
+    phoneNumber = @"+80012345678";
+    countryCallingCode = @"800";
+    numberToFill =  [[NBPhoneNumber alloc] init];
+    STAssertEqualObjects(countryCallingCode, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
+                                             nationalNumber:numberToFill.rawInput keepRawInput:YES phoneNumber:number], nil);
+    STAssertEquals(FROM_NUMBER_WITH_PLUS_SIGN, number.countryCodeSource, @"Did not figure out CountryCodeSource correctly");
+    
     number = [[NBPhoneNumber alloc] init];
-    @try {
-        NSString *phoneNumber = @"(1 610) 619 4466";
-        NSString *countryCallingCode = @"1";
-        NBPhoneNumber *numberToFill =  [[NBPhoneNumber alloc] init];
-        STAssertEqualObjects(countryCallingCode, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
-                                                                     nationalNumber:numberToFill.rawInput keepRawInput:NO phoneNumber:number], nil);
-        STAssertFalse(number.countryCode != nil, @"Should not contain CountryCodeSource.");
-    } @catch (NSException *ex) {
-        NSLog(@"Should not have thrown an exception: %@", ex);
-    }
-                      
-    number = [[NBPhoneNumber alloc] init];
-    @try {
-        NSString *phoneNumber = @"(1 610) 619 446";
-        NBPhoneNumber *numberToFill =  [[NBPhoneNumber alloc] init];
-        STAssertEqualObjects(0, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
-                                                    nationalNumber:numberToFill.rawInput keepRawInput:NO phoneNumber:number], nil);
-        STAssertFalse(number.countryCode != nil, @"Should not contain CountryCodeSource.");
-    } @catch (NSException *ex) {
-        NSLog(@"Should not have thrown an exception: %@", ex);
-    }
-                      
-    number = [[NBPhoneNumber alloc] init];
-    @try {
-        NSString *phoneNumber = @"(1 610) 619";
-        NBPhoneNumber *numberToFill =  [[NBPhoneNumber alloc] init];
-        STAssertEqualObjects(@"0", [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
-                                                       nationalNumber:numberToFill.rawInput keepRawInput:YES phoneNumber:number], nil);
-        STAssertEquals(FROM_DEFAULT_COUNTRY,number.countryCodeSource, nil);
-    } @catch (NSException *ex) {
-        NSLog(@"Should not have thrown an exception: %@", ex);
-    }
+    phoneNumber = @"2345-6789";
+    numberToFill =  [[NBPhoneNumber alloc] init];
+    STAssertEqualObjects(phoneNumber, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
+                                             nationalNumber:numberToFill.rawInput keepRawInput:YES phoneNumber:number], nil);
+    STAssertEquals(FROM_DEFAULT_COUNTRY, number.countryCodeSource, @"Did not figure out CountryCodeSource correctly");
 
-    /*
+                             
+    number = [[NBPhoneNumber alloc] init];
+    phoneNumber = @"0119991123456789";
+    numberToFill =  [[NBPhoneNumber alloc] init];
+    [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
+                        nationalNumber:numberToFill.rawInput keepRawInput:YES phoneNumber:number];
+    STFail(@"Should have thrown an exception, no valid country calling code present.");
+    
+    number = [[NBPhoneNumber alloc] init];
+    phoneNumber = @"(1 610) 619 4466";
+    countryCallingCode = @"1";
+    numberToFill =  [[NBPhoneNumber alloc] init];
+    STAssertEqualObjects(@"Should have extracted the country calling code of the region passed in",
+                 countryCallingCode,
+                 [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
+                                     nationalNumber:numberToFill.rawInput keepRawInput:YES phoneNumber:number], nil);
+    STAssertEquals(FROM_NUMBER_WITHOUT_PLUS_SIGN, number.countryCodeSource, @"Did not figure out CountryCodeSource correctly");
+    
+    number = [[NBPhoneNumber alloc] init];
+    phoneNumber = @"(1 610) 619 4466";
+    countryCallingCode = @"1";
+    numberToFill =  [[NBPhoneNumber alloc] init];
+    STAssertEqualObjects(countryCallingCode, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
+                                                                    nationalNumber:numberToFill.rawInput keepRawInput:NO phoneNumber:number], nil);
+    //STAssertFalse(number.countryCode != nil, @"Should not contain CountryCodeSource.");
+            
+    number = [[NBPhoneNumber alloc] init];
+    phoneNumber = @"(1 610) 619 446";
+    numberToFill =  [[NBPhoneNumber alloc] init];
+    STAssertEqualObjects(0, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
+                                                nationalNumber:numberToFill.rawInput keepRawInput:NO phoneNumber:number], nil);
+    STAssertFalse(number.countryCode != nil, @"Should not contain CountryCodeSource.");
+
+                      
+    number = [[NBPhoneNumber alloc] init];
+    phoneNumber = @"(1 610) 619";
+    numberToFill =  [[NBPhoneNumber alloc] init];
+    STAssertEqualObjects(@"0", [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
+                                                   nationalNumber:numberToFill.rawInput keepRawInput:YES phoneNumber:number], nil);
+    STAssertEquals(FROM_DEFAULT_COUNTRY,number.countryCodeSource, nil);
+
+
 #pragma mark - testParseNationalNumber
+    NSLog(@"-------------- testParseNationalNumber");
     // National prefix attached.
-    STAssertTrue(NZ_NUMBER isEqual:[phoneUtil parse:@"033316005", @"NZ"], nil);
-    STAssertTrue(NZ_NUMBER isEqual:[phoneUtil parse:@"33316005", @"NZ"], nil);
+    STAssertTrue([NZ_NUMBER isEqual:[phoneUtil parse:@"033316005" defaultRegion:@"NZ"]], nil);
+    STAssertTrue([NZ_NUMBER isEqual:[phoneUtil parse:@"33316005" defaultRegion:@"NZ"]], nil);
+    
     // National prefix attached and some formatting present.
-    STAssertTrue(NZ_NUMBER isEqual:[phoneUtil parse:@"03-331 6005", @"NZ"], nil);
-    STAssertTrue(NZ_NUMBER isEqual:[phoneUtil parse:@"03 331 6005", @"NZ"], nil);
+    STAssertTrue([NZ_NUMBER isEqual:[phoneUtil parse:@"03-331 6005" defaultRegion:@"NZ"]], nil);
+    STAssertTrue([NZ_NUMBER isEqual:[phoneUtil parse:@"03 331 6005" defaultRegion:@"NZ"]], nil);
+    
     // Test parsing RFC3966 format with a phone context.
-    STAssertTrue(NZ_NUMBER isEqual:[phoneUtil parse:@"tel:03-331-6005;phone-context=+64", @"NZ"], nil);
-    STAssertTrue(NZ_NUMBER isEqual:[phoneUtil parse:@"tel:331-6005;phone-context=+64-3", @"NZ"], nil);
-    STAssertTrue(NZ_NUMBER isEqual:[phoneUtil parse:@"tel:331-6005;phone-context=+64-3", @"US"], nil);
+    STAssertTrue([NZ_NUMBER isEqual:[phoneUtil parse:@"tel:03-331-6005;phone-context=+64" defaultRegion:@"NZ"]], nil);
+    STAssertTrue([NZ_NUMBER isEqual:[phoneUtil parse:@"tel:331-6005;phone-context=+64-3" defaultRegion:@"NZ"]], nil);
+    STAssertTrue([NZ_NUMBER isEqual:[phoneUtil parse:@"tel:331-6005;phone-context=+64-3" defaultRegion:@"US"]], nil);
+                  
     // Test parsing RFC3966 format with optional user-defined parameters. The
     // parameters will appear after the context if present.
-    STAssertTrue(NZ_NUMBER isEqual:[phoneUtil parse:@"tel:03-331-6005;phone-context=+64;a=%A1",
-                                                @"NZ"], nil);
+    STAssertTrue([NZ_NUMBER isEqual:[phoneUtil parse:@"tel:03-331-6005;phone-context=+64;a=%A1" defaultRegion:@"NZ"]], nil);
+    
     // Test parsing RFC3966 with an ISDN subaddress.
-    STAssertTrue(NZ_NUMBER isEqual:[phoneUtil parse:@"tel:03-331-6005;isub=12345;phone-context=+64",
-                                                @"NZ"], nil);
-    STAssertTrue(NZ_NUMBER isEqual:[phoneUtil parse:@"tel:+64-3-331-6005;isub=12345", @"NZ"], nil);
+    STAssertTrue([NZ_NUMBER isEqual:[phoneUtil parse:@"tel:03-331-6005;isub=12345;phone-context=+64" defaultRegion:@"NZ"]], nil);
+    STAssertTrue([NZ_NUMBER isEqual:[phoneUtil parse:@"tel:+64-3-331-6005;isub=12345" defaultRegion:@"NZ"]], nil);
+
     // Testing international prefixes.
     // Should strip country calling code.
-    STAssertTrue(NZ_NUMBER isEqual:[phoneUtil parse:@"0064 3 331 6005", @"NZ"], nil);
+    STAssertTrue([NZ_NUMBER isEqual:[phoneUtil parse:@"0064 3 331 6005" defaultRegion:@"NZ"]], nil);
+
     // Try again, but this time we have an international number with Region Code
     // US. It should recognise the country calling code and parse accordingly.
-    STAssertTrue(NZ_NUMBER isEqual:[phoneUtil parse:@"01164 3 331 6005", @"US"], nil);
-    STAssertTrue(NZ_NUMBER isEqual:[phoneUtil parse:@"+64 3 331 6005", @"US"], nil);
+    STAssertTrue([NZ_NUMBER isEqual:[phoneUtil parse:@"01164 3 331 6005" defaultRegion:@"US"]], nil);
+    STAssertTrue([NZ_NUMBER isEqual:[phoneUtil parse:@"+64 3 331 6005" defaultRegion:@"US"]], nil);
     // We should ignore the leading plus here, since it is not followed by a valid
     // country code but instead is followed by the IDD for the US.
-    STAssertTrue(NZ_NUMBER isEqual:[phoneUtil parse:@"+01164 3 331 6005", @"US"], nil);
-    STAssertTrue(NZ_NUMBER isEqual:[phoneUtil parse:@"+0064 3 331 6005", @"NZ"], nil);
-    STAssertTrue(NZ_NUMBER isEqual:[phoneUtil parse:@"+ 00 64 3 331 6005", @"NZ"], nil);
+    STAssertTrue([NZ_NUMBER isEqual:[phoneUtil parse:@"+01164 3 331 6005" defaultRegion:@"US"]], nil);
+    STAssertTrue([NZ_NUMBER isEqual:[phoneUtil parse:@"+0064 3 331 6005" defaultRegion:@"NZ"]], nil);
+    STAssertTrue([NZ_NUMBER isEqual:[phoneUtil parse:@"+ 00 64 3 331 6005" defaultRegion:@"NZ"]], nil);
     
-    STAssertTrue(US_LOCAL_NUMBER isEqual:
-                                      [phoneUtil parse:@"tel:253-0000;phone-context=www.google.com",
-                                                      @"US"], nil);
-    STAssertTrue(US_LOCAL_NUMBER isEqual:
-                                      [phoneUtil parse:@"tel:253-0000;isub=12345;phone-context=www.google.com",
-                                                      @"US)], nil);
+    STAssertTrue([US_LOCAL_NUMBER isEqual:[phoneUtil parse:@"tel:253-0000;phone-context=www.google.com" defaultRegion:@"US"]], nil);
+    STAssertTrue([US_LOCAL_NUMBER isEqual:[phoneUtil parse:@"tel:253-0000;isub=12345;phone-context=www.google.com" defaultRegion:@"US"]], nil);
     // This is invalid because no "+" sign is present as part of phone-context.
     // The phone context is simply ignored in this case just as if it contains a
     // domain.
-    STAssertTrue(US_LOCAL_NUMBER isEqual:
-                                      [phoneUtil parse:@"tel:2530000;isub=12345;phone-context=1-650",
-                                                      @"US)], nil);
-    STAssertTrue(US_LOCAL_NUMBER isEqual:
-                                      [phoneUtil parse:@"tel:2530000;isub=12345;phone-context=1234.com",
-                                                      @"US)], nil);
+    STAssertTrue([US_LOCAL_NUMBER isEqual:[phoneUtil parse:@"tel:2530000;isub=12345;phone-context=1-650" defaultRegion:@"US"]], nil);
+    STAssertTrue([US_LOCAL_NUMBER isEqual:[phoneUtil parse:@"tel:2530000;isub=12345;phone-context=1234.com" defaultRegion:@"US"]], nil);
     
     
-    id nzNumber = [[NBPhoneNumber alloc] init];
-    nzNumber setCountryCode:64];
-    nzNumber setNationalNumber:64123456];
-    STAssertTrue(nzNumber isEqual:[phoneUtil parse:@"64(0)64123456", @"NZ)], nil);
+    nzNumber = [[NBPhoneNumber alloc] init];
+    [nzNumber setCountryCode:@"64"];
+    [nzNumber setNationalNumber:@"64123456"];
+    STAssertTrue([nzNumber isEqual:[phoneUtil parse:@"64(0)64123456" defaultRegion:@"NZ"]], nil);
     // Check that using a '/' is fine in a phone number.
-    STAssertTrue(DE_NUMBER isEqual:[phoneUtil parse:@"301/23456", @"DE)], nil);
+    STAssertTrue([DE_NUMBER isEqual:[phoneUtil parse:@"301/23456" defaultRegion:@"DE"]], nil);
     
     
-    id usNumber = [[NBPhoneNumber alloc] init];
+    usNumber = [[NBPhoneNumber alloc] init];
     // Check it doesn't use the '1' as a country calling code when parsing if the
     // phone number was already possible.
-    [usNumber setCountryCode:1];
-    [usNumber setNationalNumber:1234567890];
-    STAssertTrue(usNumber isEqual:[phoneUtil parse:@"123-456-7890", @"US)], nil);
+    [usNumber setCountryCode:@"1"];
+    [usNumber setNationalNumber:@"1234567890"];
+    STAssertTrue([usNumber isEqual:[phoneUtil parse:@"123-456-7890" defaultRegion:@"US"]], nil);
     
     // Test star numbers. Although this is not strictly valid, we would like to
     // make sure we can parse the output we produce when formatting the number.
-    STAssertTrue(
-               JP_STAR_NUMBER isEqual:[phoneUtil parse:@"+81 *2345", @"JP)], nil);
+    STAssertTrue([JP_STAR_NUMBER isEqual:[phoneUtil parse:@"+81 *2345" defaultRegion:@"JP"]], nil);
     
+    NBPhoneNumber *shortNumber = [[NBPhoneNumber alloc] init];
+    [shortNumber setCountryCode:@"64"];
+    [shortNumber setNationalNumber:@"12"];
+    STAssertTrue([shortNumber isEqual:[phoneUtil parse:@"12" defaultRegion:@"NZ"]], nil);
     
-    id shortNumber = [[NBPhoneNumber alloc] init];
-    shortNumber setCountryCode:64];
-    shortNumber setNationalNumber:12];
-    STAssertTrue(shortNumber isEqual:[phoneUtil parse:@"12", @"NZ)], nil);
+    NSLog(@"--------------------------------------------------------------------------- end");
 
+/*
 #pragma mark - testParseNumberWithAlphaCharacters
     // Test case with alpha characters.
     

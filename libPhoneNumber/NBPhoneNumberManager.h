@@ -87,20 +87,43 @@ typedef enum {
 - (NBPhoneMetaData*)getMetadataForRegion:(NSString*)regionCode;
 - (NBPhoneMetaData*)getMetadataForNonGeographicalRegion:(NSString*)countryCallingCode;
 
+- (NSString*)getNddPrefixForRegion:(NSString*)regionCode stripNonDigits:(BOOL)stripNonDigits;
 - (NSString*)getNationalSignificantNumber:(NBPhoneNumber*)phoneNumber;
+- (NBEPhoneNumberType)getNumberType:(NBPhoneNumber*)phoneNumber;
+
+- (NSString*)getCountryCodeForRegion:(NSString*)regionCode;
+
+- (NSString*)getRegionCodeForCountryCode:(NSString*)countryCallingCode;
+- (NSArray*)getRegionCodesForCountryCode:(NSString*)countryCallingCode;
+- (NSString*)getRegionCodeForNumber:(NBPhoneNumber*)phoneNumber;
+
+- (BOOL)isValidNumber:(NBPhoneNumber*)number;
+- (BOOL)isValidNumberForRegion:(NBPhoneNumber*)number regionCode:(NSString*)regionCode;
+- (BOOL)isNANPACountry:(NSString*)regionCode;
 - (BOOL)isLeadingZeroPossible:(NSString*)countryCallingCode;
+
+- (BOOL)isPossibleNumber:(NBPhoneNumber*)number;
+- (NBEValidationResult)isPossibleNumberWithReason:(NBPhoneNumber*)number;
+- (BOOL)isPossibleNumberString:(NSString*)number regionDialingFrom:(NSString*)regionDialingFrom;
+
 - (int)getLengthOfGeographicalAreaCode:(NBPhoneNumber*)phoneNumber;
 - (int)getLengthOfNationalDestinationCode:(NBPhoneNumber*)phoneNumber;
+
 - (NSString*)convertAlphaCharactersInNumber:(NSString*)number;
 
 - (NSString*)normalizePhoneNumber:(NSString*)phoneNumber;
 - (NSString*)normalizeDigitsOnly:(NSString*)number;
 
+- (NBPhoneNumber*)parse:(NSString*)numberToParse defaultRegion:(NSString*)defaultRegion;
+- (NBPhoneNumber*)parseAndKeepRawInput:(NSString*)numberToParse defaultRegion:(NSString*)defaultRegion;
+
 - (NSString*)format:(NBPhoneNumber*)phoneNumber numberFormat:(NBEPhoneNumberFormat)numberFormat;
+- (NSString*)formatByPattern:(NBPhoneNumber*)number numberFormat:(NBEPhoneNumberFormat)numberFormat userDefinedFormats:(NSArray*)userDefinedFormats;
 - (NSString*)formatNumberForMobileDialing:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom withFormatting:(BOOL)withFormatting;
 - (NSString*)formatOutOfCountryCallingNumber:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom;
 - (NSString*)formatOutOfCountryKeepingAlphaChars:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom;
 - (NSString*)formatNationalNumberWithCarrierCode:(NBPhoneNumber*)number carrierCode:(NSString*)carrierCode;
+- (NSString*)formatInOriginalFormat:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom;
 - (NSString*)formatNationalNumberWithPreferredCarrierCode:(NBPhoneNumber*)number fallbackCarrierCode:(NSString*)fallbackCarrierCode;
 
 @end

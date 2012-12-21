@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#define NB_YES [NSNumber numberWithBool:YES]
+#define NB_NO [NSNumber numberWithBool:NO]
+
 #pragma mark - Enum -
 typedef enum {
     E164 = 0,
@@ -64,6 +67,13 @@ typedef enum {
     TOO_LONG = 3
 } NBEValidationResult;
 
+typedef enum {
+    FROM_NUMBER_WITH_PLUS_SIGN = 1,
+    FROM_NUMBER_WITH_IDD = 5,
+    FROM_NUMBER_WITHOUT_PLUS_SIGN = 10,
+    FROM_DEFAULT_COUNTRY = 20
+} NBECountryCodeSource;
+
 @class NBPhoneMetaData, NBPhoneNumber;
 
 @interface NBPhoneNumberManager : NSObject
@@ -87,6 +97,7 @@ typedef enum {
 - (NBPhoneMetaData*)getMetadataForRegion:(NSString*)regionCode;
 - (NBPhoneMetaData*)getMetadataForNonGeographicalRegion:(NSString*)countryCallingCode;
 
+- (NSString*)extractPossibleNumber:(NSString*)phoneNumber;
 - (NSString*)getNddPrefixForRegion:(NSString*)regionCode stripNonDigits:(BOOL)stripNonDigits;
 - (NSString*)getNationalSignificantNumber:(NBPhoneNumber*)phoneNumber;
 - (NBEPhoneNumberType)getNumberType:(NBPhoneNumber*)phoneNumber;
@@ -97,7 +108,12 @@ typedef enum {
 - (NSArray*)getRegionCodesForCountryCode:(NSString*)countryCallingCode;
 - (NSString*)getRegionCodeForNumber:(NBPhoneNumber*)phoneNumber;
 
+- (BOOL)canBeInternationallyDialled:(NBPhoneNumber*)number;
+- (BOOL)truncateTooLongNumber:(NBPhoneNumber*)number;
+
 - (BOOL)isValidNumber:(NBPhoneNumber*)number;
+- (BOOL)isViablePhoneNumber:(NSString*)phoneNumber;
+- (BOOL)isAlphaNumber:(NSString*)number;
 - (BOOL)isValidNumberForRegion:(NBPhoneNumber*)number regionCode:(NSString*)regionCode;
 - (BOOL)isNANPACountry:(NSString*)regionCode;
 - (BOOL)isLeadingZeroPossible:(NSString*)countryCallingCode;
@@ -113,6 +129,11 @@ typedef enum {
 
 - (NSString*)normalizePhoneNumber:(NSString*)phoneNumber;
 - (NSString*)normalizeDigitsOnly:(NSString*)number;
+
+- (NSString *)maybeStripNationalPrefixAndCarrierCode:(NSString*)numberStr metadata:(NBPhoneMetaData*)metadata carrierCode:(NSString*)carrierCode;
+- (NBECountryCodeSource)maybeStripInternationalPrefixAndNormalize:(NSString*)numberStr possibleIddPrefix:(NSString*)possibleIddPrefix;
+- (NSString*)maybeExtractCountryCode:(NSString*)number metadata:(NBPhoneMetaData*)defaultRegionMetadata
+                      nationalNumber:(NSString*)nationalNumber keepRawInput:(BOOL)keepRawInput phoneNumber:(NBPhoneNumber*)phoneNumber;
 
 - (NBPhoneNumber*)parse:(NSString*)numberToParse defaultRegion:(NSString*)defaultRegion;
 - (NBPhoneNumber*)parseAndKeepRawInput:(NSString*)numberToParse defaultRegion:(NSString*)defaultRegion;

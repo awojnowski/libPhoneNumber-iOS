@@ -7,13 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef enum {
-    FROM_NUMBER_WITH_PLUS_SIGN = 1,
-    FROM_NUMBER_WITH_IDD = 5,
-    FROM_NUMBER_WITHOUT_PLUS_SIGN = 10,
-    FROM_DEFAULT_COUNTRY = 20
-} NBECountryCodeSource;
+#import "NBPhoneNumberManager.h"
 
 @interface NBPhoneNumber : NSObject
 

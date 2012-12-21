@@ -44,8 +44,13 @@
 
 - (BOOL)isEqual:(id)object
 {
-#warning to do implements this object
-    return YES;
+    if ([object isKindOfClass:[NBPhoneNumberDesc class]] == NO)
+        return NO;
+    
+    NBPhoneNumberDesc *other = object;
+    return [self.nationalNumberPattern isEqual:other.nationalNumberPattern] &&
+        [self.possibleNumberPattern isEqual:other.possibleNumberPattern] &&
+        [self.exampleNumber isEqual:other.exampleNumber];
 }
 
 @end

@@ -46,6 +46,8 @@
         self.noInternationalDialling = emptyDesc;
         
         [self setLeadingZeroPossible:[NSNumber numberWithBool:NO]];
+        [self setMainCountryForCode:[NSNumber numberWithBool:NO]];
+        [self setSameMobileAndFixedLinePattern:[NSNumber numberWithBool:NO]];
     }
     
     return self;

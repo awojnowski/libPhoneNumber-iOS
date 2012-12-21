@@ -1110,6 +1110,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     
     NSString *formattedExtension = [self maybeGetFormattedExtension:number metadata:metadata numberFormat:numberFormat];
     
+    NSLog(@"!@#  prefixNumberWithCountryCallingCode called");
     return [self prefixNumberWithCountryCallingCode:countryCallingCode
                                   phoneNumberFormat:numberFormat
                             formattedNationalNumber:formattedNumber
@@ -2652,7 +2653,8 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  */
 - (BOOL)truncateTooLongNumber:(NBPhoneNumber*)number
 {    
-    if ([self isValidNumber:number]) {
+    if ([self isValidNumber:number])
+    {
         return YES;
     }
 
@@ -3296,7 +3298,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     
     if ([normalizedNationalNumberStr hasPrefix:@"0"])
     {
-        phoneNumber.italianLeadingZero = [NSNumber numberWithBool:YES];
+        phoneNumber.italianLeadingZero = NB_YES;
     }
     
     phoneNumber.nationalNumber = normalizedNationalNumberStr;

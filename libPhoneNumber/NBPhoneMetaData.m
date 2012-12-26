@@ -30,20 +30,19 @@
         [self setNumberFormats:[[NSMutableArray alloc] init]];
         [self setIntlNumberFormats:[[NSMutableArray alloc] init]];
 
-        NBPhoneNumberDesc *emptyDesc = [[NBPhoneNumberDesc alloc] init];
-        self.generalDesc = emptyDesc;
-        self.fixedLine = emptyDesc;
-        self.mobile = emptyDesc;
-        self.tollFree = emptyDesc;
-        self.premiumRate = emptyDesc;
-        self.sharedCost = emptyDesc;
-        self.personalNumber = emptyDesc;
-        self.voip = emptyDesc;
-        self.pager = emptyDesc;
-        self.uan = emptyDesc;
-        self.emergency = emptyDesc;
-        self.voicemail = emptyDesc;
-        self.noInternationalDialling = emptyDesc;
+        self.generalDesc = nil;
+        self.fixedLine = nil;
+        self.mobile = nil;
+        self.tollFree = nil;
+        self.premiumRate = nil;
+        self.sharedCost = nil;
+        self.personalNumber = nil;
+        self.voip = nil;
+        self.pager = nil;
+        self.uan = nil;
+        self.emergency = nil;
+        self.voicemail = nil;
+        self.noInternationalDialling = nil;
         
         [self setLeadingZeroPossible:[NSNumber numberWithBool:NO]];
         [self setMainCountryForCode:[NSNumber numberWithBool:NO]];
@@ -64,6 +63,55 @@
             [self.nationalPrefixOptionalWhenFormatting boolValue]?@"Y":@"N",
             [self.leadingZeroPossible boolValue]?@"Y":@"N", self.numberFormats,
             self.generalDesc, self.fixedLine, self.mobile, self.tollFree, self.premiumRate, self.sharedCost, self.personalNumber, self.voip, self.pager, self.uan, self.emergency, self.voicemail, self.noInternationalDialling, self.intlNumberFormats];
+}
+
+
+- (NBPhoneNumberDesc*)inheriteValues:(NBPhoneNumberDesc*)targetDesc
+{
+    if (targetDesc == nil)
+    {
+        targetDesc = [[NBPhoneNumberDesc alloc] init];
+    }
+    
+    if (self.generalDesc != nil)
+    {
+        if (targetDesc.nationalNumberPattern == nil)
+        {
+            if (self.generalDesc.nationalNumberPattern != nil)
+                targetDesc.nationalNumberPattern = [self.generalDesc.nationalNumberPattern copy];
+        }
+        
+        if (targetDesc.possibleNumberPattern == nil)
+        {
+            if (self.generalDesc.possibleNumberPattern != nil)
+                targetDesc.possibleNumberPattern = [self.generalDesc.possibleNumberPattern copy];
+        }
+        
+        if (targetDesc.exampleNumber == nil)
+        {
+            if (self.generalDesc.exampleNumber != nil)
+                targetDesc.exampleNumber = [self.generalDesc.exampleNumber copy];
+        }
+    }
+    
+    return targetDesc;
+}
+
+
+- (void)updateDescriptions
+{
+    self.fixedLine = [[self inheriteValues:self.fixedLine] copy];
+    self.mobile = [[self inheriteValues:self.mobile] copy];
+    self.tollFree = [[self inheriteValues:self.tollFree] copy];
+    self.premiumRate = [[self inheriteValues:self.premiumRate] copy];
+    self.sharedCost = [[self inheriteValues:self.sharedCost] copy];
+    self.personalNumber = [[self inheriteValues:self.personalNumber] copy];
+    self.voip = [[self inheriteValues:self.voip] copy];
+    self.pager = [[self inheriteValues:self.pager] copy];
+    self.uan = [[self inheriteValues:self.uan] copy];
+    self.emergency = [[self inheriteValues:self.emergency] copy];
+    self.voicemail = [[self inheriteValues:self.voicemail] copy];
+    self.noInternationalDialling = [[self inheriteValues:self.noInternationalDialling] copy];
 }
 
 
@@ -231,7 +279,7 @@
                 @try {
                     if ([childNodeName isEqualToString:@"leadingDigits"])
                     {
-                        [newNumberFormat.leadingDigitsPattern addObject:[childNodeContent copy]];
+                        [newNumberFormat.leadingDigitsPattern addObject:[self stringByTrimming:childNodeContent]];
                     }
                     else
                     {
@@ -333,6 +381,8 @@
     
     if ([nodeName isEqualToString:[@"noInternationalDialling" lowercaseString]])
         self.noInternationalDialling = newNumberDesc;
+    
+    [self updateDescriptions];
 }
 
 

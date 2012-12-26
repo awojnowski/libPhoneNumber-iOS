@@ -30,6 +30,17 @@
 }
 
 
+- (BOOL)isEqual:(id)object
+{
+    if ([object isKindOfClass:[NBPhoneNumber class]] == NO)
+        return NO;
+    
+    NBPhoneNumber *other = object;
+    return [self.countryCode isEqual:other.countryCode] &&
+    [self.nationalNumber isEqual:other.nationalNumber];
+}
+
+
 - (id)copyWithZone:(NSZone *)zone
 {
 	NBPhoneNumber *phoneNumberCopy = [[NBPhoneNumber allocWithZone:zone] init];

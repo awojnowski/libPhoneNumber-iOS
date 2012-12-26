@@ -130,10 +130,10 @@ typedef enum {
 - (NSString*)normalizePhoneNumber:(NSString*)phoneNumber;
 - (NSString*)normalizeDigitsOnly:(NSString*)number;
 
-- (NSString *)maybeStripNationalPrefixAndCarrierCode:(NSString*)numberStr metadata:(NBPhoneMetaData*)metadata carrierCode:(NSString*)carrierCode;
-- (NBECountryCodeSource)maybeStripInternationalPrefixAndNormalize:(NSString*)numberStr possibleIddPrefix:(NSString*)possibleIddPrefix;
+- (BOOL)maybeStripNationalPrefixAndCarrierCode:(NSString**)numberStr metadata:(NBPhoneMetaData*)metadata carrierCode:(NSString**)carrierCode;
+- (NBECountryCodeSource)maybeStripInternationalPrefixAndNormalize:(NSString**)numberStr possibleIddPrefix:(NSString*)possibleIddPrefix;
 - (NSString*)maybeExtractCountryCode:(NSString*)number metadata:(NBPhoneMetaData*)defaultRegionMetadata
-                      nationalNumber:(NSString*)nationalNumber keepRawInput:(BOOL)keepRawInput phoneNumber:(NBPhoneNumber*)phoneNumber;
+                      nationalNumber:(NSString**)nationalNumber keepRawInput:(BOOL)keepRawInput phoneNumber:(NBPhoneNumber**)phoneNumber;
 
 - (NBPhoneNumber*)parse:(NSString*)numberToParse defaultRegion:(NSString*)defaultRegion;
 - (NBPhoneNumber*)parseAndKeepRawInput:(NSString*)numberToParse defaultRegion:(NSString*)defaultRegion;

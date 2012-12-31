@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FD0BD7781679DDA700B19065 /* NBPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0BD7771679DDA600B19065 /* NBPhoneNumber.m */; };
+		FD4B2B1C168C270000FBDF2E /* PhoneNumberMetaDataForTesting.xml in Resources */ = {isa = PBXBuildFile; fileRef = FD4B2B1B168C270000FBDF2E /* PhoneNumberMetaDataForTesting.xml */; };
 		FD7A0621167715A0004BBEB6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7A0620167715A0004BBEB6 /* UIKit.framework */; };
 		FD7A0623167715A0004BBEB6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7A0622167715A0004BBEB6 /* Foundation.framework */; };
 		FD7A0625167715A0004BBEB6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7A0624167715A0004BBEB6 /* CoreGraphics.framework */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		FD0BD7761679DDA600B19065 /* NBPhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneNumber.h; sourceTree = "<group>"; };
 		FD0BD7771679DDA600B19065 /* NBPhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPhoneNumber.m; sourceTree = "<group>"; };
+		FD4B2B1B168C270000FBDF2E /* PhoneNumberMetaDataForTesting.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PhoneNumberMetaDataForTesting.xml; sourceTree = "<group>"; };
 		FD7A061C167715A0004BBEB6 /* libPhoneNumber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = libPhoneNumber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD7A0620167715A0004BBEB6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FD7A0622167715A0004BBEB6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				FD7A067316773AB7004BBEB6 /* PhoneNumberMetaData.xml */,
+				FD4B2B1B168C270000FBDF2E /* PhoneNumberMetaDataForTesting.xml */,
 				FD7A0655167715B2004BBEB6 /* NBPhoneNumberManager.h */,
 				FD7A0656167715B2004BBEB6 /* NBPhoneNumberManager.m */,
 				FD7A066D167736BD004BBEB6 /* M2PhoneMetaDataGenerator.h */,
@@ -310,6 +313,7 @@
 				FD7A0635167715A0004BBEB6 /* Default@2x.png in Resources */,
 				FD7A0637167715A0004BBEB6 /* Default-568h@2x.png in Resources */,
 				FD7A067416773AB7004BBEB6 /* PhoneNumberMetaData.xml in Resources */,
+				FD4B2B1C168C270000FBDF2E /* PhoneNumberMetaDataForTesting.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,6 +18,11 @@
     if (self)
     {
         [self clearCountryCodeSource];
+        self.countryCode = @"";
+        self.nationalNumber = @"";
+        self.extension = @"";
+        self.rawInput = @"";
+        self.preferredDomesticCarrierCode = @"";
     }
     
     return self;
@@ -52,7 +57,7 @@
     phoneNumberCopy.italianLeadingZero = [self.italianLeadingZero copy];
     phoneNumberCopy.rawInput = [self.rawInput copy];
     phoneNumberCopy.countryCodeSource = self.countryCodeSource;
-    phoneNumberCopy.PreferredDomesticCarrierCode = [self.PreferredDomesticCarrierCode copy];
+    phoneNumberCopy.preferredDomesticCarrierCode = [self.preferredDomesticCarrierCode copy];
     
 	return phoneNumberCopy;
 }
@@ -60,7 +65,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"(countryCode [%@], nationalNumber [%@], extension [%@])", self.countryCode, self.nationalNumber, self.extension];
+    return [NSString stringWithFormat:@"(countryCode [%@], nationalNumber [%@], extension [%@], rawInput [%@])", self.countryCode, self.nationalNumber, self.extension, self.rawInput];
 }
 
 @end

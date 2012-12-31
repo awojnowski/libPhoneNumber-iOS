@@ -9,6 +9,7 @@
 #import "NBPhoneMetaData.h"
 #import "NBPhoneNumberDesc.h"
 #import "NBNumberFormat.h"
+#import "NBPhoneNumberManager.h"
 
 
 @implementation NBPhoneMetaData
@@ -18,7 +19,7 @@
 @synthesize nationalPrefix, nationalPrefixForParsing, nationalPrefixTransformRule;
 @synthesize preferredExtnPrefix, nationalPrefixFormattingRule, carrierCodeFormattingRule;
 @synthesize mainCountryForCode, nationalPrefixOptionalWhenFormatting, leadingZeroPossible;
-@synthesize numberFormats, intlNumberFormats;
+@synthesize numberFormats; //, intlNumberFormats;
 @synthesize generalDesc, fixedLine, mobile, tollFree, premiumRate, sharedCost, personalNumber, voip, pager, uan, emergency, voicemail, noInternationalDialling;
 
 - (id)init
@@ -28,7 +29,7 @@
     if (self)
     {
         [self setNumberFormats:[[NSMutableArray alloc] init]];
-        [self setIntlNumberFormats:[[NSMutableArray alloc] init]];
+        //[self setIntlNumberFormats:[[NSMutableArray alloc] init]];
 
         self.generalDesc = nil;
         self.fixedLine = nil;
@@ -46,7 +47,6 @@
         
         [self setLeadingZeroPossible:[NSNumber numberWithBool:NO]];
         [self setMainCountryForCode:[NSNumber numberWithBool:NO]];
-        [self setSameMobileAndFixedLinePattern:[NSNumber numberWithBool:NO]];
     }
     
     return self;
@@ -55,14 +55,20 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"--------------------------------------------------------------------------------------------------\n--- %@ (%@) leadingDigits[%@], pEP:(%@), iP(%@), nP(%@), nPFP(%@), nPTR(%@), nPFR(%@), cCFR(%@)]\n--- mCFC[%@], nPOWF[%@], lZP[%@]\n--- AavailableFormats:%@\n---  generalDesc - %@\n fixedLine - %@\n mobile - %@\n tollFree - %@\n premiumRate - %@\n sharedCost - %@\n personalNumber - %@\n voip - %@\n pager - %@\n uan - %@\n emergency - %@\n voicemail - %@\n noInternationalDialling - %@\n--- Intlnumberformats:%@",
+    return [NSString stringWithFormat:@"--------------------------------------------------------------------------------------------------\n--- %@ (%@) leadingDigits[%@], pEP:(%@), iP(%@), nP(%@), nPFP(%@), nPTR(%@), nPFR(%@), cCFR(%@)]\n--- mCFC[%@], nPOWF[%@], lZP[%@]\n--- AavailableFormats:%@\n---  generalDesc - %@\n fixedLine - %@\n mobile - %@\n tollFree - %@\n premiumRate - %@\n sharedCost - %@\n personalNumber - %@\n voip - %@\n pager - %@\n uan - %@\n emergency - %@\n voicemail - %@\n noInternationalDialling - %@",
             self.codeID, self.countryCode, self.leadingDigits, self.preferredExtnPrefix, self.internationalPrefix,
             self.nationalPrefix, self.nationalPrefixForParsing, self.nationalPrefixTransformRule,
             self.nationalPrefixFormattingRule, self.carrierCodeFormattingRule,
             [self.mainCountryForCode boolValue]?@"Y":@"N",
             [self.nationalPrefixOptionalWhenFormatting boolValue]?@"Y":@"N",
             [self.leadingZeroPossible boolValue]?@"Y":@"N", self.numberFormats,
-            self.generalDesc, self.fixedLine, self.mobile, self.tollFree, self.premiumRate, self.sharedCost, self.personalNumber, self.voip, self.pager, self.uan, self.emergency, self.voicemail, self.noInternationalDialling, self.intlNumberFormats];
+            self.generalDesc, self.fixedLine, self.mobile, self.tollFree, self.premiumRate, self.sharedCost, self.personalNumber, self.voip, self.pager, self.uan, self.emergency, self.voicemail, self.noInternationalDialling];
+}
+
+- (BOOL)sameMobileAndFixedLinePattern
+{
+    if ([self.mobile isEqual:self.fixedLine]) return YES;
+    return NO;
 }
 
 
@@ -120,6 +126,9 @@
     NSString *attributeName = [data valueForKey:@"attributeName"];
     id attributeContent = [data valueForKey:@"nodeContent"];
     
+    if ([attributeContent isKindOfClass:[NSString class]] && [attributeContent length] > 0)
+        attributeContent = [NBPhoneNumberManager stringByTrimming:attributeContent];
+    
     if (attributeName && [attributeName isKindOfClass:[NSString class]] && [attributeName length]  > 0 && [attributeName isEqualToString:@"id"] &&
         attributeContent && [attributeContent isKindOfClass:[NSString class]] && [attributeContent length] > 0)
     {
@@ -138,7 +147,6 @@
             }
             else
             {
-                attributeContent = [self stringByTrimmingAll:attributeContent];
                 [self setValue:attributeContent forKey:attributeName];
             }
         }
@@ -155,6 +163,10 @@
     {
         NSString *nodeName = [data valueForKey:@"nodeName"];
         id nodeContent = [data valueForKey:@"nodeContent"];
+        
+        if ([nodeContent isKindOfClass:[NSString class]] && [nodeContent length] > 0)
+            nodeContent = [NBPhoneNumberManager stringByTrimming:nodeContent];
+        
         // [TYPE] PhoneNumberDesc
         if ([nodeName isEqualToString:@"generalDesc"] || [nodeName isEqualToString:@"fixedLine"] || [nodeName isEqualToString:@"mobile"] || [nodeName isEqualToString:@"shortCode"] || [nodeName isEqualToString:@"emergency"] || [nodeName isEqualToString:@"voip"] || [nodeName isEqualToString:@"voicemail"] || [nodeName isEqualToString:@"uan"] || [nodeName isEqualToString:@"premiumRate"] || [nodeName isEqualToString:@"nationalNumberPattern"] || [nodeName isEqualToString:@"sharedCost"] || [nodeName isEqualToString:@"tollFree"] || [nodeName isEqualToString:@"noInternationalDialling"] || [nodeName isEqualToString:@"personalNumber"] || [nodeName isEqualToString:@"pager"] || [nodeName isEqualToString:@"areaCodeOptional"])
         {
@@ -168,7 +180,6 @@
         }
         else if ([nodeName isEqualToString:@"comment"] == NO && [nodeContent isKindOfClass:[NSString class]])
         {
-            nodeName = [self stringByTrimmingAll:nodeName];
             [self setValue:nodeContent forKey:nodeName];
             return YES;
         }
@@ -180,39 +191,6 @@
     
     return NO;
 }
-
-
-- (NSString*)stringByTrimmingLeadingWhitespace:(NSString*)aString
-{
-    NSInteger i = 0;
-    
-    while ((i < aString.length)
-           && [[NSCharacterSet whitespaceCharacterSet] characterIsMember:[aString characterAtIndex:i]])
-    {
-        i++;
-    }
-    
-    return [aString substringFromIndex:i];
-}
-
-
-- (NSString*)stringByTrimming:(NSString*)aString
-{
-    NSString *aRes = [self stringByTrimmingLeadingWhitespace:aString];
-    aRes = [aRes stringByReplacingOccurrencesOfString:@"\r\n" withString:@""];
-    aRes = [aRes stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-    aRes = [aRes stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    return aRes;
-}
-
-
-- (NSString*)stringByTrimmingAll:(NSString*)aString
-{
-    NSString *aRes = [self stringByTrimming:aString];
-    aRes = [aRes stringByReplacingOccurrencesOfString:@" " withString:@""];
-    return aRes;
-}
-
 
 
 - (void)setNumberFormatsData:(id)data
@@ -240,14 +218,7 @@
                     continue;
                 }
                 
-                if ([childNodeName isEqualToString:@"format"] == NO)
-                {
-                    childNodeContent = [self stringByTrimming:[childAttribute valueForKey:@"nodeContent"]];
-                }
-                else
-                {
-                    childNodeContent = [childAttribute valueForKey:@"nodeContent"];
-                }
+                childNodeContent = [NBPhoneNumberManager stringByTrimming:[childAttribute valueForKey:@"nodeContent"]];
                 
                 @try {
                     [newNumberFormat setValue:childNodeContent forKey:childNodeName];
@@ -267,19 +238,12 @@
                     continue;
                 }
                 
-                if ([childNodeName isEqualToString:@"format"] == NO)
-                {
-                    childNodeContent = [self stringByTrimming:[childNode valueForKey:@"nodeContent"]];
-                }
-                else
-                {
-                    childNodeContent = [childNode valueForKey:@"nodeContent"];
-                }
+                childNodeContent = [NBPhoneNumberManager stringByTrimming:[childNode valueForKey:@"nodeContent"]];
                 
                 @try {
                     if ([childNodeName isEqualToString:@"leadingDigits"])
                     {
-                        [newNumberFormat.leadingDigitsPattern addObject:[self stringByTrimming:childNodeContent]];
+                        [newNumberFormat.leadingDigitsPattern addObject:childNodeContent];
                     }
                     else
                     {
@@ -321,7 +285,7 @@
     for (id childNode in nodeChildArray)
     {
         NSString *childNodeName = [childNode valueForKey:@"nodeName"];
-        NSString *childNodeContent = [self stringByTrimmingAll:[childNode valueForKey:@"nodeContent"]];
+        NSString *childNodeContent = [NBPhoneNumberManager stringByTrimming:[childNode valueForKey:@"nodeContent"]];
         
         if ([childNodeName isEqualToString:@"comment"])
         {
@@ -382,7 +346,7 @@
     if ([nodeName isEqualToString:[@"noInternationalDialling" lowercaseString]])
         self.noInternationalDialling = newNumberDesc;
     
-    [self updateDescriptions];
+    //[self updateDescriptions];
 }
 
 

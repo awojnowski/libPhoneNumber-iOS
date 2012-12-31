@@ -15,7 +15,7 @@
 @property (nonatomic, strong, readwrite) NSNumber *italianLeadingZero;
 @property (nonatomic, strong, readwrite) NSString *rawInput;
 @property (nonatomic, assign, readwrite) NBECountryCodeSource countryCodeSource;
-@property (nonatomic, strong, readwrite) NSString *PreferredDomesticCarrierCode;
+@property (nonatomic, strong, readwrite) NSString *preferredDomesticCarrierCode;
 
 - (void)clearCountryCodeSource;
 

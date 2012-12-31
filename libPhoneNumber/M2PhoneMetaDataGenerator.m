@@ -12,6 +12,7 @@
 #import <libxml/xpath.h>
 #import <libxml/xpathInternals.h>
 
+#import "NBPhoneNumberManager.h"
 #import "M2PhoneMetaDataGenerator.h"
 #import "NBPhoneMetaData.h"
 
@@ -45,19 +46,18 @@
 	if (currentNode->name)
 	{
 		NSString *currentNodeContent = [NSString stringWithCString:(const char *)currentNode->name encoding:NSUTF8StringEncoding];
+        currentNodeContent = [NBPhoneNumberManager stringByTrimming:currentNodeContent];
 		[resultForNode setObject:currentNodeContent forKey:@"nodeName"];
 	}
 	
 	if (currentNode->content && currentNode->type != XML_DOCUMENT_TYPE_NODE)
 	{
 		NSString *currentNodeContent = [NSString stringWithCString:(const char *)currentNode->content encoding:NSUTF8StringEncoding];
+        currentNodeContent = [NBPhoneNumberManager stringByTrimming:currentNodeContent];
 		
 		if ([[resultForNode objectForKey:@"nodeName"] isEqual:@"text"] && parentResult)
-		{
-			currentNodeContent = [currentNodeContent
-                                  stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-			
-			NSString *existingContent = [parentResult objectForKey:@"nodeContent"];
+		{			
+			NSString *existingContent = [NBPhoneNumberManager stringByTrimming:[parentResult objectForKey:@"nodeContent"]];
 			NSString *newContent = nil;
             
 			if (existingContent)
@@ -188,7 +188,7 @@
     xmlDocPtr doc;
     
     /* Load XML document */
-	doc = htmlReadMemory([document bytes], [document length], "", NULL, HTML_PARSE_NOWARNING | HTML_PARSE_NOERROR);
+	doc = htmlReadMemory([document bytes], [document length], "", NULL, HTML_PARSE_NOWARNING | HTML_PARSE_NOERROR | XML_PARSE_NOBLANKS);
 	
     if (doc == NULL)
 	{
@@ -225,7 +225,7 @@
 
 - (NSDictionary *)generateMetaData
 {
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"PhoneNumberMetaData" ofType:@"xml"];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"PhoneNumberMetaDataForTesting" ofType:@"xml"];
     NSData *xmlData = [NSData dataWithContentsOfFile:filePath];
 
     if (xmlData == NULL)

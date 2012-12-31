@@ -23,11 +23,13 @@
 @property (nonatomic, strong, readwrite) NSString *codeID, *countryCode;
 @property (nonatomic, strong, readwrite) NSString *preferredInternationalPrefix, *internationalPrefix, *leadingDigits;
 @property (nonatomic, strong, readwrite) NSString *nationalPrefix, *preferredExtnPrefix, *nationalPrefixForParsing, *nationalPrefixTransformRule, *nationalPrefixFormattingRule;
-@property (nonatomic, strong, readwrite) NSNumber *sameMobileAndFixedLinePattern, *mainCountryForCode, *leadingZeroPossible;
+@property (nonatomic, strong, readwrite) NSNumber *mainCountryForCode, *leadingZeroPossible;
 @property (nonatomic, strong, readwrite) NSMutableArray *numberFormats;
-@property (nonatomic, strong, readwrite) NSMutableArray *intlNumberFormats;
+//@property (nonatomic, strong, readwrite) NSMutableArray *intlNumberFormats;
 
 - (void)setNumberFormatsData:(id)data;
 - (void)setNumberDescData:(id)data;
+
+- (BOOL)sameMobileAndFixedLinePattern;
 
 @end

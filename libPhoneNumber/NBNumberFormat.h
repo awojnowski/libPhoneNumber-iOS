@@ -10,12 +10,12 @@
 
 @interface NBNumberFormat : NSObject
 
-@property (nonatomic, strong, readwrite) NSString *intlFormat, *carrierCodeFormattingRule;
+@property (nonatomic, strong, readwrite) NSString *intlFormat;
 
 // from phonemetadata.pb.js
 @property (nonatomic, strong, readwrite) NSString *pattern, *format;
 @property (nonatomic, strong, readwrite) NSMutableArray *leadingDigitsPattern;
 @property (nonatomic, strong, readwrite) NSNumber *nationalPrefixOptionalWhenFormatting;
-@property (nonatomic, strong, readwrite) NSString *nationalPrefixFormattingRule, *domesticCarrierCodeFormattingRule;
+@property (nonatomic, strong, readwrite) NSString *nationalPrefixFormattingRule, *carrierCodeFormattingRule;
 
 @end

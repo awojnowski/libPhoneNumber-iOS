@@ -41,7 +41,6 @@
     phoneFormatCopy.carrierCodeFormattingRule = [self.carrierCodeFormattingRule copy];
     phoneFormatCopy.pattern = [self.pattern copy];
     phoneFormatCopy.nationalPrefixFormattingRule = [self.nationalPrefixFormattingRule copy];
-    phoneFormatCopy.domesticCarrierCodeFormattingRule = [self.domesticCarrierCodeFormattingRule copy];
     phoneFormatCopy.format = [self.format copy];
     phoneFormatCopy.nationalPrefixOptionalWhenFormatting = [self.nationalPrefixOptionalWhenFormatting copy];
     phoneFormatCopy.leadingDigitsPattern = [self.leadingDigitsPattern copy];

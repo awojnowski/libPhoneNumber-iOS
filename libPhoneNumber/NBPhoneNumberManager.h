@@ -79,9 +79,9 @@ typedef enum {
 @interface NBPhoneNumberManager : NSObject
 
 + (NBPhoneNumberManager*)sharedInstance;
++ (NSString*)stringByTrimming:(NSString*)aString;
 
 - (NSString*)numbersOnly:(NSString*)phoneNumber;
-
 - (NSArray*)regionCodeFromCountryCode:(NSString*)countryCodeNumber;
 - (NSString*)countryCodeFromRregionCode:(NSString*)regionCode;
 
@@ -117,6 +117,7 @@ typedef enum {
 - (BOOL)isValidNumberForRegion:(NBPhoneNumber*)number regionCode:(NSString*)regionCode;
 - (BOOL)isNANPACountry:(NSString*)regionCode;
 - (BOOL)isLeadingZeroPossible:(NSString*)countryCallingCode;
+- (NBEMatchType)isNumberMatch:(id)firstNumberIn second:(id)secondNumberIn;
 
 - (BOOL)isPossibleNumber:(NBPhoneNumber*)number;
 - (NBEValidationResult)isPossibleNumberWithReason:(NBPhoneNumber*)number;

@@ -17,5 +17,6 @@
 @property (nonatomic, strong, readwrite) NSMutableArray *leadingDigitsPattern;
 @property (nonatomic, strong, readwrite) NSNumber *nationalPrefixOptionalWhenFormatting;
 @property (nonatomic, strong, readwrite) NSString *nationalPrefixFormattingRule, *carrierCodeFormattingRule;
+@property (nonatomic, strong, readwrite) NSString *nationalPrefix;
 
 @end

@@ -351,7 +351,8 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         [self initNormalizationMappings];
         
         M2PhoneMetaDataGenerator *pnGen = [[M2PhoneMetaDataGenerator alloc] init];
-        _coreMetaData = [pnGen generateMetaData];
+        _coreMetaData = [pnGen generateMetaDataWithTest];
+        //_coreMetaData = [pnGen generateMetaData];
         
         [self initCC2CN];
         [self initCN2CC];
@@ -1031,7 +1032,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  */
 - (NSString*)format:(NBPhoneNumber*)phoneNumber numberFormat:(NBEPhoneNumberFormat)numberFormat
 {
-    if ([phoneNumber.nationalNumber isEqual:@"0"] && phoneNumber.rawInput)
+    if ([phoneNumber.nationalNumber isEqual:@"0"] && [self hasValue:phoneNumber.rawInput])
     {
         // Unparseable numbers that kept their raw input just use that.
         // This is the only case where a number can be formatted as E164 without a
@@ -1453,7 +1454,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  */
 - (NSString*)formatInOriginalFormat:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom
 {
-    if ([self hasValue:number.rawInput] && ([self hasUnexpectedItalianLeadingZero:number] || [self hasFormattingPatternForNumber:number ] == NO))
+    if ([self hasValue:number.rawInput] && ([self hasUnexpectedItalianLeadingZero:number] || [self hasFormattingPatternForNumber:number] == NO))
     {
             // We check if we have the formatting pattern because without that, we might
             // format the number as a group without national prefix.
@@ -1787,7 +1788,19 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     // for the INTERNATIONAL format instead of using the numberDesc.numberFormats.
     NSArray *availableFormats = ([intlNumberFormats count] <= 0 || numberFormat == NATIONAL) ? metadata.numberFormats : intlNumberFormats;
     NBNumberFormat *formattingPattern = [self chooseFormattingPatternForNumber:availableFormats nationalNumber:phoneNumber];
-    return (formattingPattern == nil) ? phoneNumber : [self formatNsnUsingPattern:phoneNumber formattingPattern:formattingPattern numberFormat:numberFormat carrierCode:opt_carrierCode];
+    
+    formattingPattern.nationalPrefixFormattingRule = (formattingPattern.nationalPrefixFormattingRule == nil ||  [formattingPattern.nationalPrefixFormattingRule isEqualToString:@"NA"]) ? metadata.nationalPrefixFormattingRule : formattingPattern.nationalPrefixFormattingRule;
+    
+    formattingPattern.nationalPrefixOptionalWhenFormatting = (formattingPattern.nationalPrefixOptionalWhenFormatting == nil) ? metadata.nationalPrefixOptionalWhenFormatting : formattingPattern.nationalPrefixOptionalWhenFormatting;
+    
+    formattingPattern.carrierCodeFormattingRule = (formattingPattern.carrierCodeFormattingRule == nil ||  [formattingPattern.carrierCodeFormattingRule isEqualToString:@"NA"]) ? metadata.carrierCodeFormattingRule : formattingPattern.carrierCodeFormattingRule;
+    
+    if (formattingPattern == nil)
+    {
+        return phoneNumber;
+    }
+    
+    return [self formatNsnUsingPattern:phoneNumber formattingPattern:formattingPattern numberFormat:numberFormat carrierCode:opt_carrierCode];
 }
 
 
@@ -2823,6 +2836,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     /** @type {i18n.phonenumbers.PhoneNumber.CountryCodeSource} */
     NBECountryCodeSource countryCodeSource = [self maybeStripInternationalPrefixAndNormalize:&fullNumber
                                                                            possibleIddPrefix:possibleCountryIddPrefix];
+    
     if (keepRawInput)
     {
         (*phoneNumber).countryCodeSource = countryCodeSource;
@@ -3000,25 +3014,28 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     
     // Attempt to parse the first digits as a national prefix.
     NSError *error = nil;
-    NSString *prefixPattern = [NSString stringWithFormat:@"^(?:%@)", possibleNationalPrefix];
-    NSRegularExpression *currentPattern = [NSRegularExpression regularExpressionWithPattern:prefixPattern options:0 error:&error];
+    NSString *prefixPattern = [NSString stringWithFormat:@"^(?:%@)", [NSRegularExpression escapedTemplateForString:possibleNationalPrefix]];
+    NSRegularExpression *currentPattern = [NSRegularExpression regularExpressionWithPattern:prefixPattern
+                                                                                    options:0 error:&error];
     NSArray *prefixMatcher = [currentPattern matchesInString:(*numberStr) options:0 range:NSMakeRange(0, (*numberStr).length)];
     
-    if (prefixMatcher && prefixMatcher.count > 0)
+    if (prefixMatcher && prefixMatcher.count > 0 && [((NSTextCheckingResult*)[prefixMatcher objectAtIndex:0]) numberOfRanges] > 1)
     {
+        NSTextCheckingResult *execMatch = [prefixMatcher objectAtIndex:0];
+        NSLog(@"%d [%@]", [execMatch numberOfRanges], NSStringFromRange([execMatch rangeAtIndex:0]));
+        
         NSString *nationalNumberRule = metadata.generalDesc.nationalNumberPattern;
         // prefixMatcher[numOfGroups] == nil implies nothing was captured by the
         // capturing groups in possibleNationalPrefix; therefore, no transformation
         // is necessary, and we just remove the national prefix.
-        int numOfGroups = prefixMatcher.count - 1;
+        int numOfGroups = [execMatch numberOfRanges] - 1;
         NSString *transformRule = metadata.nationalPrefixTransformRule;
         NSString *transformedNumber = @"";
-        NSTextCheckingResult *curMatcher = prefixMatcher[numOfGroups];
-        BOOL noTransform = [self hasValue:transformRule] || [self hasValue:[(*numberStr) substringWithRange:curMatcher.range]];
+        BOOL noTransform = [self hasValue:transformRule] || [self hasValue:[(*numberStr) substringWithRange:[execMatch rangeAtIndex:numOfGroups]]];
         
         if (noTransform)
         {
-            NSString *prefixString = [(*numberStr) substringWithRange:((NSTextCheckingResult *)[prefixMatcher objectAtIndex:0]).range];
+            NSString *prefixString = [(*numberStr) substringWithRange:[execMatch rangeAtIndex:1]];
             transformedNumber = [(*numberStr) substringFromIndex:prefixString.length];
         }
         else
@@ -3034,11 +3051,11 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
             return NO;
         }
         
-        if ((noTransform && numOfGroups > 0 && [(*numberStr) substringWithRange:((NSTextCheckingResult *)prefixMatcher[1]).range] != nil) || (!noTransform && numOfGroups > 1))
+        if ((noTransform && numOfGroups > 1 && [(*numberStr) substringWithRange:[execMatch rangeAtIndex:2]] != nil) || (!noTransform && numOfGroups > 1))
         {
-            if (*carrierCode != nil)
+            if ((*carrierCode) != nil)
             {
-                (*carrierCode) = [(*carrierCode) stringByAppendingString:[(*numberStr) substringWithRange:((NSTextCheckingResult *)prefixMatcher[1]).range]];
+                (*carrierCode) = [(*carrierCode) stringByAppendingString:[(*numberStr) substringWithRange:[execMatch rangeAtIndex:2]]];
             }
         }
         

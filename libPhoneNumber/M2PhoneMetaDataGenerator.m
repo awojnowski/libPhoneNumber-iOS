@@ -225,9 +225,22 @@
 
 - (NSDictionary *)generateMetaData
 {
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"PhoneNumberMetaDataForTesting" ofType:@"xml"];
-    NSData *xmlData = [NSData dataWithContentsOfFile:filePath];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"PhoneNumberMetaData" ofType:@"xml"];
+    return [self parseXML:filePath];
+}
 
+
+- (NSDictionary *)generateMetaDataWithTest
+{
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"PhoneNumberMetaDataForTesting" ofType:@"xml"];
+    return [self parseXML:filePath];
+}
+
+
+- (NSDictionary *)parseXML:(NSString*)filePath
+{
+    NSData *xmlData = [NSData dataWithContentsOfFile:filePath];
+    
     if (xmlData == NULL)
     {
         return nil;
@@ -245,7 +258,7 @@
         }
         
         NBPhoneMetaData *newTerritory = [[NBPhoneMetaData alloc] init];
-
+        
         NSArray *nodeAttributeArray = [territory valueForKey:@"nodeAttributeArray"];
         if (nodeAttributeArray && [nodeAttributeArray count] > 0)
         {
@@ -269,7 +282,7 @@
         {
             countryKey = newTerritory.countryCode;
         }
-
+        
         [coreMetaData setObject:newTerritory forKey:countryKey];
     }
     

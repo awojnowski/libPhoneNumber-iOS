@@ -7,13 +7,39 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "libPhoneNumber/NBPhoneNumberManager.m"
-         timestampString = "378620692.030577"
+         filePath = "libPhoneNumberTests/libPhoneNumberTests.m"
+         timestampString = "378643146.486178"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "3317"
-         endingLineNumber = "3317"
-         landmarkName = "-parseHelper:defaultRegion:keepRawInput:checkRegion:"
+         startingLineNumber = "80"
+         endingLineNumber = "80"
+         landmarkName = "-testPhoneNumbers"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "libPhoneNumberTests/libPhoneNumberTests.m"
+         timestampString = "378643146.486178"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "82"
+         endingLineNumber = "82"
+         landmarkName = "-testPhoneNumbers"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "libPhoneNumberTests/libPhoneNumberTests.m"
+         timestampString = "378643146.486178"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "86"
+         endingLineNumber = "86"
+         landmarkName = "-testPhoneNumbers"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -21,12 +47,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "libPhoneNumber/NBPhoneNumberManager.m"
-         timestampString = "378622226.981254"
+         timestampString = "378642295.356286"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1837"
-         endingLineNumber = "1837"
-         landmarkName = "-formatNsnUsingPattern:formattingPattern:numberFormat:carrierCode:"
+         startingLineNumber = "3054"
+         endingLineNumber = "3054"
+         landmarkName = "-maybeStripNationalPrefixAndCarrierCode:metadata:carrierCode:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -34,11 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "libPhoneNumberTests/libPhoneNumberTests.m"
-         timestampString = "378628462.194428"
+         timestampString = "378643146.486178"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "239"
-         endingLineNumber = "239"
+         startingLineNumber = "1446"
+         endingLineNumber = "1446"
          landmarkName = "-testPhoneNumbers"
          landmarkType = "5">
       </FileBreakpoint>

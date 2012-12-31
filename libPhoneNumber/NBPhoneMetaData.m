@@ -346,7 +346,7 @@
     if ([nodeName isEqualToString:[@"noInternationalDialling" lowercaseString]])
         self.noInternationalDialling = newNumberDesc;
     
-    //[self updateDescriptions];
+    [self updateDescriptions];
 }
 
 

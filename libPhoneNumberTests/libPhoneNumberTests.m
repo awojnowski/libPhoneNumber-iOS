@@ -34,185 +34,179 @@
 
 - (void)testPhoneNumbers
 {
+    NSString *pat = @"^(?:0(8[1-46-8]|85\\d{2})?)";
+    NSString *str = @"01065134242";
+    
+    NSError *err;
+    NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:pat
+                                                                        options:NSRegularExpressionCaseInsensitive
+                                                                          error:&err];
+    
+    NSLog(@"-------------------------------");
+    if (err != nil) {
+        NSLog(@"Error: %@", err.localizedDescription);
+        NSLog(@"Error: %@", err.localizedFailureReason);
+        NSLog(@"Error: %@", err.localizedRecoverySuggestion);
+        return;
+    }
+    
+    NSUInteger n = [re numberOfMatchesInString:str
+                                       options:0
+                                         range:NSMakeRange(0, str.length)];
+    
+    NSLog(@"Number of matches: %u", n);
+    
+    NSArray *matches = [re matchesInString:str
+                                   options:0
+                                     range:NSMakeRange(0, str.length)];
+    
+    for (NSTextCheckingResult *match in matches) {
+        NSLog(@"Number of ranges = %d", match.numberOfRanges);
+        for (int c = 0; c < match.numberOfRanges; ++c) {
+            NSRange range = [match rangeAtIndex:c];
+            NSString *matchStr;
+            if (range.location >= str.length) {
+                matchStr = @"<outside range>";
+            } else {
+                matchStr = [str substringWithRange:range];
+            }
+            NSLog(@"Range %2d: %2d %2d | %@", c, range.location, range.length, matchStr);
+        }
+    }
+    
     NBPhoneNumberManager *phoneUtil = [NBPhoneNumberManager sharedInstance];
+    
+#pragma mark - simple test
+    NBPhoneNumber *ishtarPhoneNumber = [phoneUtil parse:@"010 6513 4242" defaultRegion:@"KR"];
+    NSLog(@"-INTERNATIONAL [%@]", [phoneUtil format:ishtarPhoneNumber numberFormat:INTERNATIONAL]);
+    NSLog(@"-NATIONAL      [%@]", [phoneUtil format:ishtarPhoneNumber numberFormat:NATIONAL]);
+    NSLog(@"-RFC3966       [%@]", [phoneUtil format:ishtarPhoneNumber numberFormat:RFC3966]);
+    NSLog(@"-E164          [%@]", [phoneUtil format:ishtarPhoneNumber numberFormat:E164]);
+    
+    NSLog(@"formatInOriginalFormat [%@]", [phoneUtil formatInOriginalFormat:ishtarPhoneNumber regionCallingFrom:@"KR"]);
+    
     
     // Set up some test numbers to re-use.
     // TODO: Rewrite this as static functions that return new numbers each time to
     // avoid any risk of accidental changes to mutable static state affecting many
     // tests.
-    
     NBPhoneNumber *ALPHA_NUMERIC_NUMBER = [[NBPhoneNumber alloc] init];
     ALPHA_NUMERIC_NUMBER.countryCode = @"1";
     ALPHA_NUMERIC_NUMBER.nationalNumber = @"80074935247";
-    
-    
     
     NBPhoneNumber *AR_MOBILE = [[NBPhoneNumber alloc] init];
     AR_MOBILE.countryCode = @"54";
     AR_MOBILE.nationalNumber = @"91187654321";
     
-    
-    
     NBPhoneNumber *AR_NUMBER = [[NBPhoneNumber alloc] init];
     AR_NUMBER.countryCode = @"54";
     AR_NUMBER.nationalNumber = @"1187654321";
-    
-    
     
     NBPhoneNumber *AU_NUMBER = [[NBPhoneNumber alloc] init];
     AU_NUMBER.countryCode = @"61";
     AU_NUMBER.nationalNumber = @"236618300";
     
-    
-    
     NBPhoneNumber *BS_MOBILE = [[NBPhoneNumber alloc] init];
     BS_MOBILE.countryCode = @"1";
     BS_MOBILE.nationalNumber = @"2423570000";
-    
-    
     
     NBPhoneNumber *BS_NUMBER = [[NBPhoneNumber alloc] init];
     BS_NUMBER.countryCode = @"1";
     BS_NUMBER.nationalNumber = @"2423651234";
     
-    
     // Note that this is the same as the example number for DE in the metadata.
-    
     NBPhoneNumber *DE_NUMBER = [[NBPhoneNumber alloc] init];
     DE_NUMBER.countryCode = @"49";
     DE_NUMBER.nationalNumber = @"30123456";
-    
-    
     
     NBPhoneNumber *DE_SHORT_NUMBER = [[NBPhoneNumber alloc] init];
     DE_SHORT_NUMBER.countryCode = @"49";
     DE_SHORT_NUMBER.nationalNumber = @"1234";
     
-    
-    
     NBPhoneNumber *GB_MOBILE = [[NBPhoneNumber alloc] init];
     GB_MOBILE.countryCode = @"44";
     GB_MOBILE.nationalNumber = @"7912345678";
-    
-    
     
     NBPhoneNumber *GB_NUMBER = [[NBPhoneNumber alloc] init];
     GB_NUMBER.countryCode = @"44";
     GB_NUMBER.nationalNumber = @"2070313000";
     
-    
-    
     NBPhoneNumber *IT_MOBILE = [[NBPhoneNumber alloc] init];
     IT_MOBILE.countryCode = @"39";
     IT_MOBILE.nationalNumber = @"345678901";
-    
-    
     
     NBPhoneNumber *IT_NUMBER = [[NBPhoneNumber alloc] init];
     IT_NUMBER.countryCode = @"39";
     IT_NUMBER.nationalNumber = @"236618300";
     IT_NUMBER.italianLeadingZero = NB_YES;
     
-    
-    
     NBPhoneNumber *JP_STAR_NUMBER = [[NBPhoneNumber alloc] init];
     JP_STAR_NUMBER.countryCode = @"81";
     JP_STAR_NUMBER.nationalNumber = @"2345";
     
-    
     // Numbers to test the formatting rules from Mexico.
-    
     NBPhoneNumber *MX_MOBILE1 = [[NBPhoneNumber alloc] init];
     MX_MOBILE1.countryCode = @"52";
     MX_MOBILE1.nationalNumber = @"12345678900";
-    
-    
     
     NBPhoneNumber *MX_MOBILE2 = [[NBPhoneNumber alloc] init];
     MX_MOBILE2.countryCode = @"52";
     MX_MOBILE2.nationalNumber = @"15512345678";
     
-    
-    
     NBPhoneNumber *MX_NUMBER1 = [[NBPhoneNumber alloc] init];
     MX_NUMBER1.countryCode = @"52";
     MX_NUMBER1.nationalNumber = @"3312345678";
-    
-    
     
     NBPhoneNumber *MX_NUMBER2 = [[NBPhoneNumber alloc] init];
     MX_NUMBER2.countryCode = @"52";
     MX_NUMBER2.nationalNumber = @"8211234567";
     
-    
-    
     NBPhoneNumber *NZ_NUMBER = [[NBPhoneNumber alloc] init];
     NZ_NUMBER.countryCode = @"64";
     NZ_NUMBER.nationalNumber = @"33316005";
-    
-    
     
     NBPhoneNumber *SG_NUMBER = [[NBPhoneNumber alloc] init];
     SG_NUMBER.countryCode = @"65";
     SG_NUMBER.nationalNumber = @"65218000";
     
-    
     // A too-long and hence invalid US number.
-    
     NBPhoneNumber *US_LONG_NUMBER = [[NBPhoneNumber alloc] init];
     US_LONG_NUMBER.countryCode = @"1";
     US_LONG_NUMBER.nationalNumber = @"65025300001";
-    
-    
     
     NBPhoneNumber *US_NUMBER = [[NBPhoneNumber alloc] init];
     US_NUMBER.countryCode = @"1";
     US_NUMBER.nationalNumber = @"6502530000";
     
-    
-    
     NBPhoneNumber *US_PREMIUM = [[NBPhoneNumber alloc] init];
     US_PREMIUM.countryCode = @"1";
     US_PREMIUM.nationalNumber = @"9002530000";
     
-    
     // Too short, but still possible US numbers.
-    
     NBPhoneNumber *US_LOCAL_NUMBER = [[NBPhoneNumber alloc] init];
     US_LOCAL_NUMBER.countryCode = @"1";
     US_LOCAL_NUMBER.nationalNumber = @"2530000";
-    
-    
     
     NBPhoneNumber *US_SHORT_BY_ONE_NUMBER = [[NBPhoneNumber alloc] init];
     US_SHORT_BY_ONE_NUMBER.countryCode = @"1";
     US_SHORT_BY_ONE_NUMBER.nationalNumber = @"650253000";
     
-    
-    
     NBPhoneNumber *US_TOLLFREE = [[NBPhoneNumber alloc] init];
     US_TOLLFREE.countryCode = @"1";
     US_TOLLFREE.nationalNumber = @"8002530000";
     
-    
-    
     NBPhoneNumber *US_SPOOF = [[NBPhoneNumber alloc] init];
     US_SPOOF.countryCode = @"1";
     US_SPOOF.nationalNumber = @"0";
-    
-    
     
     NBPhoneNumber *US_SPOOF_WITH_RAW_INPUT = [[NBPhoneNumber alloc] init];
     US_SPOOF_WITH_RAW_INPUT.countryCode = @"1";
     US_SPOOF_WITH_RAW_INPUT.nationalNumber = @"0";
     US_SPOOF_WITH_RAW_INPUT.rawInput = @"000-000-0000";
     
-    
-    
     NBPhoneNumber *INTERNATIONAL_TOLL_FREE = [[NBPhoneNumber alloc] init];
     INTERNATIONAL_TOLL_FREE.countryCode = @"800";
     INTERNATIONAL_TOLL_FREE.nationalNumber = @"12345678";
-    
     
     // We set this to be the same length as numbers for the other non-geographical
     // country prefix that we have in our test metadata. However, this is not
@@ -222,31 +216,18 @@
     INTERNATIONAL_TOLL_FREE_TOO_LONG.countryCode = @"800";
     INTERNATIONAL_TOLL_FREE_TOO_LONG.nationalNumber = @"123456789";
     
-    
-    
     NBPhoneNumber *UNIVERSAL_PREMIUM_RATE = [[NBPhoneNumber alloc] init];
     UNIVERSAL_PREMIUM_RATE.countryCode = @"979";
     UNIVERSAL_PREMIUM_RATE.nationalNumber = @"123456789";
     
-    
-    
     NBPhoneNumber *UNKNOWN_COUNTRY_CODE_NO_RAW_INPUT = [[NBPhoneNumber alloc] init];
     UNKNOWN_COUNTRY_CODE_NO_RAW_INPUT.countryCode = @"2";
     UNKNOWN_COUNTRY_CODE_NO_RAW_INPUT.nationalNumber = @"12345";
- 
-
-#pragma mark - simple test
-    NBPhoneNumber *ishtarPhoneNumber = [phoneUtil parse:@"8201065134242" defaultRegion:@"KR"];
-    NSLog(@"-INTERNATIONAL [%@]", [phoneUtil format:ishtarPhoneNumber numberFormat:INTERNATIONAL]);
-    NSLog(@"-NATIONAL      [%@]", [phoneUtil format:ishtarPhoneNumber numberFormat:NATIONAL]);
-    NSLog(@"-RFC3966       [%@]", [phoneUtil format:ishtarPhoneNumber numberFormat:RFC3966]);
-    NSLog(@"-E164          [%@]", [phoneUtil format:ishtarPhoneNumber numberFormat:E164]);
     
     
 #pragma mark - testGetInstanceLoadUSMetadata
     NBPhoneMetaData *metadata = [phoneUtil getMetadataForRegion:@"US"];
 
-    NSLog(@"---%@---", metadata);
     STAssertEqualObjects(@"US", metadata.codeID, nil);
     STAssertEqualObjects(@"1", metadata.countryCode, nil);
     STAssertEqualObjects(@"011", metadata.internationalPrefix, nil);
@@ -1158,14 +1139,14 @@
     
     STAssertFalse([phoneUtil isValidNumber:INTERNATIONAL_TOLL_FREE_TOO_LONG], nil);
 
-#pragma mark - testgetRegionCodeForCountryCode:) {
+#pragma mark - testgetRegionCodeForCountryCode
     STAssertEqualObjects(@"US", [phoneUtil getRegionCodeForCountryCode:@"1"], nil);
     STAssertEqualObjects(@"GB", [phoneUtil getRegionCodeForCountryCode:@"44"], nil);
     STAssertEqualObjects(@"DE", [phoneUtil getRegionCodeForCountryCode:@"49"], nil);
     STAssertEqualObjects(@"001", [phoneUtil getRegionCodeForCountryCode:@"800"], nil);
     STAssertEqualObjects(@"001", [phoneUtil getRegionCodeForCountryCode:@"979"], nil);
 
-#pragma mark - testgetRegionCodeForNumber:) {
+#pragma mark - testgetRegionCodeForNumber
     STAssertEqualObjects(@"BS", [phoneUtil getRegionCodeForNumber:BS_NUMBER], nil);
     STAssertEqualObjects(@"US", [phoneUtil getRegionCodeForNumber:US_NUMBER], nil);
     STAssertEqualObjects(@"GB", [phoneUtil getRegionCodeForNumber:GB_MOBILE], nil);
@@ -1591,10 +1572,9 @@
     countryCallingCode = @"1";
     numberToFill = [[NSString alloc] init];
     @try {
-        STAssertEqualObjects(@"Should have extracted the country calling code of the region passed in",
-                     countryCallingCode,
-                     [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
-                                         nationalNumber:&numberToFill keepRawInput:YES phoneNumber:&number], nil);
+        STAssertEqualObjects(countryCallingCode, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
+                                                                     nationalNumber:&numberToFill keepRawInput:YES phoneNumber:&number],
+                             @"Should have extracted the country calling code of the region passed in");
         STAssertEquals(FROM_NUMBER_WITHOUT_PLUS_SIGN, number.countryCodeSource, @"Did not figure out CountryCodeSource correctly");
     }
     @catch (NSException *exception) {
@@ -1740,18 +1720,29 @@
     }
     
     maliciousNumber = [maliciousNumber stringByAppendingString:@"12222-33-244 extensioB 343+"];
-    STAssertEqualObjects(nil, [phoneUtil parse:maliciousNumber defaultRegion:@"US"], nil);
+    @try {
+        [phoneUtil parse:maliciousNumber defaultRegion:@"US"];
+        STFail([@"This should not parse without throwing an exception " stringByAppendingString:maliciousNumber]);
+    }
+    @catch (NSException *e) {
+        STAssertEqualObjects(@"TOO_LONG", e.name, @"Wrong error type stored in exception.");
+    }
 
-    
     NSString *maliciousNumberWithAlmostExt = @"";
     for (int i=0; i<350; i++)
     {
         maliciousNumberWithAlmostExt = [maliciousNumberWithAlmostExt stringByAppendingString:@"200"];
     }
-                                            
-    maliciousNumberWithAlmostExt = [maliciousNumberWithAlmostExt stringByAppendingString:@" extensiOB 345"];
-    STAssertEqualObjects(nil, [phoneUtil parse:maliciousNumberWithAlmostExt defaultRegion:@"US"], nil);
 
+    [maliciousNumberWithAlmostExt stringByAppendingString:@" extensiOB 345"];
+    
+    @try {
+        [phoneUtil parse:maliciousNumberWithAlmostExt defaultRegion:@"US"];
+        STFail([@"This should not parse without throwing an exception " stringByAppendingString:maliciousNumberWithAlmostExt]);
+    }
+    @catch (NSException *e) {
+        STAssertEqualObjects(@"TOO_LONG", e.name, @"Wrong error type stored in exception.");
+    }
 
 
 #pragma mark - testParseWithInternationalPrefixes

@@ -11,5 +11,6 @@
 @interface M2PhoneMetaDataGenerator : NSObject
 
 - (NSDictionary *)generateMetaData;
+- (NSDictionary *)generateMetaDataWithTest;
 
 @end

@@ -11,7 +11,7 @@
 
 @implementation NBNumberFormat
 
-@synthesize leadingDigitsPattern, pattern, format, nationalPrefixFormattingRule, carrierCodeFormattingRule, intlFormat;
+@synthesize leadingDigitsPattern, pattern, format, nationalPrefixFormattingRule, carrierCodeFormattingRule, intlFormat, nationalPrefix;
 
 - (id)init
 {
@@ -28,8 +28,8 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"[%@, %@] - %@(%@) intlFormat[%@] leadingDigits[%@] [%@]",
-            self.nationalPrefixFormattingRule, self.carrierCodeFormattingRule, self.pattern, self.format, self.intlFormat, self.leadingDigitsPattern, [self.nationalPrefixOptionalWhenFormatting boolValue]?@"Y":@"N"];
+    return [NSString stringWithFormat:@"[nationalPrefixFormattingRule:%@, carrierCodeFormattingRule:%@] - %@(%@) intlFormat[%@] leadingDigits[%@] [%@] nationalPrefix[%@]",
+            self.nationalPrefixFormattingRule, self.carrierCodeFormattingRule, self.pattern, self.format, self.intlFormat, self.leadingDigitsPattern, [self.nationalPrefixOptionalWhenFormatting boolValue]?@"Y":@"N", self.nationalPrefix];
 }
 
 

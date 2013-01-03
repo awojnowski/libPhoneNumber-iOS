@@ -7,19 +7,6 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "libPhoneNumberTests/libPhoneNumberTests.m"
-         timestampString = "378890198.0731"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1419"
-         endingLineNumber = "1419"
-         landmarkName = "-testPhoneNumbers"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "libPhoneNumber/NBPhoneNumberManager.m"
          timestampString = "378884793.504198"
          startingColumnNumber = "9223372036854775807"
@@ -47,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "libPhoneNumber/NBPhoneNumberUtil.m"
-         timestampString = "378912467.131037"
+         timestampString = "378913426.183425"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "3339"
-         endingLineNumber = "3339"
+         startingLineNumber = "3346"
+         endingLineNumber = "3346"
          landmarkName = "-parseHelper:defaultRegion:keepRawInput:checkRegion:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -60,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "libPhoneNumber/NBPhoneNumberUtil.m"
-         timestampString = "378912467.131037"
+         timestampString = "378913426.183425"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "3200"
-         endingLineNumber = "3200"
+         startingLineNumber = "3207"
+         endingLineNumber = "3207"
          landmarkName = "-parseAndKeepRawInput:defaultRegion:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -92,19 +79,6 @@
          startingLineNumber = "2674"
          endingLineNumber = "2674"
          landmarkName = "-isPossibleNumberWithReason:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "libPhoneNumberTests/libPhoneNumberTests.m"
-         timestampString = "378912487.858791"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1267"
-         endingLineNumber = "1267"
-         landmarkName = "-testPhoneNumbers"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

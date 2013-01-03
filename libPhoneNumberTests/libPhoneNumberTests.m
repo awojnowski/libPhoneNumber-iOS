@@ -1432,60 +1432,55 @@
 
 
 #pragma mark - testMaybeStripInternationalPrefix
+{
     NSLog(@"-------------- testMaybeStripInternationalPrefix");
     NSString *internationalPrefix = @"00[39]";
     
-    numberToStrip = [[NBPhoneNumber alloc] init];
-    [numberToStrip setRawInput:@"0034567700-3898003"];
-    // Note the dash is removed as part of the normalization.
+    NSString *numberToStripPrefix = @"0034567700-3898003";
     
-    strippedNumber = @"45677003898003";
-    rawInput = numberToStrip.rawInput;
-    STAssertEquals(FROM_NUMBER_WITH_IDD, [phoneUtil maybeStripInternationalPrefixAndNormalize:&rawInput
+    // Note the dash is removed as part of the normalization.
+    NSString *strippedNumberString = @"45677003898003";
+    STAssertEquals(FROM_NUMBER_WITH_IDD, [phoneUtil maybeStripInternationalPrefixAndNormalize:&numberToStripPrefix
                                                                             possibleIddPrefix:internationalPrefix], nil);
-    STAssertEqualObjects(strippedNumber, rawInput, @"The number supplied was not stripped of its international prefix.");
+    STAssertEqualObjects(strippedNumberString, numberToStripPrefix, @"The number supplied was not stripped of its international prefix.");
     // Now the number no longer starts with an IDD prefix, so it should now report
     // FROM_DEFAULT_COUNTRY.
-    STAssertEquals(FROM_DEFAULT_COUNTRY, [phoneUtil maybeStripInternationalPrefixAndNormalize:&rawInput
+    STAssertEquals(FROM_DEFAULT_COUNTRY, [phoneUtil maybeStripInternationalPrefixAndNormalize:&numberToStripPrefix
                                                                                   possibleIddPrefix:internationalPrefix], nil);
     
-    numberToStrip.rawInput = @"00945677003898003";
-    rawInput = numberToStrip.rawInput;
-    STAssertEquals(FROM_NUMBER_WITH_IDD, [phoneUtil maybeStripInternationalPrefixAndNormalize:&rawInput
+    numberToStripPrefix = @"00945677003898003";
+    STAssertEquals(FROM_NUMBER_WITH_IDD, [phoneUtil maybeStripInternationalPrefixAndNormalize:&numberToStripPrefix
                                                                             possibleIddPrefix:internationalPrefix], nil);
-    STAssertEqualObjects(strippedNumber, rawInput, @"The number supplied was not stripped of its international prefix.");
+    STAssertEqualObjects(strippedNumberString, numberToStripPrefix, @"The number supplied was not stripped of its international prefix.");
     // Test it works when the international prefix is broken up by spaces.
-    numberToStrip.rawInput = @"00 9 45677003898003";
-    rawInput = numberToStrip.rawInput;
-    STAssertEquals(FROM_NUMBER_WITH_IDD, [phoneUtil maybeStripInternationalPrefixAndNormalize:&rawInput
+    numberToStripPrefix = @"00 9 45677003898003";
+    STAssertEquals(FROM_NUMBER_WITH_IDD, [phoneUtil maybeStripInternationalPrefixAndNormalize:&numberToStripPrefix
                                                                             possibleIddPrefix:internationalPrefix], nil);
-    STAssertEqualObjects(strippedNumber, rawInput, @"The number supplied was not stripped of its international prefix.");
+    STAssertEqualObjects(strippedNumberString, numberToStripPrefix, @"The number supplied was not stripped of its international prefix.");
     // Now the number no longer starts with an IDD prefix, so it should now report
     // FROM_DEFAULT_COUNTRY.
-    STAssertEquals(FROM_DEFAULT_COUNTRY, [phoneUtil maybeStripInternationalPrefixAndNormalize:&rawInput
+    STAssertEquals(FROM_DEFAULT_COUNTRY, [phoneUtil maybeStripInternationalPrefixAndNormalize:&numberToStripPrefix
                                                                             possibleIddPrefix:internationalPrefix], nil);
     
     // Test the + symbol is also recognised and stripped.
-    numberToStrip.rawInput = @"+45677003898003";
-    rawInput = numberToStrip.rawInput;
-    strippedNumber = @"45677003898003";
-    STAssertEquals(FROM_NUMBER_WITH_PLUS_SIGN, [phoneUtil maybeStripInternationalPrefixAndNormalize:&rawInput
+    numberToStripPrefix = @"+45677003898003";
+    strippedNumberString = @"45677003898003";
+    STAssertEquals(FROM_NUMBER_WITH_PLUS_SIGN, [phoneUtil maybeStripInternationalPrefixAndNormalize:&numberToStripPrefix
                                                                                   possibleIddPrefix:internationalPrefix], nil);
-    STAssertEqualObjects(strippedNumber, numberToStrip.rawInput, @"The number supplied was not stripped of the plus symbol.");
+    STAssertEqualObjects(strippedNumberString, numberToStripPrefix, @"The number supplied was not stripped of the plus symbol.");
     
     // If the number afterwards is a zero, we should not strip this - no country
     // calling code begins with 0.
-    numberToStrip.rawInput = @"0090112-3123";
-    rawInput = numberToStrip.rawInput;
-    strippedNumber = @"00901123123";
-    STAssertEquals(FROM_DEFAULT_COUNTRY, [phoneUtil maybeStripInternationalPrefixAndNormalize:&rawInput
+    numberToStripPrefix = @"0090112-3123";
+    strippedNumberString = @"00901123123";
+    STAssertEquals(FROM_DEFAULT_COUNTRY, [phoneUtil maybeStripInternationalPrefixAndNormalize:&numberToStripPrefix
                                                                             possibleIddPrefix:internationalPrefix], nil);
-    STAssertEqualObjects(strippedNumber, numberToStrip.rawInput, @"The number supplied had a 0 after the match so should not be stripped.");
+    STAssertEqualObjects(strippedNumberString, numberToStripPrefix, @"The number supplied had a 0 after the match so should not be stripped.");
     // Here the 0 is separated by a space from the IDD.
-    numberToStrip.rawInput = @"009 0-112-3123";
-    rawInput = numberToStrip.rawInput;
-    STAssertEquals(FROM_DEFAULT_COUNTRY, [phoneUtil maybeStripInternationalPrefixAndNormalize:&rawInput
+    numberToStripPrefix = @"009 0-112-3123";
+    STAssertEquals(FROM_DEFAULT_COUNTRY, [phoneUtil maybeStripInternationalPrefixAndNormalize:&numberToStripPrefix
                                                                             possibleIddPrefix:internationalPrefix], nil);
+}
 
 #pragma mark - testMaybeExtractCountryCode
     NSLog(@"-------------- testMaybeExtractCountryCode");
@@ -1500,7 +1495,7 @@
     NSString *numberToFill = [[NSString alloc] init];
     STAssertEquals(countryCallingCode, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
                                                                  nationalNumber:&numberToFill keepRawInput:YES phoneNumber:&number], nil);
-    STAssertEquals(FROM_NUMBER_WITH_IDD, number.countryCodeSource, @"Did not figure out CountryCodeSource correctly");
+    STAssertEquals(FROM_NUMBER_WITH_IDD, [number.countryCodeSource intValue], @"Did not figure out CountryCodeSource correctly");
     // Should strip and normalize national significant number.
     STAssertEqualObjects(strippedNumber, numberToFill, @"Did not strip off the country calling code correctly.");
     
@@ -1510,7 +1505,7 @@
     numberToFill = [[NSString alloc] init];
     STAssertEquals(countryCallingCode, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
                                                                  nationalNumber:&numberToFill keepRawInput:YES phoneNumber:&number], nil);
-    STAssertEquals(FROM_NUMBER_WITH_PLUS_SIGN, number.countryCodeSource, @"Did not figure out CountryCodeSource correctly");
+    STAssertEquals(FROM_NUMBER_WITH_PLUS_SIGN, [number.countryCodeSource intValue], @"Did not figure out CountryCodeSource correctly");
     
     number = [[NBPhoneNumber alloc] init];
     phoneNumber = @"+80012345678";
@@ -1518,14 +1513,14 @@
     numberToFill = [[NSString alloc] init];
     STAssertEquals(countryCallingCode, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
                                              nationalNumber:&numberToFill keepRawInput:YES phoneNumber:&number], nil);
-    STAssertEquals(FROM_NUMBER_WITH_PLUS_SIGN, number.countryCodeSource, @"Did not figure out CountryCodeSource correctly");
+    STAssertEquals(FROM_NUMBER_WITH_PLUS_SIGN, [number.countryCodeSource intValue], @"Did not figure out CountryCodeSource correctly");
     
     number = [[NBPhoneNumber alloc] init];
     phoneNumber = @"2345-6789";
     numberToFill = [[NSString alloc] init];
-    STAssertEquals(phoneNumber, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
-                                             nationalNumber:&numberToFill  keepRawInput:YES phoneNumber:&number], nil);
-    STAssertEquals(FROM_DEFAULT_COUNTRY, number.countryCodeSource, @"Did not figure out CountryCodeSource correctly");
+    STAssertEquals((UInt32)0, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
+                                             nationalNumber:&numberToFill keepRawInput:YES phoneNumber:&number], nil);
+    STAssertEquals(FROM_DEFAULT_COUNTRY, [number.countryCodeSource intValue], @"Did not figure out CountryCodeSource correctly");
 
                              
     number = [[NBPhoneNumber alloc] init];
@@ -1548,7 +1543,7 @@
         STAssertEquals(countryCallingCode, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
                                                                      nationalNumber:&numberToFill keepRawInput:YES phoneNumber:&number],
                              @"Should have extracted the country calling code of the region passed in");
-        STAssertEquals(FROM_NUMBER_WITHOUT_PLUS_SIGN, number.countryCodeSource, @"Did not figure out CountryCodeSource correctly");
+        STAssertEquals(FROM_NUMBER_WITHOUT_PLUS_SIGN, [number.countryCodeSource intValue], @"Did not figure out CountryCodeSource correctly");
     }
     @catch (NSException *exception) {
         NSLog(@"%@", exception.reason);
@@ -1570,7 +1565,7 @@
     phoneNumber = @"(1 610) 619 446";
     numberToFill = [[NSString alloc] init];
     @try {
-        STAssertEquals(0, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
+        STAssertEquals((UInt32)0, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
                                                     nationalNumber:&numberToFill keepRawInput:NO phoneNumber:&number], nil);
         STAssertFalse(number.countryCode == 0, @"Should not contain CountryCodeSource.");
     }
@@ -1582,7 +1577,7 @@
     phoneNumber = @"(1 610) 619";
     numberToFill = [[NSString alloc] init];
     @try {
-        STAssertEquals(@0, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
+        STAssertEquals((UInt32)0, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
                                                        nationalNumber:&numberToFill keepRawInput:YES phoneNumber:&number], nil);
         STAssertEquals(FROM_DEFAULT_COUNTRY, number.countryCodeSource, nil);
     }

@@ -2739,7 +2739,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     while ([self isValidNumber:numberCopy] == NO);
     
     number.nationalNumber = nationalNumber;
-    return NO;
+    return YES;
 }
 
 
@@ -3064,7 +3064,14 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
                 return NO;
         }
         
-        if ((noTransform && numOfGroups > 0 && [self hasValue:firstMatchString]) || (!noTransform && numOfGroups > 1))
+        if ((noTransform && numOfGroups > 0 && [self hasValue:firstMatchStringWithGroup]) || (!noTransform && numOfGroups > 1))
+        {
+            if ((*carrierCode) != nil)
+            {
+                (*carrierCode) = [(*carrierCode) stringByAppendingString:firstMatchStringWithGroup];
+            }
+        }
+        else if ((noTransform && numOfGroups > 0 && [self hasValue:firstMatchString]) || (!noTransform && numOfGroups > 1))
         {
             if ((*carrierCode) != nil)
             {

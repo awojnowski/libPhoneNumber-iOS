@@ -268,7 +268,7 @@
 
     <!-- United Kingdom -->
     <territory id="GB" countryCode="44" internationalPrefix="00"
-               nationalPrefix="0" nationalPrefixFormattingRule="($NP$FG)">
+               nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{4})(\d{4})">
           <leadingDigits>[1-59]|[78]0</leadingDigits>

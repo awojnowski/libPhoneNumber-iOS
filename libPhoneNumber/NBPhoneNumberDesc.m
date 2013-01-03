@@ -7,10 +7,27 @@
 //
 
 #import "NBPhoneNumberDesc.h"
+#import "NBPhoneNumberDefines.h"
 
 @implementation NBPhoneNumberDesc
 
 @synthesize nationalNumberPattern, possibleNumberPattern, exampleNumber;
+
+
+- (id)initWithData:(id)data
+{
+    self = [self init];
+    
+    if (self && data != nil && [data isKindOfClass:[NSArray class]])
+    {
+        /* 2 */ self.nationalNumberPattern = [data safeObjectAtIndex:2];
+        /* 3 */ self.possibleNumberPattern = [data safeObjectAtIndex:3];
+        /* 6 */ self.exampleNumber = [data safeObjectAtIndex:6];
+    }
+    
+    return self;
+}
+
 
 - (id)init
 {
@@ -18,8 +35,6 @@
     
     if (self)
     {
-        [self setNationalNumberPattern:@"NA"];
-        [self setPossibleNumberPattern:@"NA"];
     }
     
     return self;
@@ -28,7 +43,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"\n          natnumpat[%@]\n          posnumpat[%@]\n          ex[%@]", self.nationalNumberPattern, self.possibleNumberPattern, self.exampleNumber];
+    return [NSString stringWithFormat:@"nationalNumberPattern[%@] possibleNumberPattern[%@] exampleNumber[%@]", self.nationalNumberPattern, self.possibleNumberPattern, self.exampleNumber];
 }
 
 - (id)copyWithZone:(NSZone *)zone

@@ -12,7 +12,6 @@
 #import <libxml/xpath.h>
 #import <libxml/xpathInternals.h>
 
-#import "NBPhoneNumberManager.h"
 #import "M2PhoneMetaDataGenerator.h"
 #import "NBPhoneMetaData.h"
 
@@ -31,7 +30,7 @@
     return self;
 }
 
-
+/*
 - (NSString *)documentsDirectory
 {
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -142,7 +141,7 @@
     xmlXPathContextPtr xpathCtx;
     xmlXPathObjectPtr xpathObj;
     
-    /* Create xpath evaluation context */
+    // Create xpath evaluation context
     xpathCtx = xmlXPathNewContext(doc);
     if (xpathCtx == NULL)
 	{
@@ -150,7 +149,7 @@
 		return nil;
     }
     
-    /* Evaluate xpath expression */
+    // Evaluate xpath expression
     xpathObj = xmlXPathEvalExpression((xmlChar *)[query cStringUsingEncoding:NSUTF8StringEncoding], xpathCtx);
     if (xpathObj == NULL)
     {
@@ -175,7 +174,7 @@
 		}
 	}
     
-    /* Cleanup */
+    // Cleanup
     xmlXPathFreeObject(xpathObj);
     xmlXPathFreeContext(xpathCtx);
     
@@ -187,7 +186,7 @@
 {
     xmlDocPtr doc;
     
-    /* Load XML document */
+    // Load XML document
 	doc = htmlReadMemory([document bytes], [document length], "", NULL, HTML_PARSE_NOWARNING | HTML_PARSE_NOERROR | XML_PARSE_NOBLANKS);
 	
     if (doc == NULL)
@@ -207,7 +206,7 @@
 {
     xmlDocPtr doc;
 	
-    /* Load XML document */
+    // Load XML document
 	doc = xmlReadMemory([document bytes], [document length], "", NULL, XML_PARSE_RECOVER);
 	
     if (doc == NULL)
@@ -221,22 +220,48 @@
 	
 	return result;
 }
-
+*/
 
 - (NSDictionary *)generateMetaData
 {
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"PhoneNumberMetaData" ofType:@"xml"];
-    return [self parseXML:filePath];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"PhoneNumberMetaData" ofType:@"json"];
+    return [self parseJSON:filePath];
 }
 
 
 - (NSDictionary *)generateMetaDataWithTest
 {
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"PhoneNumberMetaDataForTesting" ofType:@"xml"];
-    return [self parseXML:filePath];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"PhoneNumberMetaDataForTesting" ofType:@"json"];
+    return [self parseJSON:filePath];
 }
 
+- (NSDictionary *)parseJSON:(NSString*)filePath
+{
+    NSData *jsonData = [NSData dataWithContentsOfFile:filePath];
+    NSError *error = nil;
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
+    
+    NSDictionary *countryCodeToRegionCodeMap = [json objectForKey:@"countryCodeToRegionCodeMap"];
+    NSDictionary *countryToMetadata = [json objectForKey:@"countryToMetadata"];
+    NSLog(@"- countryCodeToRegionCodeMap count [%d]", [countryCodeToRegionCodeMap count]);
+    NSLog(@"- countryToMetadata          count [%d]", [countryToMetadata count]);
+    
+    NSMutableDictionary *genetatedMetaData = [[NSMutableDictionary alloc] init];
+    
+    for (id key in [countryToMetadata allKeys])
+    {
+        id metaData = [countryToMetadata objectForKey:key];
 
+        NBPhoneMetaData *newMetaData = [[NBPhoneMetaData alloc] init];
+        [newMetaData buildData:metaData];
+
+        [genetatedMetaData setObject:newMetaData forKey:key];
+    }
+    
+    return genetatedMetaData;
+}
+
+/*
 - (NSDictionary *)parseXML:(NSString*)filePath
 {
     NSData *xmlData = [NSData dataWithContentsOfFile:filePath];
@@ -290,6 +315,6 @@
     
     return coreMetaData;
 }
-
+*/
 
 @end

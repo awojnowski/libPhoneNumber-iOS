@@ -9,18 +9,13 @@
 #import "NBPhoneMetaData.h"
 #import "NBPhoneNumberDesc.h"
 #import "NBNumberFormat.h"
-#import "NBPhoneNumberManager.h"
-
+#import "NBPhoneNumberDefines.h"
 
 @implementation NBPhoneMetaData
 
-@synthesize codeID, countryCode;
-@synthesize preferredInternationalPrefix, internationalPrefix, leadingDigits;
-@synthesize nationalPrefix, nationalPrefixForParsing, nationalPrefixTransformRule;
-@synthesize preferredExtnPrefix, nationalPrefixFormattingRule, carrierCodeFormattingRule;
-@synthesize mainCountryForCode, nationalPrefixOptionalWhenFormatting, leadingZeroPossible;
-@synthesize numberFormats; //, intlNumberFormats;
 @synthesize generalDesc, fixedLine, mobile, tollFree, premiumRate, sharedCost, personalNumber, voip, pager, uan, emergency, voicemail, noInternationalDialling;
+@synthesize codeID, countryCode;
+@synthesize internationalPrefix, preferredInternationalPrefix, nationalPrefix, preferredExtnPrefix, nationalPrefixForParsing, nationalPrefixTransformRule, sameMobileAndFixedLinePattern, numberFormats, intlNumberFormats, mainCountryForCode, leadingDigits, leadingZeroPossible;
 
 - (id)init
 {
@@ -29,24 +24,10 @@
     if (self)
     {
         [self setNumberFormats:[[NSMutableArray alloc] init]];
-        //[self setIntlNumberFormats:[[NSMutableArray alloc] init]];
+        [self setIntlNumberFormats:[[NSMutableArray alloc] init]];
 
-        self.generalDesc = nil;
-        self.fixedLine = nil;
-        self.mobile = nil;
-        self.tollFree = nil;
-        self.premiumRate = nil;
-        self.sharedCost = nil;
-        self.personalNumber = nil;
-        self.voip = nil;
-        self.pager = nil;
-        self.uan = nil;
-        self.emergency = nil;
-        self.voicemail = nil;
-        self.noInternationalDialling = nil;
-        
-        [self setLeadingZeroPossible:[NSNumber numberWithBool:NO]];
-        [self setMainCountryForCode:[NSNumber numberWithBool:NO]];
+        self.leadingZeroPossible = NO;
+        self.mainCountryForCode = NO;
     }
     
     return self;
@@ -55,15 +36,71 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"--------------------------------------------------------------------------------------------------\n--- %@ (%@) leadingDigits[%@], pEP:(%@), iP(%@), nP(%@), nPFP(%@), nPTR(%@), nPFR(%@), cCFR(%@)]\n--- mCFC[%@], nPOWF[%@], lZP[%@]\n--- AavailableFormats:%@\n---  generalDesc - %@\n fixedLine - %@\n mobile - %@\n tollFree - %@\n premiumRate - %@\n sharedCost - %@\n personalNumber - %@\n voip - %@\n pager - %@\n uan - %@\n emergency - %@\n voicemail - %@\n noInternationalDialling - %@",
-            self.codeID, self.countryCode, self.leadingDigits, self.preferredExtnPrefix, self.internationalPrefix,
-            self.nationalPrefix, self.nationalPrefixForParsing, self.nationalPrefixTransformRule,
-            self.nationalPrefixFormattingRule, self.carrierCodeFormattingRule,
-            [self.mainCountryForCode boolValue]?@"Y":@"N",
-            [self.nationalPrefixOptionalWhenFormatting boolValue]?@"Y":@"N",
-            [self.leadingZeroPossible boolValue]?@"Y":@"N", self.numberFormats,
-            self.generalDesc, self.fixedLine, self.mobile, self.tollFree, self.premiumRate, self.sharedCost, self.personalNumber, self.voip, self.pager, self.uan, self.emergency, self.voicemail, self.noInternationalDialling];
+    return [NSString stringWithFormat:@"* codeID[%@] countryCode[%ld] generalDesc[%@] fixedLine[%@] mobile[%@] tollFree[%@] premiumRate[%@] sharedCost[%@] personalNumber[%@] voip[%@] pager[%@] uan[%@] emergency[%@] voicemail[%@] noInternationalDialling[%@] internationalPrefix[%@] preferredInternationalPrefix[%@] nationalPrefix[%@] preferredExtnPrefix[%@] nationalPrefixForParsing[%@] nationalPrefixTransformRule[%@] sameMobileAndFixedLinePattern[%@] numberFormats[%@] intlNumberFormats[%@] mainCountryForCode[%@] leadingDigits[%@] leadingZeroPossible[%@]",
+             self.codeID, self.countryCode, self.generalDesc, self.fixedLine, self.mobile, self.tollFree, self.premiumRate, self.sharedCost, self.personalNumber, self.voip, self.pager, self.uan, self.emergency, self.voicemail, self.noInternationalDialling, self.internationalPrefix, self.preferredInternationalPrefix, self.nationalPrefix, self.preferredExtnPrefix, self.nationalPrefixForParsing, self.nationalPrefixTransformRule, self.sameMobileAndFixedLinePattern?@"Y":@"N", self.numberFormats, self.intlNumberFormats, self.mainCountryForCode?@"Y":@"N", self.leadingDigits, self.leadingZeroPossible?@"Y":@"N"];
 }
+
+
+- (void)buildData:(id)data
+{
+    if (data != nil && [data isKindOfClass:[NSArray class]] )
+    {
+        /*  1 */ self.generalDesc = [[NBPhoneNumberDesc alloc] initWithData:[data safeObjectAtIndex:1]];
+        /*  2 */ self.fixedLine = [[NBPhoneNumberDesc alloc] initWithData:[data safeObjectAtIndex:2]];
+        /*  3 */ self.mobile = [[NBPhoneNumberDesc alloc] initWithData:[data safeObjectAtIndex:3]];
+        /*  4 */ self.tollFree = [[NBPhoneNumberDesc alloc] initWithData:[data safeObjectAtIndex:4]];
+        /*  5 */ self.premiumRate = [[NBPhoneNumberDesc alloc] initWithData:[data safeObjectAtIndex:5]];
+        /*  6 */ self.sharedCost = [[NBPhoneNumberDesc alloc] initWithData:[data safeObjectAtIndex:6]];
+        /*  7 */ self.personalNumber = [[NBPhoneNumberDesc alloc] initWithData:[data safeObjectAtIndex:7]];
+        /*  8 */ self.voip = [[NBPhoneNumberDesc alloc] initWithData:[data safeObjectAtIndex:8]];
+        /* 21 */ self.pager = [[NBPhoneNumberDesc alloc] initWithData:[data safeObjectAtIndex:21]];
+        /* 25 */ self.uan = [[NBPhoneNumberDesc alloc] initWithData:[data safeObjectAtIndex:25]];
+        /* 27 */ self.emergency = [[NBPhoneNumberDesc alloc] initWithData:[data safeObjectAtIndex:27]];
+        /* 28 */ self.voicemail = [[NBPhoneNumberDesc alloc] initWithData:[data safeObjectAtIndex:28]];
+        /* 24 */ self.noInternationalDialling = [[NBPhoneNumberDesc alloc] initWithData:[data safeObjectAtIndex:24]];
+        /*  9 */ self.codeID = [data safeObjectAtIndex:9];
+        /* 10 */ self.countryCode = (UInt32)[[data safeObjectAtIndex:10] intValue];
+        /* 11 */ self.internationalPrefix = [data safeObjectAtIndex:11];
+        /* 17 */ self.preferredInternationalPrefix = [data safeObjectAtIndex:17];
+        /* 12 */ self.nationalPrefix = [data safeObjectAtIndex:12];
+        /* 13 */ self.preferredExtnPrefix = [data safeObjectAtIndex:13];
+        /* 15 */ self.nationalPrefixForParsing = [data safeObjectAtIndex:15];
+        /* 16 */ self.nationalPrefixTransformRule = [data safeObjectAtIndex:16];
+        /* 18 */ self.sameMobileAndFixedLinePattern = [[data safeObjectAtIndex:18] boolValue];
+        /* 19 */ self.numberFormats = [self numberFormatArrayFromData:[data safeObjectAtIndex:19]];     // NBNumberFormat array
+        /* 20 */ self.intlNumberFormats = [self numberFormatArrayFromData:[data safeObjectAtIndex:20]]; // NBNumberFormat array
+        /* 22 */ self.mainCountryForCode = [[data safeObjectAtIndex:22] boolValue];
+        /* 23 */ self.leadingDigits = [data safeObjectAtIndex:23];
+        /* 26 */ self.leadingZeroPossible = [[data safeObjectAtIndex:26] boolValue];
+    }
+    else
+    {
+        NSLog(@"nil data or wrong data type");
+    }
+}
+
+- (NSMutableArray*)numberFormatArrayFromData:(id)data
+{
+    NSMutableArray *resArray = [[NSMutableArray alloc] init];
+    if (data != nil && [data isKindOfClass:[NSArray class]])
+    {
+        for (id numFormat in data)
+        {
+            NBNumberFormat *newNumberFormat = [[NBNumberFormat alloc] initWithData:numFormat];
+            [resArray addObject:newNumberFormat];
+        }
+    }
+    
+    return resArray;
+}
+
+/*
+- (NSString*)getNormalizedNationalPrefixFormattingRule
+{
+    NSString *replacedFormattingRule = [self.nationalPrefixFormattingRule stringByReplacingOccurrencesOfString:@"$NP" withString:self.nationalPrefix];
+    return replacedFormattingRule;
+}
+
 
 - (BOOL)sameMobileAndFixedLinePattern
 {
@@ -348,250 +385,6 @@
     
     [self updateDescriptions];
 }
-
+*/
 
 @end
-
-
-/*
- goog.proto2.Message.set$Metadata(i18n.phonenumbers.NumberFormat, {
- 0: {
- name: 'NumberFormat',
- fullName: 'i18n.phonenumbers.NumberFormat'
- },
- 1: {
- name: 'pattern',
- required: true,
- fieldType: goog.proto2.Message.FieldType.STRING,
- type: String
- },
- 2: {
- name: 'format',
- required: true,
- fieldType: goog.proto2.Message.FieldType.STRING,
- type: String
- },
- 3: {
- name: 'leading_digits_pattern',
- repeated: true,
- fieldType: goog.proto2.Message.FieldType.STRING,
- type: String
- },
- 4: {
- name: 'national_prefix_formatting_rule',
- fieldType: goog.proto2.Message.FieldType.STRING,
- type: String
- },
- 6: {
- name: 'national_prefix_optional_when_formatting',
- fieldType: goog.proto2.Message.FieldType.BOOL,
- type: Boolean
- },
- 5: {
- name: 'domestic_carrier_code_formatting_rule',
- fieldType: goog.proto2.Message.FieldType.STRING,
- type: String
- }
- });
- 
- 
- goog.proto2.Message.set$Metadata(i18n.phonenumbers.PhoneNumberDesc, {
- 0: {
- name: 'PhoneNumberDesc',
- fullName: 'i18n.phonenumbers.PhoneNumberDesc'
- },
- 2: {
- name: 'national_number_pattern',
- fieldType: goog.proto2.Message.FieldType.STRING,
- type: String
- },
- 3: {
- name: 'possible_number_pattern',
- fieldType: goog.proto2.Message.FieldType.STRING,
- type: String
- },
- 6: {
- name: 'example_number',
- fieldType: goog.proto2.Message.FieldType.STRING,
- type: String
- }
- });
- 
- 
- goog.proto2.Message.set$Metadata(i18n.phonenumbers.PhoneMetadata, {
- 0: {
- name: 'PhoneMetadata',
- fullName: 'i18n.phonenumbers.PhoneMetadata'
- },
- 1: {
- name: 'general_desc',
- required: true,
- fieldType: goog.proto2.Message.FieldType.MESSAGE,
- type: i18n.phonenumbers.PhoneNumberDesc
- },
- 2: {
- name: 'fixed_line',
- required: true,
- fieldType: goog.proto2.Message.FieldType.MESSAGE,
- type: i18n.phonenumbers.PhoneNumberDesc
- },
- 3: {
- name: 'mobile',
- required: true,
- fieldType: goog.proto2.Message.FieldType.MESSAGE,
- type: i18n.phonenumbers.PhoneNumberDesc
- },
- 4: {
- name: 'toll_free',
- required: true,
- fieldType: goog.proto2.Message.FieldType.MESSAGE,
- type: i18n.phonenumbers.PhoneNumberDesc
- },
- 5: {
- name: 'premium_rate',
- required: true,
- fieldType: goog.proto2.Message.FieldType.MESSAGE,
- type: i18n.phonenumbers.PhoneNumberDesc
- },
- 6: {
- name: 'shared_cost',
- required: true,
- fieldType: goog.proto2.Message.FieldType.MESSAGE,
- type: i18n.phonenumbers.PhoneNumberDesc
- },
- 7: {
- name: 'personal_number',
- required: true,
- fieldType: goog.proto2.Message.FieldType.MESSAGE,
- type: i18n.phonenumbers.PhoneNumberDesc
- },
- 8: {
- name: 'voip',
- required: true,
- fieldType: goog.proto2.Message.FieldType.MESSAGE,
- type: i18n.phonenumbers.PhoneNumberDesc
- },
- 21: {
- name: 'pager',
- required: true,
- fieldType: goog.proto2.Message.FieldType.MESSAGE,
- type: i18n.phonenumbers.PhoneNumberDesc
- },
- 25: {
- name: 'uan',
- required: true,
- fieldType: goog.proto2.Message.FieldType.MESSAGE,
- type: i18n.phonenumbers.PhoneNumberDesc
- },
- 27: {
- name: 'emergency',
- required: true,
- fieldType: goog.proto2.Message.FieldType.MESSAGE,
- type: i18n.phonenumbers.PhoneNumberDesc
- },
- 28: {
- name: 'voicemail',
- required: true,
- fieldType: goog.proto2.Message.FieldType.MESSAGE,
- type: i18n.phonenumbers.PhoneNumberDesc
- },
- 24: {
- name: 'no_international_dialling',
- required: true,
- fieldType: goog.proto2.Message.FieldType.MESSAGE,
- type: i18n.phonenumbers.PhoneNumberDesc
- },
- 9: {
- name: 'id',
- required: true,
- fieldType: goog.proto2.Message.FieldType.STRING,
- type: String
- },
- 10: {
- name: 'country_code',
- required: true,
- fieldType: goog.proto2.Message.FieldType.INT32,
- type: Number
- },
- 11: {
- name: 'international_prefix',
- required: true,
- fieldType: goog.proto2.Message.FieldType.STRING,
- type: String
- },
- 17: {
- name: 'preferred_international_prefix',
- fieldType: goog.proto2.Message.FieldType.STRING,
- type: String
- },
- 12: {
- name: 'national_prefix',
- fieldType: goog.proto2.Message.FieldType.STRING,
- type: String
- },
- 13: {
- name: 'preferred_extn_prefix',
- fieldType: goog.proto2.Message.FieldType.STRING,
- type: String
- },
- 15: {
- name: 'national_prefix_for_parsing',
- fieldType: goog.proto2.Message.FieldType.STRING,
- type: String
- },
- 16: {
- name: 'national_prefix_transform_rule',
- fieldType: goog.proto2.Message.FieldType.STRING,
- type: String
- },
- 18: {
- name: 'same_mobile_and_fixed_line_pattern',
- fieldType: goog.proto2.Message.FieldType.BOOL,
- defaultValue: false,
- type: Boolean
- },
- 19: {
- name: 'number_format',
- repeated: true,
- fieldType: goog.proto2.Message.FieldType.MESSAGE,
- type: i18n.phonenumbers.NumberFormat
- },
- 20: {
- name: 'intl_number_format',
- repeated: true,
- fieldType: goog.proto2.Message.FieldType.MESSAGE,
- type: i18n.phonenumbers.NumberFormat
- },
- 22: {
- name: 'main_country_for_code',
- fieldType: goog.proto2.Message.FieldType.BOOL,
- defaultValue: false,
- type: Boolean
- },
- 23: {
- name: 'leading_digits',
- fieldType: goog.proto2.Message.FieldType.STRING,
- type: String
- },
- 26: {
- name: 'leading_zero_possible',
- fieldType: goog.proto2.Message.FieldType.BOOL,
- defaultValue: false,
- type: Boolean
- }
- });
- 
- 
- goog.proto2.Message.set$Metadata(i18n.phonenumbers.PhoneMetadataCollection, {
- 0: {
- name: 'PhoneMetadataCollection',
- fullName: 'i18n.phonenumbers.PhoneMetadataCollection'
- },
- 1: {
- name: 'metadata',
- repeated: true,
- fieldType: goog.proto2.Message.FieldType.MESSAGE,
- type: i18n.phonenumbers.PhoneMetadata
- }
- });
- */

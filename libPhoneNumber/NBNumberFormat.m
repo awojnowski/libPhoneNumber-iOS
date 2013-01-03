@@ -7,11 +7,30 @@
 //
 
 #import "NBNumberFormat.h"
-
+#import "NBPhoneNumberDefines.h"
 
 @implementation NBNumberFormat
 
-@synthesize leadingDigitsPattern, pattern, format, nationalPrefixFormattingRule, carrierCodeFormattingRule, intlFormat, nationalPrefix;
+@synthesize pattern, format, leadingDigitsPatterns, nationalPrefixFormattingRule, nationalPrefixOptionalWhenFormatting, domesticCarrierCodeFormattingRule;
+
+
+- (id)initWithData:(id)data
+{
+    self = [self init];
+    
+    if (self && data != nil && [data isKindOfClass:[NSArray class]])
+    {
+        /* 1 */ self.pattern = [data safeObjectAtIndex:1];
+        /* 2 */ self.format = [data safeObjectAtIndex:2];
+        /* 3 */ self.leadingDigitsPatterns = [self stringArrayFromData:[data safeObjectAtIndex:3]]; // NSString array
+        /* 4 */ self.nationalPrefixFormattingRule = [data safeObjectAtIndex:4];
+        /* 6 */ self.nationalPrefixOptionalWhenFormatting = [[data safeObjectAtIndex:6] boolValue];
+        /* 5 */ self.domesticCarrierCodeFormattingRule = [data safeObjectAtIndex:5];
+    }
+    
+    return self;
+}
+
 
 - (id)init
 {
@@ -19,17 +38,40 @@
     
     if (self)
     {
-        [self setLeadingDigitsPattern:[[NSMutableArray alloc] init]];
+        self.nationalPrefixOptionalWhenFormatting = NO;
+        self.leadingDigitsPatterns = [[NSMutableArray alloc] init];
     }
     
     return self;
 }
 
 
+- (NSMutableArray*)stringArrayFromData:(id)data
+{
+    NSMutableArray *resArray = [[NSMutableArray alloc] init];
+    if (data != nil && [data isKindOfClass:[NSArray class]])
+    {
+        for (id numFormat in data)
+        {
+            if ([numFormat isKindOfClass:[NSString class]])
+            {
+                [resArray addObject:numFormat];
+            }
+            else
+            {
+                [resArray addObject:[numFormat stringValue]];
+            }
+        }
+    }
+    
+    return resArray;
+}
+
+
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"[nationalPrefixFormattingRule:%@, carrierCodeFormattingRule:%@] - %@(%@) intlFormat[%@] leadingDigits[%@] [%@] nationalPrefix[%@]",
-            self.nationalPrefixFormattingRule, self.carrierCodeFormattingRule, self.pattern, self.format, self.intlFormat, self.leadingDigitsPattern, [self.nationalPrefixOptionalWhenFormatting boolValue]?@"Y":@"N", self.nationalPrefix];
+    return [NSString stringWithFormat:@"[pattern:%@, format:%@, leadingDigitsPattern:%@, nationalPrefixFormattingRule:%@, nationalPrefixOptionalWhenFormatting:%@, domesticCarrierCodeFormattingRule:%@]",
+            self.pattern, self.format, self.leadingDigitsPatterns, self.nationalPrefixFormattingRule, self.nationalPrefixOptionalWhenFormatting?@"Y":@"N", self.domesticCarrierCodeFormattingRule];
 }
 
 
@@ -37,15 +79,36 @@
 {
 	NBNumberFormat *phoneFormatCopy = [[NBNumberFormat allocWithZone:zone] init];
     
-    phoneFormatCopy.intlFormat = [self.intlFormat copy];
-    phoneFormatCopy.carrierCodeFormattingRule = [self.carrierCodeFormattingRule copy];
+    /*
+     1 @property (nonatomic, strong, readwrite) NSString *pattern;
+     2 @property (nonatomic, strong, readwrite) NSString *format;
+     3 @property (nonatomic, strong, readwrite) NSString *leadingDigitsPattern;
+     4 @property (nonatomic, strong, readwrite) NSString *nationalPrefixFormattingRule;
+     6 @property (nonatomic, assign, readwrite) BOOL nationalPrefixOptionalWhenFormatting;
+     5 @property (nonatomic, strong, readwrite) NSString *domesticCarrierCodeFormattingRule;
+    */
+    
     phoneFormatCopy.pattern = [self.pattern copy];
-    phoneFormatCopy.nationalPrefixFormattingRule = [self.nationalPrefixFormattingRule copy];
     phoneFormatCopy.format = [self.format copy];
-    phoneFormatCopy.nationalPrefixOptionalWhenFormatting = [self.nationalPrefixOptionalWhenFormatting copy];
-    phoneFormatCopy.leadingDigitsPattern = [self.leadingDigitsPattern copy];
+    phoneFormatCopy.leadingDigitsPatterns = [self.leadingDigitsPatterns copy];
+    phoneFormatCopy.nationalPrefixFormattingRule = [self.nationalPrefixFormattingRule copy];
+    phoneFormatCopy.nationalPrefixOptionalWhenFormatting = self.nationalPrefixOptionalWhenFormatting;
+    phoneFormatCopy.domesticCarrierCodeFormattingRule = [self.domesticCarrierCodeFormattingRule copy];
     
 	return phoneFormatCopy;
+}
+
+
+- (void)setData:(id)data
+{
+    if ([data isKindOfClass:[NSArray class]] || [data isKindOfClass:[NSMutableArray class]])
+    {
+        
+    }
+    else if ([data isKindOfClass:[NSDictionary class]] || [data isKindOfClass:[NSMutableDictionary class]])
+    {
+        
+    }
 }
 
 @end

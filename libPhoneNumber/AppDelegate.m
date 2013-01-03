@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "NBPhoneNumberManager.h"
+#import "NBPhoneNumberUtil.h"
 
 @implementation AppDelegate
 

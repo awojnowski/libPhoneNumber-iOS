@@ -7,9 +7,11 @@
 //
 
 #import "NBPhoneNumber.h"
+#import "NBPhoneNumberDefines.h"
 
 @implementation NBPhoneNumber
 
+@synthesize countryCode, nationalNumber, extension, italianLeadingZero, rawInput, countryCodeSource, preferredDomesticCarrierCode;
 
 - (id)init
 {
@@ -17,12 +19,10 @@
     
     if (self)
     {
-        [self clearCountryCodeSource];
-        self.countryCode = @"";
-        self.nationalNumber = @"";
-        self.extension = @"";
-        self.rawInput = @"";
-        self.preferredDomesticCarrierCode = @"";
+        self.countryCodeSource = nil;
+        self.italianLeadingZero = NO;
+        self.nationalNumber = -1;
+        self.countryCode = -1;
     }
     
     return self;
@@ -31,7 +31,16 @@
 
 - (void)clearCountryCodeSource
 {
-    [self setCountryCodeSource:FROM_NUMBER_WITH_PLUS_SIGN];
+    [self setCountryCodeSource:nil];
+}
+
+
+- (NBECountryCodeSource)getCountryCodeSourceOrDefault
+{
+    if (self.countryCodeSource == nil)
+        return FROM_NUMBER_WITH_PLUS_SIGN;
+    
+    return [self.countryCodeSource intValue];
 }
 
 
@@ -41,8 +50,7 @@
         return NO;
     
     NBPhoneNumber *other = object;
-    return [self.countryCode isEqual:other.countryCode] &&
-    [self.nationalNumber isEqual:other.nationalNumber];
+    return (self.countryCode == other.countryCode) && (self.nationalNumber == other.nationalNumber);
 }
 
 
@@ -50,13 +58,12 @@
 {
 	NBPhoneNumber *phoneNumberCopy = [[NBPhoneNumber allocWithZone:zone] init];
     
-	phoneNumberCopy.countryCode = [self.countryCode copy];
-    phoneNumberCopy.nationalNumber = [self.nationalNumber copy];
+	phoneNumberCopy.countryCode = self.countryCode;
+    phoneNumberCopy.nationalNumber = self.nationalNumber;
     phoneNumberCopy.extension = [self.extension copy];
-    
-    phoneNumberCopy.italianLeadingZero = [self.italianLeadingZero copy];
+    phoneNumberCopy.italianLeadingZero = self.italianLeadingZero;
     phoneNumberCopy.rawInput = [self.rawInput copy];
-    phoneNumberCopy.countryCodeSource = self.countryCodeSource;
+    phoneNumberCopy.countryCodeSource = [self.countryCodeSource copy];
     phoneNumberCopy.preferredDomesticCarrierCode = [self.preferredDomesticCarrierCode copy];
     
 	return phoneNumberCopy;
@@ -65,7 +72,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"(countryCode [%@], nationalNumber [%@], extension [%@], rawInput [%@])", self.countryCode, self.nationalNumber, self.extension, self.rawInput];
+    return [NSString stringWithFormat:@" - countryCode[%ld], nationalNumber[%llu], extension[%@], italianLeadingZero[%@], rawInput[%@] countryCodeSource[%d] preferredDomesticCarrierCode[%@]", self.countryCode, self.nationalNumber, self.extension, self.italianLeadingZero?@"Y":@"N", self.rawInput, [self.countryCodeSource intValue], self.preferredDomesticCarrierCode];
 }
 
 @end

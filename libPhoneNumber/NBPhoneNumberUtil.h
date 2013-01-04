@@ -14,13 +14,13 @@
 @interface NBPhoneNumberUtil : NSObject
 
 + (NBPhoneNumberUtil*)sharedInstance;
++ (NBPhoneNumberUtil*)sharedInstanceForTest;
 
 + (NSString*)stringByTrimming:(NSString*)aString;
 
 - (NSString*)numbersOnly:(NSString*)phoneNumber;
 - (NSArray*)regionCodeFromCountryCode:(UInt32)countryCodeNumber;
 - (NSString*)countryCodeFromRregionCode:(NSString*)regionCode;
-
 
 // functions
 
@@ -73,6 +73,7 @@
                    nationalNumber:(NSString**)nationalNumber keepRawInput:(BOOL)keepRawInput phoneNumber:(NBPhoneNumber**)phoneNumber;
 
 - (NBPhoneNumber*)parse:(NSString*)numberToParse defaultRegion:(NSString*)defaultRegion;
+- (NBPhoneNumber*)parse:(NSString*)numberToParse defaultRegion:(NSString*)defaultRegion error:(NSError**)error;
 - (NBPhoneNumber*)parseAndKeepRawInput:(NSString*)numberToParse defaultRegion:(NSString*)defaultRegion;
 
 - (NSString*)format:(NBPhoneNumber*)phoneNumber numberFormat:(NBEPhoneNumberFormat)numberFormat;

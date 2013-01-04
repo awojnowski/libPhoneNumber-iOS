@@ -38,7 +38,7 @@
 - (NBECountryCodeSource)getCountryCodeSourceOrDefault
 {
     if (self.countryCodeSource == nil)
-        return FROM_NUMBER_WITH_PLUS_SIGN;
+        return NBECountryCodeSourceFROM_NUMBER_WITH_PLUS_SIGN;
     
     return [self.countryCodeSource intValue];
 }

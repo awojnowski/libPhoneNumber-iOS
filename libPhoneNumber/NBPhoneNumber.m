@@ -50,7 +50,9 @@
         return NO;
     
     NBPhoneNumber *other = object;
-    return (self.countryCode == other.countryCode) && (self.nationalNumber == other.nationalNumber);
+    return (self.countryCode == other.countryCode) && (self.nationalNumber == other.nationalNumber) &&
+        (self.italianLeadingZero == other.italianLeadingZero) &&
+        ((self.extension == nil && other.extension == nil) || [self.extension isEqualToString:other.extension]);
 }
 
 

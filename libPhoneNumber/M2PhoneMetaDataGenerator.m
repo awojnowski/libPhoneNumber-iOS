@@ -258,7 +258,11 @@
         [genetatedMetaData setObject:newMetaData forKey:key];
     }
     
-    return genetatedMetaData;
+    NSMutableDictionary *resMedata = [[NSMutableDictionary alloc] init];
+    [resMedata setObject:countryCodeToRegionCodeMap forKey:@"countryCodeToRegionCodeMap"];
+    [resMedata setObject:genetatedMetaData forKey:@"countryToMetadata"];
+    
+    return resMedata;
 }
 
 /*

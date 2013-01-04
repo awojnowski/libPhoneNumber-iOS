@@ -367,7 +367,7 @@
     STAssertEqualObjects(@"12345678", [phoneUtil getNationalSignificantNumber:INTERNATIONAL_TOLL_FREE], nil);
 
     
-#pragma mark - testexampleNumber
+#pragma mark - testGetExampleNumber
     STAssertTrue([DE_NUMBER isEqual:[phoneUtil getExampleNumber:@"DE"]], nil);
     
     STAssertTrue([DE_NUMBER isEqual:[phoneUtil getExampleNumberForType:@"DE" type:FIXED_LINE]], nil);
@@ -1492,9 +1492,18 @@
     strippedNumber = @"123456789";
     UInt32 countryCallingCode = 1;
     
-    NSString *numberToFill = [[NSString alloc] init];
-    STAssertEquals(countryCallingCode, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
-                                                                 nationalNumber:&numberToFill keepRawInput:YES phoneNumber:&number], nil);
+    NSString *numberToFill = @"";
+    
+    @try {
+        STAssertEquals(countryCallingCode, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
+                                                               nationalNumber:&numberToFill keepRawInput:YES phoneNumber:&number], nil);
+        STAssertEquals(FROM_NUMBER_WITH_IDD, [number.countryCodeSource intValue], nil);
+        // Should strip and normalize national significant number.
+        STAssertEqualObjects(strippedNumber, numberToFill, nil);
+    }
+    @catch (NSException *e) {
+        STFail([@"Should not have thrown an exception: " stringByAppendingString:e.reason]);
+    }
     STAssertEquals(FROM_NUMBER_WITH_IDD, [number.countryCodeSource intValue], @"Did not figure out CountryCodeSource correctly");
     // Should strip and normalize national significant number.
     STAssertEqualObjects(strippedNumber, numberToFill, @"Did not strip off the country calling code correctly.");
@@ -1532,7 +1541,8 @@
         STFail(@"Should have thrown an exception, no valid country calling code present.");
     }
     @catch (NSException *exception) {
-        NSLog(@"%@", exception.reason);
+        // Expected.
+        STAssertEqualObjects(@"INVALID_COUNTRY_CODE", exception.name, nil);
     }
     
     number = [[NBPhoneNumber alloc] init];
@@ -1567,7 +1577,7 @@
     @try {
         STAssertEquals((UInt32)0, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
                                                     nationalNumber:&numberToFill keepRawInput:NO phoneNumber:&number], nil);
-        STAssertFalse(number.countryCode == 0, @"Should not contain CountryCodeSource.");
+        STAssertFalse(number.countryCodeSource != nil, @"Should not contain CountryCodeSource.");
     }
     @catch (NSException *exception) {
         NSLog(@"%@", exception.reason);
@@ -1579,7 +1589,7 @@
     @try {
         STAssertEquals((UInt32)0, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
                                                        nationalNumber:&numberToFill keepRawInput:YES phoneNumber:&number], nil);
-        STAssertEquals(FROM_DEFAULT_COUNTRY, number.countryCodeSource, nil);
+        STAssertEquals(FROM_DEFAULT_COUNTRY, [number.countryCodeSource intValue], nil);
     }
     @catch (NSException *exception) {
         NSLog(@"%@", exception.reason);
@@ -1882,7 +1892,6 @@
     }
     
     @try {
-        
         NSString *plusStarPhoneNumber = @"+*******91";
         [phoneUtil parse:plusStarPhoneNumber defaultRegion:@"DE"];
         STFail([@"This should not parse without throwing an exception "stringByAppendingString:plusStarPhoneNumber]);
@@ -2374,5 +2383,9 @@
     STAssertFalse([phoneUtil isAlphaNumber:@"18 six-flags"], nil);
     STAssertFalse([phoneUtil isAlphaNumber:@"1800 123-1234 extension: 1234"], nil);
     STAssertFalse([phoneUtil isAlphaNumber:@"+800 1234-1234"], nil);
+    
+
+#pragma mark - customTest
+    NSLog(@"%@", [phoneUtil parse:@"01065134242" defaultRegion:@"JP"]);
 }
 @end

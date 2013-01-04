@@ -77,11 +77,12 @@ typedef enum {
     FROM_DEFAULT_COUNTRY = 20
 } NBECountryCodeSource;
 
-@interface NSArray (JRAdditions)
+
+@interface NSArray (NBAdditions)
 - (id)safeObjectAtIndex:(NSUInteger)index;
 @end
 
-@implementation NSArray (JRAdditions)
+@implementation NSArray (NBAdditions)
 - (id)safeObjectAtIndex:(NSUInteger)index
 {
     @synchronized(self)

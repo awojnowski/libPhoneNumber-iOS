@@ -17,11 +17,6 @@
     self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];
     
-    /*
-    NSLog(@"Korea country phone number [%@]", [[NBPhoneNumberManager sharedInstance] countryCodeFromRregionCode:@"KR"]);
-    NSLog(@"Country codes [%@]", [[NBPhoneNumberManager sharedInstance] regionCodeFromCountryCode:@"81"]);
-     */
-    
     return YES;
 }
 

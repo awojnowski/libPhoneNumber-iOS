@@ -52,6 +52,8 @@
 /* Begin PBXFileReference section */
 		FD0BD7761679DDA600B19065 /* NBPhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneNumber.h; sourceTree = "<group>"; };
 		FD0BD7771679DDA600B19065 /* NBPhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPhoneNumber.m; sourceTree = "<group>"; };
+		FD2014DC169A8A82003491D9 /* index.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = index.php; sourceTree = "<group>"; };
+		FD2014DD169A8A82003491D9 /* libPhoneNumberGenerator.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = libPhoneNumberGenerator.php; sourceTree = "<group>"; };
 		FD7A061C167715A0004BBEB6 /* libPhoneNumber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = libPhoneNumber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD7A0620167715A0004BBEB6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FD7A0622167715A0004BBEB6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -114,6 +116,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FD2014DF169A8A88003491D9 /* Generator.php */ = {
+			isa = PBXGroup;
+			children = (
+				FD2014DC169A8A82003491D9 /* index.php */,
+				FD2014DD169A8A82003491D9 /* libPhoneNumberGenerator.php */,
+			);
+			name = Generator.php;
+			sourceTree = "<group>";
+		};
 		FD7A0611167715A0004BBEB6 = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +208,7 @@
 		FD7A0645167715A1004BBEB6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FD2014DF169A8A88003491D9 /* Generator.php */,
 				FD7A0646167715A1004BBEB6 /* libPhoneNumberTests-Info.plist */,
 				FD7A0647167715A1004BBEB6 /* InfoPlist.strings */,
 			);

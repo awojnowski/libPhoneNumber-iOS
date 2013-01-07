@@ -5,13 +5,16 @@ libPhoneNumber for iOS
 
 * NBPhoneNumberUtil (from phonenumberutil.js)
 
-* Metadata managing
-  * AS-IS
-    * 1.Load javascript object (metadata.js , metadatafortesting.js)
-    * 2.Convert JSON from javascript object (using web - PHP)
+[todo]
+ * Add JSON parse implementation for iOS 4.x
 
-  * TO-BE
-    * Create static matadata class without using NBPhoneMetaDataGenerator
+[Metadata managing]
+ * AS-IS
+  - 1.Load javascript object (metadata.js , metadatafortesting.js)
+  - 2.Convert JSON from javascript object (using web - PHP)
+
+ * TO-BE
+  - Create static matadata class without using NBPhoneMetaDataGenerator
 
 [Rule for porting from javascript libPhonenumber]
-* Retain javascript libPhonenumber algorithms & codes(like comments etc) as possible for maintenance with *.js
+ * Retain javascript libPhonenumber algorithms & codes(like comments etc) as possible for maintenance with *.js

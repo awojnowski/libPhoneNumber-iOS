@@ -1,5 +1,5 @@
 //
-//  M2PhoneMetaDataGenerator.m
+//  NBPhoneMetaDataGenerator.m
 //  libPhoneNumber
 //
 //  Created by ishtar on 12. 12. 11..
@@ -12,11 +12,11 @@
 #import <libxml/xpath.h>
 #import <libxml/xpathInternals.h>
 
-#import "M2PhoneMetaDataGenerator.h"
+#import "NBPhoneMetaDataGenerator.h"
 #import "NBPhoneMetaData.h"
 
 
-@implementation M2PhoneMetaDataGenerator
+@implementation NBPhoneMetaDataGenerator
 
 
 - (id)init

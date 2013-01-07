@@ -11,7 +11,7 @@
 #import "NBNumberFormat.h"
 #import "NBPhoneNumberDesc.h"
 #import "NBPhoneMetaData.h"
-#import "M2PhoneMetaDataGenerator.h"
+#import "NBPhoneMetaDataGenerator.h"
 #import "math.h"
 
 
@@ -389,7 +389,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         [self initRegularExpressionSet];
         [self initNormalizationMappings];
         
-        M2PhoneMetaDataGenerator *pnGen = [[M2PhoneMetaDataGenerator alloc] init];
+        NBPhoneMetaDataGenerator *pnGen = [[NBPhoneMetaDataGenerator alloc] init];
         NSDictionary *resMetadata = [pnGen generateMetaData];
         
         _coreMetaData = [resMetadata objectForKey:@"countryToMetadata"];
@@ -410,7 +410,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         [self initRegularExpressionSet];
         [self initNormalizationMappings];
         
-        M2PhoneMetaDataGenerator *pnGen = [[M2PhoneMetaDataGenerator alloc] init];
+        NBPhoneMetaDataGenerator *pnGen = [[NBPhoneMetaDataGenerator alloc] init];
         NSDictionary *resMetadata = [pnGen generateMetaDataWithTest];
         
         _coreMetaData = [resMetadata objectForKey:@"countryToMetadata"];

@@ -1,5 +1,5 @@
 //
-//  M2PhoneMetaDataGenerator.h
+//  NBPhoneMetaDataGenerator.h
 //  libPhoneNumber
 //
 //  Created by ishtar on 12. 12. 11..
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface M2PhoneMetaDataGenerator : NSObject
+@interface NBPhoneMetaDataGenerator : NSObject
 
 - (NSDictionary *)generateMetaData;
 - (NSDictionary *)generateMetaDataWithTest;

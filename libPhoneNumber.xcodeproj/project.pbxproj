@@ -30,8 +30,8 @@
 		FD7A066416771A54004BBEB6 /* NBPhoneNumberDesc.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7A066216771A54004BBEB6 /* NBPhoneNumberDesc.m */; };
 		FD7A066716771AFD004BBEB6 /* NBPhoneMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7A066616771AFD004BBEB6 /* NBPhoneMetaData.m */; };
 		FD7A066816771AFD004BBEB6 /* NBPhoneMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7A066616771AFD004BBEB6 /* NBPhoneMetaData.m */; };
-		FD7A066F167736BD004BBEB6 /* M2PhoneMetaDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7A066E167736BD004BBEB6 /* M2PhoneMetaDataGenerator.m */; };
-		FD7A0670167736BD004BBEB6 /* M2PhoneMetaDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7A066E167736BD004BBEB6 /* M2PhoneMetaDataGenerator.m */; };
+		FD7A066F167736BD004BBEB6 /* NBPhoneMetaDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7A066E167736BD004BBEB6 /* NBPhoneMetaDataGenerator.m */; };
+		FD7A0670167736BD004BBEB6 /* NBPhoneMetaDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7A066E167736BD004BBEB6 /* NBPhoneMetaDataGenerator.m */; };
 		FD7A0672167738E6004BBEB6 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7A0671167738E6004BBEB6 /* libxml2.dylib */; };
 		FDAACB54167F3F06002DB4D4 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7A0671167738E6004BBEB6 /* libxml2.dylib */; };
 		FDAACB55167F3F11002DB4D4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7A0624167715A0004BBEB6 /* CoreGraphics.framework */; };
@@ -79,8 +79,8 @@
 		FD7A066216771A54004BBEB6 /* NBPhoneNumberDesc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPhoneNumberDesc.m; sourceTree = "<group>"; };
 		FD7A066516771AFD004BBEB6 /* NBPhoneMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneMetaData.h; sourceTree = "<group>"; };
 		FD7A066616771AFD004BBEB6 /* NBPhoneMetaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPhoneMetaData.m; sourceTree = "<group>"; };
-		FD7A066D167736BD004BBEB6 /* M2PhoneMetaDataGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M2PhoneMetaDataGenerator.h; sourceTree = "<group>"; };
-		FD7A066E167736BD004BBEB6 /* M2PhoneMetaDataGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M2PhoneMetaDataGenerator.m; sourceTree = "<group>"; };
+		FD7A066D167736BD004BBEB6 /* NBPhoneMetaDataGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneMetaDataGenerator.h; sourceTree = "<group>"; };
+		FD7A066E167736BD004BBEB6 /* NBPhoneMetaDataGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPhoneMetaDataGenerator.m; sourceTree = "<group>"; };
 		FD7A0671167738E6004BBEB6 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		FDBCAD1B16943BC0005E0334 /* PhoneNumberMetaDataForTesting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PhoneNumberMetaDataForTesting.json; sourceTree = "<group>"; };
 		FDBCAD1E1694402F005E0334 /* PhoneNumberMetaData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PhoneNumberMetaData.json; sourceTree = "<group>"; };
@@ -165,8 +165,8 @@
 			children = (
 				FDBCAD1E1694402F005E0334 /* PhoneNumberMetaData.json */,
 				FDBCAD1B16943BC0005E0334 /* PhoneNumberMetaDataForTesting.json */,
-				FD7A066D167736BD004BBEB6 /* M2PhoneMetaDataGenerator.h */,
-				FD7A066E167736BD004BBEB6 /* M2PhoneMetaDataGenerator.m */,
+				FD7A066D167736BD004BBEB6 /* NBPhoneMetaDataGenerator.h */,
+				FD7A066E167736BD004BBEB6 /* NBPhoneMetaDataGenerator.m */,
 				FDBCAD2016954FE4005E0334 /* NBPhoneNumberDefines.h */,
 				FD7A0655167715B2004BBEB6 /* NBPhoneNumberUtil.h */,
 				FD7A0656167715B2004BBEB6 /* NBPhoneNumberUtil.m */,
@@ -355,7 +355,7 @@
 				FD7A065F167715FD004BBEB6 /* NBNumberFormat.m in Sources */,
 				FD7A066316771A54004BBEB6 /* NBPhoneNumberDesc.m in Sources */,
 				FD7A066716771AFD004BBEB6 /* NBPhoneMetaData.m in Sources */,
-				FD7A066F167736BD004BBEB6 /* M2PhoneMetaDataGenerator.m in Sources */,
+				FD7A066F167736BD004BBEB6 /* NBPhoneMetaDataGenerator.m in Sources */,
 				FD0BD7781679DDA700B19065 /* NBPhoneNumber.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,7 +369,7 @@
 				FD7A0660167715FD004BBEB6 /* NBNumberFormat.m in Sources */,
 				FD7A066416771A54004BBEB6 /* NBPhoneNumberDesc.m in Sources */,
 				FD7A066816771AFD004BBEB6 /* NBPhoneMetaData.m in Sources */,
-				FD7A0670167736BD004BBEB6 /* M2PhoneMetaDataGenerator.m in Sources */,
+				FD7A0670167736BD004BBEB6 /* NBPhoneMetaDataGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

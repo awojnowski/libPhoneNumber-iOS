@@ -9,7 +9,7 @@
 
 ### Metadata managing
 #### - AS-IS
-    1. Load javascript object (metadata.js, metadatafortesting.js)
+    1. Load javascript object (metadata.js, metadatafortesting.js) -> this may causes performance issues
     2. Convert JSON from javascript object (using web - PHP)
 
 #### - TO-BE

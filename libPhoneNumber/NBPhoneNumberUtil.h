@@ -18,24 +18,23 @@
 
 + (NSString*)stringByTrimming:(NSString*)aString;
 
-- (NSString*)numbersOnly:(NSString*)phoneNumber;
+//- (NSString*)numbersOnly:(NSString*)phoneNumber;
 - (NSArray*)regionCodeFromCountryCode:(UInt32)countryCodeNumber;
 - (NSString*)countryCodeFromRregionCode:(NSString*)regionCode;
 
-// functions
+
+// libPhoneNumber Util functions
+- (NSString*)convertAlphaCharactersInNumber:(NSString*)number;
+
+- (NSString*)normalizePhoneNumber:(NSString*)phoneNumber;
+- (NSString*)normalizeDigitsOnly:(NSString*)number;
 
 - (BOOL)isNumberGeographical:(NBPhoneNumber*)phoneNumber;
-
-- (NBPhoneNumber*)getExampleNumber:(NSString*)regionCode;
-- (NBPhoneNumber*)getExampleNumberForType:(NSString*)regionCode type:(NBEPhoneNumberType)type;
-- (NBPhoneNumber*)getExampleNumberForNonGeoEntity:(UInt32)countryCallingCode;
-
-- (NBPhoneMetaData*)getMetadataForRegion:(NSString*)regionCode;
-- (NBPhoneMetaData*)getMetadataForNonGeographicalRegion:(UInt32)countryCallingCode;
 
 - (NSString*)extractPossibleNumber:(NSString*)phoneNumber;
 - (NSString*)getNddPrefixForRegion:(NSString*)regionCode stripNonDigits:(BOOL)stripNonDigits;
 - (NSString*)getNationalSignificantNumber:(NBPhoneNumber*)phoneNumber;
+
 - (NBEPhoneNumberType)getNumberType:(NBPhoneNumber*)phoneNumber;
 
 - (UInt32)getCountryCodeForRegion:(NSString*)regionCode;
@@ -44,8 +43,23 @@
 - (NSArray*)getRegionCodesForCountryCode:(UInt32)countryCallingCode;
 - (NSString*)getRegionCodeForNumber:(NBPhoneNumber*)phoneNumber;
 
+- (NBPhoneNumber*)getExampleNumber:(NSString*)regionCode;
+- (NBPhoneNumber*)getExampleNumber:(NSString*)regionCode error:(NSError**)error;
+
+- (NBPhoneNumber*)getExampleNumberForType:(NSString*)regionCode type:(NBEPhoneNumberType)type;
+- (NBPhoneNumber*)getExampleNumberForType:(NSString*)regionCode type:(NBEPhoneNumberType)type error:(NSError**)error;
+
+- (NBPhoneNumber*)getExampleNumberForNonGeoEntity:(UInt32)countryCallingCode;
+- (NBPhoneNumber*)getExampleNumberForNonGeoEntity:(UInt32)countryCallingCode error:(NSError**)error;
+
+- (NBPhoneMetaData*)getMetadataForRegion:(NSString*)regionCode;
+- (NBPhoneMetaData*)getMetadataForNonGeographicalRegion:(UInt32)countryCallingCode;
+
 - (BOOL)canBeInternationallyDialled:(NBPhoneNumber*)number;
+- (BOOL)canBeInternationallyDialled:(NBPhoneNumber*)number error:(NSError**)error;
+
 - (BOOL)truncateTooLongNumber:(NBPhoneNumber*)number;
+- (BOOL)truncateTooLongNumber:(NBPhoneNumber*)number error:(NSError**)error;
 
 - (BOOL)isValidNumber:(NBPhoneNumber*)number;
 - (BOOL)isViablePhoneNumber:(NSString*)phoneNumber;
@@ -53,36 +67,64 @@
 - (BOOL)isValidNumberForRegion:(NBPhoneNumber*)number regionCode:(NSString*)regionCode;
 - (BOOL)isNANPACountry:(NSString*)regionCode;
 - (BOOL)isLeadingZeroPossible:(UInt32)countryCallingCode;
-- (NBEMatchType)isNumberMatch:(id)firstNumberIn second:(id)secondNumberIn;
+
+- (NBEValidationResult)isPossibleNumberWithReason:(NBPhoneNumber*)number;
+- (NBEValidationResult)isPossibleNumberWithReason:(NBPhoneNumber*)number error:(NSError**)error;
 
 - (BOOL)isPossibleNumber:(NBPhoneNumber*)number;
-- (NBEValidationResult)isPossibleNumberWithReason:(NBPhoneNumber*)number;
+- (BOOL)isPossibleNumber:(NBPhoneNumber*)number error:(NSError**)error;
+
 - (BOOL)isPossibleNumberString:(NSString*)number regionDialingFrom:(NSString*)regionDialingFrom;
+- (BOOL)isPossibleNumberString:(NSString*)number regionDialingFrom:(NSString*)regionDialingFrom error:(NSError**)error;
+
+- (NBEMatchType)isNumberMatch:(id)firstNumberIn second:(id)secondNumberIn;
+- (NBEMatchType)isNumberMatch:(id)firstNumberIn second:(id)secondNumberIn error:(NSError**)error;
 
 - (int)getLengthOfGeographicalAreaCode:(NBPhoneNumber*)phoneNumber;
+- (int)getLengthOfGeographicalAreaCode:(NBPhoneNumber*)phoneNumber error:(NSError**)error;
+
 - (int)getLengthOfNationalDestinationCode:(NBPhoneNumber*)phoneNumber;
-
-- (NSString*)convertAlphaCharactersInNumber:(NSString*)number;
-
-- (NSString*)normalizePhoneNumber:(NSString*)phoneNumber;
-- (NSString*)normalizeDigitsOnly:(NSString*)number;
+- (int)getLengthOfNationalDestinationCode:(NBPhoneNumber*)phoneNumber error:(NSError**)error;
 
 - (BOOL)maybeStripNationalPrefixAndCarrierCode:(NSString**)numberStr metadata:(NBPhoneMetaData*)metadata carrierCode:(NSString**)carrierCode;
+- (BOOL)maybeStripNationalPrefixAndCarrierCode:(NSString**)numberStr metadata:(NBPhoneMetaData*)metadata carrierCode:(NSString**)carrierCode error:(NSError**)error;
+
 - (NBECountryCodeSource)maybeStripInternationalPrefixAndNormalize:(NSString**)numberStr possibleIddPrefix:(NSString*)possibleIddPrefix;
+- (NBECountryCodeSource)maybeStripInternationalPrefixAndNormalize:(NSString**)numberStr possibleIddPrefix:(NSString*)possibleIddPrefix error:(NSError**)error;
+
 - (UInt32)maybeExtractCountryCode:(NSString*)number metadata:(NBPhoneMetaData*)defaultRegionMetadata
                    nationalNumber:(NSString**)nationalNumber keepRawInput:(BOOL)keepRawInput phoneNumber:(NBPhoneNumber**)phoneNumber;
+- (UInt32)maybeExtractCountryCode:(NSString*)number metadata:(NBPhoneMetaData*)defaultRegionMetadata
+                   nationalNumber:(NSString**)nationalNumber keepRawInput:(BOOL)keepRawInput phoneNumber:(NBPhoneNumber**)phoneNumber error:(NSError**)error;
 
 - (NBPhoneNumber*)parse:(NSString*)numberToParse defaultRegion:(NSString*)defaultRegion;
 - (NBPhoneNumber*)parse:(NSString*)numberToParse defaultRegion:(NSString*)defaultRegion error:(NSError**)error;
+
 - (NBPhoneNumber*)parseAndKeepRawInput:(NSString*)numberToParse defaultRegion:(NSString*)defaultRegion;
+- (NBPhoneNumber*)parseAndKeepRawInput:(NSString*)numberToParse defaultRegion:(NSString*)defaultRegion error:(NSError**)error;
 
 - (NSString*)format:(NBPhoneNumber*)phoneNumber numberFormat:(NBEPhoneNumberFormat)numberFormat;
+- (NSString*)format:(NBPhoneNumber*)phoneNumber numberFormat:(NBEPhoneNumberFormat)numberFormat error:(NSError**)error;
+
 - (NSString*)formatByPattern:(NBPhoneNumber*)number numberFormat:(NBEPhoneNumberFormat)numberFormat userDefinedFormats:(NSArray*)userDefinedFormats;
+- (NSString*)formatByPattern:(NBPhoneNumber*)number numberFormat:(NBEPhoneNumberFormat)numberFormat userDefinedFormats:(NSArray*)userDefinedFormats error:(NSError**)error;
+
 - (NSString*)formatNumberForMobileDialing:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom withFormatting:(BOOL)withFormatting;
+- (NSString*)formatNumberForMobileDialing:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom withFormatting:(BOOL)withFormatting error:(NSError**)error;
+
 - (NSString*)formatOutOfCountryCallingNumber:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom;
+- (NSString*)formatOutOfCountryCallingNumber:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom error:(NSError**)error;
+
 - (NSString*)formatOutOfCountryKeepingAlphaChars:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom;
+- (NSString*)formatOutOfCountryKeepingAlphaChars:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom error:(NSError**)error;
+
 - (NSString*)formatNationalNumberWithCarrierCode:(NBPhoneNumber*)number carrierCode:(NSString*)carrierCode;
+- (NSString*)formatNationalNumberWithCarrierCode:(NBPhoneNumber*)number carrierCode:(NSString*)carrierCode error:(NSError**)error;
+
 - (NSString*)formatInOriginalFormat:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom;
+- (NSString*)formatInOriginalFormat:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom error:(NSError**)error;
+
 - (NSString*)formatNationalNumberWithPreferredCarrierCode:(NBPhoneNumber*)number fallbackCarrierCode:(NSString*)fallbackCarrierCode;
+- (NSString*)formatNationalNumberWithPreferredCarrierCode:(NBPhoneNumber*)number fallbackCarrierCode:(NSString*)fallbackCarrierCode error:(NSError**)error;
 
 @end

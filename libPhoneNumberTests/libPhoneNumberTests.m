@@ -1621,7 +1621,7 @@
         UInt32 countryCallingCode = 1;
         
         NSString *numberToFill = @"";
-        
+
         @try {
             STAssertEquals(countryCallingCode, [phoneUtil maybeExtractCountryCode:phoneNumber metadata:metadata
                                                                    nationalNumber:&numberToFill keepRawInput:YES phoneNumber:&number], nil);

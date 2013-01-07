@@ -3543,14 +3543,12 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     NBPhoneNumber *phoneNumber = nil;
     
     @try {
-        [self parseHelper:numberToParse defaultRegion:defaultRegion keepRawInput:NO checkRegion:YES];
+        phoneNumber = [self parseHelper:numberToParse defaultRegion:defaultRegion keepRawInput:NO checkRegion:YES];
     }
     @catch (NSException *exception) {
         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:exception.reason
                                                              forKey:NSLocalizedDescriptionKey];
         (*error) = [NSError errorWithDomain:exception.name code:0 userInfo:userInfo];
-    }
-    @finally {
     }
     
     return phoneNumber;

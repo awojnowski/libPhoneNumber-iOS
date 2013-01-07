@@ -64,10 +64,10 @@
     NSLog(@"-------------- customTest");
     
     NSError *aError = nil;
-    NBPhoneNumber *myNumber1 = [phoneUtil parse:@"010651342" defaultRegion:@"" error:&aError];
+    NBPhoneNumber *myNumber1 = [phoneUtil parse:@"01065134242" defaultRegion:@"KR" error:&aError];
     if (aError == nil)
     {
-        NSLog(@"isValidPhoneNumber ? [%@]", [phoneUtil isValidNumber:myNumber1] ? @"Yes":@"NO");
+        NSLog(@"isValidPhoneNumber ? [%@]", [phoneUtil isValidNumber:myNumber1] ? @"YES":@"NO");
         NSLog(@"E164          : %@", [phoneUtil format:myNumber1 numberFormat:NBEPhoneNumberFormatE164]);
         NSLog(@"INTERNATIONAL : %@", [phoneUtil format:myNumber1 numberFormat:NBEPhoneNumberFormatINTERNATIONAL]);
         NSLog(@"NATIONAL      : %@", [phoneUtil format:myNumber1 numberFormat:NBEPhoneNumberFormatNATIONAL]);

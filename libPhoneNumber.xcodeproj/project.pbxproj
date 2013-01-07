@@ -85,19 +85,6 @@
 		FDBCAD1B16943BC0005E0334 /* PhoneNumberMetaDataForTesting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PhoneNumberMetaDataForTesting.json; sourceTree = "<group>"; };
 		FDBCAD1E1694402F005E0334 /* PhoneNumberMetaData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PhoneNumberMetaData.json; sourceTree = "<group>"; };
 		FDBCAD2016954FE4005E0334 /* NBPhoneNumberDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBPhoneNumberDefines.h; sourceTree = "<group>"; };
-		FDEB51EA167AC553009C8894 /* asyoutypeformatter.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = asyoutypeformatter.js; sourceTree = "<group>"; };
-		FDEB51EB167AC553009C8894 /* asyoutypeformatter_test.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = asyoutypeformatter_test.html; sourceTree = "<group>"; };
-		FDEB51EC167AC553009C8894 /* asyoutypeformatter_test.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = asyoutypeformatter_test.js; sourceTree = "<group>"; };
-		FDEB51ED167AC553009C8894 /* demo.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = demo.html; sourceTree = "<group>"; };
-		FDEB51EE167AC553009C8894 /* metadata.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = metadata.js; sourceTree = "<group>"; };
-		FDEB51EF167AC553009C8894 /* metadatafortesting.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = metadatafortesting.js; sourceTree = "<group>"; };
-		FDEB51F0167AC553009C8894 /* metadatalite.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = metadatalite.js; sourceTree = "<group>"; };
-		FDEB51F1167AC553009C8894 /* phonemetadata.pb.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = phonemetadata.pb.js; sourceTree = "<group>"; };
-		FDEB51F2167AC553009C8894 /* phonenumber.pb.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = phonenumber.pb.js; sourceTree = "<group>"; };
-		FDEB51F3167AC553009C8894 /* phonenumberutil.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = phonenumberutil.js; sourceTree = "<group>"; };
-		FDEB51F4167AC553009C8894 /* phonenumberutil_test.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = phonenumberutil_test.html; sourceTree = "<group>"; };
-		FDEB51F5167AC553009C8894 /* phonenumberutil_test.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = phonenumberutil_test.js; sourceTree = "<group>"; };
-		FDEB51F6167AC553009C8894 /* regioncodefortesting.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = regioncodefortesting.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,7 +173,6 @@
 		FD7A0627167715A0004BBEB6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				FDEB51E9167AC553009C8894 /* phonenumber.js */,
 				FD7A0628167715A0004BBEB6 /* libPhoneNumber-Info.plist */,
 				FD7A0629167715A0004BBEB6 /* InfoPlist.strings */,
 				FD7A062C167715A0004BBEB6 /* main.m */,
@@ -215,27 +201,6 @@
 				FD7A0647167715A1004BBEB6 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		FDEB51E9167AC553009C8894 /* phonenumber.js */ = {
-			isa = PBXGroup;
-			children = (
-				FDEB51EA167AC553009C8894 /* asyoutypeformatter.js */,
-				FDEB51EB167AC553009C8894 /* asyoutypeformatter_test.html */,
-				FDEB51EC167AC553009C8894 /* asyoutypeformatter_test.js */,
-				FDEB51ED167AC553009C8894 /* demo.html */,
-				FDEB51EE167AC553009C8894 /* metadata.js */,
-				FDEB51EF167AC553009C8894 /* metadatafortesting.js */,
-				FDEB51F0167AC553009C8894 /* metadatalite.js */,
-				FDEB51F1167AC553009C8894 /* phonemetadata.pb.js */,
-				FDEB51F2167AC553009C8894 /* phonenumber.pb.js */,
-				FDEB51F3167AC553009C8894 /* phonenumberutil.js */,
-				FDEB51F4167AC553009C8894 /* phonenumberutil_test.html */,
-				FDEB51F5167AC553009C8894 /* phonenumberutil_test.js */,
-				FDEB51F6167AC553009C8894 /* regioncodefortesting.js */,
-			);
-			name = phonenumber.js;
-			path = phonenumbers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

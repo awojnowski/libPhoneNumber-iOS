@@ -1,5 +1,5 @@
 # libPhoneNumber for iOS
-* NBPhoneMetaDataGenerator (Metadata parser from JSON via metadata.js)
+* NBPhoneMetaDataGenerator (NSDictionaey from JSON from metadata.js)
 * NBPhoneNumber, NBNumberFormat, NBPhoneNumberDesc, NBPhoneMetaData (Metadata classes) 
 
 * NBPhoneNumberUtil (from phonenumberutil.js)

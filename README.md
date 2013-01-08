@@ -4,16 +4,31 @@
 
 * NBPhoneNumberUtil (from phonenumberutil.js)
 
-### Todo
-* Add JSON parse implementation for iOS 4.x (It will remove future)
+## Usage
+### Add source files to your projects from libPhoneNumber
+    - NBPhoneNumberUtil.h, .m
+    
+    - NBNumberFormat.h, .m
+    - NBPhoneNumber.h, .m
+    - NBPhoneNumberDesc.h, .m
+    - NBPhoneNumberDefines.h
+    
+    - NBPhoneNumberMetadata.h, .m
+    - NBPhoneNumberMetadataForTesting.h, .m
 
-### Metadata managing
-#### - AS-IS
-    1. Load javascript object (metadata.js, metadatafortesting.js) -> this may causes performance issues
-    2. Convert JSON from javascript object (using web - PHP)
+### Visit http://code.google.com/p/libphonenumber/ for more information
 
-#### - TO-BE
-    * Create static matadata class without using NBPhoneMetaDataGenerator
+## Metadata managing (updating metadata) 
+#### Step1. Fetch "metadata.js" and "metadatafortesting.js" from Repositories
+    svn checkout http://libphonenumber.googlecode.com/svn/trunk/ libphonenumber-read-only
+      
+#### Step2. Convert Javascript Object to JSON using PHP scripts 
+    Output - "PhoneNumberMetaData.json" and "PhoneNumberMetaDataForTesting.json"
 
-### Rule for porting from javascript libPhonenumber
-* Retain javascript libPhonenumber algorithms & codes(like comments etc) as possible for maintenance with *.js
+#### Step3. Generate Objective-C source code using MetadataGenerator
+    Output - "NBPhoneNumberMetadata.h .m" and "NBPhoneNumberMetadataForTesting.h .m"
+
+#### Step4. Update exists "NBPhoneNumberMetadata.h .m" and "NBPhoneNumberMetadataForTesting.h .m" files
+
+## Rule for porting from javascript libPhonenumber
+* **Remain** javascript libPhonenumber algorithms & codes(like comments etc) as possible for maintenance with *.js

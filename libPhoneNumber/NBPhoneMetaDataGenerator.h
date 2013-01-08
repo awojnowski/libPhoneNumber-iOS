@@ -10,7 +10,6 @@
 
 @interface NBPhoneMetaDataGenerator : NSObject
 
-- (NSDictionary *)generateMetaData;
-- (NSDictionary *)generateMetaDataWithTest;
+- (void)generateMetadataClasses;
 
 @end

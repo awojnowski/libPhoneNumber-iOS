@@ -1,9 +1,9 @@
 //
 //  AppDelegate.m
-//  libPhoneNumber
+//  MetadataGenerator
 //
-//  Created by ishtar on 12. 12. 11..
-//  Copyright (c) 2012년 NHN. All rights reserved.
+//  Created by ishtar on 13. 1. 7..
+//  Copyright (c) 2013년 NHN. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -13,9 +13,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = [UIColor blackColor];
+    // Override point for customization after application launch.
+    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
     return YES;
 }
 

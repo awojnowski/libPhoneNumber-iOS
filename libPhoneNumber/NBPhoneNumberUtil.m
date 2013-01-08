@@ -11,8 +11,10 @@
 #import "NBNumberFormat.h"
 #import "NBPhoneNumberDesc.h"
 #import "NBPhoneMetaData.h"
-#import "NBPhoneMetaDataGenerator.h"
 #import "math.h"
+
+#import "NBPhoneNumberMetadata.h"
+#import "NBPhoneNumberMetadataForTesting.h"
 
 
 #pragma mark - Static Int variables -
@@ -389,11 +391,10 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         [self initRegularExpressionSet];
         [self initNormalizationMappings];
         
-        NBPhoneMetaDataGenerator *pnGen = [[NBPhoneMetaDataGenerator alloc] init];
-        NSDictionary *resMetadata = [pnGen generateMetaData];
-        
-        _coreMetaData = [resMetadata objectForKey:@"countryToMetadata"];
-        _mapCN2CCode = [resMetadata objectForKey:@"countryCodeToRegionCodeMap"];
+        NBPhoneNumberMetadata *metaClass = [[NBPhoneNumberMetadata alloc] init];
+        NSDictionary *resData = [self generateMetadata:metaClass];
+        _coreMetaData = [resData objectForKey:@"countryToMetadata"];
+        _mapCN2CCode = [resData objectForKey:@"countryCodeToRegionCodeMap"];
 
         [self initCC2CN];
     }
@@ -410,11 +411,10 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         [self initRegularExpressionSet];
         [self initNormalizationMappings];
         
-        NBPhoneMetaDataGenerator *pnGen = [[NBPhoneMetaDataGenerator alloc] init];
-        NSDictionary *resMetadata = [pnGen generateMetaDataWithTest];
-        
-        _coreMetaData = [resMetadata objectForKey:@"countryToMetadata"];
-        _mapCN2CCode = [resMetadata objectForKey:@"countryCodeToRegionCodeMap"];
+        NBPhoneNumberMetadataForTesting *metaClass = [[NBPhoneNumberMetadataForTesting alloc] init];
+        NSDictionary *resData = [self generateMetadata:metaClass];
+        _coreMetaData = [resData objectForKey:@"countryToMetadata"];
+        _mapCN2CCode = [resData objectForKey:@"countryCodeToRegionCodeMap"];
         
         [self initCC2CN];
     }
@@ -423,8 +423,50 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
 }
 
 
+- (NSDictionary*)generateMetadata:(id)metaClass
+{
+    NSMutableDictionary *resMedata = [[NSMutableDictionary alloc] init];
+    NSDictionary *srcMedata = nil;
+    
+    if ([metaClass isKindOfClass:[NBPhoneNumberMetadataForTesting class]])
+    {
+        srcMedata = ((NBPhoneNumberMetadataForTesting*)metaClass).metadata;
+    }
+    else if ([metaClass isKindOfClass:[NBPhoneNumberMetadata class]])
+    {
+        srcMedata = ((NBPhoneNumberMetadata*)metaClass).metadata;
+    }
+    else
+    {
+        return resMedata;
+    }
+    
+    NSDictionary *countryCodeToRegionCodeMap = [srcMedata objectForKey:@"countryCodeToRegionCodeMap"];
+    NSDictionary *countryToMetadata = [srcMedata objectForKey:@"countryToMetadata"];
+    NSLog(@"- countryCodeToRegionCodeMap count [%d]", [countryCodeToRegionCodeMap count]);
+    NSLog(@"- countryToMetadata          count [%d]", [countryToMetadata count]);
+    
+    NSMutableDictionary *genetatedMetaData = [[NSMutableDictionary alloc] init];
+    
+    for (id key in [countryToMetadata allKeys])
+    {
+        id metaData = [countryToMetadata objectForKey:key];
+        
+        NBPhoneMetaData *newMetaData = [[NBPhoneMetaData alloc] init];
+        [newMetaData buildData:metaData];
+        
+        [genetatedMetaData setObject:newMetaData forKey:key];
+    }
+    
+    [resMedata setObject:countryCodeToRegionCodeMap forKey:@"countryCodeToRegionCodeMap"];
+    [resMedata setObject:genetatedMetaData forKey:@"countryToMetadata"];
+    
+    return resMedata;
+}
+
+
 - (void)initRegularExpressionSet
-{ 
+{
     NSString *EXTN_PATTERNS_FOR_PARSING_ = @"(?:;ext=([0-9０-９٠-٩۰-۹]{1,7})|[  \\t,]*(?:e?xt(?:ensi(?:ó?|ó))?n?|ｅ?ｘｔｎ?|[,xｘX#＃~～]|int|anexo|ｉｎｔ)[:\\.．]?[  \\t,-]*([0-9０-９٠-٩۰-۹]{1,7})#?|[- ]+([0-9０-９٠-٩۰-۹]{1,5})#)$";
     
     NSError *error = nil;

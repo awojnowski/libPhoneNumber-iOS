@@ -9,15 +9,35 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>metadataGenerator.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>FD0F1186169ABDEC008DF508</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>FD7A061B167715A0004BBEB6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>FD7A063C167715A1004BBEB6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FDC61F1D169AC5C400A105A7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FDC61F3C169AC79B00A105A7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

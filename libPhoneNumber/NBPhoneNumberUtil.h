@@ -32,6 +32,8 @@
 - (BOOL)isNumberGeographical:(NBPhoneNumber*)phoneNumber;
 
 - (NSString*)extractPossibleNumber:(NSString*)phoneNumber;
+- (UInt32)extractCountryCode:(NSString*)fullNumber nationalNumber:(NSString**)nationalNumber;
+
 - (NSString*)getNddPrefixForRegion:(NSString*)regionCode stripNonDigits:(BOOL)stripNonDigits;
 - (NSString*)getNationalSignificantNumber:(NBPhoneNumber*)phoneNumber;
 

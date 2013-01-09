@@ -27,7 +27,9 @@
 
 - (void)initMedata
 {
-    self.metadata = %@;
+    %@
+    
+    [self setMetadata:%@];
 }
 
 

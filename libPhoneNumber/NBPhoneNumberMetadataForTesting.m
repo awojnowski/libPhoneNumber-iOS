@@ -27,2403 +27,2976 @@
 
 - (void)initMedata
 {
-    self.metadata = 
-        [[NSDictionary alloc] initWithObjectsAndKeys:
-            [[NSDictionary alloc] initWithObjectsAndKeys:
-                [[NSArray alloc] initWithObjects:
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:nil], 
-                    [[NSArray alloc] initWithObjects:nil], 
-                    [[NSArray alloc] initWithObjects:nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    @"AD", [NSNumber numberWithLongLong:376], 
-                    @"00", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], [NSNumber numberWithLongLong:1], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], nil], @"AD", 
-                [[NSArray alloc] initWithObjects:
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:nil], 
-                    [[NSArray alloc] initWithObjects:nil], 
-                    [[NSArray alloc] initWithObjects:nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    @"BR", [NSNumber numberWithLongLong:55], 
-                    @"0014", 
-                    @"0", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    @"0", 
-                    [NSNull null], 
-                    [NSNull null], [NSNumber numberWithLongLong:1], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"19[023]|911", 
-                        @"\\d{3}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"190", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], nil], @"BR", 
-                [[NSArray alloc] initWithObjects:
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[1-578]\\d{4,14}", 
-                        @"\\d{5,15}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[2378]\\d{8}", 
-                        @"\\d{9}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"4\\d{8}", 
-                        @"\\d{9}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"1800\\d{6}", 
-                        @"\\d{10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"190[0126]\\d{6}", 
-                        @"\\d{10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    @"AU", [NSNumber numberWithLongLong:61], 
-                    @"001[12]", 
-                    @"0", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    @"0", 
-                    [NSNull null], 
-                    @"0011", 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{4})(\\d{3})(\\d{3})", 
-                            @"$1 $2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"1", nil], 
-                            @"$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{1})(\\d{4})(\\d{4})", 
-                            @"$1 $2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"[2-478]", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], nil], @"AU", 
-                [[NSArray alloc] initWithObjects:
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[1-9]\\d{8}", 
-                        @"\\d{9}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[1-9]\\d{8}", 
-                        @"\\d{9}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"(?:5[01]|6[069]|7[289]|88)\\d{7}", 
-                        @"\\d{9}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"800\\d{6}", 
-                        @"\\d{9}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"70\\d{7}", 
-                        @"\\d{9}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    @"PL", [NSNumber numberWithLongLong:48], 
-                    @"00", 
-                    @"0", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    @"0", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{2})(\\d{3})(\\d{2})(\\d{2})", 
-                            @"$1 $2 $3 $4", 
-                            [NSNull null], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], nil], @"PL", 
-                [[NSArray alloc] initWithObjects:
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[1-7]\\d{3,9}|8\\d{8}", 
-                        @"\\d{4,10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"(?:2|[34][1-3]|5[1-5]|6[1-4])(?:1\\d{2,3}|[2-9]\\d{6,7})", 
-                        @"\\d{4,10}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"22123456", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"1[0-25-9]\\d{7,8}", 
-                        @"\\d{9,10}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"1023456789", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"80\\d{7}", 
-                        @"\\d{9}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"801234567", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"60[2-9]\\d{6}", 
-                        @"\\d{9}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"602345678", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"50\\d{8}", 
-                        @"\\d{10}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"5012345678", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"70\\d{8}", 
-                        @"\\d{10}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"7012345678", nil], 
-                    @"KR", [NSNumber numberWithLongLong:82], 
-                    @"00(?:[124-68]|[37]\\d{2})", 
-                    @"0", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    @"0(8[1-46-8]|85\\d{2})?", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{2})(\\d{4})(\\d{4})", 
-                            @"$1-$2-$3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"1(?:0|1[19]|[69]9|5[458])|[57]0", 
-                                @"1(?:0|1[19]|[69]9|5(?:44|59|8))|[57]0", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{2})(\\d{3})(\\d{4})", 
-                            @"$1-$2-$3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"1(?:[169][2-8]|[78]|5[1-4])|[68]0|[3-6][1-9][2-9]", 
-                                @"1(?:[169][2-8]|[78]|5(?:[1-3]|4[56]))|[68]0|[3-6][1-9][2-9]", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d)(\\d{4})", 
-                            @"$1-$2-$3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"131", 
-                                @"1312", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d{2})(\\d{4})", 
-                            @"$1-$2-$3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"131", 
-                                @"131[13-9]", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d{3})(\\d{4})", 
-                            @"$1-$2-$3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"13[2-9]", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{2})(\\d{2})(\\d{3})(\\d{4})", 
-                            @"$1-$2-$3-$4", 
-                            [[NSArray alloc] initWithObjects:
-                                @"30", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d)(\\d{4})(\\d{4})", 
-                            @"$1-$2-$3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"2(?:[26]|3[0-467])", 
-                                @"2(?:[26]|3(?:01|1[45]|2[17-9]|39|4|6[67]|7[078]))", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d)(\\d{3})(\\d{4})", 
-                            @"$1-$2-$3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"2(?:3[0-35-9]|[457-9])", 
-                                @"2(?:3(?:0[02-9]|1[0-36-9]|2[02-6]|3[0-8]|6[0-589]|7[1-69]|[589])|[457-9])", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d)(\\d{3})", 
-                            @"$1-$2", 
-                            [[NSArray alloc] initWithObjects:
-                                @"21[0-46-9]", 
-                                @"21(?:[0-247-9]|3[124]|6[1269])", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d)(\\d{4})", 
-                            @"$1-$2", 
-                            [[NSArray alloc] initWithObjects:
-                                @"21[36]", 
-                                @"21(?:3[035-9]|6[03-578])", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{2})(\\d{3})", 
-                            @"$1-$2", 
-                            [[NSArray alloc] initWithObjects:
-                                @"[3-6][1-9]1", 
-                                @"[3-6][1-9]1(?:[0-46-9])", 
-                                @"[3-6][1-9]1(?:[0-247-9]|3[124]|6[1269])", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{2})(\\d{4})", 
-                            @"$1-$2", 
-                            [[NSArray alloc] initWithObjects:
-                                @"[3-6][1-9]1", 
-                                @"[3-6][1-9]1[36]", 
-                                @"[3-6][1-9]1(?:3[035-9]|6[03-578])", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], nil], @"KR", 
-                [[NSArray alloc] initWithObjects:
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"\\d{4,14}", 
-                        @"\\d{2,14}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:[1-9]\\d|0[2-9]))\\d{1,8}", 
-                        @"\\d{2,14}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"30123456", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"1(5\\d{9}|7\\d{8}|6[02]\\d{8}|63\\d{7})", 
-                        @"\\d{10,11}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"800\\d{7}", 
-                        @"\\d{10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"900([135]\\d{6}|9\\d{7})", 
-                        @"\\d{10,11}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    @"DE", [NSNumber numberWithLongLong:49], 
-                    @"00", 
-                    @"0", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    @"0", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d{3,8})", 
-                            @"$1 $2", 
-                            [[NSArray alloc] initWithObjects:
-                                @"2|3[3-9]|906|[4-9][1-9]1", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{2})(\\d{4,9})", 
-                            @"$1/$2", 
-                            [[NSArray alloc] initWithObjects:
-                                @"[34]0|[68]9", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"([4-9]\\d)(\\d{2})", 
-                            @"$1 $2", 
-                            [[NSArray alloc] initWithObjects:
-                                @"[4-9]", 
-                                @"[4-6]|[7-9](?:\\d[1-9]|[1-9]\\d)", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"([4-9]\\d{3})(\\d{2,7})", 
-                            @"$1 $2", 
-                            [[NSArray alloc] initWithObjects:
-                                @"[4-9]", 
-                                @"[4-6]|[7-9](?:\\d[1-9]|[1-9]\\d)", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d{1})(\\d{6})", 
-                            @"$1 $2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"800", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d{3,4})(\\d{4})", 
-                            @"$1 $2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"900", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], nil], @"DE", 
-                [[NSArray alloc] initWithObjects:
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"(242|8(00|66|77|88)|900)\\d{7}", 
-                        @"\\d{7,10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"242(?:3(?:02|[236][1-9]|4[0-24-9]|5[0-68]|7[3-57]|9[2-5])|4(?:2[237]|51|64|77)|502|636|702)\\d{4}", 
-                        @"\\d{7,10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"242(357|359|457|557)\\d{4}", 
-                        @"\\d{10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"8(00|66|77|88)\\d{7}", 
-                        @"\\d{10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"900\\d{7}", 
-                        @"\\d{10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    @"BS", [NSNumber numberWithLongLong:1], 
-                    @"011", 
-                    @"1", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    @"1", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], nil], @"BS", 
-                [[NSArray alloc] initWithObjects:
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[289]\\d{7,9}|[3-7]\\d{7}", 
-                        @"\\d{7,10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"24099\\d{3}|(?:3[2-79]|[479][2-689]|6[235-9])\\d{6}", 
-                        @"\\d{7,8}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"2(?:[027]\\d{7}|9\\d{6,7}|1(?:0\\d{5,7}|[12]\\d{5,6}|[3-9]\\d{5})|4[1-9]\\d{6}|8\\d{7,8})", 
-                        @"\\d{8,10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"800\\d{6,7}", 
-                        @"\\d{9,10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"900\\d{6,7}", 
-                        @"\\d{9,10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    @"NZ", [NSNumber numberWithLongLong:64], 
-                    @"00", 
-                    @"0", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    @"0", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d)(\\d{3})(\\d{4})", 
-                            @"$1-$2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"24|[34679]", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d)(\\d{3})(\\d{3,5})", 
-                            @"$1-$2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"2[179]", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d{3})(\\d{3,4})", 
-                            @"$1 $2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"[89]", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], nil], @"NZ", 
-                [[NSArray alloc] initWithObjects:
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[268]\\d{8}", 
-                        @"\\d{9}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"2696[0-4]\\d{4}", 
-                        @"\\d{9}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"269601234", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"639\\d{6}", 
-                        @"\\d{9}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"639123456", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"80\\d{7}", 
-                        @"\\d{9}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"801234567", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    @"YT", [NSNumber numberWithLongLong:262], 
-                    @"00", 
-                    @"0", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    @"0", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    @"269|639", 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], nil], @"YT", 
-                [[NSArray alloc] initWithObjects:
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[29]\\d{8}", 
-                        @"\\d{9}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"2\\d(?:[26-9]\\d|\\d[26-9])\\d{5}", 
-                        @"\\d{9}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"222123456", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"9[1-3]\\d{7}", 
-                        @"\\d{9}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"923123456", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    @"AO", [NSNumber numberWithLongLong:244], 
-                    @"00", 
-                    @"0~0", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    @"0~0", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d{3})(\\d{3})", 
-                            @"$1 $2 $3", 
-                            [NSNull null], 
-                            @"", 
-                            @"", [NSNumber numberWithLongLong:0], nil], nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], nil], @"AO", 
-                [[NSArray alloc] initWithObjects:
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"\\d{8}", 
-                        @"\\d{8}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"12345678", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"12345678", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"12345678", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"\\d{8}", 
-                        @"\\d{8}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"12345678", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    @"001", [NSNumber numberWithLongLong:800], 
-                    @"", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], [NSNumber numberWithLongLong:1], 
-                    [[NSArray alloc] initWithObjects:
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{4})(\\d{4})", 
-                            @"$1 $2", 
-                            [NSNull null], 
-                            @"", 
-                            @"", [NSNumber numberWithLongLong:0], nil], nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], [NSNumber numberWithLongLong:1], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], nil], @"800", 
-                [[NSArray alloc] initWithObjects:
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[13689]\\d{7,10}", 
-                        @"\\d{8}|\\d{10,11}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[36]\\d{7}", 
-                        @"\\d{8}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[89]\\d{7}", 
-                        @"\\d{8}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"1?800\\d{7}", 
-                        @"\\d{10,11}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"1900\\d{7}", 
-                        @"\\d{11}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    @"SG", [NSNumber numberWithLongLong:65], 
-                    @"0[0-3][0-9]", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    @"777777", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{4})(\\d{4})", 
-                            @"$1 $2", 
-                            [[NSArray alloc] initWithObjects:
-                                @"[369]|8[1-9]", nil], 
-                            @"", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{4})(\\d{3})(\\d{4})", 
-                            @"$1 $2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"1[89]", nil], 
-                            @"", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d{3})(\\d{4})", 
-                            @"$1 $2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"800", nil], 
-                            @"", 
-                            @"", [NSNumber numberWithLongLong:0], nil], nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], nil], @"SG", 
-                [[NSArray alloc] initWithObjects:
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"07\\d{5}|[1-357-9]\\d{3,10}", 
-                        @"\\d{4,11}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"07\\d{5}|[1-357-9]\\d{3,10}", 
-                        @"\\d{4,11}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"07\\d{5}|[1-357-9]\\d{3,10}", 
-                        @"\\d{4,11}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"0777[01]\\d{2}", 
-                        @"\\d{7}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"0777012", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    @"JP", [NSNumber numberWithLongLong:81], 
-                    @"010", 
-                    @"0", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    @"0", 
-                    [NSNull null], 
-                    [NSNull null], [NSNumber numberWithLongLong:1], 
-                    [[NSArray alloc] initWithObjects:
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{2})(\\d{4})(\\d{4})", 
-                            @"$1 $2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"[57-9]0", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{2})(\\d{2})(\\d{3})(\\d{4})", 
-                            @"$1 $2 $3 $4", 
-                            [[NSArray alloc] initWithObjects:
-                                @"[57-9]0", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{2})(\\d{3})(\\d{4})", 
-                            @"$1 $2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"111|222|333", 
-                                @"(?:111|222|333)1", 
-                                @"(?:111|222|333)11", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{4})(\\d)(\\d{4})", 
-                            @"$1 $2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"222|333", 
-                                @"2221|3332", 
-                                @"22212|3332", 
-                                @"222120|3332", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d{2})(\\d{4})", 
-                            @"$1 $2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"[23]", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d{4})", 
-                            @"$1-$2", 
-                            [[NSArray alloc] initWithObjects:
-                                @"077", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{4})", 
-                            @"*$1", 
-                            [[NSArray alloc] initWithObjects:
-                                @"[23]", nil], 
-                            @"$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[23]\\d{3}", 
-                        @"\\d{4}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], [NSNumber numberWithLongLong:1], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], nil], @"JP", 
-                [[NSArray alloc] initWithObjects:
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[1-9]\\d{9,10}", 
-                        @"\\d{7,11}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[2-9]\\d{9}", 
-                        @"\\d{7,10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"1\\d{10}", 
-                        @"\\d{11}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"800\\d{7}", 
-                        @"\\d{10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"900\\d{7}", 
-                        @"\\d{10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    @"MX", [NSNumber numberWithLongLong:52], 
-                    @"00", 
-                    @"01", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    @"01|04[45](\\d{10})", 
-                    @"1$1", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d{3})(\\d{4})", 
-                            @"$1 $2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"[89]00", nil], 
-                            @"01 $1", 
-                            @"", [NSNumber numberWithLongLong:1], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{2})(\\d{4})(\\d{4})", 
-                            @"$1 $2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"33|55|81", nil], 
-                            @"01 $1", 
-                            @"", [NSNumber numberWithLongLong:1], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d{3})(\\d{4})", 
-                            @"$1 $2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"[2467]|3[0-24-9]|5[0-46-9]|8[2-9]|9[1-9]", nil], 
-                            @"01 $1", 
-                            @"", [NSNumber numberWithLongLong:1], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(1)(\\d{2})(\\d{4})(\\d{4})", 
-                            @"045 $2 $3 $4", 
-                            [[NSArray alloc] initWithObjects:
-                                @"1(?:33|55|81)", nil], 
-                            @"$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(1)(\\d{3})(\\d{3})(\\d{4})", 
-                            @"045 $2 $3 $4", 
-                            [[NSArray alloc] initWithObjects:
-                                @"1(?:[124579]|3[0-24-9]|5[0-46-9]|8[02-9])", nil], 
-                            @"$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d{3})(\\d{4})", 
-                            @"$1 $2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"[89]00", 
-                                @"[89]00", nil], 
-                            @"01 $1", 
-                            @"", [NSNumber numberWithLongLong:1], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{2})(\\d{4})(\\d{4})", 
-                            @"$1 $2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"33|55|81", 
-                                @"33|55|81", nil], 
-                            @"01 $1", 
-                            @"", [NSNumber numberWithLongLong:1], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d{3})(\\d{4})", 
-                            @"$1 $2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"[2467]|3[0-24-9]|5[0-46-9]|8[2-9]|9[1-9]", 
-                                @"[2467]|3[0-24-9]|5[0-46-9]|8[2-9]|9[1-9]", nil], 
-                            @"01 $1", 
-                            @"", [NSNumber numberWithLongLong:1], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(1)(\\d{2})(\\d{4})(\\d{4})", 
-                            @"$1 $2 $3 $4", 
-                            [[NSArray alloc] initWithObjects:
-                                @"1(?:33|55|81)", nil], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(1)(\\d{3})(\\d{3})(\\d{4})", 
-                            @"$1 $2 $3 $4", 
-                            [[NSArray alloc] initWithObjects:
-                                @"1(?:[124579]|3[0-24-9]|5[0-46-9]|8[02-9])", nil], nil], nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], nil], @"MX", 
-                [[NSArray alloc] initWithObjects:
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[13-689]\\d{9}|2[0-35-9]\\d{8}", 
-                        @"\\d{7}(?:\\d{3})?", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"1234567890", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[13-689]\\d{9}|2[0-35-9]\\d{8}", 
-                        @"\\d{7}(?:\\d{3})?", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"1234567890", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[13-689]\\d{9}|2[0-35-9]\\d{8}", 
-                        @"\\d{7}(?:\\d{3})?", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"1234567890", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"8(?:00|66|77|88)\\d{7}", 
-                        @"\\d{10}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"1234567890", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"900\\d{7}", 
-                        @"\\d{10}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"1234567890", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    @"US", [NSNumber numberWithLongLong:1], 
-                    @"011", 
-                    @"1", 
-                    @" extn. ", 
-                    [NSNull null], 
-                    @"1", 
-                    [NSNull null], 
-                    [NSNull null], [NSNumber numberWithLongLong:1], 
-                    [[NSArray alloc] initWithObjects:
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d{4})", 
-                            @"$1 $2", 
-                            [NSNull null], 
-                            @"", 
-                            @"", [NSNumber numberWithLongLong:1], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d{3})(\\d{4})", 
-                            @"$1 $2 $3", 
-                            [NSNull null], 
-                            @"", 
-                            @"", [NSNumber numberWithLongLong:1], nil], nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d{3})(\\d{4})", 
-                            @"$1 $2 $3", 
-                            [NSNull null], 
-                            @"", 
-                            @"", [NSNumber numberWithLongLong:1], nil], nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], [NSNumber numberWithLongLong:1], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"800\\d{7}", 
-                        @"\\d{10}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"1234567890", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"119|911", 
-                        @"\\d{3}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"911", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], nil], @"US", 
-                [[NSArray alloc] initWithObjects:
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[0389]\\d{5,10}", 
-                        @"\\d{6,11}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"0\\d{9,10}", 
-                        @"\\d{10,11}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"3\\d{8,9}", 
-                        @"\\d{9,10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"80(?:0\\d{6}|3\\d{3})", 
-                        @"\\d{6,9}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"89(?:2\\d{3}|9\\d{6})", 
-                        @"\\d{6,9}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    @"IT", [NSNumber numberWithLongLong:39], 
-                    @"00", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{2})(\\d{4})(\\d{4})", 
-                            @"$1 $2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"0[26]", nil], 
-                            @"", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d{4})(\\d{3,4})", 
-                            @"$1 $2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"0[13-57-9]", nil], 
-                            @"", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d{3})(\\d{3,4})", 
-                            @"$1 $2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"3", nil], 
-                            @"", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d{3,6})", 
-                            @"$1 $2", 
-                            [[NSArray alloc] initWithObjects:
-                                @"8", nil], 
-                            @"", 
-                            @"", [NSNumber numberWithLongLong:0], nil], nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], [NSNumber numberWithLongLong:1], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], nil], @"IT", 
-                [[NSArray alloc] initWithObjects:
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[1-3689]\\d{9,10}", 
-                        @"\\d{6,11}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[1-3]\\d{9}", 
-                        @"\\d{6,10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"9\\d{10}|[1-3]\\d{9}", 
-                        @"\\d{10,11}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"80\\d{8}", 
-                        @"\\d{10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"6(0\\d|10)\\d{7}", 
-                        @"\\d{10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    @"AR", [NSNumber numberWithLongLong:54], 
-                    @"00", 
-                    @"0", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    @"0(?:(11|343|3715)15)?", 
-                    @"9$1", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{2})(\\d{4})(\\d{4})", 
-                            @"$1 $2-$3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"11", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{4})(\\d{2})(\\d{4})", 
-                            @"$1 $2-$3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"1[02-9]|[23]", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(9)(11)(\\d{4})(\\d{4})", 
-                            @"$2 15 $3-$4", 
-                            [[NSArray alloc] initWithObjects:
-                                @"911", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(9)(\\d{4})(\\d{2})(\\d{4})", 
-                            @"$2 $3-$4", 
-                            [[NSArray alloc] initWithObjects:
-                                @"9(?:1[02-9]|[23])", nil], 
-                            @"0$1", 
-                            @"0$1 $CC", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d{3})(\\d{4})", 
-                            @"$1-$2-$3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"[68]", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{2})(\\d{4})(\\d{4})", 
-                            @"$1 $2-$3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"11", 
-                                @"11", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{4})(\\d{2})(\\d{4})", 
-                            @"$1 $2-$3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"1[02-9]|[23]", 
-                                @"1[02-9]|[23]", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(9)(11)(\\d{4})(\\d{4})", 
-                            @"$1 $2 $3 $4", 
-                            [[NSArray alloc] initWithObjects:
-                                @"911", nil], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(9)(\\d{4})(\\d{2})(\\d{4})", 
-                            @"$1 $2 $3 $4", 
-                            [[NSArray alloc] initWithObjects:
-                                @"9(?:1[02-9]|[23])", nil], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d{3})(\\d{4})", 
-                            @"$1-$2-$3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"[68]", 
-                                @"[68]", nil], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], nil], @"AR", 
-                [[NSArray alloc] initWithObjects:
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"\\d{9}", 
-                        @"\\d{9}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"123456789", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"123456789", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"123456789", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"\\d{9}", 
-                        @"\\d{9}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"123456789", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    @"001", [NSNumber numberWithLongLong:979], 
-                    @"", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], [NSNumber numberWithLongLong:1], 
-                    [[NSArray alloc] initWithObjects:
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d)(\\d{4})(\\d{4})", 
-                            @"$1 $2 $3", 
-                            [NSNull null], 
-                            @"", 
-                            @"", [NSNumber numberWithLongLong:0], nil], nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], nil], @"979", 
-                [[NSArray alloc] initWithObjects:
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"\\d{10}", 
-                        @"\\d{6,10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[1-6]\\d{9}", 
-                        @"\\d{6,10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"7[1-57-9]\\d{8}", 
-                        @"\\d{10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"80\\d{8}", 
-                        @"\\d{10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"9[018]\\d{8}", 
-                        @"\\d{10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"8(?:4[3-5]|7[0-2])\\d{7}", 
-                        @"\\d{10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"70\\d{8}", 
-                        @"\\d{10}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"56\\d{8}", 
-                        @"\\d{10}", nil], 
-                    @"GB", [NSNumber numberWithLongLong:44], 
-                    @"00", 
-                    @"0", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    @"0", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{2})(\\d{4})(\\d{4})", 
-                            @"$1 $2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"[1-59]|[78]0", nil], 
-                            @"(0$1)", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d)(\\d{3})(\\d{3})(\\d{3})", 
-                            @"$1 $2 $3 $4", 
-                            [[NSArray alloc] initWithObjects:
-                                @"6", nil], 
-                            @"(0$1)", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{4})(\\d{3})(\\d{3})", 
-                            @"$1 $2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"7[1-57-9]", nil], 
-                            @"(0$1)", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d{3})(\\d{4})", 
-                            @"$1 $2 $3", 
-                            [[NSArray alloc] initWithObjects:
-                                @"8[47]", nil], 
-                            @"(0$1)", 
-                            @"", [NSNumber numberWithLongLong:0], nil], nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], nil], @"GB", 
-                [[NSArray alloc] initWithObjects:
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[1-9]\\d{5}", 
-                        @"\\d{6}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[1-9]\\d{5}", 
-                        @"\\d{6}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"112345", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[1-9]\\d{5}", 
-                        @"\\d{6}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    @"BY", [NSNumber numberWithLongLong:375], 
-                    @"810", 
-                    @"8", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    @"80?|99999", 
-                    [NSNull null], 
-                    [NSNull null], [NSNumber numberWithLongLong:1], 
-                    [[NSArray alloc] initWithObjects:
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{4})", 
-                            @"$1", 
-                            [[NSArray alloc] initWithObjects:
-                                @"[1-8]", nil], 
-                            @"8 $1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{2})(\\d{3})", 
-                            @"$1 $2", 
-                            [[NSArray alloc] initWithObjects:
-                                @"[1-8]", nil], 
-                            @"8$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], 
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"(\\d{3})(\\d{3})", 
-                            @"$1 $2", 
-                            [[NSArray alloc] initWithObjects:
-                                @"[1-8]", nil], 
-                            @"8 $1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], nil], @"BY", 
-                [[NSArray alloc] initWithObjects:
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"[268]\\d{8}", 
-                        @"\\d{9}", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"262\\d{6}", 
-                        @"\\d{9}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"262161234", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"6(?:9[23]|47)\\d{6}", 
-                        @"\\d{9}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"692123456", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"80\\d{7}", 
-                        @"\\d{9}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"801234567", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"8(?:1[01]|2[0156]|84|9[0-37-9])\\d{6}", 
-                        @"\\d{9}", 
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"810123456", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    @"RE", [NSNumber numberWithLongLong:262], 
-                    @"00", 
-                    @"0", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    @"0", 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [[NSArray alloc] initWithObjects:
-                            [NSNull null], 
-                            @"([268]\\d{2})(\\d{2})(\\d{2})(\\d{2})", 
-                            @"$1 $2 $3 $4", 
-                            [NSNull null], 
-                            @"0$1", 
-                            @"", [NSNumber numberWithLongLong:0], nil], nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    @"262|6(?:9[23]|47)|8", 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [NSNull null], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], 
-                    [[NSArray alloc] initWithObjects:
-                        [NSNull null], 
-                        [NSNull null], 
-                        @"NA", 
-                        @"NA", nil], nil], @"RE", nil], @"countryToMetadata", 
-            [[NSDictionary alloc] initWithObjectsAndKeys:
-                [[NSArray alloc] initWithObjects:
-                    @"AO", nil], @"244", 
-                [[NSArray alloc] initWithObjects:
-                    @"NZ", nil], @"64", 
-                [[NSArray alloc] initWithObjects:
-                    @"RE", 
-                    @"YT", nil], @"262", 
-                [[NSArray alloc] initWithObjects:
-                    @"JP", nil], @"81", 
-                [[NSArray alloc] initWithObjects:
-                    @"PL", nil], @"48", 
-                [[NSArray alloc] initWithObjects:
-                    @"AR", nil], @"54", 
-                [[NSArray alloc] initWithObjects:
-                    @"SG", nil], @"65", 
-                [[NSArray alloc] initWithObjects:
-                    @"GB", nil], @"44", 
-                [[NSArray alloc] initWithObjects:
-                    @"KR", nil], @"82", 
-                [[NSArray alloc] initWithObjects:
-                    @"DE", nil], @"49", 
-                [[NSArray alloc] initWithObjects:
-                    @"BR", nil], @"55", 
-                [[NSArray alloc] initWithObjects:
-                    @"AU", nil], @"61", 
-                [[NSArray alloc] initWithObjects:
-                    @"IT", nil], @"39", 
-                [[NSArray alloc] initWithObjects:
-                    @"BY", nil], @"375", 
-                [[NSArray alloc] initWithObjects:
-                    @"AD", nil], @"376", 
-                [[NSArray alloc] initWithObjects:
-                    @"001", nil], @"800", 
-                [[NSArray alloc] initWithObjects:
-                    @"001", nil], @"979", 
-                [[NSArray alloc] initWithObjects:
-                    @"US", 
-                    @"BS", nil], @"1", 
-                [[NSArray alloc] initWithObjects:
-                    @"MX", nil], @"52", nil], @"countryCodeToRegionCodeMap", nil];
+        NSMutableDictionary *ZWlERJoKREubROiz_NSDictionary_1 = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary *HdYgeMOvimmQrVSk_NSDictionary_2 = [[NSMutableDictionary alloc] init];
+            NSMutableArray *msAoGweNPaNWjeag_NSArray_3 = [[NSMutableArray alloc] init];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *cyPoVrirxFGMKnwy_NSArray_4 = [[NSMutableArray alloc] init];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:cyPoVrirxFGMKnwy_NSArray_4];
+                NSMutableArray *EPxMrdBNlwQXDmoB_NSArray_4 = [[NSMutableArray alloc] init];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:EPxMrdBNlwQXDmoB_NSArray_4];
+                NSMutableArray *BVhmEfSRStdZRZfp_NSArray_4 = [[NSMutableArray alloc] init];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:BVhmEfSRStdZRZfp_NSArray_4];
+                NSMutableArray *BaVgiPfQUqLRGmXY_NSArray_4 = [[NSMutableArray alloc] init];
+                [BaVgiPfQUqLRGmXY_NSArray_4 addObject:[NSNull null]];
+                [BaVgiPfQUqLRGmXY_NSArray_4 addObject:[NSNull null]];
+                [BaVgiPfQUqLRGmXY_NSArray_4 addObject:@"NA"];
+                [BaVgiPfQUqLRGmXY_NSArray_4 addObject:@"NA"];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:BaVgiPfQUqLRGmXY_NSArray_4];
+                NSMutableArray *zxTbBZIcYMHGCmrZ_NSArray_4 = [[NSMutableArray alloc] init];
+                [zxTbBZIcYMHGCmrZ_NSArray_4 addObject:[NSNull null]];
+                [zxTbBZIcYMHGCmrZ_NSArray_4 addObject:[NSNull null]];
+                [zxTbBZIcYMHGCmrZ_NSArray_4 addObject:@"NA"];
+                [zxTbBZIcYMHGCmrZ_NSArray_4 addObject:@"NA"];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:zxTbBZIcYMHGCmrZ_NSArray_4];
+                NSMutableArray *IpLvKueeWzZllwsN_NSArray_4 = [[NSMutableArray alloc] init];
+                [IpLvKueeWzZllwsN_NSArray_4 addObject:[NSNull null]];
+                [IpLvKueeWzZllwsN_NSArray_4 addObject:[NSNull null]];
+                [IpLvKueeWzZllwsN_NSArray_4 addObject:@"NA"];
+                [IpLvKueeWzZllwsN_NSArray_4 addObject:@"NA"];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:IpLvKueeWzZllwsN_NSArray_4];
+                NSMutableArray *OrlOKJboHiFGUnni_NSArray_4 = [[NSMutableArray alloc] init];
+                [OrlOKJboHiFGUnni_NSArray_4 addObject:[NSNull null]];
+                [OrlOKJboHiFGUnni_NSArray_4 addObject:[NSNull null]];
+                [OrlOKJboHiFGUnni_NSArray_4 addObject:@"NA"];
+                [OrlOKJboHiFGUnni_NSArray_4 addObject:@"NA"];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:OrlOKJboHiFGUnni_NSArray_4];
+                NSMutableArray *ZUCdcsFhresrMTSA_NSArray_4 = [[NSMutableArray alloc] init];
+                [ZUCdcsFhresrMTSA_NSArray_4 addObject:[NSNull null]];
+                [ZUCdcsFhresrMTSA_NSArray_4 addObject:[NSNull null]];
+                [ZUCdcsFhresrMTSA_NSArray_4 addObject:@"NA"];
+                [ZUCdcsFhresrMTSA_NSArray_4 addObject:@"NA"];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:ZUCdcsFhresrMTSA_NSArray_4];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:@"AD"];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:[NSNumber numberWithLongLong:376]];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:@"00"];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:[NSNull null]];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:[NSNull null]];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:[NSNull null]];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:[NSNull null]];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:[NSNull null]];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:[NSNull null]];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:[NSNumber numberWithLongLong:1]];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:[NSNull null]];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *yENGncDnqnKjdTKK_NSArray_4 = [[NSMutableArray alloc] init];
+                [yENGncDnqnKjdTKK_NSArray_4 addObject:[NSNull null]];
+                [yENGncDnqnKjdTKK_NSArray_4 addObject:[NSNull null]];
+                [yENGncDnqnKjdTKK_NSArray_4 addObject:@"NA"];
+                [yENGncDnqnKjdTKK_NSArray_4 addObject:@"NA"];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:yENGncDnqnKjdTKK_NSArray_4];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:[NSNull null]];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *HvTsgGdgpXiOQYpp_NSArray_4 = [[NSMutableArray alloc] init];
+                [HvTsgGdgpXiOQYpp_NSArray_4 addObject:[NSNull null]];
+                [HvTsgGdgpXiOQYpp_NSArray_4 addObject:[NSNull null]];
+                [HvTsgGdgpXiOQYpp_NSArray_4 addObject:@"NA"];
+                [HvTsgGdgpXiOQYpp_NSArray_4 addObject:@"NA"];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:HvTsgGdgpXiOQYpp_NSArray_4];
+                NSMutableArray *DzFiOLmqhWlecQXE_NSArray_4 = [[NSMutableArray alloc] init];
+                [DzFiOLmqhWlecQXE_NSArray_4 addObject:[NSNull null]];
+                [DzFiOLmqhWlecQXE_NSArray_4 addObject:[NSNull null]];
+                [DzFiOLmqhWlecQXE_NSArray_4 addObject:@"NA"];
+                [DzFiOLmqhWlecQXE_NSArray_4 addObject:@"NA"];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:DzFiOLmqhWlecQXE_NSArray_4];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *RfmqyMSOkunPaHcd_NSArray_4 = [[NSMutableArray alloc] init];
+                [RfmqyMSOkunPaHcd_NSArray_4 addObject:[NSNull null]];
+                [RfmqyMSOkunPaHcd_NSArray_4 addObject:[NSNull null]];
+                [RfmqyMSOkunPaHcd_NSArray_4 addObject:@"NA"];
+                [RfmqyMSOkunPaHcd_NSArray_4 addObject:@"NA"];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:RfmqyMSOkunPaHcd_NSArray_4];
+                NSMutableArray *xQtuaZELQXCkPIdn_NSArray_4 = [[NSMutableArray alloc] init];
+                [xQtuaZELQXCkPIdn_NSArray_4 addObject:[NSNull null]];
+                [xQtuaZELQXCkPIdn_NSArray_4 addObject:[NSNull null]];
+                [xQtuaZELQXCkPIdn_NSArray_4 addObject:@"NA"];
+                [xQtuaZELQXCkPIdn_NSArray_4 addObject:@"NA"];
+            [msAoGweNPaNWjeag_NSArray_3 addObject:xQtuaZELQXCkPIdn_NSArray_4];
+        [HdYgeMOvimmQrVSk_NSDictionary_2 setObject:msAoGweNPaNWjeag_NSArray_3 forKey:@"AD"];
+            NSMutableArray *LhwhGtTOKaRACyVO_NSArray_3 = [[NSMutableArray alloc] init];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *aRIqHPewKxhKiVjw_NSArray_4 = [[NSMutableArray alloc] init];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:aRIqHPewKxhKiVjw_NSArray_4];
+                NSMutableArray *LWnTFyICRIMtTCio_NSArray_4 = [[NSMutableArray alloc] init];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:LWnTFyICRIMtTCio_NSArray_4];
+                NSMutableArray *NlzjfoDbQEbAhGWO_NSArray_4 = [[NSMutableArray alloc] init];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:NlzjfoDbQEbAhGWO_NSArray_4];
+                NSMutableArray *PrRTfObasjnXEczZ_NSArray_4 = [[NSMutableArray alloc] init];
+                [PrRTfObasjnXEczZ_NSArray_4 addObject:[NSNull null]];
+                [PrRTfObasjnXEczZ_NSArray_4 addObject:[NSNull null]];
+                [PrRTfObasjnXEczZ_NSArray_4 addObject:@"NA"];
+                [PrRTfObasjnXEczZ_NSArray_4 addObject:@"NA"];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:PrRTfObasjnXEczZ_NSArray_4];
+                NSMutableArray *jnVcziBmVcmkSlQC_NSArray_4 = [[NSMutableArray alloc] init];
+                [jnVcziBmVcmkSlQC_NSArray_4 addObject:[NSNull null]];
+                [jnVcziBmVcmkSlQC_NSArray_4 addObject:[NSNull null]];
+                [jnVcziBmVcmkSlQC_NSArray_4 addObject:@"NA"];
+                [jnVcziBmVcmkSlQC_NSArray_4 addObject:@"NA"];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:jnVcziBmVcmkSlQC_NSArray_4];
+                NSMutableArray *kSkHQLKkBImlPLZM_NSArray_4 = [[NSMutableArray alloc] init];
+                [kSkHQLKkBImlPLZM_NSArray_4 addObject:[NSNull null]];
+                [kSkHQLKkBImlPLZM_NSArray_4 addObject:[NSNull null]];
+                [kSkHQLKkBImlPLZM_NSArray_4 addObject:@"NA"];
+                [kSkHQLKkBImlPLZM_NSArray_4 addObject:@"NA"];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:kSkHQLKkBImlPLZM_NSArray_4];
+                NSMutableArray *HEPpeSgxqUdSOzvt_NSArray_4 = [[NSMutableArray alloc] init];
+                [HEPpeSgxqUdSOzvt_NSArray_4 addObject:[NSNull null]];
+                [HEPpeSgxqUdSOzvt_NSArray_4 addObject:[NSNull null]];
+                [HEPpeSgxqUdSOzvt_NSArray_4 addObject:@"NA"];
+                [HEPpeSgxqUdSOzvt_NSArray_4 addObject:@"NA"];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:HEPpeSgxqUdSOzvt_NSArray_4];
+                NSMutableArray *QkdcMKEvvncCSZWM_NSArray_4 = [[NSMutableArray alloc] init];
+                [QkdcMKEvvncCSZWM_NSArray_4 addObject:[NSNull null]];
+                [QkdcMKEvvncCSZWM_NSArray_4 addObject:[NSNull null]];
+                [QkdcMKEvvncCSZWM_NSArray_4 addObject:@"NA"];
+                [QkdcMKEvvncCSZWM_NSArray_4 addObject:@"NA"];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:QkdcMKEvvncCSZWM_NSArray_4];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:@"BR"];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:[NSNumber numberWithLongLong:55]];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:@"0014"];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:@"0"];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:[NSNull null]];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:[NSNull null]];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:@"0"];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:[NSNull null]];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:[NSNull null]];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:[NSNumber numberWithLongLong:1]];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:[NSNull null]];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *TJaoZoNVtfOEKAZq_NSArray_4 = [[NSMutableArray alloc] init];
+                [TJaoZoNVtfOEKAZq_NSArray_4 addObject:[NSNull null]];
+                [TJaoZoNVtfOEKAZq_NSArray_4 addObject:[NSNull null]];
+                [TJaoZoNVtfOEKAZq_NSArray_4 addObject:@"NA"];
+                [TJaoZoNVtfOEKAZq_NSArray_4 addObject:@"NA"];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:TJaoZoNVtfOEKAZq_NSArray_4];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:[NSNull null]];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *vgkPYuVfixjljfZy_NSArray_4 = [[NSMutableArray alloc] init];
+                [vgkPYuVfixjljfZy_NSArray_4 addObject:[NSNull null]];
+                [vgkPYuVfixjljfZy_NSArray_4 addObject:[NSNull null]];
+                [vgkPYuVfixjljfZy_NSArray_4 addObject:@"NA"];
+                [vgkPYuVfixjljfZy_NSArray_4 addObject:@"NA"];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:vgkPYuVfixjljfZy_NSArray_4];
+                NSMutableArray *FsSYBBvgiZXEjqOS_NSArray_4 = [[NSMutableArray alloc] init];
+                [FsSYBBvgiZXEjqOS_NSArray_4 addObject:[NSNull null]];
+                [FsSYBBvgiZXEjqOS_NSArray_4 addObject:[NSNull null]];
+                [FsSYBBvgiZXEjqOS_NSArray_4 addObject:@"NA"];
+                [FsSYBBvgiZXEjqOS_NSArray_4 addObject:@"NA"];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:FsSYBBvgiZXEjqOS_NSArray_4];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *jFDucptXGbkcRNNS_NSArray_4 = [[NSMutableArray alloc] init];
+                [jFDucptXGbkcRNNS_NSArray_4 addObject:[NSNull null]];
+                [jFDucptXGbkcRNNS_NSArray_4 addObject:[NSNull null]];
+                [jFDucptXGbkcRNNS_NSArray_4 addObject:@"19[023]|911"];
+                [jFDucptXGbkcRNNS_NSArray_4 addObject:@"\\d{3}"];
+                [jFDucptXGbkcRNNS_NSArray_4 addObject:[NSNull null]];
+                [jFDucptXGbkcRNNS_NSArray_4 addObject:[NSNull null]];
+                [jFDucptXGbkcRNNS_NSArray_4 addObject:@"190"];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:jFDucptXGbkcRNNS_NSArray_4];
+                NSMutableArray *SdQgqHKSsOxzPxMx_NSArray_4 = [[NSMutableArray alloc] init];
+                [SdQgqHKSsOxzPxMx_NSArray_4 addObject:[NSNull null]];
+                [SdQgqHKSsOxzPxMx_NSArray_4 addObject:[NSNull null]];
+                [SdQgqHKSsOxzPxMx_NSArray_4 addObject:@"NA"];
+                [SdQgqHKSsOxzPxMx_NSArray_4 addObject:@"NA"];
+            [LhwhGtTOKaRACyVO_NSArray_3 addObject:SdQgqHKSsOxzPxMx_NSArray_4];
+        [HdYgeMOvimmQrVSk_NSDictionary_2 setObject:LhwhGtTOKaRACyVO_NSArray_3 forKey:@"BR"];
+            NSMutableArray *efjZNubEmeeuUINc_NSArray_3 = [[NSMutableArray alloc] init];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *vDodvZDGjMUoqMgZ_NSArray_4 = [[NSMutableArray alloc] init];
+                [vDodvZDGjMUoqMgZ_NSArray_4 addObject:[NSNull null]];
+                [vDodvZDGjMUoqMgZ_NSArray_4 addObject:[NSNull null]];
+                [vDodvZDGjMUoqMgZ_NSArray_4 addObject:@"[1-578]\\d{4,14}"];
+                [vDodvZDGjMUoqMgZ_NSArray_4 addObject:@"\\d{5,15}"];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:vDodvZDGjMUoqMgZ_NSArray_4];
+                NSMutableArray *lWuGStNvJprkOMQG_NSArray_4 = [[NSMutableArray alloc] init];
+                [lWuGStNvJprkOMQG_NSArray_4 addObject:[NSNull null]];
+                [lWuGStNvJprkOMQG_NSArray_4 addObject:[NSNull null]];
+                [lWuGStNvJprkOMQG_NSArray_4 addObject:@"[2378]\\d{8}"];
+                [lWuGStNvJprkOMQG_NSArray_4 addObject:@"\\d{9}"];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:lWuGStNvJprkOMQG_NSArray_4];
+                NSMutableArray *pwxKMEWOuKaXnhhL_NSArray_4 = [[NSMutableArray alloc] init];
+                [pwxKMEWOuKaXnhhL_NSArray_4 addObject:[NSNull null]];
+                [pwxKMEWOuKaXnhhL_NSArray_4 addObject:[NSNull null]];
+                [pwxKMEWOuKaXnhhL_NSArray_4 addObject:@"4\\d{8}"];
+                [pwxKMEWOuKaXnhhL_NSArray_4 addObject:@"\\d{9}"];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:pwxKMEWOuKaXnhhL_NSArray_4];
+                NSMutableArray *ntdhtgQHxEIMugjI_NSArray_4 = [[NSMutableArray alloc] init];
+                [ntdhtgQHxEIMugjI_NSArray_4 addObject:[NSNull null]];
+                [ntdhtgQHxEIMugjI_NSArray_4 addObject:[NSNull null]];
+                [ntdhtgQHxEIMugjI_NSArray_4 addObject:@"1800\\d{6}"];
+                [ntdhtgQHxEIMugjI_NSArray_4 addObject:@"\\d{10}"];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:ntdhtgQHxEIMugjI_NSArray_4];
+                NSMutableArray *gRMABIJpnduSQqsw_NSArray_4 = [[NSMutableArray alloc] init];
+                [gRMABIJpnduSQqsw_NSArray_4 addObject:[NSNull null]];
+                [gRMABIJpnduSQqsw_NSArray_4 addObject:[NSNull null]];
+                [gRMABIJpnduSQqsw_NSArray_4 addObject:@"190[0126]\\d{6}"];
+                [gRMABIJpnduSQqsw_NSArray_4 addObject:@"\\d{10}"];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:gRMABIJpnduSQqsw_NSArray_4];
+                NSMutableArray *pdthwIHHTsJsyLea_NSArray_4 = [[NSMutableArray alloc] init];
+                [pdthwIHHTsJsyLea_NSArray_4 addObject:[NSNull null]];
+                [pdthwIHHTsJsyLea_NSArray_4 addObject:[NSNull null]];
+                [pdthwIHHTsJsyLea_NSArray_4 addObject:@"NA"];
+                [pdthwIHHTsJsyLea_NSArray_4 addObject:@"NA"];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:pdthwIHHTsJsyLea_NSArray_4];
+                NSMutableArray *nQKciISCqkwkRpys_NSArray_4 = [[NSMutableArray alloc] init];
+                [nQKciISCqkwkRpys_NSArray_4 addObject:[NSNull null]];
+                [nQKciISCqkwkRpys_NSArray_4 addObject:[NSNull null]];
+                [nQKciISCqkwkRpys_NSArray_4 addObject:@"NA"];
+                [nQKciISCqkwkRpys_NSArray_4 addObject:@"NA"];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:nQKciISCqkwkRpys_NSArray_4];
+                NSMutableArray *tBAwKdncXJBcpWby_NSArray_4 = [[NSMutableArray alloc] init];
+                [tBAwKdncXJBcpWby_NSArray_4 addObject:[NSNull null]];
+                [tBAwKdncXJBcpWby_NSArray_4 addObject:[NSNull null]];
+                [tBAwKdncXJBcpWby_NSArray_4 addObject:@"NA"];
+                [tBAwKdncXJBcpWby_NSArray_4 addObject:@"NA"];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:tBAwKdncXJBcpWby_NSArray_4];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:@"AU"];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:[NSNumber numberWithLongLong:61]];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:@"001[12]"];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:@"0"];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:[NSNull null]];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:[NSNull null]];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:@"0"];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:[NSNull null]];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:@"0011"];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *eVlbtSGJZJJhkqzC_NSArray_4 = [[NSMutableArray alloc] init];
+                    NSMutableArray *nBCpQFucXWUjEgEx_NSArray_5 = [[NSMutableArray alloc] init];
+                    [nBCpQFucXWUjEgEx_NSArray_5 addObject:[NSNull null]];
+                    [nBCpQFucXWUjEgEx_NSArray_5 addObject:@"(\\d{4})(\\d{3})(\\d{3})"];
+                    [nBCpQFucXWUjEgEx_NSArray_5 addObject:@"$1 $2 $3"];
+                        NSMutableArray *UqUAGDhMjoyjMISU_NSArray_6 = [[NSMutableArray alloc] init];
+                        [UqUAGDhMjoyjMISU_NSArray_6 addObject:@"1"];
+                    [nBCpQFucXWUjEgEx_NSArray_5 addObject:UqUAGDhMjoyjMISU_NSArray_6];
+                    [nBCpQFucXWUjEgEx_NSArray_5 addObject:@"$1"];
+                    [nBCpQFucXWUjEgEx_NSArray_5 addObject:@""];
+                    [nBCpQFucXWUjEgEx_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [eVlbtSGJZJJhkqzC_NSArray_4 addObject:nBCpQFucXWUjEgEx_NSArray_5];
+                    NSMutableArray *jllkWCoyUOPPcAYF_NSArray_5 = [[NSMutableArray alloc] init];
+                    [jllkWCoyUOPPcAYF_NSArray_5 addObject:[NSNull null]];
+                    [jllkWCoyUOPPcAYF_NSArray_5 addObject:@"(\\d{1})(\\d{4})(\\d{4})"];
+                    [jllkWCoyUOPPcAYF_NSArray_5 addObject:@"$1 $2 $3"];
+                        NSMutableArray *UnzNWyotqJXOfZAw_NSArray_6 = [[NSMutableArray alloc] init];
+                        [UnzNWyotqJXOfZAw_NSArray_6 addObject:@"[2-478]"];
+                    [jllkWCoyUOPPcAYF_NSArray_5 addObject:UnzNWyotqJXOfZAw_NSArray_6];
+                    [jllkWCoyUOPPcAYF_NSArray_5 addObject:@"0$1"];
+                    [jllkWCoyUOPPcAYF_NSArray_5 addObject:@""];
+                    [jllkWCoyUOPPcAYF_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [eVlbtSGJZJJhkqzC_NSArray_4 addObject:jllkWCoyUOPPcAYF_NSArray_5];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:eVlbtSGJZJJhkqzC_NSArray_4];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *IpekNIJilWldsYui_NSArray_4 = [[NSMutableArray alloc] init];
+                [IpekNIJilWldsYui_NSArray_4 addObject:[NSNull null]];
+                [IpekNIJilWldsYui_NSArray_4 addObject:[NSNull null]];
+                [IpekNIJilWldsYui_NSArray_4 addObject:@"NA"];
+                [IpekNIJilWldsYui_NSArray_4 addObject:@"NA"];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:IpekNIJilWldsYui_NSArray_4];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:[NSNull null]];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *rnyudRrZlocPqhrK_NSArray_4 = [[NSMutableArray alloc] init];
+                [rnyudRrZlocPqhrK_NSArray_4 addObject:[NSNull null]];
+                [rnyudRrZlocPqhrK_NSArray_4 addObject:[NSNull null]];
+                [rnyudRrZlocPqhrK_NSArray_4 addObject:@"NA"];
+                [rnyudRrZlocPqhrK_NSArray_4 addObject:@"NA"];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:rnyudRrZlocPqhrK_NSArray_4];
+                NSMutableArray *pgcntoGFMUdzeuvw_NSArray_4 = [[NSMutableArray alloc] init];
+                [pgcntoGFMUdzeuvw_NSArray_4 addObject:[NSNull null]];
+                [pgcntoGFMUdzeuvw_NSArray_4 addObject:[NSNull null]];
+                [pgcntoGFMUdzeuvw_NSArray_4 addObject:@"NA"];
+                [pgcntoGFMUdzeuvw_NSArray_4 addObject:@"NA"];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:pgcntoGFMUdzeuvw_NSArray_4];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *ddOiBunTqzMvDqUg_NSArray_4 = [[NSMutableArray alloc] init];
+                [ddOiBunTqzMvDqUg_NSArray_4 addObject:[NSNull null]];
+                [ddOiBunTqzMvDqUg_NSArray_4 addObject:[NSNull null]];
+                [ddOiBunTqzMvDqUg_NSArray_4 addObject:@"NA"];
+                [ddOiBunTqzMvDqUg_NSArray_4 addObject:@"NA"];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:ddOiBunTqzMvDqUg_NSArray_4];
+                NSMutableArray *PGXcLSoeFQaZroMv_NSArray_4 = [[NSMutableArray alloc] init];
+                [PGXcLSoeFQaZroMv_NSArray_4 addObject:[NSNull null]];
+                [PGXcLSoeFQaZroMv_NSArray_4 addObject:[NSNull null]];
+                [PGXcLSoeFQaZroMv_NSArray_4 addObject:@"NA"];
+                [PGXcLSoeFQaZroMv_NSArray_4 addObject:@"NA"];
+            [efjZNubEmeeuUINc_NSArray_3 addObject:PGXcLSoeFQaZroMv_NSArray_4];
+        [HdYgeMOvimmQrVSk_NSDictionary_2 setObject:efjZNubEmeeuUINc_NSArray_3 forKey:@"AU"];
+            NSMutableArray *aofcyyJjGOBZsTjY_NSArray_3 = [[NSMutableArray alloc] init];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *PqaUmusLOTdhJgBe_NSArray_4 = [[NSMutableArray alloc] init];
+                [PqaUmusLOTdhJgBe_NSArray_4 addObject:[NSNull null]];
+                [PqaUmusLOTdhJgBe_NSArray_4 addObject:[NSNull null]];
+                [PqaUmusLOTdhJgBe_NSArray_4 addObject:@"[1-9]\\d{8}"];
+                [PqaUmusLOTdhJgBe_NSArray_4 addObject:@"\\d{9}"];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:PqaUmusLOTdhJgBe_NSArray_4];
+                NSMutableArray *rpjCiJkojxnuBTYk_NSArray_4 = [[NSMutableArray alloc] init];
+                [rpjCiJkojxnuBTYk_NSArray_4 addObject:[NSNull null]];
+                [rpjCiJkojxnuBTYk_NSArray_4 addObject:[NSNull null]];
+                [rpjCiJkojxnuBTYk_NSArray_4 addObject:@"[1-9]\\d{8}"];
+                [rpjCiJkojxnuBTYk_NSArray_4 addObject:@"\\d{9}"];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:rpjCiJkojxnuBTYk_NSArray_4];
+                NSMutableArray *fRojmAzvgAWegMQm_NSArray_4 = [[NSMutableArray alloc] init];
+                [fRojmAzvgAWegMQm_NSArray_4 addObject:[NSNull null]];
+                [fRojmAzvgAWegMQm_NSArray_4 addObject:[NSNull null]];
+                [fRojmAzvgAWegMQm_NSArray_4 addObject:@"(?:5[01]|6[069]|7[289]|88)\\d{7}"];
+                [fRojmAzvgAWegMQm_NSArray_4 addObject:@"\\d{9}"];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:fRojmAzvgAWegMQm_NSArray_4];
+                NSMutableArray *ZEbNPsWMdqJoMbFk_NSArray_4 = [[NSMutableArray alloc] init];
+                [ZEbNPsWMdqJoMbFk_NSArray_4 addObject:[NSNull null]];
+                [ZEbNPsWMdqJoMbFk_NSArray_4 addObject:[NSNull null]];
+                [ZEbNPsWMdqJoMbFk_NSArray_4 addObject:@"800\\d{6}"];
+                [ZEbNPsWMdqJoMbFk_NSArray_4 addObject:@"\\d{9}"];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:ZEbNPsWMdqJoMbFk_NSArray_4];
+                NSMutableArray *tvutCauGDomCOGIp_NSArray_4 = [[NSMutableArray alloc] init];
+                [tvutCauGDomCOGIp_NSArray_4 addObject:[NSNull null]];
+                [tvutCauGDomCOGIp_NSArray_4 addObject:[NSNull null]];
+                [tvutCauGDomCOGIp_NSArray_4 addObject:@"70\\d{7}"];
+                [tvutCauGDomCOGIp_NSArray_4 addObject:@"\\d{9}"];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:tvutCauGDomCOGIp_NSArray_4];
+                NSMutableArray *AbJcBpNPrnTsIKby_NSArray_4 = [[NSMutableArray alloc] init];
+                [AbJcBpNPrnTsIKby_NSArray_4 addObject:[NSNull null]];
+                [AbJcBpNPrnTsIKby_NSArray_4 addObject:[NSNull null]];
+                [AbJcBpNPrnTsIKby_NSArray_4 addObject:@"NA"];
+                [AbJcBpNPrnTsIKby_NSArray_4 addObject:@"NA"];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:AbJcBpNPrnTsIKby_NSArray_4];
+                NSMutableArray *BJhvVhOfgUrdGoVh_NSArray_4 = [[NSMutableArray alloc] init];
+                [BJhvVhOfgUrdGoVh_NSArray_4 addObject:[NSNull null]];
+                [BJhvVhOfgUrdGoVh_NSArray_4 addObject:[NSNull null]];
+                [BJhvVhOfgUrdGoVh_NSArray_4 addObject:@"NA"];
+                [BJhvVhOfgUrdGoVh_NSArray_4 addObject:@"NA"];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:BJhvVhOfgUrdGoVh_NSArray_4];
+                NSMutableArray *RKQazCbXNdLQbbRR_NSArray_4 = [[NSMutableArray alloc] init];
+                [RKQazCbXNdLQbbRR_NSArray_4 addObject:[NSNull null]];
+                [RKQazCbXNdLQbbRR_NSArray_4 addObject:[NSNull null]];
+                [RKQazCbXNdLQbbRR_NSArray_4 addObject:@"NA"];
+                [RKQazCbXNdLQbbRR_NSArray_4 addObject:@"NA"];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:RKQazCbXNdLQbbRR_NSArray_4];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:@"PL"];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:[NSNumber numberWithLongLong:48]];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:@"00"];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:@"0"];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:[NSNull null]];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:[NSNull null]];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:@"0"];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:[NSNull null]];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:[NSNull null]];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *EwzIbuMPxHUMtDOJ_NSArray_4 = [[NSMutableArray alloc] init];
+                    NSMutableArray *mSmwhgMwYBEcDLOt_NSArray_5 = [[NSMutableArray alloc] init];
+                    [mSmwhgMwYBEcDLOt_NSArray_5 addObject:[NSNull null]];
+                    [mSmwhgMwYBEcDLOt_NSArray_5 addObject:@"(\\d{2})(\\d{3})(\\d{2})(\\d{2})"];
+                    [mSmwhgMwYBEcDLOt_NSArray_5 addObject:@"$1 $2 $3 $4"];
+                    [mSmwhgMwYBEcDLOt_NSArray_5 addObject:[NSNull null]];
+                    [mSmwhgMwYBEcDLOt_NSArray_5 addObject:@"0$1"];
+                    [mSmwhgMwYBEcDLOt_NSArray_5 addObject:@""];
+                    [mSmwhgMwYBEcDLOt_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [EwzIbuMPxHUMtDOJ_NSArray_4 addObject:mSmwhgMwYBEcDLOt_NSArray_5];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:EwzIbuMPxHUMtDOJ_NSArray_4];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *ygnANXVgRBZHjFDl_NSArray_4 = [[NSMutableArray alloc] init];
+                [ygnANXVgRBZHjFDl_NSArray_4 addObject:[NSNull null]];
+                [ygnANXVgRBZHjFDl_NSArray_4 addObject:[NSNull null]];
+                [ygnANXVgRBZHjFDl_NSArray_4 addObject:@"NA"];
+                [ygnANXVgRBZHjFDl_NSArray_4 addObject:@"NA"];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:ygnANXVgRBZHjFDl_NSArray_4];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:[NSNull null]];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *RfwOLyHpoEUpTZAA_NSArray_4 = [[NSMutableArray alloc] init];
+                [RfwOLyHpoEUpTZAA_NSArray_4 addObject:[NSNull null]];
+                [RfwOLyHpoEUpTZAA_NSArray_4 addObject:[NSNull null]];
+                [RfwOLyHpoEUpTZAA_NSArray_4 addObject:@"NA"];
+                [RfwOLyHpoEUpTZAA_NSArray_4 addObject:@"NA"];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:RfwOLyHpoEUpTZAA_NSArray_4];
+                NSMutableArray *LOibifluLJlKZYCY_NSArray_4 = [[NSMutableArray alloc] init];
+                [LOibifluLJlKZYCY_NSArray_4 addObject:[NSNull null]];
+                [LOibifluLJlKZYCY_NSArray_4 addObject:[NSNull null]];
+                [LOibifluLJlKZYCY_NSArray_4 addObject:@"NA"];
+                [LOibifluLJlKZYCY_NSArray_4 addObject:@"NA"];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:LOibifluLJlKZYCY_NSArray_4];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *LyhHJrOhpFRaQbSf_NSArray_4 = [[NSMutableArray alloc] init];
+                [LyhHJrOhpFRaQbSf_NSArray_4 addObject:[NSNull null]];
+                [LyhHJrOhpFRaQbSf_NSArray_4 addObject:[NSNull null]];
+                [LyhHJrOhpFRaQbSf_NSArray_4 addObject:@"NA"];
+                [LyhHJrOhpFRaQbSf_NSArray_4 addObject:@"NA"];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:LyhHJrOhpFRaQbSf_NSArray_4];
+                NSMutableArray *JZJTtroSizZCedTC_NSArray_4 = [[NSMutableArray alloc] init];
+                [JZJTtroSizZCedTC_NSArray_4 addObject:[NSNull null]];
+                [JZJTtroSizZCedTC_NSArray_4 addObject:[NSNull null]];
+                [JZJTtroSizZCedTC_NSArray_4 addObject:@"NA"];
+                [JZJTtroSizZCedTC_NSArray_4 addObject:@"NA"];
+            [aofcyyJjGOBZsTjY_NSArray_3 addObject:JZJTtroSizZCedTC_NSArray_4];
+        [HdYgeMOvimmQrVSk_NSDictionary_2 setObject:aofcyyJjGOBZsTjY_NSArray_3 forKey:@"PL"];
+            NSMutableArray *hpkFYNeujVEaVLSn_NSArray_3 = [[NSMutableArray alloc] init];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *wxMQVqDnIGdSdKZg_NSArray_4 = [[NSMutableArray alloc] init];
+                [wxMQVqDnIGdSdKZg_NSArray_4 addObject:[NSNull null]];
+                [wxMQVqDnIGdSdKZg_NSArray_4 addObject:[NSNull null]];
+                [wxMQVqDnIGdSdKZg_NSArray_4 addObject:@"[1-7]\\d{3,9}|8\\d{8}"];
+                [wxMQVqDnIGdSdKZg_NSArray_4 addObject:@"\\d{4,10}"];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:wxMQVqDnIGdSdKZg_NSArray_4];
+                NSMutableArray *ZltPsoDOJROMOwEO_NSArray_4 = [[NSMutableArray alloc] init];
+                [ZltPsoDOJROMOwEO_NSArray_4 addObject:[NSNull null]];
+                [ZltPsoDOJROMOwEO_NSArray_4 addObject:[NSNull null]];
+                [ZltPsoDOJROMOwEO_NSArray_4 addObject:@"(?:2|[34][1-3]|5[1-5]|6[1-4])(?:1\\d{2,3}|[2-9]\\d{6,7})"];
+                [ZltPsoDOJROMOwEO_NSArray_4 addObject:@"\\d{4,10}"];
+                [ZltPsoDOJROMOwEO_NSArray_4 addObject:[NSNull null]];
+                [ZltPsoDOJROMOwEO_NSArray_4 addObject:[NSNull null]];
+                [ZltPsoDOJROMOwEO_NSArray_4 addObject:@"22123456"];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:ZltPsoDOJROMOwEO_NSArray_4];
+                NSMutableArray *GnbFyFekGikyEKqM_NSArray_4 = [[NSMutableArray alloc] init];
+                [GnbFyFekGikyEKqM_NSArray_4 addObject:[NSNull null]];
+                [GnbFyFekGikyEKqM_NSArray_4 addObject:[NSNull null]];
+                [GnbFyFekGikyEKqM_NSArray_4 addObject:@"1[0-25-9]\\d{7,8}"];
+                [GnbFyFekGikyEKqM_NSArray_4 addObject:@"\\d{9,10}"];
+                [GnbFyFekGikyEKqM_NSArray_4 addObject:[NSNull null]];
+                [GnbFyFekGikyEKqM_NSArray_4 addObject:[NSNull null]];
+                [GnbFyFekGikyEKqM_NSArray_4 addObject:@"1023456789"];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:GnbFyFekGikyEKqM_NSArray_4];
+                NSMutableArray *BxsHtcdfkKzDbsGC_NSArray_4 = [[NSMutableArray alloc] init];
+                [BxsHtcdfkKzDbsGC_NSArray_4 addObject:[NSNull null]];
+                [BxsHtcdfkKzDbsGC_NSArray_4 addObject:[NSNull null]];
+                [BxsHtcdfkKzDbsGC_NSArray_4 addObject:@"80\\d{7}"];
+                [BxsHtcdfkKzDbsGC_NSArray_4 addObject:@"\\d{9}"];
+                [BxsHtcdfkKzDbsGC_NSArray_4 addObject:[NSNull null]];
+                [BxsHtcdfkKzDbsGC_NSArray_4 addObject:[NSNull null]];
+                [BxsHtcdfkKzDbsGC_NSArray_4 addObject:@"801234567"];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:BxsHtcdfkKzDbsGC_NSArray_4];
+                NSMutableArray *EAbLfYProErxKROa_NSArray_4 = [[NSMutableArray alloc] init];
+                [EAbLfYProErxKROa_NSArray_4 addObject:[NSNull null]];
+                [EAbLfYProErxKROa_NSArray_4 addObject:[NSNull null]];
+                [EAbLfYProErxKROa_NSArray_4 addObject:@"60[2-9]\\d{6}"];
+                [EAbLfYProErxKROa_NSArray_4 addObject:@"\\d{9}"];
+                [EAbLfYProErxKROa_NSArray_4 addObject:[NSNull null]];
+                [EAbLfYProErxKROa_NSArray_4 addObject:[NSNull null]];
+                [EAbLfYProErxKROa_NSArray_4 addObject:@"602345678"];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:EAbLfYProErxKROa_NSArray_4];
+                NSMutableArray *OHSfoBHVAtzSqeex_NSArray_4 = [[NSMutableArray alloc] init];
+                [OHSfoBHVAtzSqeex_NSArray_4 addObject:[NSNull null]];
+                [OHSfoBHVAtzSqeex_NSArray_4 addObject:[NSNull null]];
+                [OHSfoBHVAtzSqeex_NSArray_4 addObject:@"NA"];
+                [OHSfoBHVAtzSqeex_NSArray_4 addObject:@"NA"];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:OHSfoBHVAtzSqeex_NSArray_4];
+                NSMutableArray *tbdFfLZbutKVsxSm_NSArray_4 = [[NSMutableArray alloc] init];
+                [tbdFfLZbutKVsxSm_NSArray_4 addObject:[NSNull null]];
+                [tbdFfLZbutKVsxSm_NSArray_4 addObject:[NSNull null]];
+                [tbdFfLZbutKVsxSm_NSArray_4 addObject:@"50\\d{8}"];
+                [tbdFfLZbutKVsxSm_NSArray_4 addObject:@"\\d{10}"];
+                [tbdFfLZbutKVsxSm_NSArray_4 addObject:[NSNull null]];
+                [tbdFfLZbutKVsxSm_NSArray_4 addObject:[NSNull null]];
+                [tbdFfLZbutKVsxSm_NSArray_4 addObject:@"5012345678"];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:tbdFfLZbutKVsxSm_NSArray_4];
+                NSMutableArray *LWAPWxtczfDotvAC_NSArray_4 = [[NSMutableArray alloc] init];
+                [LWAPWxtczfDotvAC_NSArray_4 addObject:[NSNull null]];
+                [LWAPWxtczfDotvAC_NSArray_4 addObject:[NSNull null]];
+                [LWAPWxtczfDotvAC_NSArray_4 addObject:@"70\\d{8}"];
+                [LWAPWxtczfDotvAC_NSArray_4 addObject:@"\\d{10}"];
+                [LWAPWxtczfDotvAC_NSArray_4 addObject:[NSNull null]];
+                [LWAPWxtczfDotvAC_NSArray_4 addObject:[NSNull null]];
+                [LWAPWxtczfDotvAC_NSArray_4 addObject:@"7012345678"];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:LWAPWxtczfDotvAC_NSArray_4];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:@"KR"];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:[NSNumber numberWithLongLong:82]];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:@"00(?:[124-68]|[37]\\d{2})"];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:@"0"];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:[NSNull null]];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:[NSNull null]];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:@"0(8[1-46-8]|85\\d{2})?"];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:[NSNull null]];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:[NSNull null]];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *VeYtqBxlshCyFfoO_NSArray_4 = [[NSMutableArray alloc] init];
+                    NSMutableArray *hNUoIVUAfumzBwVq_NSArray_5 = [[NSMutableArray alloc] init];
+                    [hNUoIVUAfumzBwVq_NSArray_5 addObject:[NSNull null]];
+                    [hNUoIVUAfumzBwVq_NSArray_5 addObject:@"(\\d{2})(\\d{4})(\\d{4})"];
+                    [hNUoIVUAfumzBwVq_NSArray_5 addObject:@"$1-$2-$3"];
+                        NSMutableArray *NzTaNeMJMTSlrRAP_NSArray_6 = [[NSMutableArray alloc] init];
+                        [NzTaNeMJMTSlrRAP_NSArray_6 addObject:@"1(?:0|1[19]|[69]9|5[458])|[57]0"];
+                        [NzTaNeMJMTSlrRAP_NSArray_6 addObject:@"1(?:0|1[19]|[69]9|5(?:44|59|8))|[57]0"];
+                    [hNUoIVUAfumzBwVq_NSArray_5 addObject:NzTaNeMJMTSlrRAP_NSArray_6];
+                    [hNUoIVUAfumzBwVq_NSArray_5 addObject:@"0$1"];
+                    [hNUoIVUAfumzBwVq_NSArray_5 addObject:@""];
+                    [hNUoIVUAfumzBwVq_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [VeYtqBxlshCyFfoO_NSArray_4 addObject:hNUoIVUAfumzBwVq_NSArray_5];
+                    NSMutableArray *WfhXEzpqehVTAdbC_NSArray_5 = [[NSMutableArray alloc] init];
+                    [WfhXEzpqehVTAdbC_NSArray_5 addObject:[NSNull null]];
+                    [WfhXEzpqehVTAdbC_NSArray_5 addObject:@"(\\d{2})(\\d{3})(\\d{4})"];
+                    [WfhXEzpqehVTAdbC_NSArray_5 addObject:@"$1-$2-$3"];
+                        NSMutableArray *NCqrLjzTpAbyMphB_NSArray_6 = [[NSMutableArray alloc] init];
+                        [NCqrLjzTpAbyMphB_NSArray_6 addObject:@"1(?:[169][2-8]|[78]|5[1-4])|[68]0|[3-6][1-9][2-9]"];
+                        [NCqrLjzTpAbyMphB_NSArray_6 addObject:@"1(?:[169][2-8]|[78]|5(?:[1-3]|4[56]))|[68]0|[3-6][1-9][2-9]"];
+                    [WfhXEzpqehVTAdbC_NSArray_5 addObject:NCqrLjzTpAbyMphB_NSArray_6];
+                    [WfhXEzpqehVTAdbC_NSArray_5 addObject:@"0$1"];
+                    [WfhXEzpqehVTAdbC_NSArray_5 addObject:@""];
+                    [WfhXEzpqehVTAdbC_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [VeYtqBxlshCyFfoO_NSArray_4 addObject:WfhXEzpqehVTAdbC_NSArray_5];
+                    NSMutableArray *zcqorPOcnnulqXus_NSArray_5 = [[NSMutableArray alloc] init];
+                    [zcqorPOcnnulqXus_NSArray_5 addObject:[NSNull null]];
+                    [zcqorPOcnnulqXus_NSArray_5 addObject:@"(\\d{3})(\\d)(\\d{4})"];
+                    [zcqorPOcnnulqXus_NSArray_5 addObject:@"$1-$2-$3"];
+                        NSMutableArray *QjyljydKIkckUMrL_NSArray_6 = [[NSMutableArray alloc] init];
+                        [QjyljydKIkckUMrL_NSArray_6 addObject:@"131"];
+                        [QjyljydKIkckUMrL_NSArray_6 addObject:@"1312"];
+                    [zcqorPOcnnulqXus_NSArray_5 addObject:QjyljydKIkckUMrL_NSArray_6];
+                    [zcqorPOcnnulqXus_NSArray_5 addObject:@"0$1"];
+                    [zcqorPOcnnulqXus_NSArray_5 addObject:@""];
+                    [zcqorPOcnnulqXus_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [VeYtqBxlshCyFfoO_NSArray_4 addObject:zcqorPOcnnulqXus_NSArray_5];
+                    NSMutableArray *DmfCoqcIbRUIcEHd_NSArray_5 = [[NSMutableArray alloc] init];
+                    [DmfCoqcIbRUIcEHd_NSArray_5 addObject:[NSNull null]];
+                    [DmfCoqcIbRUIcEHd_NSArray_5 addObject:@"(\\d{3})(\\d{2})(\\d{4})"];
+                    [DmfCoqcIbRUIcEHd_NSArray_5 addObject:@"$1-$2-$3"];
+                        NSMutableArray *nMBrUpFpyyKWooyY_NSArray_6 = [[NSMutableArray alloc] init];
+                        [nMBrUpFpyyKWooyY_NSArray_6 addObject:@"131"];
+                        [nMBrUpFpyyKWooyY_NSArray_6 addObject:@"131[13-9]"];
+                    [DmfCoqcIbRUIcEHd_NSArray_5 addObject:nMBrUpFpyyKWooyY_NSArray_6];
+                    [DmfCoqcIbRUIcEHd_NSArray_5 addObject:@"0$1"];
+                    [DmfCoqcIbRUIcEHd_NSArray_5 addObject:@""];
+                    [DmfCoqcIbRUIcEHd_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [VeYtqBxlshCyFfoO_NSArray_4 addObject:DmfCoqcIbRUIcEHd_NSArray_5];
+                    NSMutableArray *xUlkyNTthkaWRudh_NSArray_5 = [[NSMutableArray alloc] init];
+                    [xUlkyNTthkaWRudh_NSArray_5 addObject:[NSNull null]];
+                    [xUlkyNTthkaWRudh_NSArray_5 addObject:@"(\\d{3})(\\d{3})(\\d{4})"];
+                    [xUlkyNTthkaWRudh_NSArray_5 addObject:@"$1-$2-$3"];
+                        NSMutableArray *wLmqibWEnVNuDUaY_NSArray_6 = [[NSMutableArray alloc] init];
+                        [wLmqibWEnVNuDUaY_NSArray_6 addObject:@"13[2-9]"];
+                    [xUlkyNTthkaWRudh_NSArray_5 addObject:wLmqibWEnVNuDUaY_NSArray_6];
+                    [xUlkyNTthkaWRudh_NSArray_5 addObject:@"0$1"];
+                    [xUlkyNTthkaWRudh_NSArray_5 addObject:@""];
+                    [xUlkyNTthkaWRudh_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [VeYtqBxlshCyFfoO_NSArray_4 addObject:xUlkyNTthkaWRudh_NSArray_5];
+                    NSMutableArray *kEzGoMOfIeSLseYK_NSArray_5 = [[NSMutableArray alloc] init];
+                    [kEzGoMOfIeSLseYK_NSArray_5 addObject:[NSNull null]];
+                    [kEzGoMOfIeSLseYK_NSArray_5 addObject:@"(\\d{2})(\\d{2})(\\d{3})(\\d{4})"];
+                    [kEzGoMOfIeSLseYK_NSArray_5 addObject:@"$1-$2-$3-$4"];
+                        NSMutableArray *xKoToapuswyyEUmX_NSArray_6 = [[NSMutableArray alloc] init];
+                        [xKoToapuswyyEUmX_NSArray_6 addObject:@"30"];
+                    [kEzGoMOfIeSLseYK_NSArray_5 addObject:xKoToapuswyyEUmX_NSArray_6];
+                    [kEzGoMOfIeSLseYK_NSArray_5 addObject:@"0$1"];
+                    [kEzGoMOfIeSLseYK_NSArray_5 addObject:@""];
+                    [kEzGoMOfIeSLseYK_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [VeYtqBxlshCyFfoO_NSArray_4 addObject:kEzGoMOfIeSLseYK_NSArray_5];
+                    NSMutableArray *ykMliYeTAnoxDabj_NSArray_5 = [[NSMutableArray alloc] init];
+                    [ykMliYeTAnoxDabj_NSArray_5 addObject:[NSNull null]];
+                    [ykMliYeTAnoxDabj_NSArray_5 addObject:@"(\\d)(\\d{4})(\\d{4})"];
+                    [ykMliYeTAnoxDabj_NSArray_5 addObject:@"$1-$2-$3"];
+                        NSMutableArray *oRXSOCQDfDwrKmNk_NSArray_6 = [[NSMutableArray alloc] init];
+                        [oRXSOCQDfDwrKmNk_NSArray_6 addObject:@"2(?:[26]|3[0-467])"];
+                        [oRXSOCQDfDwrKmNk_NSArray_6 addObject:@"2(?:[26]|3(?:01|1[45]|2[17-9]|39|4|6[67]|7[078]))"];
+                    [ykMliYeTAnoxDabj_NSArray_5 addObject:oRXSOCQDfDwrKmNk_NSArray_6];
+                    [ykMliYeTAnoxDabj_NSArray_5 addObject:@"0$1"];
+                    [ykMliYeTAnoxDabj_NSArray_5 addObject:@""];
+                    [ykMliYeTAnoxDabj_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [VeYtqBxlshCyFfoO_NSArray_4 addObject:ykMliYeTAnoxDabj_NSArray_5];
+                    NSMutableArray *mpAmsBEzJBzbTOIB_NSArray_5 = [[NSMutableArray alloc] init];
+                    [mpAmsBEzJBzbTOIB_NSArray_5 addObject:[NSNull null]];
+                    [mpAmsBEzJBzbTOIB_NSArray_5 addObject:@"(\\d)(\\d{3})(\\d{4})"];
+                    [mpAmsBEzJBzbTOIB_NSArray_5 addObject:@"$1-$2-$3"];
+                        NSMutableArray *wxMIPzYbdjrRPuCL_NSArray_6 = [[NSMutableArray alloc] init];
+                        [wxMIPzYbdjrRPuCL_NSArray_6 addObject:@"2(?:3[0-35-9]|[457-9])"];
+                        [wxMIPzYbdjrRPuCL_NSArray_6 addObject:@"2(?:3(?:0[02-9]|1[0-36-9]|2[02-6]|3[0-8]|6[0-589]|7[1-69]|[589])|[457-9])"];
+                    [mpAmsBEzJBzbTOIB_NSArray_5 addObject:wxMIPzYbdjrRPuCL_NSArray_6];
+                    [mpAmsBEzJBzbTOIB_NSArray_5 addObject:@"0$1"];
+                    [mpAmsBEzJBzbTOIB_NSArray_5 addObject:@""];
+                    [mpAmsBEzJBzbTOIB_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [VeYtqBxlshCyFfoO_NSArray_4 addObject:mpAmsBEzJBzbTOIB_NSArray_5];
+                    NSMutableArray *uoYGrTKtiTErPZFb_NSArray_5 = [[NSMutableArray alloc] init];
+                    [uoYGrTKtiTErPZFb_NSArray_5 addObject:[NSNull null]];
+                    [uoYGrTKtiTErPZFb_NSArray_5 addObject:@"(\\d)(\\d{3})"];
+                    [uoYGrTKtiTErPZFb_NSArray_5 addObject:@"$1-$2"];
+                        NSMutableArray *ngawckaXMZiLwQeI_NSArray_6 = [[NSMutableArray alloc] init];
+                        [ngawckaXMZiLwQeI_NSArray_6 addObject:@"21[0-46-9]"];
+                        [ngawckaXMZiLwQeI_NSArray_6 addObject:@"21(?:[0-247-9]|3[124]|6[1269])"];
+                    [uoYGrTKtiTErPZFb_NSArray_5 addObject:ngawckaXMZiLwQeI_NSArray_6];
+                    [uoYGrTKtiTErPZFb_NSArray_5 addObject:@"0$1"];
+                    [uoYGrTKtiTErPZFb_NSArray_5 addObject:@""];
+                    [uoYGrTKtiTErPZFb_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [VeYtqBxlshCyFfoO_NSArray_4 addObject:uoYGrTKtiTErPZFb_NSArray_5];
+                    NSMutableArray *NEgZBMZMOHKPoSqh_NSArray_5 = [[NSMutableArray alloc] init];
+                    [NEgZBMZMOHKPoSqh_NSArray_5 addObject:[NSNull null]];
+                    [NEgZBMZMOHKPoSqh_NSArray_5 addObject:@"(\\d)(\\d{4})"];
+                    [NEgZBMZMOHKPoSqh_NSArray_5 addObject:@"$1-$2"];
+                        NSMutableArray *wLzMostfMtOdcBKs_NSArray_6 = [[NSMutableArray alloc] init];
+                        [wLzMostfMtOdcBKs_NSArray_6 addObject:@"21[36]"];
+                        [wLzMostfMtOdcBKs_NSArray_6 addObject:@"21(?:3[035-9]|6[03-578])"];
+                    [NEgZBMZMOHKPoSqh_NSArray_5 addObject:wLzMostfMtOdcBKs_NSArray_6];
+                    [NEgZBMZMOHKPoSqh_NSArray_5 addObject:@"0$1"];
+                    [NEgZBMZMOHKPoSqh_NSArray_5 addObject:@""];
+                    [NEgZBMZMOHKPoSqh_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [VeYtqBxlshCyFfoO_NSArray_4 addObject:NEgZBMZMOHKPoSqh_NSArray_5];
+                    NSMutableArray *donhfKPkpwxQMQnE_NSArray_5 = [[NSMutableArray alloc] init];
+                    [donhfKPkpwxQMQnE_NSArray_5 addObject:[NSNull null]];
+                    [donhfKPkpwxQMQnE_NSArray_5 addObject:@"(\\d{2})(\\d{3})"];
+                    [donhfKPkpwxQMQnE_NSArray_5 addObject:@"$1-$2"];
+                        NSMutableArray *QkkjSqLzsMEANqfd_NSArray_6 = [[NSMutableArray alloc] init];
+                        [QkkjSqLzsMEANqfd_NSArray_6 addObject:@"[3-6][1-9]1"];
+                        [QkkjSqLzsMEANqfd_NSArray_6 addObject:@"[3-6][1-9]1(?:[0-46-9])"];
+                        [QkkjSqLzsMEANqfd_NSArray_6 addObject:@"[3-6][1-9]1(?:[0-247-9]|3[124]|6[1269])"];
+                    [donhfKPkpwxQMQnE_NSArray_5 addObject:QkkjSqLzsMEANqfd_NSArray_6];
+                    [donhfKPkpwxQMQnE_NSArray_5 addObject:@"0$1"];
+                    [donhfKPkpwxQMQnE_NSArray_5 addObject:@""];
+                    [donhfKPkpwxQMQnE_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [VeYtqBxlshCyFfoO_NSArray_4 addObject:donhfKPkpwxQMQnE_NSArray_5];
+                    NSMutableArray *AVAEyxgSVuEvOMcG_NSArray_5 = [[NSMutableArray alloc] init];
+                    [AVAEyxgSVuEvOMcG_NSArray_5 addObject:[NSNull null]];
+                    [AVAEyxgSVuEvOMcG_NSArray_5 addObject:@"(\\d{2})(\\d{4})"];
+                    [AVAEyxgSVuEvOMcG_NSArray_5 addObject:@"$1-$2"];
+                        NSMutableArray *POAJZiXuxqTQBMjq_NSArray_6 = [[NSMutableArray alloc] init];
+                        [POAJZiXuxqTQBMjq_NSArray_6 addObject:@"[3-6][1-9]1"];
+                        [POAJZiXuxqTQBMjq_NSArray_6 addObject:@"[3-6][1-9]1[36]"];
+                        [POAJZiXuxqTQBMjq_NSArray_6 addObject:@"[3-6][1-9]1(?:3[035-9]|6[03-578])"];
+                    [AVAEyxgSVuEvOMcG_NSArray_5 addObject:POAJZiXuxqTQBMjq_NSArray_6];
+                    [AVAEyxgSVuEvOMcG_NSArray_5 addObject:@"0$1"];
+                    [AVAEyxgSVuEvOMcG_NSArray_5 addObject:@""];
+                    [AVAEyxgSVuEvOMcG_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [VeYtqBxlshCyFfoO_NSArray_4 addObject:AVAEyxgSVuEvOMcG_NSArray_5];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:VeYtqBxlshCyFfoO_NSArray_4];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *fgJLbjniKyYllPWJ_NSArray_4 = [[NSMutableArray alloc] init];
+                [fgJLbjniKyYllPWJ_NSArray_4 addObject:[NSNull null]];
+                [fgJLbjniKyYllPWJ_NSArray_4 addObject:[NSNull null]];
+                [fgJLbjniKyYllPWJ_NSArray_4 addObject:@"NA"];
+                [fgJLbjniKyYllPWJ_NSArray_4 addObject:@"NA"];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:fgJLbjniKyYllPWJ_NSArray_4];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:[NSNull null]];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *jMMVklgJMdIaFvVg_NSArray_4 = [[NSMutableArray alloc] init];
+                [jMMVklgJMdIaFvVg_NSArray_4 addObject:[NSNull null]];
+                [jMMVklgJMdIaFvVg_NSArray_4 addObject:[NSNull null]];
+                [jMMVklgJMdIaFvVg_NSArray_4 addObject:@"NA"];
+                [jMMVklgJMdIaFvVg_NSArray_4 addObject:@"NA"];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:jMMVklgJMdIaFvVg_NSArray_4];
+                NSMutableArray *TnefVVqCIqCrVhLx_NSArray_4 = [[NSMutableArray alloc] init];
+                [TnefVVqCIqCrVhLx_NSArray_4 addObject:[NSNull null]];
+                [TnefVVqCIqCrVhLx_NSArray_4 addObject:[NSNull null]];
+                [TnefVVqCIqCrVhLx_NSArray_4 addObject:@"NA"];
+                [TnefVVqCIqCrVhLx_NSArray_4 addObject:@"NA"];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:TnefVVqCIqCrVhLx_NSArray_4];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *jfjAqjeRfWgpOzAr_NSArray_4 = [[NSMutableArray alloc] init];
+                [jfjAqjeRfWgpOzAr_NSArray_4 addObject:[NSNull null]];
+                [jfjAqjeRfWgpOzAr_NSArray_4 addObject:[NSNull null]];
+                [jfjAqjeRfWgpOzAr_NSArray_4 addObject:@"NA"];
+                [jfjAqjeRfWgpOzAr_NSArray_4 addObject:@"NA"];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:jfjAqjeRfWgpOzAr_NSArray_4];
+                NSMutableArray *OmnkZTKMNQjiEkfm_NSArray_4 = [[NSMutableArray alloc] init];
+                [OmnkZTKMNQjiEkfm_NSArray_4 addObject:[NSNull null]];
+                [OmnkZTKMNQjiEkfm_NSArray_4 addObject:[NSNull null]];
+                [OmnkZTKMNQjiEkfm_NSArray_4 addObject:@"NA"];
+                [OmnkZTKMNQjiEkfm_NSArray_4 addObject:@"NA"];
+            [hpkFYNeujVEaVLSn_NSArray_3 addObject:OmnkZTKMNQjiEkfm_NSArray_4];
+        [HdYgeMOvimmQrVSk_NSDictionary_2 setObject:hpkFYNeujVEaVLSn_NSArray_3 forKey:@"KR"];
+            NSMutableArray *IbaBsdFPjpuHLnRO_NSArray_3 = [[NSMutableArray alloc] init];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *wwpPhLCSMTgpzcKT_NSArray_4 = [[NSMutableArray alloc] init];
+                [wwpPhLCSMTgpzcKT_NSArray_4 addObject:[NSNull null]];
+                [wwpPhLCSMTgpzcKT_NSArray_4 addObject:[NSNull null]];
+                [wwpPhLCSMTgpzcKT_NSArray_4 addObject:@"\\d{4,14}"];
+                [wwpPhLCSMTgpzcKT_NSArray_4 addObject:@"\\d{2,14}"];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:wwpPhLCSMTgpzcKT_NSArray_4];
+                NSMutableArray *UihMqAdfZmiOAXvf_NSArray_4 = [[NSMutableArray alloc] init];
+                [UihMqAdfZmiOAXvf_NSArray_4 addObject:[NSNull null]];
+                [UihMqAdfZmiOAXvf_NSArray_4 addObject:[NSNull null]];
+                [UihMqAdfZmiOAXvf_NSArray_4 addObject:@"(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:[1-9]\\d|0[2-9]))\\d{1,8}"];
+                [UihMqAdfZmiOAXvf_NSArray_4 addObject:@"\\d{2,14}"];
+                [UihMqAdfZmiOAXvf_NSArray_4 addObject:[NSNull null]];
+                [UihMqAdfZmiOAXvf_NSArray_4 addObject:[NSNull null]];
+                [UihMqAdfZmiOAXvf_NSArray_4 addObject:@"30123456"];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:UihMqAdfZmiOAXvf_NSArray_4];
+                NSMutableArray *MmCZFQHTYsLLrkaE_NSArray_4 = [[NSMutableArray alloc] init];
+                [MmCZFQHTYsLLrkaE_NSArray_4 addObject:[NSNull null]];
+                [MmCZFQHTYsLLrkaE_NSArray_4 addObject:[NSNull null]];
+                [MmCZFQHTYsLLrkaE_NSArray_4 addObject:@"1(5\\d{9}|7\\d{8}|6[02]\\d{8}|63\\d{7})"];
+                [MmCZFQHTYsLLrkaE_NSArray_4 addObject:@"\\d{10,11}"];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:MmCZFQHTYsLLrkaE_NSArray_4];
+                NSMutableArray *sFQdUfAYtzESTjJi_NSArray_4 = [[NSMutableArray alloc] init];
+                [sFQdUfAYtzESTjJi_NSArray_4 addObject:[NSNull null]];
+                [sFQdUfAYtzESTjJi_NSArray_4 addObject:[NSNull null]];
+                [sFQdUfAYtzESTjJi_NSArray_4 addObject:@"800\\d{7}"];
+                [sFQdUfAYtzESTjJi_NSArray_4 addObject:@"\\d{10}"];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:sFQdUfAYtzESTjJi_NSArray_4];
+                NSMutableArray *hxpnzwjYKhQHoMjb_NSArray_4 = [[NSMutableArray alloc] init];
+                [hxpnzwjYKhQHoMjb_NSArray_4 addObject:[NSNull null]];
+                [hxpnzwjYKhQHoMjb_NSArray_4 addObject:[NSNull null]];
+                [hxpnzwjYKhQHoMjb_NSArray_4 addObject:@"900([135]\\d{6}|9\\d{7})"];
+                [hxpnzwjYKhQHoMjb_NSArray_4 addObject:@"\\d{10,11}"];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:hxpnzwjYKhQHoMjb_NSArray_4];
+                NSMutableArray *kcynyuWZCvvEkrHU_NSArray_4 = [[NSMutableArray alloc] init];
+                [kcynyuWZCvvEkrHU_NSArray_4 addObject:[NSNull null]];
+                [kcynyuWZCvvEkrHU_NSArray_4 addObject:[NSNull null]];
+                [kcynyuWZCvvEkrHU_NSArray_4 addObject:@"NA"];
+                [kcynyuWZCvvEkrHU_NSArray_4 addObject:@"NA"];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:kcynyuWZCvvEkrHU_NSArray_4];
+                NSMutableArray *mNqQcTPJuQSPOMug_NSArray_4 = [[NSMutableArray alloc] init];
+                [mNqQcTPJuQSPOMug_NSArray_4 addObject:[NSNull null]];
+                [mNqQcTPJuQSPOMug_NSArray_4 addObject:[NSNull null]];
+                [mNqQcTPJuQSPOMug_NSArray_4 addObject:@"NA"];
+                [mNqQcTPJuQSPOMug_NSArray_4 addObject:@"NA"];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:mNqQcTPJuQSPOMug_NSArray_4];
+                NSMutableArray *PntzFTWFPDOKVCqU_NSArray_4 = [[NSMutableArray alloc] init];
+                [PntzFTWFPDOKVCqU_NSArray_4 addObject:[NSNull null]];
+                [PntzFTWFPDOKVCqU_NSArray_4 addObject:[NSNull null]];
+                [PntzFTWFPDOKVCqU_NSArray_4 addObject:@"NA"];
+                [PntzFTWFPDOKVCqU_NSArray_4 addObject:@"NA"];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:PntzFTWFPDOKVCqU_NSArray_4];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:@"DE"];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:[NSNumber numberWithLongLong:49]];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:@"00"];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:@"0"];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:[NSNull null]];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:[NSNull null]];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:@"0"];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:[NSNull null]];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:[NSNull null]];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *rEdyndtTLFWwVIJH_NSArray_4 = [[NSMutableArray alloc] init];
+                    NSMutableArray *ZYuYfkQaxwLdVNjh_NSArray_5 = [[NSMutableArray alloc] init];
+                    [ZYuYfkQaxwLdVNjh_NSArray_5 addObject:[NSNull null]];
+                    [ZYuYfkQaxwLdVNjh_NSArray_5 addObject:@"(\\d{3})(\\d{3,8})"];
+                    [ZYuYfkQaxwLdVNjh_NSArray_5 addObject:@"$1 $2"];
+                        NSMutableArray *qqbEkEqDFaAIcQGi_NSArray_6 = [[NSMutableArray alloc] init];
+                        [qqbEkEqDFaAIcQGi_NSArray_6 addObject:@"2|3[3-9]|906|[4-9][1-9]1"];
+                    [ZYuYfkQaxwLdVNjh_NSArray_5 addObject:qqbEkEqDFaAIcQGi_NSArray_6];
+                    [ZYuYfkQaxwLdVNjh_NSArray_5 addObject:@"0$1"];
+                    [ZYuYfkQaxwLdVNjh_NSArray_5 addObject:@""];
+                    [ZYuYfkQaxwLdVNjh_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [rEdyndtTLFWwVIJH_NSArray_4 addObject:ZYuYfkQaxwLdVNjh_NSArray_5];
+                    NSMutableArray *lQYgoDKntqypBHoD_NSArray_5 = [[NSMutableArray alloc] init];
+                    [lQYgoDKntqypBHoD_NSArray_5 addObject:[NSNull null]];
+                    [lQYgoDKntqypBHoD_NSArray_5 addObject:@"(\\d{2})(\\d{4,9})"];
+                    [lQYgoDKntqypBHoD_NSArray_5 addObject:@"$1/$2"];
+                        NSMutableArray *CwggbFIuIEeDkHqB_NSArray_6 = [[NSMutableArray alloc] init];
+                        [CwggbFIuIEeDkHqB_NSArray_6 addObject:@"[34]0|[68]9"];
+                    [lQYgoDKntqypBHoD_NSArray_5 addObject:CwggbFIuIEeDkHqB_NSArray_6];
+                    [lQYgoDKntqypBHoD_NSArray_5 addObject:@"0$1"];
+                    [lQYgoDKntqypBHoD_NSArray_5 addObject:@""];
+                    [lQYgoDKntqypBHoD_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [rEdyndtTLFWwVIJH_NSArray_4 addObject:lQYgoDKntqypBHoD_NSArray_5];
+                    NSMutableArray *FVNwVKwiTPTPwiXk_NSArray_5 = [[NSMutableArray alloc] init];
+                    [FVNwVKwiTPTPwiXk_NSArray_5 addObject:[NSNull null]];
+                    [FVNwVKwiTPTPwiXk_NSArray_5 addObject:@"([4-9]\\d)(\\d{2})"];
+                    [FVNwVKwiTPTPwiXk_NSArray_5 addObject:@"$1 $2"];
+                        NSMutableArray *kspcjhKuFiNxFmge_NSArray_6 = [[NSMutableArray alloc] init];
+                        [kspcjhKuFiNxFmge_NSArray_6 addObject:@"[4-9]"];
+                        [kspcjhKuFiNxFmge_NSArray_6 addObject:@"[4-6]|[7-9](?:\\d[1-9]|[1-9]\\d)"];
+                    [FVNwVKwiTPTPwiXk_NSArray_5 addObject:kspcjhKuFiNxFmge_NSArray_6];
+                    [FVNwVKwiTPTPwiXk_NSArray_5 addObject:@"0$1"];
+                    [FVNwVKwiTPTPwiXk_NSArray_5 addObject:@""];
+                    [FVNwVKwiTPTPwiXk_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [rEdyndtTLFWwVIJH_NSArray_4 addObject:FVNwVKwiTPTPwiXk_NSArray_5];
+                    NSMutableArray *SxKmnvBuZLpXnKWS_NSArray_5 = [[NSMutableArray alloc] init];
+                    [SxKmnvBuZLpXnKWS_NSArray_5 addObject:[NSNull null]];
+                    [SxKmnvBuZLpXnKWS_NSArray_5 addObject:@"([4-9]\\d{3})(\\d{2,7})"];
+                    [SxKmnvBuZLpXnKWS_NSArray_5 addObject:@"$1 $2"];
+                        NSMutableArray *XDMxpILMixklnUUQ_NSArray_6 = [[NSMutableArray alloc] init];
+                        [XDMxpILMixklnUUQ_NSArray_6 addObject:@"[4-9]"];
+                        [XDMxpILMixklnUUQ_NSArray_6 addObject:@"[4-6]|[7-9](?:\\d[1-9]|[1-9]\\d)"];
+                    [SxKmnvBuZLpXnKWS_NSArray_5 addObject:XDMxpILMixklnUUQ_NSArray_6];
+                    [SxKmnvBuZLpXnKWS_NSArray_5 addObject:@"0$1"];
+                    [SxKmnvBuZLpXnKWS_NSArray_5 addObject:@""];
+                    [SxKmnvBuZLpXnKWS_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [rEdyndtTLFWwVIJH_NSArray_4 addObject:SxKmnvBuZLpXnKWS_NSArray_5];
+                    NSMutableArray *CTfUIojLFZsOAwwd_NSArray_5 = [[NSMutableArray alloc] init];
+                    [CTfUIojLFZsOAwwd_NSArray_5 addObject:[NSNull null]];
+                    [CTfUIojLFZsOAwwd_NSArray_5 addObject:@"(\\d{3})(\\d{1})(\\d{6})"];
+                    [CTfUIojLFZsOAwwd_NSArray_5 addObject:@"$1 $2 $3"];
+                        NSMutableArray *ANbcYViYFixZxXwX_NSArray_6 = [[NSMutableArray alloc] init];
+                        [ANbcYViYFixZxXwX_NSArray_6 addObject:@"800"];
+                    [CTfUIojLFZsOAwwd_NSArray_5 addObject:ANbcYViYFixZxXwX_NSArray_6];
+                    [CTfUIojLFZsOAwwd_NSArray_5 addObject:@"0$1"];
+                    [CTfUIojLFZsOAwwd_NSArray_5 addObject:@""];
+                    [CTfUIojLFZsOAwwd_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [rEdyndtTLFWwVIJH_NSArray_4 addObject:CTfUIojLFZsOAwwd_NSArray_5];
+                    NSMutableArray *KkQJsWzjWhiGDMUy_NSArray_5 = [[NSMutableArray alloc] init];
+                    [KkQJsWzjWhiGDMUy_NSArray_5 addObject:[NSNull null]];
+                    [KkQJsWzjWhiGDMUy_NSArray_5 addObject:@"(\\d{3})(\\d{3,4})(\\d{4})"];
+                    [KkQJsWzjWhiGDMUy_NSArray_5 addObject:@"$1 $2 $3"];
+                        NSMutableArray *jmrvGPOXzqTaJcOI_NSArray_6 = [[NSMutableArray alloc] init];
+                        [jmrvGPOXzqTaJcOI_NSArray_6 addObject:@"900"];
+                    [KkQJsWzjWhiGDMUy_NSArray_5 addObject:jmrvGPOXzqTaJcOI_NSArray_6];
+                    [KkQJsWzjWhiGDMUy_NSArray_5 addObject:@"0$1"];
+                    [KkQJsWzjWhiGDMUy_NSArray_5 addObject:@""];
+                    [KkQJsWzjWhiGDMUy_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [rEdyndtTLFWwVIJH_NSArray_4 addObject:KkQJsWzjWhiGDMUy_NSArray_5];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:rEdyndtTLFWwVIJH_NSArray_4];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *igrRxRzOXXzUVKbw_NSArray_4 = [[NSMutableArray alloc] init];
+                [igrRxRzOXXzUVKbw_NSArray_4 addObject:[NSNull null]];
+                [igrRxRzOXXzUVKbw_NSArray_4 addObject:[NSNull null]];
+                [igrRxRzOXXzUVKbw_NSArray_4 addObject:@"NA"];
+                [igrRxRzOXXzUVKbw_NSArray_4 addObject:@"NA"];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:igrRxRzOXXzUVKbw_NSArray_4];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:[NSNull null]];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *mZLgarvRtgPdxdmB_NSArray_4 = [[NSMutableArray alloc] init];
+                [mZLgarvRtgPdxdmB_NSArray_4 addObject:[NSNull null]];
+                [mZLgarvRtgPdxdmB_NSArray_4 addObject:[NSNull null]];
+                [mZLgarvRtgPdxdmB_NSArray_4 addObject:@"NA"];
+                [mZLgarvRtgPdxdmB_NSArray_4 addObject:@"NA"];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:mZLgarvRtgPdxdmB_NSArray_4];
+                NSMutableArray *avxOkFOBmGVdVuFC_NSArray_4 = [[NSMutableArray alloc] init];
+                [avxOkFOBmGVdVuFC_NSArray_4 addObject:[NSNull null]];
+                [avxOkFOBmGVdVuFC_NSArray_4 addObject:[NSNull null]];
+                [avxOkFOBmGVdVuFC_NSArray_4 addObject:@"NA"];
+                [avxOkFOBmGVdVuFC_NSArray_4 addObject:@"NA"];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:avxOkFOBmGVdVuFC_NSArray_4];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *hqSSVriXGzwARCdW_NSArray_4 = [[NSMutableArray alloc] init];
+                [hqSSVriXGzwARCdW_NSArray_4 addObject:[NSNull null]];
+                [hqSSVriXGzwARCdW_NSArray_4 addObject:[NSNull null]];
+                [hqSSVriXGzwARCdW_NSArray_4 addObject:@"NA"];
+                [hqSSVriXGzwARCdW_NSArray_4 addObject:@"NA"];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:hqSSVriXGzwARCdW_NSArray_4];
+                NSMutableArray *GrxrIdNrXlNNZOiu_NSArray_4 = [[NSMutableArray alloc] init];
+                [GrxrIdNrXlNNZOiu_NSArray_4 addObject:[NSNull null]];
+                [GrxrIdNrXlNNZOiu_NSArray_4 addObject:[NSNull null]];
+                [GrxrIdNrXlNNZOiu_NSArray_4 addObject:@"NA"];
+                [GrxrIdNrXlNNZOiu_NSArray_4 addObject:@"NA"];
+            [IbaBsdFPjpuHLnRO_NSArray_3 addObject:GrxrIdNrXlNNZOiu_NSArray_4];
+        [HdYgeMOvimmQrVSk_NSDictionary_2 setObject:IbaBsdFPjpuHLnRO_NSArray_3 forKey:@"DE"];
+            NSMutableArray *yEaWfOzgZcmUeLAz_NSArray_3 = [[NSMutableArray alloc] init];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *mBEZWYRvIYNebQVo_NSArray_4 = [[NSMutableArray alloc] init];
+                [mBEZWYRvIYNebQVo_NSArray_4 addObject:[NSNull null]];
+                [mBEZWYRvIYNebQVo_NSArray_4 addObject:[NSNull null]];
+                [mBEZWYRvIYNebQVo_NSArray_4 addObject:@"(242|8(00|66|77|88)|900)\\d{7}"];
+                [mBEZWYRvIYNebQVo_NSArray_4 addObject:@"\\d{7,10}"];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:mBEZWYRvIYNebQVo_NSArray_4];
+                NSMutableArray *UObZxJoSTSrOyNKv_NSArray_4 = [[NSMutableArray alloc] init];
+                [UObZxJoSTSrOyNKv_NSArray_4 addObject:[NSNull null]];
+                [UObZxJoSTSrOyNKv_NSArray_4 addObject:[NSNull null]];
+                [UObZxJoSTSrOyNKv_NSArray_4 addObject:@"242(?:3(?:02|[236][1-9]|4[0-24-9]|5[0-68]|7[3-57]|9[2-5])|4(?:2[237]|51|64|77)|502|636|702)\\d{4}"];
+                [UObZxJoSTSrOyNKv_NSArray_4 addObject:@"\\d{7,10}"];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:UObZxJoSTSrOyNKv_NSArray_4];
+                NSMutableArray *yTNssRNbNgPQWwAT_NSArray_4 = [[NSMutableArray alloc] init];
+                [yTNssRNbNgPQWwAT_NSArray_4 addObject:[NSNull null]];
+                [yTNssRNbNgPQWwAT_NSArray_4 addObject:[NSNull null]];
+                [yTNssRNbNgPQWwAT_NSArray_4 addObject:@"242(357|359|457|557)\\d{4}"];
+                [yTNssRNbNgPQWwAT_NSArray_4 addObject:@"\\d{10}"];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:yTNssRNbNgPQWwAT_NSArray_4];
+                NSMutableArray *kbGrHWkUBrgOtZQj_NSArray_4 = [[NSMutableArray alloc] init];
+                [kbGrHWkUBrgOtZQj_NSArray_4 addObject:[NSNull null]];
+                [kbGrHWkUBrgOtZQj_NSArray_4 addObject:[NSNull null]];
+                [kbGrHWkUBrgOtZQj_NSArray_4 addObject:@"8(00|66|77|88)\\d{7}"];
+                [kbGrHWkUBrgOtZQj_NSArray_4 addObject:@"\\d{10}"];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:kbGrHWkUBrgOtZQj_NSArray_4];
+                NSMutableArray *lUlHUqxGfHpZHcOa_NSArray_4 = [[NSMutableArray alloc] init];
+                [lUlHUqxGfHpZHcOa_NSArray_4 addObject:[NSNull null]];
+                [lUlHUqxGfHpZHcOa_NSArray_4 addObject:[NSNull null]];
+                [lUlHUqxGfHpZHcOa_NSArray_4 addObject:@"900\\d{7}"];
+                [lUlHUqxGfHpZHcOa_NSArray_4 addObject:@"\\d{10}"];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:lUlHUqxGfHpZHcOa_NSArray_4];
+                NSMutableArray *eDJSBSixmIPzbUAE_NSArray_4 = [[NSMutableArray alloc] init];
+                [eDJSBSixmIPzbUAE_NSArray_4 addObject:[NSNull null]];
+                [eDJSBSixmIPzbUAE_NSArray_4 addObject:[NSNull null]];
+                [eDJSBSixmIPzbUAE_NSArray_4 addObject:@"NA"];
+                [eDJSBSixmIPzbUAE_NSArray_4 addObject:@"NA"];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:eDJSBSixmIPzbUAE_NSArray_4];
+                NSMutableArray *CsSRFJpsfqmTJNLP_NSArray_4 = [[NSMutableArray alloc] init];
+                [CsSRFJpsfqmTJNLP_NSArray_4 addObject:[NSNull null]];
+                [CsSRFJpsfqmTJNLP_NSArray_4 addObject:[NSNull null]];
+                [CsSRFJpsfqmTJNLP_NSArray_4 addObject:@"NA"];
+                [CsSRFJpsfqmTJNLP_NSArray_4 addObject:@"NA"];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:CsSRFJpsfqmTJNLP_NSArray_4];
+                NSMutableArray *kzjlWqdJqlexAouC_NSArray_4 = [[NSMutableArray alloc] init];
+                [kzjlWqdJqlexAouC_NSArray_4 addObject:[NSNull null]];
+                [kzjlWqdJqlexAouC_NSArray_4 addObject:[NSNull null]];
+                [kzjlWqdJqlexAouC_NSArray_4 addObject:@"NA"];
+                [kzjlWqdJqlexAouC_NSArray_4 addObject:@"NA"];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:kzjlWqdJqlexAouC_NSArray_4];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:@"BS"];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:[NSNumber numberWithLongLong:1]];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:@"011"];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:@"1"];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:[NSNull null]];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:[NSNull null]];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:@"1"];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:[NSNull null]];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:[NSNull null]];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:[NSNull null]];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:[NSNull null]];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *dHkLoAzKsfpcIvuc_NSArray_4 = [[NSMutableArray alloc] init];
+                [dHkLoAzKsfpcIvuc_NSArray_4 addObject:[NSNull null]];
+                [dHkLoAzKsfpcIvuc_NSArray_4 addObject:[NSNull null]];
+                [dHkLoAzKsfpcIvuc_NSArray_4 addObject:@"NA"];
+                [dHkLoAzKsfpcIvuc_NSArray_4 addObject:@"NA"];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:dHkLoAzKsfpcIvuc_NSArray_4];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:[NSNull null]];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *AAovcwrPhSZoTldl_NSArray_4 = [[NSMutableArray alloc] init];
+                [AAovcwrPhSZoTldl_NSArray_4 addObject:[NSNull null]];
+                [AAovcwrPhSZoTldl_NSArray_4 addObject:[NSNull null]];
+                [AAovcwrPhSZoTldl_NSArray_4 addObject:@"NA"];
+                [AAovcwrPhSZoTldl_NSArray_4 addObject:@"NA"];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:AAovcwrPhSZoTldl_NSArray_4];
+                NSMutableArray *UdQoYZzkAftIsoNu_NSArray_4 = [[NSMutableArray alloc] init];
+                [UdQoYZzkAftIsoNu_NSArray_4 addObject:[NSNull null]];
+                [UdQoYZzkAftIsoNu_NSArray_4 addObject:[NSNull null]];
+                [UdQoYZzkAftIsoNu_NSArray_4 addObject:@"NA"];
+                [UdQoYZzkAftIsoNu_NSArray_4 addObject:@"NA"];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:UdQoYZzkAftIsoNu_NSArray_4];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *zomhxHzHcrbTioSr_NSArray_4 = [[NSMutableArray alloc] init];
+                [zomhxHzHcrbTioSr_NSArray_4 addObject:[NSNull null]];
+                [zomhxHzHcrbTioSr_NSArray_4 addObject:[NSNull null]];
+                [zomhxHzHcrbTioSr_NSArray_4 addObject:@"NA"];
+                [zomhxHzHcrbTioSr_NSArray_4 addObject:@"NA"];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:zomhxHzHcrbTioSr_NSArray_4];
+                NSMutableArray *DBphVwdbfdYxalJQ_NSArray_4 = [[NSMutableArray alloc] init];
+                [DBphVwdbfdYxalJQ_NSArray_4 addObject:[NSNull null]];
+                [DBphVwdbfdYxalJQ_NSArray_4 addObject:[NSNull null]];
+                [DBphVwdbfdYxalJQ_NSArray_4 addObject:@"NA"];
+                [DBphVwdbfdYxalJQ_NSArray_4 addObject:@"NA"];
+            [yEaWfOzgZcmUeLAz_NSArray_3 addObject:DBphVwdbfdYxalJQ_NSArray_4];
+        [HdYgeMOvimmQrVSk_NSDictionary_2 setObject:yEaWfOzgZcmUeLAz_NSArray_3 forKey:@"BS"];
+            NSMutableArray *wraUXmFZnVUpONYE_NSArray_3 = [[NSMutableArray alloc] init];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *RWMHbAMqxDxpwzIF_NSArray_4 = [[NSMutableArray alloc] init];
+                [RWMHbAMqxDxpwzIF_NSArray_4 addObject:[NSNull null]];
+                [RWMHbAMqxDxpwzIF_NSArray_4 addObject:[NSNull null]];
+                [RWMHbAMqxDxpwzIF_NSArray_4 addObject:@"[289]\\d{7,9}|[3-7]\\d{7}"];
+                [RWMHbAMqxDxpwzIF_NSArray_4 addObject:@"\\d{7,10}"];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:RWMHbAMqxDxpwzIF_NSArray_4];
+                NSMutableArray *eRMCMWmvbRywQPJp_NSArray_4 = [[NSMutableArray alloc] init];
+                [eRMCMWmvbRywQPJp_NSArray_4 addObject:[NSNull null]];
+                [eRMCMWmvbRywQPJp_NSArray_4 addObject:[NSNull null]];
+                [eRMCMWmvbRywQPJp_NSArray_4 addObject:@"24099\\d{3}|(?:3[2-79]|[479][2-689]|6[235-9])\\d{6}"];
+                [eRMCMWmvbRywQPJp_NSArray_4 addObject:@"\\d{7,8}"];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:eRMCMWmvbRywQPJp_NSArray_4];
+                NSMutableArray *gOGuqisoiGYVhcxU_NSArray_4 = [[NSMutableArray alloc] init];
+                [gOGuqisoiGYVhcxU_NSArray_4 addObject:[NSNull null]];
+                [gOGuqisoiGYVhcxU_NSArray_4 addObject:[NSNull null]];
+                [gOGuqisoiGYVhcxU_NSArray_4 addObject:@"2(?:[027]\\d{7}|9\\d{6,7}|1(?:0\\d{5,7}|[12]\\d{5,6}|[3-9]\\d{5})|4[1-9]\\d{6}|8\\d{7,8})"];
+                [gOGuqisoiGYVhcxU_NSArray_4 addObject:@"\\d{8,10}"];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:gOGuqisoiGYVhcxU_NSArray_4];
+                NSMutableArray *RLSbLpgUIvNowjAq_NSArray_4 = [[NSMutableArray alloc] init];
+                [RLSbLpgUIvNowjAq_NSArray_4 addObject:[NSNull null]];
+                [RLSbLpgUIvNowjAq_NSArray_4 addObject:[NSNull null]];
+                [RLSbLpgUIvNowjAq_NSArray_4 addObject:@"800\\d{6,7}"];
+                [RLSbLpgUIvNowjAq_NSArray_4 addObject:@"\\d{9,10}"];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:RLSbLpgUIvNowjAq_NSArray_4];
+                NSMutableArray *hwdKyjEkysWQxEgs_NSArray_4 = [[NSMutableArray alloc] init];
+                [hwdKyjEkysWQxEgs_NSArray_4 addObject:[NSNull null]];
+                [hwdKyjEkysWQxEgs_NSArray_4 addObject:[NSNull null]];
+                [hwdKyjEkysWQxEgs_NSArray_4 addObject:@"900\\d{6,7}"];
+                [hwdKyjEkysWQxEgs_NSArray_4 addObject:@"\\d{9,10}"];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:hwdKyjEkysWQxEgs_NSArray_4];
+                NSMutableArray *YgrUOZuAvVXImZvY_NSArray_4 = [[NSMutableArray alloc] init];
+                [YgrUOZuAvVXImZvY_NSArray_4 addObject:[NSNull null]];
+                [YgrUOZuAvVXImZvY_NSArray_4 addObject:[NSNull null]];
+                [YgrUOZuAvVXImZvY_NSArray_4 addObject:@"NA"];
+                [YgrUOZuAvVXImZvY_NSArray_4 addObject:@"NA"];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:YgrUOZuAvVXImZvY_NSArray_4];
+                NSMutableArray *ZphElzLdKYLktUEJ_NSArray_4 = [[NSMutableArray alloc] init];
+                [ZphElzLdKYLktUEJ_NSArray_4 addObject:[NSNull null]];
+                [ZphElzLdKYLktUEJ_NSArray_4 addObject:[NSNull null]];
+                [ZphElzLdKYLktUEJ_NSArray_4 addObject:@"NA"];
+                [ZphElzLdKYLktUEJ_NSArray_4 addObject:@"NA"];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:ZphElzLdKYLktUEJ_NSArray_4];
+                NSMutableArray *pXCfdlbkRfpGUAQF_NSArray_4 = [[NSMutableArray alloc] init];
+                [pXCfdlbkRfpGUAQF_NSArray_4 addObject:[NSNull null]];
+                [pXCfdlbkRfpGUAQF_NSArray_4 addObject:[NSNull null]];
+                [pXCfdlbkRfpGUAQF_NSArray_4 addObject:@"NA"];
+                [pXCfdlbkRfpGUAQF_NSArray_4 addObject:@"NA"];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:pXCfdlbkRfpGUAQF_NSArray_4];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:@"NZ"];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:[NSNumber numberWithLongLong:64]];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:@"00"];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:@"0"];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:[NSNull null]];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:[NSNull null]];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:@"0"];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:[NSNull null]];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:[NSNull null]];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *DVOqiPvudFizXIQv_NSArray_4 = [[NSMutableArray alloc] init];
+                    NSMutableArray *HNLdoHZPDYbOVdTa_NSArray_5 = [[NSMutableArray alloc] init];
+                    [HNLdoHZPDYbOVdTa_NSArray_5 addObject:[NSNull null]];
+                    [HNLdoHZPDYbOVdTa_NSArray_5 addObject:@"(\\d)(\\d{3})(\\d{4})"];
+                    [HNLdoHZPDYbOVdTa_NSArray_5 addObject:@"$1-$2 $3"];
+                        NSMutableArray *ldhBazvmQvckPjHO_NSArray_6 = [[NSMutableArray alloc] init];
+                        [ldhBazvmQvckPjHO_NSArray_6 addObject:@"24|[34679]"];
+                    [HNLdoHZPDYbOVdTa_NSArray_5 addObject:ldhBazvmQvckPjHO_NSArray_6];
+                    [HNLdoHZPDYbOVdTa_NSArray_5 addObject:@"0$1"];
+                    [HNLdoHZPDYbOVdTa_NSArray_5 addObject:@""];
+                    [HNLdoHZPDYbOVdTa_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [DVOqiPvudFizXIQv_NSArray_4 addObject:HNLdoHZPDYbOVdTa_NSArray_5];
+                    NSMutableArray *opcaNsxfxVUsIbzE_NSArray_5 = [[NSMutableArray alloc] init];
+                    [opcaNsxfxVUsIbzE_NSArray_5 addObject:[NSNull null]];
+                    [opcaNsxfxVUsIbzE_NSArray_5 addObject:@"(\\d)(\\d{3})(\\d{3,5})"];
+                    [opcaNsxfxVUsIbzE_NSArray_5 addObject:@"$1-$2 $3"];
+                        NSMutableArray *vNQgTkAhZJFrmfJg_NSArray_6 = [[NSMutableArray alloc] init];
+                        [vNQgTkAhZJFrmfJg_NSArray_6 addObject:@"2[179]"];
+                    [opcaNsxfxVUsIbzE_NSArray_5 addObject:vNQgTkAhZJFrmfJg_NSArray_6];
+                    [opcaNsxfxVUsIbzE_NSArray_5 addObject:@"0$1"];
+                    [opcaNsxfxVUsIbzE_NSArray_5 addObject:@""];
+                    [opcaNsxfxVUsIbzE_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [DVOqiPvudFizXIQv_NSArray_4 addObject:opcaNsxfxVUsIbzE_NSArray_5];
+                    NSMutableArray *dMeJZQQdMbUmWsBj_NSArray_5 = [[NSMutableArray alloc] init];
+                    [dMeJZQQdMbUmWsBj_NSArray_5 addObject:[NSNull null]];
+                    [dMeJZQQdMbUmWsBj_NSArray_5 addObject:@"(\\d{3})(\\d{3})(\\d{3,4})"];
+                    [dMeJZQQdMbUmWsBj_NSArray_5 addObject:@"$1 $2 $3"];
+                        NSMutableArray *ZkVVmbdlEPplbceb_NSArray_6 = [[NSMutableArray alloc] init];
+                        [ZkVVmbdlEPplbceb_NSArray_6 addObject:@"[89]"];
+                    [dMeJZQQdMbUmWsBj_NSArray_5 addObject:ZkVVmbdlEPplbceb_NSArray_6];
+                    [dMeJZQQdMbUmWsBj_NSArray_5 addObject:@"0$1"];
+                    [dMeJZQQdMbUmWsBj_NSArray_5 addObject:@""];
+                    [dMeJZQQdMbUmWsBj_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [DVOqiPvudFizXIQv_NSArray_4 addObject:dMeJZQQdMbUmWsBj_NSArray_5];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:DVOqiPvudFizXIQv_NSArray_4];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *OaJBZMyYeZproZIS_NSArray_4 = [[NSMutableArray alloc] init];
+                [OaJBZMyYeZproZIS_NSArray_4 addObject:[NSNull null]];
+                [OaJBZMyYeZproZIS_NSArray_4 addObject:[NSNull null]];
+                [OaJBZMyYeZproZIS_NSArray_4 addObject:@"NA"];
+                [OaJBZMyYeZproZIS_NSArray_4 addObject:@"NA"];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:OaJBZMyYeZproZIS_NSArray_4];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:[NSNull null]];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *GQHgWDuuawOUsrme_NSArray_4 = [[NSMutableArray alloc] init];
+                [GQHgWDuuawOUsrme_NSArray_4 addObject:[NSNull null]];
+                [GQHgWDuuawOUsrme_NSArray_4 addObject:[NSNull null]];
+                [GQHgWDuuawOUsrme_NSArray_4 addObject:@"NA"];
+                [GQHgWDuuawOUsrme_NSArray_4 addObject:@"NA"];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:GQHgWDuuawOUsrme_NSArray_4];
+                NSMutableArray *tlnIXStwzAPQXrFo_NSArray_4 = [[NSMutableArray alloc] init];
+                [tlnIXStwzAPQXrFo_NSArray_4 addObject:[NSNull null]];
+                [tlnIXStwzAPQXrFo_NSArray_4 addObject:[NSNull null]];
+                [tlnIXStwzAPQXrFo_NSArray_4 addObject:@"NA"];
+                [tlnIXStwzAPQXrFo_NSArray_4 addObject:@"NA"];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:tlnIXStwzAPQXrFo_NSArray_4];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *iKQDEqSdMtVKJgBC_NSArray_4 = [[NSMutableArray alloc] init];
+                [iKQDEqSdMtVKJgBC_NSArray_4 addObject:[NSNull null]];
+                [iKQDEqSdMtVKJgBC_NSArray_4 addObject:[NSNull null]];
+                [iKQDEqSdMtVKJgBC_NSArray_4 addObject:@"NA"];
+                [iKQDEqSdMtVKJgBC_NSArray_4 addObject:@"NA"];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:iKQDEqSdMtVKJgBC_NSArray_4];
+                NSMutableArray *KDecLNAGcOauaEXX_NSArray_4 = [[NSMutableArray alloc] init];
+                [KDecLNAGcOauaEXX_NSArray_4 addObject:[NSNull null]];
+                [KDecLNAGcOauaEXX_NSArray_4 addObject:[NSNull null]];
+                [KDecLNAGcOauaEXX_NSArray_4 addObject:@"NA"];
+                [KDecLNAGcOauaEXX_NSArray_4 addObject:@"NA"];
+            [wraUXmFZnVUpONYE_NSArray_3 addObject:KDecLNAGcOauaEXX_NSArray_4];
+        [HdYgeMOvimmQrVSk_NSDictionary_2 setObject:wraUXmFZnVUpONYE_NSArray_3 forKey:@"NZ"];
+            NSMutableArray *cCJMGNNJrblLzYej_NSArray_3 = [[NSMutableArray alloc] init];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *HIxYLLedWWEKRANa_NSArray_4 = [[NSMutableArray alloc] init];
+                [HIxYLLedWWEKRANa_NSArray_4 addObject:[NSNull null]];
+                [HIxYLLedWWEKRANa_NSArray_4 addObject:[NSNull null]];
+                [HIxYLLedWWEKRANa_NSArray_4 addObject:@"[268]\\d{8}"];
+                [HIxYLLedWWEKRANa_NSArray_4 addObject:@"\\d{9}"];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:HIxYLLedWWEKRANa_NSArray_4];
+                NSMutableArray *NXNFWIJpHtZApbTm_NSArray_4 = [[NSMutableArray alloc] init];
+                [NXNFWIJpHtZApbTm_NSArray_4 addObject:[NSNull null]];
+                [NXNFWIJpHtZApbTm_NSArray_4 addObject:[NSNull null]];
+                [NXNFWIJpHtZApbTm_NSArray_4 addObject:@"2696[0-4]\\d{4}"];
+                [NXNFWIJpHtZApbTm_NSArray_4 addObject:@"\\d{9}"];
+                [NXNFWIJpHtZApbTm_NSArray_4 addObject:[NSNull null]];
+                [NXNFWIJpHtZApbTm_NSArray_4 addObject:[NSNull null]];
+                [NXNFWIJpHtZApbTm_NSArray_4 addObject:@"269601234"];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:NXNFWIJpHtZApbTm_NSArray_4];
+                NSMutableArray *zHkzCODPUuZpLFGB_NSArray_4 = [[NSMutableArray alloc] init];
+                [zHkzCODPUuZpLFGB_NSArray_4 addObject:[NSNull null]];
+                [zHkzCODPUuZpLFGB_NSArray_4 addObject:[NSNull null]];
+                [zHkzCODPUuZpLFGB_NSArray_4 addObject:@"639\\d{6}"];
+                [zHkzCODPUuZpLFGB_NSArray_4 addObject:@"\\d{9}"];
+                [zHkzCODPUuZpLFGB_NSArray_4 addObject:[NSNull null]];
+                [zHkzCODPUuZpLFGB_NSArray_4 addObject:[NSNull null]];
+                [zHkzCODPUuZpLFGB_NSArray_4 addObject:@"639123456"];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:zHkzCODPUuZpLFGB_NSArray_4];
+                NSMutableArray *tyLNiEPJoMrkGGCI_NSArray_4 = [[NSMutableArray alloc] init];
+                [tyLNiEPJoMrkGGCI_NSArray_4 addObject:[NSNull null]];
+                [tyLNiEPJoMrkGGCI_NSArray_4 addObject:[NSNull null]];
+                [tyLNiEPJoMrkGGCI_NSArray_4 addObject:@"80\\d{7}"];
+                [tyLNiEPJoMrkGGCI_NSArray_4 addObject:@"\\d{9}"];
+                [tyLNiEPJoMrkGGCI_NSArray_4 addObject:[NSNull null]];
+                [tyLNiEPJoMrkGGCI_NSArray_4 addObject:[NSNull null]];
+                [tyLNiEPJoMrkGGCI_NSArray_4 addObject:@"801234567"];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:tyLNiEPJoMrkGGCI_NSArray_4];
+                NSMutableArray *NACZnoDpAfqKTzpp_NSArray_4 = [[NSMutableArray alloc] init];
+                [NACZnoDpAfqKTzpp_NSArray_4 addObject:[NSNull null]];
+                [NACZnoDpAfqKTzpp_NSArray_4 addObject:[NSNull null]];
+                [NACZnoDpAfqKTzpp_NSArray_4 addObject:@"NA"];
+                [NACZnoDpAfqKTzpp_NSArray_4 addObject:@"NA"];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:NACZnoDpAfqKTzpp_NSArray_4];
+                NSMutableArray *VorPFCwndOhDFpnB_NSArray_4 = [[NSMutableArray alloc] init];
+                [VorPFCwndOhDFpnB_NSArray_4 addObject:[NSNull null]];
+                [VorPFCwndOhDFpnB_NSArray_4 addObject:[NSNull null]];
+                [VorPFCwndOhDFpnB_NSArray_4 addObject:@"NA"];
+                [VorPFCwndOhDFpnB_NSArray_4 addObject:@"NA"];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:VorPFCwndOhDFpnB_NSArray_4];
+                NSMutableArray *iEGexksAcsKaPaMz_NSArray_4 = [[NSMutableArray alloc] init];
+                [iEGexksAcsKaPaMz_NSArray_4 addObject:[NSNull null]];
+                [iEGexksAcsKaPaMz_NSArray_4 addObject:[NSNull null]];
+                [iEGexksAcsKaPaMz_NSArray_4 addObject:@"NA"];
+                [iEGexksAcsKaPaMz_NSArray_4 addObject:@"NA"];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:iEGexksAcsKaPaMz_NSArray_4];
+                NSMutableArray *RWodfhkmcrMkvYyJ_NSArray_4 = [[NSMutableArray alloc] init];
+                [RWodfhkmcrMkvYyJ_NSArray_4 addObject:[NSNull null]];
+                [RWodfhkmcrMkvYyJ_NSArray_4 addObject:[NSNull null]];
+                [RWodfhkmcrMkvYyJ_NSArray_4 addObject:@"NA"];
+                [RWodfhkmcrMkvYyJ_NSArray_4 addObject:@"NA"];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:RWodfhkmcrMkvYyJ_NSArray_4];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:@"YT"];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:[NSNumber numberWithLongLong:262]];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:@"00"];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:@"0"];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:[NSNull null]];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:[NSNull null]];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:@"0"];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:[NSNull null]];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:[NSNull null]];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:[NSNull null]];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:[NSNull null]];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *uIzFCKAJCGmNvAkv_NSArray_4 = [[NSMutableArray alloc] init];
+                [uIzFCKAJCGmNvAkv_NSArray_4 addObject:[NSNull null]];
+                [uIzFCKAJCGmNvAkv_NSArray_4 addObject:[NSNull null]];
+                [uIzFCKAJCGmNvAkv_NSArray_4 addObject:@"NA"];
+                [uIzFCKAJCGmNvAkv_NSArray_4 addObject:@"NA"];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:uIzFCKAJCGmNvAkv_NSArray_4];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:[NSNull null]];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:@"269|639"];
+                NSMutableArray *gUbPaQcFpDRJKZCy_NSArray_4 = [[NSMutableArray alloc] init];
+                [gUbPaQcFpDRJKZCy_NSArray_4 addObject:[NSNull null]];
+                [gUbPaQcFpDRJKZCy_NSArray_4 addObject:[NSNull null]];
+                [gUbPaQcFpDRJKZCy_NSArray_4 addObject:@"NA"];
+                [gUbPaQcFpDRJKZCy_NSArray_4 addObject:@"NA"];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:gUbPaQcFpDRJKZCy_NSArray_4];
+                NSMutableArray *OgUNyKhadbtZKKRK_NSArray_4 = [[NSMutableArray alloc] init];
+                [OgUNyKhadbtZKKRK_NSArray_4 addObject:[NSNull null]];
+                [OgUNyKhadbtZKKRK_NSArray_4 addObject:[NSNull null]];
+                [OgUNyKhadbtZKKRK_NSArray_4 addObject:@"NA"];
+                [OgUNyKhadbtZKKRK_NSArray_4 addObject:@"NA"];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:OgUNyKhadbtZKKRK_NSArray_4];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *zzRJdmaDFxpsRykh_NSArray_4 = [[NSMutableArray alloc] init];
+                [zzRJdmaDFxpsRykh_NSArray_4 addObject:[NSNull null]];
+                [zzRJdmaDFxpsRykh_NSArray_4 addObject:[NSNull null]];
+                [zzRJdmaDFxpsRykh_NSArray_4 addObject:@"NA"];
+                [zzRJdmaDFxpsRykh_NSArray_4 addObject:@"NA"];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:zzRJdmaDFxpsRykh_NSArray_4];
+                NSMutableArray *sMlfLZjydsoPPUEQ_NSArray_4 = [[NSMutableArray alloc] init];
+                [sMlfLZjydsoPPUEQ_NSArray_4 addObject:[NSNull null]];
+                [sMlfLZjydsoPPUEQ_NSArray_4 addObject:[NSNull null]];
+                [sMlfLZjydsoPPUEQ_NSArray_4 addObject:@"NA"];
+                [sMlfLZjydsoPPUEQ_NSArray_4 addObject:@"NA"];
+            [cCJMGNNJrblLzYej_NSArray_3 addObject:sMlfLZjydsoPPUEQ_NSArray_4];
+        [HdYgeMOvimmQrVSk_NSDictionary_2 setObject:cCJMGNNJrblLzYej_NSArray_3 forKey:@"YT"];
+            NSMutableArray *qUknUaGPBVgntnuH_NSArray_3 = [[NSMutableArray alloc] init];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *hLgclscdCpdNjyvT_NSArray_4 = [[NSMutableArray alloc] init];
+                [hLgclscdCpdNjyvT_NSArray_4 addObject:[NSNull null]];
+                [hLgclscdCpdNjyvT_NSArray_4 addObject:[NSNull null]];
+                [hLgclscdCpdNjyvT_NSArray_4 addObject:@"[29]\\d{8}"];
+                [hLgclscdCpdNjyvT_NSArray_4 addObject:@"\\d{9}"];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:hLgclscdCpdNjyvT_NSArray_4];
+                NSMutableArray *HIAGdOwUpkPmZFWY_NSArray_4 = [[NSMutableArray alloc] init];
+                [HIAGdOwUpkPmZFWY_NSArray_4 addObject:[NSNull null]];
+                [HIAGdOwUpkPmZFWY_NSArray_4 addObject:[NSNull null]];
+                [HIAGdOwUpkPmZFWY_NSArray_4 addObject:@"2\\d(?:[26-9]\\d|\\d[26-9])\\d{5}"];
+                [HIAGdOwUpkPmZFWY_NSArray_4 addObject:@"\\d{9}"];
+                [HIAGdOwUpkPmZFWY_NSArray_4 addObject:[NSNull null]];
+                [HIAGdOwUpkPmZFWY_NSArray_4 addObject:[NSNull null]];
+                [HIAGdOwUpkPmZFWY_NSArray_4 addObject:@"222123456"];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:HIAGdOwUpkPmZFWY_NSArray_4];
+                NSMutableArray *RyBDJgEXGQVuAWrm_NSArray_4 = [[NSMutableArray alloc] init];
+                [RyBDJgEXGQVuAWrm_NSArray_4 addObject:[NSNull null]];
+                [RyBDJgEXGQVuAWrm_NSArray_4 addObject:[NSNull null]];
+                [RyBDJgEXGQVuAWrm_NSArray_4 addObject:@"9[1-3]\\d{7}"];
+                [RyBDJgEXGQVuAWrm_NSArray_4 addObject:@"\\d{9}"];
+                [RyBDJgEXGQVuAWrm_NSArray_4 addObject:[NSNull null]];
+                [RyBDJgEXGQVuAWrm_NSArray_4 addObject:[NSNull null]];
+                [RyBDJgEXGQVuAWrm_NSArray_4 addObject:@"923123456"];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:RyBDJgEXGQVuAWrm_NSArray_4];
+                NSMutableArray *nTCMGVNOBDwdYzyA_NSArray_4 = [[NSMutableArray alloc] init];
+                [nTCMGVNOBDwdYzyA_NSArray_4 addObject:[NSNull null]];
+                [nTCMGVNOBDwdYzyA_NSArray_4 addObject:[NSNull null]];
+                [nTCMGVNOBDwdYzyA_NSArray_4 addObject:@"NA"];
+                [nTCMGVNOBDwdYzyA_NSArray_4 addObject:@"NA"];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:nTCMGVNOBDwdYzyA_NSArray_4];
+                NSMutableArray *sNmEktQChxyJbmZI_NSArray_4 = [[NSMutableArray alloc] init];
+                [sNmEktQChxyJbmZI_NSArray_4 addObject:[NSNull null]];
+                [sNmEktQChxyJbmZI_NSArray_4 addObject:[NSNull null]];
+                [sNmEktQChxyJbmZI_NSArray_4 addObject:@"NA"];
+                [sNmEktQChxyJbmZI_NSArray_4 addObject:@"NA"];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:sNmEktQChxyJbmZI_NSArray_4];
+                NSMutableArray *WXbUzkProwRQGAOV_NSArray_4 = [[NSMutableArray alloc] init];
+                [WXbUzkProwRQGAOV_NSArray_4 addObject:[NSNull null]];
+                [WXbUzkProwRQGAOV_NSArray_4 addObject:[NSNull null]];
+                [WXbUzkProwRQGAOV_NSArray_4 addObject:@"NA"];
+                [WXbUzkProwRQGAOV_NSArray_4 addObject:@"NA"];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:WXbUzkProwRQGAOV_NSArray_4];
+                NSMutableArray *bNmLbewkENCFozLS_NSArray_4 = [[NSMutableArray alloc] init];
+                [bNmLbewkENCFozLS_NSArray_4 addObject:[NSNull null]];
+                [bNmLbewkENCFozLS_NSArray_4 addObject:[NSNull null]];
+                [bNmLbewkENCFozLS_NSArray_4 addObject:@"NA"];
+                [bNmLbewkENCFozLS_NSArray_4 addObject:@"NA"];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:bNmLbewkENCFozLS_NSArray_4];
+                NSMutableArray *gaCcwGUDDstKMPoQ_NSArray_4 = [[NSMutableArray alloc] init];
+                [gaCcwGUDDstKMPoQ_NSArray_4 addObject:[NSNull null]];
+                [gaCcwGUDDstKMPoQ_NSArray_4 addObject:[NSNull null]];
+                [gaCcwGUDDstKMPoQ_NSArray_4 addObject:@"NA"];
+                [gaCcwGUDDstKMPoQ_NSArray_4 addObject:@"NA"];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:gaCcwGUDDstKMPoQ_NSArray_4];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:@"AO"];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:[NSNumber numberWithLongLong:244]];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:@"00"];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:@"0~0"];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:[NSNull null]];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:[NSNull null]];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:@"0~0"];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:[NSNull null]];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:[NSNull null]];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *VPLmkXdKKfueGTuG_NSArray_4 = [[NSMutableArray alloc] init];
+                    NSMutableArray *IprRwIhGfVeLwPAq_NSArray_5 = [[NSMutableArray alloc] init];
+                    [IprRwIhGfVeLwPAq_NSArray_5 addObject:[NSNull null]];
+                    [IprRwIhGfVeLwPAq_NSArray_5 addObject:@"(\\d{3})(\\d{3})(\\d{3})"];
+                    [IprRwIhGfVeLwPAq_NSArray_5 addObject:@"$1 $2 $3"];
+                    [IprRwIhGfVeLwPAq_NSArray_5 addObject:[NSNull null]];
+                    [IprRwIhGfVeLwPAq_NSArray_5 addObject:@""];
+                    [IprRwIhGfVeLwPAq_NSArray_5 addObject:@""];
+                    [IprRwIhGfVeLwPAq_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [VPLmkXdKKfueGTuG_NSArray_4 addObject:IprRwIhGfVeLwPAq_NSArray_5];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:VPLmkXdKKfueGTuG_NSArray_4];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *MEkReiSZRCEsSiBC_NSArray_4 = [[NSMutableArray alloc] init];
+                [MEkReiSZRCEsSiBC_NSArray_4 addObject:[NSNull null]];
+                [MEkReiSZRCEsSiBC_NSArray_4 addObject:[NSNull null]];
+                [MEkReiSZRCEsSiBC_NSArray_4 addObject:@"NA"];
+                [MEkReiSZRCEsSiBC_NSArray_4 addObject:@"NA"];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:MEkReiSZRCEsSiBC_NSArray_4];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:[NSNull null]];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *vGMrWBniQPhbORqv_NSArray_4 = [[NSMutableArray alloc] init];
+                [vGMrWBniQPhbORqv_NSArray_4 addObject:[NSNull null]];
+                [vGMrWBniQPhbORqv_NSArray_4 addObject:[NSNull null]];
+                [vGMrWBniQPhbORqv_NSArray_4 addObject:@"NA"];
+                [vGMrWBniQPhbORqv_NSArray_4 addObject:@"NA"];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:vGMrWBniQPhbORqv_NSArray_4];
+                NSMutableArray *gAofvMUSCeYujqfv_NSArray_4 = [[NSMutableArray alloc] init];
+                [gAofvMUSCeYujqfv_NSArray_4 addObject:[NSNull null]];
+                [gAofvMUSCeYujqfv_NSArray_4 addObject:[NSNull null]];
+                [gAofvMUSCeYujqfv_NSArray_4 addObject:@"NA"];
+                [gAofvMUSCeYujqfv_NSArray_4 addObject:@"NA"];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:gAofvMUSCeYujqfv_NSArray_4];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *ocVWvclOBDFfUWVG_NSArray_4 = [[NSMutableArray alloc] init];
+                [ocVWvclOBDFfUWVG_NSArray_4 addObject:[NSNull null]];
+                [ocVWvclOBDFfUWVG_NSArray_4 addObject:[NSNull null]];
+                [ocVWvclOBDFfUWVG_NSArray_4 addObject:@"NA"];
+                [ocVWvclOBDFfUWVG_NSArray_4 addObject:@"NA"];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:ocVWvclOBDFfUWVG_NSArray_4];
+                NSMutableArray *pnJEByvLOgFUCQRl_NSArray_4 = [[NSMutableArray alloc] init];
+                [pnJEByvLOgFUCQRl_NSArray_4 addObject:[NSNull null]];
+                [pnJEByvLOgFUCQRl_NSArray_4 addObject:[NSNull null]];
+                [pnJEByvLOgFUCQRl_NSArray_4 addObject:@"NA"];
+                [pnJEByvLOgFUCQRl_NSArray_4 addObject:@"NA"];
+            [qUknUaGPBVgntnuH_NSArray_3 addObject:pnJEByvLOgFUCQRl_NSArray_4];
+        [HdYgeMOvimmQrVSk_NSDictionary_2 setObject:qUknUaGPBVgntnuH_NSArray_3 forKey:@"AO"];
+            NSMutableArray *OBOItYKGPvSlOKyW_NSArray_3 = [[NSMutableArray alloc] init];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *pZDLWfMsDfVDgcwP_NSArray_4 = [[NSMutableArray alloc] init];
+                [pZDLWfMsDfVDgcwP_NSArray_4 addObject:[NSNull null]];
+                [pZDLWfMsDfVDgcwP_NSArray_4 addObject:[NSNull null]];
+                [pZDLWfMsDfVDgcwP_NSArray_4 addObject:@"\\d{8}"];
+                [pZDLWfMsDfVDgcwP_NSArray_4 addObject:@"\\d{8}"];
+                [pZDLWfMsDfVDgcwP_NSArray_4 addObject:[NSNull null]];
+                [pZDLWfMsDfVDgcwP_NSArray_4 addObject:[NSNull null]];
+                [pZDLWfMsDfVDgcwP_NSArray_4 addObject:@"12345678"];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:pZDLWfMsDfVDgcwP_NSArray_4];
+                NSMutableArray *QkVYqoWyVBgLVFyB_NSArray_4 = [[NSMutableArray alloc] init];
+                [QkVYqoWyVBgLVFyB_NSArray_4 addObject:[NSNull null]];
+                [QkVYqoWyVBgLVFyB_NSArray_4 addObject:[NSNull null]];
+                [QkVYqoWyVBgLVFyB_NSArray_4 addObject:@"NA"];
+                [QkVYqoWyVBgLVFyB_NSArray_4 addObject:@"NA"];
+                [QkVYqoWyVBgLVFyB_NSArray_4 addObject:[NSNull null]];
+                [QkVYqoWyVBgLVFyB_NSArray_4 addObject:[NSNull null]];
+                [QkVYqoWyVBgLVFyB_NSArray_4 addObject:@"12345678"];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:QkVYqoWyVBgLVFyB_NSArray_4];
+                NSMutableArray *MZdNQynAhGyBFqcV_NSArray_4 = [[NSMutableArray alloc] init];
+                [MZdNQynAhGyBFqcV_NSArray_4 addObject:[NSNull null]];
+                [MZdNQynAhGyBFqcV_NSArray_4 addObject:[NSNull null]];
+                [MZdNQynAhGyBFqcV_NSArray_4 addObject:@"NA"];
+                [MZdNQynAhGyBFqcV_NSArray_4 addObject:@"NA"];
+                [MZdNQynAhGyBFqcV_NSArray_4 addObject:[NSNull null]];
+                [MZdNQynAhGyBFqcV_NSArray_4 addObject:[NSNull null]];
+                [MZdNQynAhGyBFqcV_NSArray_4 addObject:@"12345678"];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:MZdNQynAhGyBFqcV_NSArray_4];
+                NSMutableArray *UqRTyrxMjKhvUrbh_NSArray_4 = [[NSMutableArray alloc] init];
+                [UqRTyrxMjKhvUrbh_NSArray_4 addObject:[NSNull null]];
+                [UqRTyrxMjKhvUrbh_NSArray_4 addObject:[NSNull null]];
+                [UqRTyrxMjKhvUrbh_NSArray_4 addObject:@"\\d{8}"];
+                [UqRTyrxMjKhvUrbh_NSArray_4 addObject:@"\\d{8}"];
+                [UqRTyrxMjKhvUrbh_NSArray_4 addObject:[NSNull null]];
+                [UqRTyrxMjKhvUrbh_NSArray_4 addObject:[NSNull null]];
+                [UqRTyrxMjKhvUrbh_NSArray_4 addObject:@"12345678"];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:UqRTyrxMjKhvUrbh_NSArray_4];
+                NSMutableArray *zjEhKhXLuLVwEKTg_NSArray_4 = [[NSMutableArray alloc] init];
+                [zjEhKhXLuLVwEKTg_NSArray_4 addObject:[NSNull null]];
+                [zjEhKhXLuLVwEKTg_NSArray_4 addObject:[NSNull null]];
+                [zjEhKhXLuLVwEKTg_NSArray_4 addObject:@"NA"];
+                [zjEhKhXLuLVwEKTg_NSArray_4 addObject:@"NA"];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:zjEhKhXLuLVwEKTg_NSArray_4];
+                NSMutableArray *JmuYEVyiCGoThCVT_NSArray_4 = [[NSMutableArray alloc] init];
+                [JmuYEVyiCGoThCVT_NSArray_4 addObject:[NSNull null]];
+                [JmuYEVyiCGoThCVT_NSArray_4 addObject:[NSNull null]];
+                [JmuYEVyiCGoThCVT_NSArray_4 addObject:@"NA"];
+                [JmuYEVyiCGoThCVT_NSArray_4 addObject:@"NA"];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:JmuYEVyiCGoThCVT_NSArray_4];
+                NSMutableArray *QAckaxSgLSPobjTC_NSArray_4 = [[NSMutableArray alloc] init];
+                [QAckaxSgLSPobjTC_NSArray_4 addObject:[NSNull null]];
+                [QAckaxSgLSPobjTC_NSArray_4 addObject:[NSNull null]];
+                [QAckaxSgLSPobjTC_NSArray_4 addObject:@"NA"];
+                [QAckaxSgLSPobjTC_NSArray_4 addObject:@"NA"];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:QAckaxSgLSPobjTC_NSArray_4];
+                NSMutableArray *HIdunzQTStruvuqn_NSArray_4 = [[NSMutableArray alloc] init];
+                [HIdunzQTStruvuqn_NSArray_4 addObject:[NSNull null]];
+                [HIdunzQTStruvuqn_NSArray_4 addObject:[NSNull null]];
+                [HIdunzQTStruvuqn_NSArray_4 addObject:@"NA"];
+                [HIdunzQTStruvuqn_NSArray_4 addObject:@"NA"];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:HIdunzQTStruvuqn_NSArray_4];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:@"001"];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:[NSNumber numberWithLongLong:800]];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:@""];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:[NSNull null]];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:[NSNull null]];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:[NSNull null]];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:[NSNull null]];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:[NSNull null]];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:[NSNull null]];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:[NSNumber numberWithLongLong:1]];
+                NSMutableArray *uxTLXacnerpIxLhP_NSArray_4 = [[NSMutableArray alloc] init];
+                    NSMutableArray *RLbxqUxmGZKLuAAh_NSArray_5 = [[NSMutableArray alloc] init];
+                    [RLbxqUxmGZKLuAAh_NSArray_5 addObject:[NSNull null]];
+                    [RLbxqUxmGZKLuAAh_NSArray_5 addObject:@"(\\d{4})(\\d{4})"];
+                    [RLbxqUxmGZKLuAAh_NSArray_5 addObject:@"$1 $2"];
+                    [RLbxqUxmGZKLuAAh_NSArray_5 addObject:[NSNull null]];
+                    [RLbxqUxmGZKLuAAh_NSArray_5 addObject:@""];
+                    [RLbxqUxmGZKLuAAh_NSArray_5 addObject:@""];
+                    [RLbxqUxmGZKLuAAh_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [uxTLXacnerpIxLhP_NSArray_4 addObject:RLbxqUxmGZKLuAAh_NSArray_5];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:uxTLXacnerpIxLhP_NSArray_4];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *CsHAbQcMHqsFcnjC_NSArray_4 = [[NSMutableArray alloc] init];
+                [CsHAbQcMHqsFcnjC_NSArray_4 addObject:[NSNull null]];
+                [CsHAbQcMHqsFcnjC_NSArray_4 addObject:[NSNull null]];
+                [CsHAbQcMHqsFcnjC_NSArray_4 addObject:@"NA"];
+                [CsHAbQcMHqsFcnjC_NSArray_4 addObject:@"NA"];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:CsHAbQcMHqsFcnjC_NSArray_4];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:[NSNull null]];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *QQKXnFYryaKkeOuB_NSArray_4 = [[NSMutableArray alloc] init];
+                [QQKXnFYryaKkeOuB_NSArray_4 addObject:[NSNull null]];
+                [QQKXnFYryaKkeOuB_NSArray_4 addObject:[NSNull null]];
+                [QQKXnFYryaKkeOuB_NSArray_4 addObject:@"NA"];
+                [QQKXnFYryaKkeOuB_NSArray_4 addObject:@"NA"];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:QQKXnFYryaKkeOuB_NSArray_4];
+                NSMutableArray *FZIbGeZcobkbrYsN_NSArray_4 = [[NSMutableArray alloc] init];
+                [FZIbGeZcobkbrYsN_NSArray_4 addObject:[NSNull null]];
+                [FZIbGeZcobkbrYsN_NSArray_4 addObject:[NSNull null]];
+                [FZIbGeZcobkbrYsN_NSArray_4 addObject:@"NA"];
+                [FZIbGeZcobkbrYsN_NSArray_4 addObject:@"NA"];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:FZIbGeZcobkbrYsN_NSArray_4];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:[NSNumber numberWithLongLong:1]];
+                NSMutableArray *QtJrMwoGPLCNUGUD_NSArray_4 = [[NSMutableArray alloc] init];
+                [QtJrMwoGPLCNUGUD_NSArray_4 addObject:[NSNull null]];
+                [QtJrMwoGPLCNUGUD_NSArray_4 addObject:[NSNull null]];
+                [QtJrMwoGPLCNUGUD_NSArray_4 addObject:@"NA"];
+                [QtJrMwoGPLCNUGUD_NSArray_4 addObject:@"NA"];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:QtJrMwoGPLCNUGUD_NSArray_4];
+                NSMutableArray *DOFmGaijKttfZyeu_NSArray_4 = [[NSMutableArray alloc] init];
+                [DOFmGaijKttfZyeu_NSArray_4 addObject:[NSNull null]];
+                [DOFmGaijKttfZyeu_NSArray_4 addObject:[NSNull null]];
+                [DOFmGaijKttfZyeu_NSArray_4 addObject:@"NA"];
+                [DOFmGaijKttfZyeu_NSArray_4 addObject:@"NA"];
+            [OBOItYKGPvSlOKyW_NSArray_3 addObject:DOFmGaijKttfZyeu_NSArray_4];
+        [HdYgeMOvimmQrVSk_NSDictionary_2 setObject:OBOItYKGPvSlOKyW_NSArray_3 forKey:@"800"];
+            NSMutableArray *OtAliEoXIRkHzDxD_NSArray_3 = [[NSMutableArray alloc] init];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *TlpCuhzxhuotKmjb_NSArray_4 = [[NSMutableArray alloc] init];
+                [TlpCuhzxhuotKmjb_NSArray_4 addObject:[NSNull null]];
+                [TlpCuhzxhuotKmjb_NSArray_4 addObject:[NSNull null]];
+                [TlpCuhzxhuotKmjb_NSArray_4 addObject:@"[13689]\\d{7,10}"];
+                [TlpCuhzxhuotKmjb_NSArray_4 addObject:@"\\d{8}|\\d{10,11}"];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:TlpCuhzxhuotKmjb_NSArray_4];
+                NSMutableArray *vgkftoyHmkTtejSd_NSArray_4 = [[NSMutableArray alloc] init];
+                [vgkftoyHmkTtejSd_NSArray_4 addObject:[NSNull null]];
+                [vgkftoyHmkTtejSd_NSArray_4 addObject:[NSNull null]];
+                [vgkftoyHmkTtejSd_NSArray_4 addObject:@"[36]\\d{7}"];
+                [vgkftoyHmkTtejSd_NSArray_4 addObject:@"\\d{8}"];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:vgkftoyHmkTtejSd_NSArray_4];
+                NSMutableArray *XrsewWAFtDEODxhg_NSArray_4 = [[NSMutableArray alloc] init];
+                [XrsewWAFtDEODxhg_NSArray_4 addObject:[NSNull null]];
+                [XrsewWAFtDEODxhg_NSArray_4 addObject:[NSNull null]];
+                [XrsewWAFtDEODxhg_NSArray_4 addObject:@"[89]\\d{7}"];
+                [XrsewWAFtDEODxhg_NSArray_4 addObject:@"\\d{8}"];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:XrsewWAFtDEODxhg_NSArray_4];
+                NSMutableArray *WWQoEAbdqHMdKmMg_NSArray_4 = [[NSMutableArray alloc] init];
+                [WWQoEAbdqHMdKmMg_NSArray_4 addObject:[NSNull null]];
+                [WWQoEAbdqHMdKmMg_NSArray_4 addObject:[NSNull null]];
+                [WWQoEAbdqHMdKmMg_NSArray_4 addObject:@"1?800\\d{7}"];
+                [WWQoEAbdqHMdKmMg_NSArray_4 addObject:@"\\d{10,11}"];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:WWQoEAbdqHMdKmMg_NSArray_4];
+                NSMutableArray *cjWXsTCVpXKhXjLf_NSArray_4 = [[NSMutableArray alloc] init];
+                [cjWXsTCVpXKhXjLf_NSArray_4 addObject:[NSNull null]];
+                [cjWXsTCVpXKhXjLf_NSArray_4 addObject:[NSNull null]];
+                [cjWXsTCVpXKhXjLf_NSArray_4 addObject:@"1900\\d{7}"];
+                [cjWXsTCVpXKhXjLf_NSArray_4 addObject:@"\\d{11}"];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:cjWXsTCVpXKhXjLf_NSArray_4];
+                NSMutableArray *mtfwzBHJjpoQpteM_NSArray_4 = [[NSMutableArray alloc] init];
+                [mtfwzBHJjpoQpteM_NSArray_4 addObject:[NSNull null]];
+                [mtfwzBHJjpoQpteM_NSArray_4 addObject:[NSNull null]];
+                [mtfwzBHJjpoQpteM_NSArray_4 addObject:@"NA"];
+                [mtfwzBHJjpoQpteM_NSArray_4 addObject:@"NA"];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:mtfwzBHJjpoQpteM_NSArray_4];
+                NSMutableArray *BbtFiOwCnLvBfAVT_NSArray_4 = [[NSMutableArray alloc] init];
+                [BbtFiOwCnLvBfAVT_NSArray_4 addObject:[NSNull null]];
+                [BbtFiOwCnLvBfAVT_NSArray_4 addObject:[NSNull null]];
+                [BbtFiOwCnLvBfAVT_NSArray_4 addObject:@"NA"];
+                [BbtFiOwCnLvBfAVT_NSArray_4 addObject:@"NA"];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:BbtFiOwCnLvBfAVT_NSArray_4];
+                NSMutableArray *nKOOkrcrCyORTkED_NSArray_4 = [[NSMutableArray alloc] init];
+                [nKOOkrcrCyORTkED_NSArray_4 addObject:[NSNull null]];
+                [nKOOkrcrCyORTkED_NSArray_4 addObject:[NSNull null]];
+                [nKOOkrcrCyORTkED_NSArray_4 addObject:@"NA"];
+                [nKOOkrcrCyORTkED_NSArray_4 addObject:@"NA"];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:nKOOkrcrCyORTkED_NSArray_4];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:@"SG"];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:[NSNumber numberWithLongLong:65]];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:@"0[0-3][0-9]"];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:[NSNull null]];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:[NSNull null]];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:[NSNull null]];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:@"777777"];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:[NSNull null]];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:[NSNull null]];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *bCijWexSnEbWNwut_NSArray_4 = [[NSMutableArray alloc] init];
+                    NSMutableArray *EbvLlRJYRwxUFejw_NSArray_5 = [[NSMutableArray alloc] init];
+                    [EbvLlRJYRwxUFejw_NSArray_5 addObject:[NSNull null]];
+                    [EbvLlRJYRwxUFejw_NSArray_5 addObject:@"(\\d{4})(\\d{4})"];
+                    [EbvLlRJYRwxUFejw_NSArray_5 addObject:@"$1 $2"];
+                        NSMutableArray *GmiyvPhxJKIIOWrj_NSArray_6 = [[NSMutableArray alloc] init];
+                        [GmiyvPhxJKIIOWrj_NSArray_6 addObject:@"[369]|8[1-9]"];
+                    [EbvLlRJYRwxUFejw_NSArray_5 addObject:GmiyvPhxJKIIOWrj_NSArray_6];
+                    [EbvLlRJYRwxUFejw_NSArray_5 addObject:@""];
+                    [EbvLlRJYRwxUFejw_NSArray_5 addObject:@""];
+                    [EbvLlRJYRwxUFejw_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [bCijWexSnEbWNwut_NSArray_4 addObject:EbvLlRJYRwxUFejw_NSArray_5];
+                    NSMutableArray *kcFhZmtWiGMXPrFV_NSArray_5 = [[NSMutableArray alloc] init];
+                    [kcFhZmtWiGMXPrFV_NSArray_5 addObject:[NSNull null]];
+                    [kcFhZmtWiGMXPrFV_NSArray_5 addObject:@"(\\d{4})(\\d{3})(\\d{4})"];
+                    [kcFhZmtWiGMXPrFV_NSArray_5 addObject:@"$1 $2 $3"];
+                        NSMutableArray *cwcjESCdEazAfiAY_NSArray_6 = [[NSMutableArray alloc] init];
+                        [cwcjESCdEazAfiAY_NSArray_6 addObject:@"1[89]"];
+                    [kcFhZmtWiGMXPrFV_NSArray_5 addObject:cwcjESCdEazAfiAY_NSArray_6];
+                    [kcFhZmtWiGMXPrFV_NSArray_5 addObject:@""];
+                    [kcFhZmtWiGMXPrFV_NSArray_5 addObject:@""];
+                    [kcFhZmtWiGMXPrFV_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [bCijWexSnEbWNwut_NSArray_4 addObject:kcFhZmtWiGMXPrFV_NSArray_5];
+                    NSMutableArray *lqQUeExsFTVAPaFF_NSArray_5 = [[NSMutableArray alloc] init];
+                    [lqQUeExsFTVAPaFF_NSArray_5 addObject:[NSNull null]];
+                    [lqQUeExsFTVAPaFF_NSArray_5 addObject:@"(\\d{3})(\\d{3})(\\d{4})"];
+                    [lqQUeExsFTVAPaFF_NSArray_5 addObject:@"$1 $2 $3"];
+                        NSMutableArray *WEolfqnqWYTxHImg_NSArray_6 = [[NSMutableArray alloc] init];
+                        [WEolfqnqWYTxHImg_NSArray_6 addObject:@"800"];
+                    [lqQUeExsFTVAPaFF_NSArray_5 addObject:WEolfqnqWYTxHImg_NSArray_6];
+                    [lqQUeExsFTVAPaFF_NSArray_5 addObject:@""];
+                    [lqQUeExsFTVAPaFF_NSArray_5 addObject:@""];
+                    [lqQUeExsFTVAPaFF_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [bCijWexSnEbWNwut_NSArray_4 addObject:lqQUeExsFTVAPaFF_NSArray_5];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:bCijWexSnEbWNwut_NSArray_4];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *ikxInFZFQftomvTU_NSArray_4 = [[NSMutableArray alloc] init];
+                [ikxInFZFQftomvTU_NSArray_4 addObject:[NSNull null]];
+                [ikxInFZFQftomvTU_NSArray_4 addObject:[NSNull null]];
+                [ikxInFZFQftomvTU_NSArray_4 addObject:@"NA"];
+                [ikxInFZFQftomvTU_NSArray_4 addObject:@"NA"];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:ikxInFZFQftomvTU_NSArray_4];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:[NSNull null]];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *QWpfZlvfNoXxDHQe_NSArray_4 = [[NSMutableArray alloc] init];
+                [QWpfZlvfNoXxDHQe_NSArray_4 addObject:[NSNull null]];
+                [QWpfZlvfNoXxDHQe_NSArray_4 addObject:[NSNull null]];
+                [QWpfZlvfNoXxDHQe_NSArray_4 addObject:@"NA"];
+                [QWpfZlvfNoXxDHQe_NSArray_4 addObject:@"NA"];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:QWpfZlvfNoXxDHQe_NSArray_4];
+                NSMutableArray *nOooXZjMFdtESHTH_NSArray_4 = [[NSMutableArray alloc] init];
+                [nOooXZjMFdtESHTH_NSArray_4 addObject:[NSNull null]];
+                [nOooXZjMFdtESHTH_NSArray_4 addObject:[NSNull null]];
+                [nOooXZjMFdtESHTH_NSArray_4 addObject:@"NA"];
+                [nOooXZjMFdtESHTH_NSArray_4 addObject:@"NA"];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:nOooXZjMFdtESHTH_NSArray_4];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *MxhILAwSIGshKnRH_NSArray_4 = [[NSMutableArray alloc] init];
+                [MxhILAwSIGshKnRH_NSArray_4 addObject:[NSNull null]];
+                [MxhILAwSIGshKnRH_NSArray_4 addObject:[NSNull null]];
+                [MxhILAwSIGshKnRH_NSArray_4 addObject:@"NA"];
+                [MxhILAwSIGshKnRH_NSArray_4 addObject:@"NA"];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:MxhILAwSIGshKnRH_NSArray_4];
+                NSMutableArray *gTmyezgRPguDwmfQ_NSArray_4 = [[NSMutableArray alloc] init];
+                [gTmyezgRPguDwmfQ_NSArray_4 addObject:[NSNull null]];
+                [gTmyezgRPguDwmfQ_NSArray_4 addObject:[NSNull null]];
+                [gTmyezgRPguDwmfQ_NSArray_4 addObject:@"NA"];
+                [gTmyezgRPguDwmfQ_NSArray_4 addObject:@"NA"];
+            [OtAliEoXIRkHzDxD_NSArray_3 addObject:gTmyezgRPguDwmfQ_NSArray_4];
+        [HdYgeMOvimmQrVSk_NSDictionary_2 setObject:OtAliEoXIRkHzDxD_NSArray_3 forKey:@"SG"];
+            NSMutableArray *bZdovejQCIYZWdeO_NSArray_3 = [[NSMutableArray alloc] init];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *EEKEgCdxSmpMbwGd_NSArray_4 = [[NSMutableArray alloc] init];
+                [EEKEgCdxSmpMbwGd_NSArray_4 addObject:[NSNull null]];
+                [EEKEgCdxSmpMbwGd_NSArray_4 addObject:[NSNull null]];
+                [EEKEgCdxSmpMbwGd_NSArray_4 addObject:@"07\\d{5}|[1-357-9]\\d{3,10}"];
+                [EEKEgCdxSmpMbwGd_NSArray_4 addObject:@"\\d{4,11}"];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:EEKEgCdxSmpMbwGd_NSArray_4];
+                NSMutableArray *cqImQiMVICkBouRW_NSArray_4 = [[NSMutableArray alloc] init];
+                [cqImQiMVICkBouRW_NSArray_4 addObject:[NSNull null]];
+                [cqImQiMVICkBouRW_NSArray_4 addObject:[NSNull null]];
+                [cqImQiMVICkBouRW_NSArray_4 addObject:@"07\\d{5}|[1-357-9]\\d{3,10}"];
+                [cqImQiMVICkBouRW_NSArray_4 addObject:@"\\d{4,11}"];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:cqImQiMVICkBouRW_NSArray_4];
+                NSMutableArray *YKWwqHCHiqMsrPrk_NSArray_4 = [[NSMutableArray alloc] init];
+                [YKWwqHCHiqMsrPrk_NSArray_4 addObject:[NSNull null]];
+                [YKWwqHCHiqMsrPrk_NSArray_4 addObject:[NSNull null]];
+                [YKWwqHCHiqMsrPrk_NSArray_4 addObject:@"07\\d{5}|[1-357-9]\\d{3,10}"];
+                [YKWwqHCHiqMsrPrk_NSArray_4 addObject:@"\\d{4,11}"];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:YKWwqHCHiqMsrPrk_NSArray_4];
+                NSMutableArray *GJMfsxypSHqQoTww_NSArray_4 = [[NSMutableArray alloc] init];
+                [GJMfsxypSHqQoTww_NSArray_4 addObject:[NSNull null]];
+                [GJMfsxypSHqQoTww_NSArray_4 addObject:[NSNull null]];
+                [GJMfsxypSHqQoTww_NSArray_4 addObject:@"0777[01]\\d{2}"];
+                [GJMfsxypSHqQoTww_NSArray_4 addObject:@"\\d{7}"];
+                [GJMfsxypSHqQoTww_NSArray_4 addObject:[NSNull null]];
+                [GJMfsxypSHqQoTww_NSArray_4 addObject:[NSNull null]];
+                [GJMfsxypSHqQoTww_NSArray_4 addObject:@"0777012"];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:GJMfsxypSHqQoTww_NSArray_4];
+                NSMutableArray *PDqJiYDnKNHCqivg_NSArray_4 = [[NSMutableArray alloc] init];
+                [PDqJiYDnKNHCqivg_NSArray_4 addObject:[NSNull null]];
+                [PDqJiYDnKNHCqivg_NSArray_4 addObject:[NSNull null]];
+                [PDqJiYDnKNHCqivg_NSArray_4 addObject:@"NA"];
+                [PDqJiYDnKNHCqivg_NSArray_4 addObject:@"NA"];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:PDqJiYDnKNHCqivg_NSArray_4];
+                NSMutableArray *JVQXdtFAPtgriTUF_NSArray_4 = [[NSMutableArray alloc] init];
+                [JVQXdtFAPtgriTUF_NSArray_4 addObject:[NSNull null]];
+                [JVQXdtFAPtgriTUF_NSArray_4 addObject:[NSNull null]];
+                [JVQXdtFAPtgriTUF_NSArray_4 addObject:@"NA"];
+                [JVQXdtFAPtgriTUF_NSArray_4 addObject:@"NA"];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:JVQXdtFAPtgriTUF_NSArray_4];
+                NSMutableArray *HtjoZehjdBjeXkQX_NSArray_4 = [[NSMutableArray alloc] init];
+                [HtjoZehjdBjeXkQX_NSArray_4 addObject:[NSNull null]];
+                [HtjoZehjdBjeXkQX_NSArray_4 addObject:[NSNull null]];
+                [HtjoZehjdBjeXkQX_NSArray_4 addObject:@"NA"];
+                [HtjoZehjdBjeXkQX_NSArray_4 addObject:@"NA"];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:HtjoZehjdBjeXkQX_NSArray_4];
+                NSMutableArray *tTvtwYRWwJNgJoyA_NSArray_4 = [[NSMutableArray alloc] init];
+                [tTvtwYRWwJNgJoyA_NSArray_4 addObject:[NSNull null]];
+                [tTvtwYRWwJNgJoyA_NSArray_4 addObject:[NSNull null]];
+                [tTvtwYRWwJNgJoyA_NSArray_4 addObject:@"NA"];
+                [tTvtwYRWwJNgJoyA_NSArray_4 addObject:@"NA"];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:tTvtwYRWwJNgJoyA_NSArray_4];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:@"JP"];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:[NSNumber numberWithLongLong:81]];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:@"010"];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:@"0"];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:[NSNull null]];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:[NSNull null]];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:@"0"];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:[NSNull null]];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:[NSNull null]];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:[NSNumber numberWithLongLong:1]];
+                NSMutableArray *gWbehylJKBkziKLj_NSArray_4 = [[NSMutableArray alloc] init];
+                    NSMutableArray *tOoIIleboWIKVjOR_NSArray_5 = [[NSMutableArray alloc] init];
+                    [tOoIIleboWIKVjOR_NSArray_5 addObject:[NSNull null]];
+                    [tOoIIleboWIKVjOR_NSArray_5 addObject:@"(\\d{2})(\\d{4})(\\d{4})"];
+                    [tOoIIleboWIKVjOR_NSArray_5 addObject:@"$1 $2 $3"];
+                        NSMutableArray *uYxIapmvxLvpJQTE_NSArray_6 = [[NSMutableArray alloc] init];
+                        [uYxIapmvxLvpJQTE_NSArray_6 addObject:@"[57-9]0"];
+                    [tOoIIleboWIKVjOR_NSArray_5 addObject:uYxIapmvxLvpJQTE_NSArray_6];
+                    [tOoIIleboWIKVjOR_NSArray_5 addObject:@"0$1"];
+                    [tOoIIleboWIKVjOR_NSArray_5 addObject:@""];
+                    [tOoIIleboWIKVjOR_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [gWbehylJKBkziKLj_NSArray_4 addObject:tOoIIleboWIKVjOR_NSArray_5];
+                    NSMutableArray *tcycCasPIHnCxcLy_NSArray_5 = [[NSMutableArray alloc] init];
+                    [tcycCasPIHnCxcLy_NSArray_5 addObject:[NSNull null]];
+                    [tcycCasPIHnCxcLy_NSArray_5 addObject:@"(\\d{2})(\\d{2})(\\d{3})(\\d{4})"];
+                    [tcycCasPIHnCxcLy_NSArray_5 addObject:@"$1 $2 $3 $4"];
+                        NSMutableArray *shuKIdVGPWzqZArm_NSArray_6 = [[NSMutableArray alloc] init];
+                        [shuKIdVGPWzqZArm_NSArray_6 addObject:@"[57-9]0"];
+                    [tcycCasPIHnCxcLy_NSArray_5 addObject:shuKIdVGPWzqZArm_NSArray_6];
+                    [tcycCasPIHnCxcLy_NSArray_5 addObject:@"0$1"];
+                    [tcycCasPIHnCxcLy_NSArray_5 addObject:@""];
+                    [tcycCasPIHnCxcLy_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [gWbehylJKBkziKLj_NSArray_4 addObject:tcycCasPIHnCxcLy_NSArray_5];
+                    NSMutableArray *fTGRPHsjmECJRBJW_NSArray_5 = [[NSMutableArray alloc] init];
+                    [fTGRPHsjmECJRBJW_NSArray_5 addObject:[NSNull null]];
+                    [fTGRPHsjmECJRBJW_NSArray_5 addObject:@"(\\d{2})(\\d{3})(\\d{4})"];
+                    [fTGRPHsjmECJRBJW_NSArray_5 addObject:@"$1 $2 $3"];
+                        NSMutableArray *jmDtvHbMdBOyNNND_NSArray_6 = [[NSMutableArray alloc] init];
+                        [jmDtvHbMdBOyNNND_NSArray_6 addObject:@"111|222|333"];
+                        [jmDtvHbMdBOyNNND_NSArray_6 addObject:@"(?:111|222|333)1"];
+                        [jmDtvHbMdBOyNNND_NSArray_6 addObject:@"(?:111|222|333)11"];
+                    [fTGRPHsjmECJRBJW_NSArray_5 addObject:jmDtvHbMdBOyNNND_NSArray_6];
+                    [fTGRPHsjmECJRBJW_NSArray_5 addObject:@"0$1"];
+                    [fTGRPHsjmECJRBJW_NSArray_5 addObject:@""];
+                    [fTGRPHsjmECJRBJW_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [gWbehylJKBkziKLj_NSArray_4 addObject:fTGRPHsjmECJRBJW_NSArray_5];
+                    NSMutableArray *AmlweLWNpkTuFoww_NSArray_5 = [[NSMutableArray alloc] init];
+                    [AmlweLWNpkTuFoww_NSArray_5 addObject:[NSNull null]];
+                    [AmlweLWNpkTuFoww_NSArray_5 addObject:@"(\\d{4})(\\d)(\\d{4})"];
+                    [AmlweLWNpkTuFoww_NSArray_5 addObject:@"$1 $2 $3"];
+                        NSMutableArray *FYfKFhhtYxPHJdfo_NSArray_6 = [[NSMutableArray alloc] init];
+                        [FYfKFhhtYxPHJdfo_NSArray_6 addObject:@"222|333"];
+                        [FYfKFhhtYxPHJdfo_NSArray_6 addObject:@"2221|3332"];
+                        [FYfKFhhtYxPHJdfo_NSArray_6 addObject:@"22212|3332"];
+                        [FYfKFhhtYxPHJdfo_NSArray_6 addObject:@"222120|3332"];
+                    [AmlweLWNpkTuFoww_NSArray_5 addObject:FYfKFhhtYxPHJdfo_NSArray_6];
+                    [AmlweLWNpkTuFoww_NSArray_5 addObject:@"0$1"];
+                    [AmlweLWNpkTuFoww_NSArray_5 addObject:@""];
+                    [AmlweLWNpkTuFoww_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [gWbehylJKBkziKLj_NSArray_4 addObject:AmlweLWNpkTuFoww_NSArray_5];
+                    NSMutableArray *LmSaYsANgKXMHHYl_NSArray_5 = [[NSMutableArray alloc] init];
+                    [LmSaYsANgKXMHHYl_NSArray_5 addObject:[NSNull null]];
+                    [LmSaYsANgKXMHHYl_NSArray_5 addObject:@"(\\d{3})(\\d{2})(\\d{4})"];
+                    [LmSaYsANgKXMHHYl_NSArray_5 addObject:@"$1 $2 $3"];
+                        NSMutableArray *FllxJdLZxFTXYBED_NSArray_6 = [[NSMutableArray alloc] init];
+                        [FllxJdLZxFTXYBED_NSArray_6 addObject:@"[23]"];
+                    [LmSaYsANgKXMHHYl_NSArray_5 addObject:FllxJdLZxFTXYBED_NSArray_6];
+                    [LmSaYsANgKXMHHYl_NSArray_5 addObject:@"0$1"];
+                    [LmSaYsANgKXMHHYl_NSArray_5 addObject:@""];
+                    [LmSaYsANgKXMHHYl_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [gWbehylJKBkziKLj_NSArray_4 addObject:LmSaYsANgKXMHHYl_NSArray_5];
+                    NSMutableArray *aKWxqPFLeaWEoNNx_NSArray_5 = [[NSMutableArray alloc] init];
+                    [aKWxqPFLeaWEoNNx_NSArray_5 addObject:[NSNull null]];
+                    [aKWxqPFLeaWEoNNx_NSArray_5 addObject:@"(\\d{3})(\\d{4})"];
+                    [aKWxqPFLeaWEoNNx_NSArray_5 addObject:@"$1-$2"];
+                        NSMutableArray *hkkFZwrTAxxzoxKA_NSArray_6 = [[NSMutableArray alloc] init];
+                        [hkkFZwrTAxxzoxKA_NSArray_6 addObject:@"077"];
+                    [aKWxqPFLeaWEoNNx_NSArray_5 addObject:hkkFZwrTAxxzoxKA_NSArray_6];
+                    [aKWxqPFLeaWEoNNx_NSArray_5 addObject:@"0$1"];
+                    [aKWxqPFLeaWEoNNx_NSArray_5 addObject:@""];
+                    [aKWxqPFLeaWEoNNx_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [gWbehylJKBkziKLj_NSArray_4 addObject:aKWxqPFLeaWEoNNx_NSArray_5];
+                    NSMutableArray *DrlStLBTcestVepS_NSArray_5 = [[NSMutableArray alloc] init];
+                    [DrlStLBTcestVepS_NSArray_5 addObject:[NSNull null]];
+                    [DrlStLBTcestVepS_NSArray_5 addObject:@"(\\d{4})"];
+                    [DrlStLBTcestVepS_NSArray_5 addObject:@"*$1"];
+                        NSMutableArray *QGPlkboxpRnkuXdF_NSArray_6 = [[NSMutableArray alloc] init];
+                        [QGPlkboxpRnkuXdF_NSArray_6 addObject:@"[23]"];
+                    [DrlStLBTcestVepS_NSArray_5 addObject:QGPlkboxpRnkuXdF_NSArray_6];
+                    [DrlStLBTcestVepS_NSArray_5 addObject:@"$1"];
+                    [DrlStLBTcestVepS_NSArray_5 addObject:@""];
+                    [DrlStLBTcestVepS_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [gWbehylJKBkziKLj_NSArray_4 addObject:DrlStLBTcestVepS_NSArray_5];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:gWbehylJKBkziKLj_NSArray_4];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *UvDTjfTeAAzTmTKx_NSArray_4 = [[NSMutableArray alloc] init];
+                [UvDTjfTeAAzTmTKx_NSArray_4 addObject:[NSNull null]];
+                [UvDTjfTeAAzTmTKx_NSArray_4 addObject:[NSNull null]];
+                [UvDTjfTeAAzTmTKx_NSArray_4 addObject:@"NA"];
+                [UvDTjfTeAAzTmTKx_NSArray_4 addObject:@"NA"];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:UvDTjfTeAAzTmTKx_NSArray_4];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:[NSNull null]];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *QEzrohNMxeXiDkqm_NSArray_4 = [[NSMutableArray alloc] init];
+                [QEzrohNMxeXiDkqm_NSArray_4 addObject:[NSNull null]];
+                [QEzrohNMxeXiDkqm_NSArray_4 addObject:[NSNull null]];
+                [QEzrohNMxeXiDkqm_NSArray_4 addObject:@"[23]\\d{3}"];
+                [QEzrohNMxeXiDkqm_NSArray_4 addObject:@"\\d{4}"];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:QEzrohNMxeXiDkqm_NSArray_4];
+                NSMutableArray *aNuNMhlaJgaHqxjq_NSArray_4 = [[NSMutableArray alloc] init];
+                [aNuNMhlaJgaHqxjq_NSArray_4 addObject:[NSNull null]];
+                [aNuNMhlaJgaHqxjq_NSArray_4 addObject:[NSNull null]];
+                [aNuNMhlaJgaHqxjq_NSArray_4 addObject:@"NA"];
+                [aNuNMhlaJgaHqxjq_NSArray_4 addObject:@"NA"];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:aNuNMhlaJgaHqxjq_NSArray_4];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:[NSNumber numberWithLongLong:1]];
+                NSMutableArray *uZdjEkJcTRgWQCVr_NSArray_4 = [[NSMutableArray alloc] init];
+                [uZdjEkJcTRgWQCVr_NSArray_4 addObject:[NSNull null]];
+                [uZdjEkJcTRgWQCVr_NSArray_4 addObject:[NSNull null]];
+                [uZdjEkJcTRgWQCVr_NSArray_4 addObject:@"NA"];
+                [uZdjEkJcTRgWQCVr_NSArray_4 addObject:@"NA"];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:uZdjEkJcTRgWQCVr_NSArray_4];
+                NSMutableArray *SqdAZskQDvnBEPpM_NSArray_4 = [[NSMutableArray alloc] init];
+                [SqdAZskQDvnBEPpM_NSArray_4 addObject:[NSNull null]];
+                [SqdAZskQDvnBEPpM_NSArray_4 addObject:[NSNull null]];
+                [SqdAZskQDvnBEPpM_NSArray_4 addObject:@"NA"];
+                [SqdAZskQDvnBEPpM_NSArray_4 addObject:@"NA"];
+            [bZdovejQCIYZWdeO_NSArray_3 addObject:SqdAZskQDvnBEPpM_NSArray_4];
+        [HdYgeMOvimmQrVSk_NSDictionary_2 setObject:bZdovejQCIYZWdeO_NSArray_3 forKey:@"JP"];
+            NSMutableArray *GPOfTGSvhDVIjiXz_NSArray_3 = [[NSMutableArray alloc] init];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *tmcmYykdpjIekRWY_NSArray_4 = [[NSMutableArray alloc] init];
+                [tmcmYykdpjIekRWY_NSArray_4 addObject:[NSNull null]];
+                [tmcmYykdpjIekRWY_NSArray_4 addObject:[NSNull null]];
+                [tmcmYykdpjIekRWY_NSArray_4 addObject:@"[1-9]\\d{9,10}"];
+                [tmcmYykdpjIekRWY_NSArray_4 addObject:@"\\d{7,11}"];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:tmcmYykdpjIekRWY_NSArray_4];
+                NSMutableArray *iLJPDpMkYABENYQc_NSArray_4 = [[NSMutableArray alloc] init];
+                [iLJPDpMkYABENYQc_NSArray_4 addObject:[NSNull null]];
+                [iLJPDpMkYABENYQc_NSArray_4 addObject:[NSNull null]];
+                [iLJPDpMkYABENYQc_NSArray_4 addObject:@"[2-9]\\d{9}"];
+                [iLJPDpMkYABENYQc_NSArray_4 addObject:@"\\d{7,10}"];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:iLJPDpMkYABENYQc_NSArray_4];
+                NSMutableArray *uzZXyOVlajgPZdax_NSArray_4 = [[NSMutableArray alloc] init];
+                [uzZXyOVlajgPZdax_NSArray_4 addObject:[NSNull null]];
+                [uzZXyOVlajgPZdax_NSArray_4 addObject:[NSNull null]];
+                [uzZXyOVlajgPZdax_NSArray_4 addObject:@"1\\d{10}"];
+                [uzZXyOVlajgPZdax_NSArray_4 addObject:@"\\d{11}"];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:uzZXyOVlajgPZdax_NSArray_4];
+                NSMutableArray *BvFQYocdfsVochiZ_NSArray_4 = [[NSMutableArray alloc] init];
+                [BvFQYocdfsVochiZ_NSArray_4 addObject:[NSNull null]];
+                [BvFQYocdfsVochiZ_NSArray_4 addObject:[NSNull null]];
+                [BvFQYocdfsVochiZ_NSArray_4 addObject:@"800\\d{7}"];
+                [BvFQYocdfsVochiZ_NSArray_4 addObject:@"\\d{10}"];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:BvFQYocdfsVochiZ_NSArray_4];
+                NSMutableArray *lxGnzeaKdnihYnWR_NSArray_4 = [[NSMutableArray alloc] init];
+                [lxGnzeaKdnihYnWR_NSArray_4 addObject:[NSNull null]];
+                [lxGnzeaKdnihYnWR_NSArray_4 addObject:[NSNull null]];
+                [lxGnzeaKdnihYnWR_NSArray_4 addObject:@"900\\d{7}"];
+                [lxGnzeaKdnihYnWR_NSArray_4 addObject:@"\\d{10}"];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:lxGnzeaKdnihYnWR_NSArray_4];
+                NSMutableArray *hJnoFbweUyJmvNwW_NSArray_4 = [[NSMutableArray alloc] init];
+                [hJnoFbweUyJmvNwW_NSArray_4 addObject:[NSNull null]];
+                [hJnoFbweUyJmvNwW_NSArray_4 addObject:[NSNull null]];
+                [hJnoFbweUyJmvNwW_NSArray_4 addObject:@"NA"];
+                [hJnoFbweUyJmvNwW_NSArray_4 addObject:@"NA"];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:hJnoFbweUyJmvNwW_NSArray_4];
+                NSMutableArray *mIxCupFAVtAeMsbv_NSArray_4 = [[NSMutableArray alloc] init];
+                [mIxCupFAVtAeMsbv_NSArray_4 addObject:[NSNull null]];
+                [mIxCupFAVtAeMsbv_NSArray_4 addObject:[NSNull null]];
+                [mIxCupFAVtAeMsbv_NSArray_4 addObject:@"NA"];
+                [mIxCupFAVtAeMsbv_NSArray_4 addObject:@"NA"];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:mIxCupFAVtAeMsbv_NSArray_4];
+                NSMutableArray *fpvjkRtZsVznbuhg_NSArray_4 = [[NSMutableArray alloc] init];
+                [fpvjkRtZsVznbuhg_NSArray_4 addObject:[NSNull null]];
+                [fpvjkRtZsVznbuhg_NSArray_4 addObject:[NSNull null]];
+                [fpvjkRtZsVznbuhg_NSArray_4 addObject:@"NA"];
+                [fpvjkRtZsVznbuhg_NSArray_4 addObject:@"NA"];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:fpvjkRtZsVznbuhg_NSArray_4];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:@"MX"];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:[NSNumber numberWithLongLong:52]];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:@"00"];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:@"01"];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:[NSNull null]];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:[NSNull null]];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:@"01|04[45](\\d{10})"];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:@"1$1"];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:[NSNull null]];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *GIsJgfUuzKWElDhB_NSArray_4 = [[NSMutableArray alloc] init];
+                    NSMutableArray *lEZgmPaCJtiSaRer_NSArray_5 = [[NSMutableArray alloc] init];
+                    [lEZgmPaCJtiSaRer_NSArray_5 addObject:[NSNull null]];
+                    [lEZgmPaCJtiSaRer_NSArray_5 addObject:@"(\\d{3})(\\d{3})(\\d{4})"];
+                    [lEZgmPaCJtiSaRer_NSArray_5 addObject:@"$1 $2 $3"];
+                        NSMutableArray *WwTwHTcgBIeFqSJw_NSArray_6 = [[NSMutableArray alloc] init];
+                        [WwTwHTcgBIeFqSJw_NSArray_6 addObject:@"[89]00"];
+                    [lEZgmPaCJtiSaRer_NSArray_5 addObject:WwTwHTcgBIeFqSJw_NSArray_6];
+                    [lEZgmPaCJtiSaRer_NSArray_5 addObject:@"01 $1"];
+                    [lEZgmPaCJtiSaRer_NSArray_5 addObject:@""];
+                    [lEZgmPaCJtiSaRer_NSArray_5 addObject:[NSNumber numberWithLongLong:1]];
+                [GIsJgfUuzKWElDhB_NSArray_4 addObject:lEZgmPaCJtiSaRer_NSArray_5];
+                    NSMutableArray *GpZJCjnajGMbPZLg_NSArray_5 = [[NSMutableArray alloc] init];
+                    [GpZJCjnajGMbPZLg_NSArray_5 addObject:[NSNull null]];
+                    [GpZJCjnajGMbPZLg_NSArray_5 addObject:@"(\\d{2})(\\d{4})(\\d{4})"];
+                    [GpZJCjnajGMbPZLg_NSArray_5 addObject:@"$1 $2 $3"];
+                        NSMutableArray *utWFaAVroCZtxjKz_NSArray_6 = [[NSMutableArray alloc] init];
+                        [utWFaAVroCZtxjKz_NSArray_6 addObject:@"33|55|81"];
+                    [GpZJCjnajGMbPZLg_NSArray_5 addObject:utWFaAVroCZtxjKz_NSArray_6];
+                    [GpZJCjnajGMbPZLg_NSArray_5 addObject:@"01 $1"];
+                    [GpZJCjnajGMbPZLg_NSArray_5 addObject:@""];
+                    [GpZJCjnajGMbPZLg_NSArray_5 addObject:[NSNumber numberWithLongLong:1]];
+                [GIsJgfUuzKWElDhB_NSArray_4 addObject:GpZJCjnajGMbPZLg_NSArray_5];
+                    NSMutableArray *wqYfQBGWfiDwjKOg_NSArray_5 = [[NSMutableArray alloc] init];
+                    [wqYfQBGWfiDwjKOg_NSArray_5 addObject:[NSNull null]];
+                    [wqYfQBGWfiDwjKOg_NSArray_5 addObject:@"(\\d{3})(\\d{3})(\\d{4})"];
+                    [wqYfQBGWfiDwjKOg_NSArray_5 addObject:@"$1 $2 $3"];
+                        NSMutableArray *NvSlgNpmZHuLTbGO_NSArray_6 = [[NSMutableArray alloc] init];
+                        [NvSlgNpmZHuLTbGO_NSArray_6 addObject:@"[2467]|3[0-24-9]|5[0-46-9]|8[2-9]|9[1-9]"];
+                    [wqYfQBGWfiDwjKOg_NSArray_5 addObject:NvSlgNpmZHuLTbGO_NSArray_6];
+                    [wqYfQBGWfiDwjKOg_NSArray_5 addObject:@"01 $1"];
+                    [wqYfQBGWfiDwjKOg_NSArray_5 addObject:@""];
+                    [wqYfQBGWfiDwjKOg_NSArray_5 addObject:[NSNumber numberWithLongLong:1]];
+                [GIsJgfUuzKWElDhB_NSArray_4 addObject:wqYfQBGWfiDwjKOg_NSArray_5];
+                    NSMutableArray *tFwwypLNfTRIJPhb_NSArray_5 = [[NSMutableArray alloc] init];
+                    [tFwwypLNfTRIJPhb_NSArray_5 addObject:[NSNull null]];
+                    [tFwwypLNfTRIJPhb_NSArray_5 addObject:@"(1)(\\d{2})(\\d{4})(\\d{4})"];
+                    [tFwwypLNfTRIJPhb_NSArray_5 addObject:@"045 $2 $3 $4"];
+                        NSMutableArray *RabCHoOHFHjlzNHd_NSArray_6 = [[NSMutableArray alloc] init];
+                        [RabCHoOHFHjlzNHd_NSArray_6 addObject:@"1(?:33|55|81)"];
+                    [tFwwypLNfTRIJPhb_NSArray_5 addObject:RabCHoOHFHjlzNHd_NSArray_6];
+                    [tFwwypLNfTRIJPhb_NSArray_5 addObject:@"$1"];
+                    [tFwwypLNfTRIJPhb_NSArray_5 addObject:@""];
+                    [tFwwypLNfTRIJPhb_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [GIsJgfUuzKWElDhB_NSArray_4 addObject:tFwwypLNfTRIJPhb_NSArray_5];
+                    NSMutableArray *CjpcWGToUghQnvVR_NSArray_5 = [[NSMutableArray alloc] init];
+                    [CjpcWGToUghQnvVR_NSArray_5 addObject:[NSNull null]];
+                    [CjpcWGToUghQnvVR_NSArray_5 addObject:@"(1)(\\d{3})(\\d{3})(\\d{4})"];
+                    [CjpcWGToUghQnvVR_NSArray_5 addObject:@"045 $2 $3 $4"];
+                        NSMutableArray *ykUKUswYIfQmBIjc_NSArray_6 = [[NSMutableArray alloc] init];
+                        [ykUKUswYIfQmBIjc_NSArray_6 addObject:@"1(?:[124579]|3[0-24-9]|5[0-46-9]|8[02-9])"];
+                    [CjpcWGToUghQnvVR_NSArray_5 addObject:ykUKUswYIfQmBIjc_NSArray_6];
+                    [CjpcWGToUghQnvVR_NSArray_5 addObject:@"$1"];
+                    [CjpcWGToUghQnvVR_NSArray_5 addObject:@""];
+                    [CjpcWGToUghQnvVR_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [GIsJgfUuzKWElDhB_NSArray_4 addObject:CjpcWGToUghQnvVR_NSArray_5];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:GIsJgfUuzKWElDhB_NSArray_4];
+                NSMutableArray *kzgBDfjjNXekMMrG_NSArray_4 = [[NSMutableArray alloc] init];
+                    NSMutableArray *hBfcoVfBvEicCptD_NSArray_5 = [[NSMutableArray alloc] init];
+                    [hBfcoVfBvEicCptD_NSArray_5 addObject:[NSNull null]];
+                    [hBfcoVfBvEicCptD_NSArray_5 addObject:@"(\\d{3})(\\d{3})(\\d{4})"];
+                    [hBfcoVfBvEicCptD_NSArray_5 addObject:@"$1 $2 $3"];
+                        NSMutableArray *oCzgBQNlTXOQWYbl_NSArray_6 = [[NSMutableArray alloc] init];
+                        [oCzgBQNlTXOQWYbl_NSArray_6 addObject:@"[89]00"];
+                        [oCzgBQNlTXOQWYbl_NSArray_6 addObject:@"[89]00"];
+                    [hBfcoVfBvEicCptD_NSArray_5 addObject:oCzgBQNlTXOQWYbl_NSArray_6];
+                    [hBfcoVfBvEicCptD_NSArray_5 addObject:@"01 $1"];
+                    [hBfcoVfBvEicCptD_NSArray_5 addObject:@""];
+                    [hBfcoVfBvEicCptD_NSArray_5 addObject:[NSNumber numberWithLongLong:1]];
+                [kzgBDfjjNXekMMrG_NSArray_4 addObject:hBfcoVfBvEicCptD_NSArray_5];
+                    NSMutableArray *PLmarzOPcIILmjsU_NSArray_5 = [[NSMutableArray alloc] init];
+                    [PLmarzOPcIILmjsU_NSArray_5 addObject:[NSNull null]];
+                    [PLmarzOPcIILmjsU_NSArray_5 addObject:@"(\\d{2})(\\d{4})(\\d{4})"];
+                    [PLmarzOPcIILmjsU_NSArray_5 addObject:@"$1 $2 $3"];
+                        NSMutableArray *NhCSbTVjIdfAKFZI_NSArray_6 = [[NSMutableArray alloc] init];
+                        [NhCSbTVjIdfAKFZI_NSArray_6 addObject:@"33|55|81"];
+                        [NhCSbTVjIdfAKFZI_NSArray_6 addObject:@"33|55|81"];
+                    [PLmarzOPcIILmjsU_NSArray_5 addObject:NhCSbTVjIdfAKFZI_NSArray_6];
+                    [PLmarzOPcIILmjsU_NSArray_5 addObject:@"01 $1"];
+                    [PLmarzOPcIILmjsU_NSArray_5 addObject:@""];
+                    [PLmarzOPcIILmjsU_NSArray_5 addObject:[NSNumber numberWithLongLong:1]];
+                [kzgBDfjjNXekMMrG_NSArray_4 addObject:PLmarzOPcIILmjsU_NSArray_5];
+                    NSMutableArray *CFsevvfgGNWlHdux_NSArray_5 = [[NSMutableArray alloc] init];
+                    [CFsevvfgGNWlHdux_NSArray_5 addObject:[NSNull null]];
+                    [CFsevvfgGNWlHdux_NSArray_5 addObject:@"(\\d{3})(\\d{3})(\\d{4})"];
+                    [CFsevvfgGNWlHdux_NSArray_5 addObject:@"$1 $2 $3"];
+                        NSMutableArray *ZhRQOITKDnFCFhBZ_NSArray_6 = [[NSMutableArray alloc] init];
+                        [ZhRQOITKDnFCFhBZ_NSArray_6 addObject:@"[2467]|3[0-24-9]|5[0-46-9]|8[2-9]|9[1-9]"];
+                        [ZhRQOITKDnFCFhBZ_NSArray_6 addObject:@"[2467]|3[0-24-9]|5[0-46-9]|8[2-9]|9[1-9]"];
+                    [CFsevvfgGNWlHdux_NSArray_5 addObject:ZhRQOITKDnFCFhBZ_NSArray_6];
+                    [CFsevvfgGNWlHdux_NSArray_5 addObject:@"01 $1"];
+                    [CFsevvfgGNWlHdux_NSArray_5 addObject:@""];
+                    [CFsevvfgGNWlHdux_NSArray_5 addObject:[NSNumber numberWithLongLong:1]];
+                [kzgBDfjjNXekMMrG_NSArray_4 addObject:CFsevvfgGNWlHdux_NSArray_5];
+                    NSMutableArray *NTGEebgLPfEJBSRA_NSArray_5 = [[NSMutableArray alloc] init];
+                    [NTGEebgLPfEJBSRA_NSArray_5 addObject:[NSNull null]];
+                    [NTGEebgLPfEJBSRA_NSArray_5 addObject:@"(1)(\\d{2})(\\d{4})(\\d{4})"];
+                    [NTGEebgLPfEJBSRA_NSArray_5 addObject:@"$1 $2 $3 $4"];
+                        NSMutableArray *YcnfBVDlfsPNcMuU_NSArray_6 = [[NSMutableArray alloc] init];
+                        [YcnfBVDlfsPNcMuU_NSArray_6 addObject:@"1(?:33|55|81)"];
+                    [NTGEebgLPfEJBSRA_NSArray_5 addObject:YcnfBVDlfsPNcMuU_NSArray_6];
+                [kzgBDfjjNXekMMrG_NSArray_4 addObject:NTGEebgLPfEJBSRA_NSArray_5];
+                    NSMutableArray *sZqWBbyiRFRSsZtz_NSArray_5 = [[NSMutableArray alloc] init];
+                    [sZqWBbyiRFRSsZtz_NSArray_5 addObject:[NSNull null]];
+                    [sZqWBbyiRFRSsZtz_NSArray_5 addObject:@"(1)(\\d{3})(\\d{3})(\\d{4})"];
+                    [sZqWBbyiRFRSsZtz_NSArray_5 addObject:@"$1 $2 $3 $4"];
+                        NSMutableArray *IQFkLEkWHYbolQBR_NSArray_6 = [[NSMutableArray alloc] init];
+                        [IQFkLEkWHYbolQBR_NSArray_6 addObject:@"1(?:[124579]|3[0-24-9]|5[0-46-9]|8[02-9])"];
+                    [sZqWBbyiRFRSsZtz_NSArray_5 addObject:IQFkLEkWHYbolQBR_NSArray_6];
+                [kzgBDfjjNXekMMrG_NSArray_4 addObject:sZqWBbyiRFRSsZtz_NSArray_5];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:kzgBDfjjNXekMMrG_NSArray_4];
+                NSMutableArray *GmvWgxrIKwEPhFrb_NSArray_4 = [[NSMutableArray alloc] init];
+                [GmvWgxrIKwEPhFrb_NSArray_4 addObject:[NSNull null]];
+                [GmvWgxrIKwEPhFrb_NSArray_4 addObject:[NSNull null]];
+                [GmvWgxrIKwEPhFrb_NSArray_4 addObject:@"NA"];
+                [GmvWgxrIKwEPhFrb_NSArray_4 addObject:@"NA"];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:GmvWgxrIKwEPhFrb_NSArray_4];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:[NSNull null]];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *JGXVulgOtOoaBWXw_NSArray_4 = [[NSMutableArray alloc] init];
+                [JGXVulgOtOoaBWXw_NSArray_4 addObject:[NSNull null]];
+                [JGXVulgOtOoaBWXw_NSArray_4 addObject:[NSNull null]];
+                [JGXVulgOtOoaBWXw_NSArray_4 addObject:@"NA"];
+                [JGXVulgOtOoaBWXw_NSArray_4 addObject:@"NA"];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:JGXVulgOtOoaBWXw_NSArray_4];
+                NSMutableArray *fvNViPuXJeiQFjtt_NSArray_4 = [[NSMutableArray alloc] init];
+                [fvNViPuXJeiQFjtt_NSArray_4 addObject:[NSNull null]];
+                [fvNViPuXJeiQFjtt_NSArray_4 addObject:[NSNull null]];
+                [fvNViPuXJeiQFjtt_NSArray_4 addObject:@"NA"];
+                [fvNViPuXJeiQFjtt_NSArray_4 addObject:@"NA"];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:fvNViPuXJeiQFjtt_NSArray_4];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *QTClgsfBPbRYopTQ_NSArray_4 = [[NSMutableArray alloc] init];
+                [QTClgsfBPbRYopTQ_NSArray_4 addObject:[NSNull null]];
+                [QTClgsfBPbRYopTQ_NSArray_4 addObject:[NSNull null]];
+                [QTClgsfBPbRYopTQ_NSArray_4 addObject:@"NA"];
+                [QTClgsfBPbRYopTQ_NSArray_4 addObject:@"NA"];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:QTClgsfBPbRYopTQ_NSArray_4];
+                NSMutableArray *teWNhRLikDiVXvam_NSArray_4 = [[NSMutableArray alloc] init];
+                [teWNhRLikDiVXvam_NSArray_4 addObject:[NSNull null]];
+                [teWNhRLikDiVXvam_NSArray_4 addObject:[NSNull null]];
+                [teWNhRLikDiVXvam_NSArray_4 addObject:@"NA"];
+                [teWNhRLikDiVXvam_NSArray_4 addObject:@"NA"];
+            [GPOfTGSvhDVIjiXz_NSArray_3 addObject:teWNhRLikDiVXvam_NSArray_4];
+        [HdYgeMOvimmQrVSk_NSDictionary_2 setObject:GPOfTGSvhDVIjiXz_NSArray_3 forKey:@"MX"];
+            NSMutableArray *oHPdTVNMZVnbZfpG_NSArray_3 = [[NSMutableArray alloc] init];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *mihajlyRkjyercLs_NSArray_4 = [[NSMutableArray alloc] init];
+                [mihajlyRkjyercLs_NSArray_4 addObject:[NSNull null]];
+                [mihajlyRkjyercLs_NSArray_4 addObject:[NSNull null]];
+                [mihajlyRkjyercLs_NSArray_4 addObject:@"[13-689]\\d{9}|2[0-35-9]\\d{8}"];
+                [mihajlyRkjyercLs_NSArray_4 addObject:@"\\d{7}(?:\\d{3})?"];
+                [mihajlyRkjyercLs_NSArray_4 addObject:[NSNull null]];
+                [mihajlyRkjyercLs_NSArray_4 addObject:[NSNull null]];
+                [mihajlyRkjyercLs_NSArray_4 addObject:@"1234567890"];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:mihajlyRkjyercLs_NSArray_4];
+                NSMutableArray *zQnsooXXZLgazLli_NSArray_4 = [[NSMutableArray alloc] init];
+                [zQnsooXXZLgazLli_NSArray_4 addObject:[NSNull null]];
+                [zQnsooXXZLgazLli_NSArray_4 addObject:[NSNull null]];
+                [zQnsooXXZLgazLli_NSArray_4 addObject:@"[13-689]\\d{9}|2[0-35-9]\\d{8}"];
+                [zQnsooXXZLgazLli_NSArray_4 addObject:@"\\d{7}(?:\\d{3})?"];
+                [zQnsooXXZLgazLli_NSArray_4 addObject:[NSNull null]];
+                [zQnsooXXZLgazLli_NSArray_4 addObject:[NSNull null]];
+                [zQnsooXXZLgazLli_NSArray_4 addObject:@"1234567890"];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:zQnsooXXZLgazLli_NSArray_4];
+                NSMutableArray *OEHlSeCKtCkfdXnR_NSArray_4 = [[NSMutableArray alloc] init];
+                [OEHlSeCKtCkfdXnR_NSArray_4 addObject:[NSNull null]];
+                [OEHlSeCKtCkfdXnR_NSArray_4 addObject:[NSNull null]];
+                [OEHlSeCKtCkfdXnR_NSArray_4 addObject:@"[13-689]\\d{9}|2[0-35-9]\\d{8}"];
+                [OEHlSeCKtCkfdXnR_NSArray_4 addObject:@"\\d{7}(?:\\d{3})?"];
+                [OEHlSeCKtCkfdXnR_NSArray_4 addObject:[NSNull null]];
+                [OEHlSeCKtCkfdXnR_NSArray_4 addObject:[NSNull null]];
+                [OEHlSeCKtCkfdXnR_NSArray_4 addObject:@"1234567890"];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:OEHlSeCKtCkfdXnR_NSArray_4];
+                NSMutableArray *QaNdvJBHnNsluvqV_NSArray_4 = [[NSMutableArray alloc] init];
+                [QaNdvJBHnNsluvqV_NSArray_4 addObject:[NSNull null]];
+                [QaNdvJBHnNsluvqV_NSArray_4 addObject:[NSNull null]];
+                [QaNdvJBHnNsluvqV_NSArray_4 addObject:@"8(?:00|66|77|88)\\d{7}"];
+                [QaNdvJBHnNsluvqV_NSArray_4 addObject:@"\\d{10}"];
+                [QaNdvJBHnNsluvqV_NSArray_4 addObject:[NSNull null]];
+                [QaNdvJBHnNsluvqV_NSArray_4 addObject:[NSNull null]];
+                [QaNdvJBHnNsluvqV_NSArray_4 addObject:@"1234567890"];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:QaNdvJBHnNsluvqV_NSArray_4];
+                NSMutableArray *AHlYieNAINTUTeNL_NSArray_4 = [[NSMutableArray alloc] init];
+                [AHlYieNAINTUTeNL_NSArray_4 addObject:[NSNull null]];
+                [AHlYieNAINTUTeNL_NSArray_4 addObject:[NSNull null]];
+                [AHlYieNAINTUTeNL_NSArray_4 addObject:@"900\\d{7}"];
+                [AHlYieNAINTUTeNL_NSArray_4 addObject:@"\\d{10}"];
+                [AHlYieNAINTUTeNL_NSArray_4 addObject:[NSNull null]];
+                [AHlYieNAINTUTeNL_NSArray_4 addObject:[NSNull null]];
+                [AHlYieNAINTUTeNL_NSArray_4 addObject:@"1234567890"];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:AHlYieNAINTUTeNL_NSArray_4];
+                NSMutableArray *NUZUMydTlPBOMkqP_NSArray_4 = [[NSMutableArray alloc] init];
+                [NUZUMydTlPBOMkqP_NSArray_4 addObject:[NSNull null]];
+                [NUZUMydTlPBOMkqP_NSArray_4 addObject:[NSNull null]];
+                [NUZUMydTlPBOMkqP_NSArray_4 addObject:@"NA"];
+                [NUZUMydTlPBOMkqP_NSArray_4 addObject:@"NA"];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:NUZUMydTlPBOMkqP_NSArray_4];
+                NSMutableArray *VBsTwBlBPtOxpOlv_NSArray_4 = [[NSMutableArray alloc] init];
+                [VBsTwBlBPtOxpOlv_NSArray_4 addObject:[NSNull null]];
+                [VBsTwBlBPtOxpOlv_NSArray_4 addObject:[NSNull null]];
+                [VBsTwBlBPtOxpOlv_NSArray_4 addObject:@"NA"];
+                [VBsTwBlBPtOxpOlv_NSArray_4 addObject:@"NA"];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:VBsTwBlBPtOxpOlv_NSArray_4];
+                NSMutableArray *spGJVztzeVbUurjP_NSArray_4 = [[NSMutableArray alloc] init];
+                [spGJVztzeVbUurjP_NSArray_4 addObject:[NSNull null]];
+                [spGJVztzeVbUurjP_NSArray_4 addObject:[NSNull null]];
+                [spGJVztzeVbUurjP_NSArray_4 addObject:@"NA"];
+                [spGJVztzeVbUurjP_NSArray_4 addObject:@"NA"];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:spGJVztzeVbUurjP_NSArray_4];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:@"US"];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:[NSNumber numberWithLongLong:1]];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:@"011"];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:@"1"];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:@" extn. "];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:[NSNull null]];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:@"1"];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:[NSNull null]];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:[NSNull null]];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:[NSNumber numberWithLongLong:1]];
+                NSMutableArray *yvunwMcBMqsRGMrv_NSArray_4 = [[NSMutableArray alloc] init];
+                    NSMutableArray *QQmQVCeaiwvNLcQw_NSArray_5 = [[NSMutableArray alloc] init];
+                    [QQmQVCeaiwvNLcQw_NSArray_5 addObject:[NSNull null]];
+                    [QQmQVCeaiwvNLcQw_NSArray_5 addObject:@"(\\d{3})(\\d{4})"];
+                    [QQmQVCeaiwvNLcQw_NSArray_5 addObject:@"$1 $2"];
+                    [QQmQVCeaiwvNLcQw_NSArray_5 addObject:[NSNull null]];
+                    [QQmQVCeaiwvNLcQw_NSArray_5 addObject:@""];
+                    [QQmQVCeaiwvNLcQw_NSArray_5 addObject:@""];
+                    [QQmQVCeaiwvNLcQw_NSArray_5 addObject:[NSNumber numberWithLongLong:1]];
+                [yvunwMcBMqsRGMrv_NSArray_4 addObject:QQmQVCeaiwvNLcQw_NSArray_5];
+                    NSMutableArray *ubcSZYkxKfajRyPi_NSArray_5 = [[NSMutableArray alloc] init];
+                    [ubcSZYkxKfajRyPi_NSArray_5 addObject:[NSNull null]];
+                    [ubcSZYkxKfajRyPi_NSArray_5 addObject:@"(\\d{3})(\\d{3})(\\d{4})"];
+                    [ubcSZYkxKfajRyPi_NSArray_5 addObject:@"$1 $2 $3"];
+                    [ubcSZYkxKfajRyPi_NSArray_5 addObject:[NSNull null]];
+                    [ubcSZYkxKfajRyPi_NSArray_5 addObject:@""];
+                    [ubcSZYkxKfajRyPi_NSArray_5 addObject:@""];
+                    [ubcSZYkxKfajRyPi_NSArray_5 addObject:[NSNumber numberWithLongLong:1]];
+                [yvunwMcBMqsRGMrv_NSArray_4 addObject:ubcSZYkxKfajRyPi_NSArray_5];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:yvunwMcBMqsRGMrv_NSArray_4];
+                NSMutableArray *ZLFPmHwSKdKKczsF_NSArray_4 = [[NSMutableArray alloc] init];
+                    NSMutableArray *vaJsBahSmXzmCNZt_NSArray_5 = [[NSMutableArray alloc] init];
+                    [vaJsBahSmXzmCNZt_NSArray_5 addObject:[NSNull null]];
+                    [vaJsBahSmXzmCNZt_NSArray_5 addObject:@"(\\d{3})(\\d{3})(\\d{4})"];
+                    [vaJsBahSmXzmCNZt_NSArray_5 addObject:@"$1 $2 $3"];
+                    [vaJsBahSmXzmCNZt_NSArray_5 addObject:[NSNull null]];
+                    [vaJsBahSmXzmCNZt_NSArray_5 addObject:@""];
+                    [vaJsBahSmXzmCNZt_NSArray_5 addObject:@""];
+                    [vaJsBahSmXzmCNZt_NSArray_5 addObject:[NSNumber numberWithLongLong:1]];
+                [ZLFPmHwSKdKKczsF_NSArray_4 addObject:vaJsBahSmXzmCNZt_NSArray_5];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:ZLFPmHwSKdKKczsF_NSArray_4];
+                NSMutableArray *jfDWPVGGvtvetrLc_NSArray_4 = [[NSMutableArray alloc] init];
+                [jfDWPVGGvtvetrLc_NSArray_4 addObject:[NSNull null]];
+                [jfDWPVGGvtvetrLc_NSArray_4 addObject:[NSNull null]];
+                [jfDWPVGGvtvetrLc_NSArray_4 addObject:@"NA"];
+                [jfDWPVGGvtvetrLc_NSArray_4 addObject:@"NA"];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:jfDWPVGGvtvetrLc_NSArray_4];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:[NSNumber numberWithLongLong:1]];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *KWVwmnwqfmzpkXVt_NSArray_4 = [[NSMutableArray alloc] init];
+                [KWVwmnwqfmzpkXVt_NSArray_4 addObject:[NSNull null]];
+                [KWVwmnwqfmzpkXVt_NSArray_4 addObject:[NSNull null]];
+                [KWVwmnwqfmzpkXVt_NSArray_4 addObject:@"800\\d{7}"];
+                [KWVwmnwqfmzpkXVt_NSArray_4 addObject:@"\\d{10}"];
+                [KWVwmnwqfmzpkXVt_NSArray_4 addObject:[NSNull null]];
+                [KWVwmnwqfmzpkXVt_NSArray_4 addObject:[NSNull null]];
+                [KWVwmnwqfmzpkXVt_NSArray_4 addObject:@"1234567890"];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:KWVwmnwqfmzpkXVt_NSArray_4];
+                NSMutableArray *oqGJxDvZziRBSFvR_NSArray_4 = [[NSMutableArray alloc] init];
+                [oqGJxDvZziRBSFvR_NSArray_4 addObject:[NSNull null]];
+                [oqGJxDvZziRBSFvR_NSArray_4 addObject:[NSNull null]];
+                [oqGJxDvZziRBSFvR_NSArray_4 addObject:@"NA"];
+                [oqGJxDvZziRBSFvR_NSArray_4 addObject:@"NA"];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:oqGJxDvZziRBSFvR_NSArray_4];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *NnSXdpkJWujfQbCP_NSArray_4 = [[NSMutableArray alloc] init];
+                [NnSXdpkJWujfQbCP_NSArray_4 addObject:[NSNull null]];
+                [NnSXdpkJWujfQbCP_NSArray_4 addObject:[NSNull null]];
+                [NnSXdpkJWujfQbCP_NSArray_4 addObject:@"119|911"];
+                [NnSXdpkJWujfQbCP_NSArray_4 addObject:@"\\d{3}"];
+                [NnSXdpkJWujfQbCP_NSArray_4 addObject:[NSNull null]];
+                [NnSXdpkJWujfQbCP_NSArray_4 addObject:[NSNull null]];
+                [NnSXdpkJWujfQbCP_NSArray_4 addObject:@"911"];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:NnSXdpkJWujfQbCP_NSArray_4];
+                NSMutableArray *HWPoCTHAGCiPHnbk_NSArray_4 = [[NSMutableArray alloc] init];
+                [HWPoCTHAGCiPHnbk_NSArray_4 addObject:[NSNull null]];
+                [HWPoCTHAGCiPHnbk_NSArray_4 addObject:[NSNull null]];
+                [HWPoCTHAGCiPHnbk_NSArray_4 addObject:@"NA"];
+                [HWPoCTHAGCiPHnbk_NSArray_4 addObject:@"NA"];
+            [oHPdTVNMZVnbZfpG_NSArray_3 addObject:HWPoCTHAGCiPHnbk_NSArray_4];
+        [HdYgeMOvimmQrVSk_NSDictionary_2 setObject:oHPdTVNMZVnbZfpG_NSArray_3 forKey:@"US"];
+            NSMutableArray *gaaZWlBFNGqIJesQ_NSArray_3 = [[NSMutableArray alloc] init];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *gIJUpFCoYLoPPVne_NSArray_4 = [[NSMutableArray alloc] init];
+                [gIJUpFCoYLoPPVne_NSArray_4 addObject:[NSNull null]];
+                [gIJUpFCoYLoPPVne_NSArray_4 addObject:[NSNull null]];
+                [gIJUpFCoYLoPPVne_NSArray_4 addObject:@"[0389]\\d{5,10}"];
+                [gIJUpFCoYLoPPVne_NSArray_4 addObject:@"\\d{6,11}"];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:gIJUpFCoYLoPPVne_NSArray_4];
+                NSMutableArray *DJjZvJQOjmHsanpK_NSArray_4 = [[NSMutableArray alloc] init];
+                [DJjZvJQOjmHsanpK_NSArray_4 addObject:[NSNull null]];
+                [DJjZvJQOjmHsanpK_NSArray_4 addObject:[NSNull null]];
+                [DJjZvJQOjmHsanpK_NSArray_4 addObject:@"0\\d{9,10}"];
+                [DJjZvJQOjmHsanpK_NSArray_4 addObject:@"\\d{10,11}"];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:DJjZvJQOjmHsanpK_NSArray_4];
+                NSMutableArray *DaoMCezBJGchxyBn_NSArray_4 = [[NSMutableArray alloc] init];
+                [DaoMCezBJGchxyBn_NSArray_4 addObject:[NSNull null]];
+                [DaoMCezBJGchxyBn_NSArray_4 addObject:[NSNull null]];
+                [DaoMCezBJGchxyBn_NSArray_4 addObject:@"3\\d{8,9}"];
+                [DaoMCezBJGchxyBn_NSArray_4 addObject:@"\\d{9,10}"];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:DaoMCezBJGchxyBn_NSArray_4];
+                NSMutableArray *VNXKhskDOIjgQIOR_NSArray_4 = [[NSMutableArray alloc] init];
+                [VNXKhskDOIjgQIOR_NSArray_4 addObject:[NSNull null]];
+                [VNXKhskDOIjgQIOR_NSArray_4 addObject:[NSNull null]];
+                [VNXKhskDOIjgQIOR_NSArray_4 addObject:@"80(?:0\\d{6}|3\\d{3})"];
+                [VNXKhskDOIjgQIOR_NSArray_4 addObject:@"\\d{6,9}"];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:VNXKhskDOIjgQIOR_NSArray_4];
+                NSMutableArray *KJZpAZUJFUUIkKIn_NSArray_4 = [[NSMutableArray alloc] init];
+                [KJZpAZUJFUUIkKIn_NSArray_4 addObject:[NSNull null]];
+                [KJZpAZUJFUUIkKIn_NSArray_4 addObject:[NSNull null]];
+                [KJZpAZUJFUUIkKIn_NSArray_4 addObject:@"89(?:2\\d{3}|9\\d{6})"];
+                [KJZpAZUJFUUIkKIn_NSArray_4 addObject:@"\\d{6,9}"];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:KJZpAZUJFUUIkKIn_NSArray_4];
+                NSMutableArray *OMvuLHwzVtANrVuo_NSArray_4 = [[NSMutableArray alloc] init];
+                [OMvuLHwzVtANrVuo_NSArray_4 addObject:[NSNull null]];
+                [OMvuLHwzVtANrVuo_NSArray_4 addObject:[NSNull null]];
+                [OMvuLHwzVtANrVuo_NSArray_4 addObject:@"NA"];
+                [OMvuLHwzVtANrVuo_NSArray_4 addObject:@"NA"];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:OMvuLHwzVtANrVuo_NSArray_4];
+                NSMutableArray *yBrglTGNjGFCMWeh_NSArray_4 = [[NSMutableArray alloc] init];
+                [yBrglTGNjGFCMWeh_NSArray_4 addObject:[NSNull null]];
+                [yBrglTGNjGFCMWeh_NSArray_4 addObject:[NSNull null]];
+                [yBrglTGNjGFCMWeh_NSArray_4 addObject:@"NA"];
+                [yBrglTGNjGFCMWeh_NSArray_4 addObject:@"NA"];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:yBrglTGNjGFCMWeh_NSArray_4];
+                NSMutableArray *EfRKCzmNZnMPaKfj_NSArray_4 = [[NSMutableArray alloc] init];
+                [EfRKCzmNZnMPaKfj_NSArray_4 addObject:[NSNull null]];
+                [EfRKCzmNZnMPaKfj_NSArray_4 addObject:[NSNull null]];
+                [EfRKCzmNZnMPaKfj_NSArray_4 addObject:@"NA"];
+                [EfRKCzmNZnMPaKfj_NSArray_4 addObject:@"NA"];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:EfRKCzmNZnMPaKfj_NSArray_4];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:@"IT"];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:[NSNumber numberWithLongLong:39]];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:@"00"];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:[NSNull null]];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:[NSNull null]];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:[NSNull null]];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:[NSNull null]];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:[NSNull null]];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:[NSNull null]];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *wiGWtgtHUUarNbUx_NSArray_4 = [[NSMutableArray alloc] init];
+                    NSMutableArray *LtJfuQqqjWdmyBrg_NSArray_5 = [[NSMutableArray alloc] init];
+                    [LtJfuQqqjWdmyBrg_NSArray_5 addObject:[NSNull null]];
+                    [LtJfuQqqjWdmyBrg_NSArray_5 addObject:@"(\\d{2})(\\d{4})(\\d{4})"];
+                    [LtJfuQqqjWdmyBrg_NSArray_5 addObject:@"$1 $2 $3"];
+                        NSMutableArray *ympDBCdNMvlVbGiz_NSArray_6 = [[NSMutableArray alloc] init];
+                        [ympDBCdNMvlVbGiz_NSArray_6 addObject:@"0[26]"];
+                    [LtJfuQqqjWdmyBrg_NSArray_5 addObject:ympDBCdNMvlVbGiz_NSArray_6];
+                    [LtJfuQqqjWdmyBrg_NSArray_5 addObject:@""];
+                    [LtJfuQqqjWdmyBrg_NSArray_5 addObject:@""];
+                    [LtJfuQqqjWdmyBrg_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [wiGWtgtHUUarNbUx_NSArray_4 addObject:LtJfuQqqjWdmyBrg_NSArray_5];
+                    NSMutableArray *alLbuCWSYTSVTNkU_NSArray_5 = [[NSMutableArray alloc] init];
+                    [alLbuCWSYTSVTNkU_NSArray_5 addObject:[NSNull null]];
+                    [alLbuCWSYTSVTNkU_NSArray_5 addObject:@"(\\d{3})(\\d{4})(\\d{3,4})"];
+                    [alLbuCWSYTSVTNkU_NSArray_5 addObject:@"$1 $2 $3"];
+                        NSMutableArray *qWZIWNPOXMcAtoRF_NSArray_6 = [[NSMutableArray alloc] init];
+                        [qWZIWNPOXMcAtoRF_NSArray_6 addObject:@"0[13-57-9]"];
+                    [alLbuCWSYTSVTNkU_NSArray_5 addObject:qWZIWNPOXMcAtoRF_NSArray_6];
+                    [alLbuCWSYTSVTNkU_NSArray_5 addObject:@""];
+                    [alLbuCWSYTSVTNkU_NSArray_5 addObject:@""];
+                    [alLbuCWSYTSVTNkU_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [wiGWtgtHUUarNbUx_NSArray_4 addObject:alLbuCWSYTSVTNkU_NSArray_5];
+                    NSMutableArray *gqeJgTcISnbhHOqi_NSArray_5 = [[NSMutableArray alloc] init];
+                    [gqeJgTcISnbhHOqi_NSArray_5 addObject:[NSNull null]];
+                    [gqeJgTcISnbhHOqi_NSArray_5 addObject:@"(\\d{3})(\\d{3})(\\d{3,4})"];
+                    [gqeJgTcISnbhHOqi_NSArray_5 addObject:@"$1 $2 $3"];
+                        NSMutableArray *XIuxJDnoAghAAtTP_NSArray_6 = [[NSMutableArray alloc] init];
+                        [XIuxJDnoAghAAtTP_NSArray_6 addObject:@"3"];
+                    [gqeJgTcISnbhHOqi_NSArray_5 addObject:XIuxJDnoAghAAtTP_NSArray_6];
+                    [gqeJgTcISnbhHOqi_NSArray_5 addObject:@""];
+                    [gqeJgTcISnbhHOqi_NSArray_5 addObject:@""];
+                    [gqeJgTcISnbhHOqi_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [wiGWtgtHUUarNbUx_NSArray_4 addObject:gqeJgTcISnbhHOqi_NSArray_5];
+                    NSMutableArray *HqqPzVAsphTmugkx_NSArray_5 = [[NSMutableArray alloc] init];
+                    [HqqPzVAsphTmugkx_NSArray_5 addObject:[NSNull null]];
+                    [HqqPzVAsphTmugkx_NSArray_5 addObject:@"(\\d{3})(\\d{3,6})"];
+                    [HqqPzVAsphTmugkx_NSArray_5 addObject:@"$1 $2"];
+                        NSMutableArray *frTHzwgPMgWDJnVz_NSArray_6 = [[NSMutableArray alloc] init];
+                        [frTHzwgPMgWDJnVz_NSArray_6 addObject:@"8"];
+                    [HqqPzVAsphTmugkx_NSArray_5 addObject:frTHzwgPMgWDJnVz_NSArray_6];
+                    [HqqPzVAsphTmugkx_NSArray_5 addObject:@""];
+                    [HqqPzVAsphTmugkx_NSArray_5 addObject:@""];
+                    [HqqPzVAsphTmugkx_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [wiGWtgtHUUarNbUx_NSArray_4 addObject:HqqPzVAsphTmugkx_NSArray_5];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:wiGWtgtHUUarNbUx_NSArray_4];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *MXkzromqxARqWghC_NSArray_4 = [[NSMutableArray alloc] init];
+                [MXkzromqxARqWghC_NSArray_4 addObject:[NSNull null]];
+                [MXkzromqxARqWghC_NSArray_4 addObject:[NSNull null]];
+                [MXkzromqxARqWghC_NSArray_4 addObject:@"NA"];
+                [MXkzromqxARqWghC_NSArray_4 addObject:@"NA"];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:MXkzromqxARqWghC_NSArray_4];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:[NSNull null]];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *tQWGwUTjjWYgQsBE_NSArray_4 = [[NSMutableArray alloc] init];
+                [tQWGwUTjjWYgQsBE_NSArray_4 addObject:[NSNull null]];
+                [tQWGwUTjjWYgQsBE_NSArray_4 addObject:[NSNull null]];
+                [tQWGwUTjjWYgQsBE_NSArray_4 addObject:@"NA"];
+                [tQWGwUTjjWYgQsBE_NSArray_4 addObject:@"NA"];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:tQWGwUTjjWYgQsBE_NSArray_4];
+                NSMutableArray *DUuziiqeSGAxTduy_NSArray_4 = [[NSMutableArray alloc] init];
+                [DUuziiqeSGAxTduy_NSArray_4 addObject:[NSNull null]];
+                [DUuziiqeSGAxTduy_NSArray_4 addObject:[NSNull null]];
+                [DUuziiqeSGAxTduy_NSArray_4 addObject:@"NA"];
+                [DUuziiqeSGAxTduy_NSArray_4 addObject:@"NA"];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:DUuziiqeSGAxTduy_NSArray_4];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:[NSNumber numberWithLongLong:1]];
+                NSMutableArray *MSXSBRpxeBxtZNPP_NSArray_4 = [[NSMutableArray alloc] init];
+                [MSXSBRpxeBxtZNPP_NSArray_4 addObject:[NSNull null]];
+                [MSXSBRpxeBxtZNPP_NSArray_4 addObject:[NSNull null]];
+                [MSXSBRpxeBxtZNPP_NSArray_4 addObject:@"NA"];
+                [MSXSBRpxeBxtZNPP_NSArray_4 addObject:@"NA"];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:MSXSBRpxeBxtZNPP_NSArray_4];
+                NSMutableArray *apZnMYANxkzxrZop_NSArray_4 = [[NSMutableArray alloc] init];
+                [apZnMYANxkzxrZop_NSArray_4 addObject:[NSNull null]];
+                [apZnMYANxkzxrZop_NSArray_4 addObject:[NSNull null]];
+                [apZnMYANxkzxrZop_NSArray_4 addObject:@"NA"];
+                [apZnMYANxkzxrZop_NSArray_4 addObject:@"NA"];
+            [gaaZWlBFNGqIJesQ_NSArray_3 addObject:apZnMYANxkzxrZop_NSArray_4];
+        [HdYgeMOvimmQrVSk_NSDictionary_2 setObject:gaaZWlBFNGqIJesQ_NSArray_3 forKey:@"IT"];
+            NSMutableArray *wISVAKNsKXMXuAME_NSArray_3 = [[NSMutableArray alloc] init];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *MAVzeUcTaJOgIClG_NSArray_4 = [[NSMutableArray alloc] init];
+                [MAVzeUcTaJOgIClG_NSArray_4 addObject:[NSNull null]];
+                [MAVzeUcTaJOgIClG_NSArray_4 addObject:[NSNull null]];
+                [MAVzeUcTaJOgIClG_NSArray_4 addObject:@"[1-3689]\\d{9,10}"];
+                [MAVzeUcTaJOgIClG_NSArray_4 addObject:@"\\d{6,11}"];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:MAVzeUcTaJOgIClG_NSArray_4];
+                NSMutableArray *XuhpXIctYLffuqsN_NSArray_4 = [[NSMutableArray alloc] init];
+                [XuhpXIctYLffuqsN_NSArray_4 addObject:[NSNull null]];
+                [XuhpXIctYLffuqsN_NSArray_4 addObject:[NSNull null]];
+                [XuhpXIctYLffuqsN_NSArray_4 addObject:@"[1-3]\\d{9}"];
+                [XuhpXIctYLffuqsN_NSArray_4 addObject:@"\\d{6,10}"];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:XuhpXIctYLffuqsN_NSArray_4];
+                NSMutableArray *AiojNDIDiZSaWalT_NSArray_4 = [[NSMutableArray alloc] init];
+                [AiojNDIDiZSaWalT_NSArray_4 addObject:[NSNull null]];
+                [AiojNDIDiZSaWalT_NSArray_4 addObject:[NSNull null]];
+                [AiojNDIDiZSaWalT_NSArray_4 addObject:@"9\\d{10}|[1-3]\\d{9}"];
+                [AiojNDIDiZSaWalT_NSArray_4 addObject:@"\\d{10,11}"];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:AiojNDIDiZSaWalT_NSArray_4];
+                NSMutableArray *EfjVcHgPbQJvgWQu_NSArray_4 = [[NSMutableArray alloc] init];
+                [EfjVcHgPbQJvgWQu_NSArray_4 addObject:[NSNull null]];
+                [EfjVcHgPbQJvgWQu_NSArray_4 addObject:[NSNull null]];
+                [EfjVcHgPbQJvgWQu_NSArray_4 addObject:@"80\\d{8}"];
+                [EfjVcHgPbQJvgWQu_NSArray_4 addObject:@"\\d{10}"];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:EfjVcHgPbQJvgWQu_NSArray_4];
+                NSMutableArray *vllDkwsHdxLMtNkQ_NSArray_4 = [[NSMutableArray alloc] init];
+                [vllDkwsHdxLMtNkQ_NSArray_4 addObject:[NSNull null]];
+                [vllDkwsHdxLMtNkQ_NSArray_4 addObject:[NSNull null]];
+                [vllDkwsHdxLMtNkQ_NSArray_4 addObject:@"6(0\\d|10)\\d{7}"];
+                [vllDkwsHdxLMtNkQ_NSArray_4 addObject:@"\\d{10}"];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:vllDkwsHdxLMtNkQ_NSArray_4];
+                NSMutableArray *HmysxbbyICDcfFxK_NSArray_4 = [[NSMutableArray alloc] init];
+                [HmysxbbyICDcfFxK_NSArray_4 addObject:[NSNull null]];
+                [HmysxbbyICDcfFxK_NSArray_4 addObject:[NSNull null]];
+                [HmysxbbyICDcfFxK_NSArray_4 addObject:@"NA"];
+                [HmysxbbyICDcfFxK_NSArray_4 addObject:@"NA"];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:HmysxbbyICDcfFxK_NSArray_4];
+                NSMutableArray *JCQuTnlWwyGCGzcM_NSArray_4 = [[NSMutableArray alloc] init];
+                [JCQuTnlWwyGCGzcM_NSArray_4 addObject:[NSNull null]];
+                [JCQuTnlWwyGCGzcM_NSArray_4 addObject:[NSNull null]];
+                [JCQuTnlWwyGCGzcM_NSArray_4 addObject:@"NA"];
+                [JCQuTnlWwyGCGzcM_NSArray_4 addObject:@"NA"];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:JCQuTnlWwyGCGzcM_NSArray_4];
+                NSMutableArray *GUPpAdTrmgDHYQWn_NSArray_4 = [[NSMutableArray alloc] init];
+                [GUPpAdTrmgDHYQWn_NSArray_4 addObject:[NSNull null]];
+                [GUPpAdTrmgDHYQWn_NSArray_4 addObject:[NSNull null]];
+                [GUPpAdTrmgDHYQWn_NSArray_4 addObject:@"NA"];
+                [GUPpAdTrmgDHYQWn_NSArray_4 addObject:@"NA"];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:GUPpAdTrmgDHYQWn_NSArray_4];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:@"AR"];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:[NSNumber numberWithLongLong:54]];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:@"00"];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:@"0"];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:[NSNull null]];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:[NSNull null]];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:@"0(?:(11|343|3715)15)?"];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:@"9$1"];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:[NSNull null]];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *BIlnjunZrppUAorZ_NSArray_4 = [[NSMutableArray alloc] init];
+                    NSMutableArray *iGXMUbHdZNDWmlwl_NSArray_5 = [[NSMutableArray alloc] init];
+                    [iGXMUbHdZNDWmlwl_NSArray_5 addObject:[NSNull null]];
+                    [iGXMUbHdZNDWmlwl_NSArray_5 addObject:@"(\\d{2})(\\d{4})(\\d{4})"];
+                    [iGXMUbHdZNDWmlwl_NSArray_5 addObject:@"$1 $2-$3"];
+                        NSMutableArray *YiOlQhWlOJGnSlyN_NSArray_6 = [[NSMutableArray alloc] init];
+                        [YiOlQhWlOJGnSlyN_NSArray_6 addObject:@"11"];
+                    [iGXMUbHdZNDWmlwl_NSArray_5 addObject:YiOlQhWlOJGnSlyN_NSArray_6];
+                    [iGXMUbHdZNDWmlwl_NSArray_5 addObject:@"0$1"];
+                    [iGXMUbHdZNDWmlwl_NSArray_5 addObject:@""];
+                    [iGXMUbHdZNDWmlwl_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [BIlnjunZrppUAorZ_NSArray_4 addObject:iGXMUbHdZNDWmlwl_NSArray_5];
+                    NSMutableArray *bSDKYFaZjraQdxdj_NSArray_5 = [[NSMutableArray alloc] init];
+                    [bSDKYFaZjraQdxdj_NSArray_5 addObject:[NSNull null]];
+                    [bSDKYFaZjraQdxdj_NSArray_5 addObject:@"(\\d{4})(\\d{2})(\\d{4})"];
+                    [bSDKYFaZjraQdxdj_NSArray_5 addObject:@"$1 $2-$3"];
+                        NSMutableArray *ncamexTGouuqPsrY_NSArray_6 = [[NSMutableArray alloc] init];
+                        [ncamexTGouuqPsrY_NSArray_6 addObject:@"1[02-9]|[23]"];
+                    [bSDKYFaZjraQdxdj_NSArray_5 addObject:ncamexTGouuqPsrY_NSArray_6];
+                    [bSDKYFaZjraQdxdj_NSArray_5 addObject:@"0$1"];
+                    [bSDKYFaZjraQdxdj_NSArray_5 addObject:@""];
+                    [bSDKYFaZjraQdxdj_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [BIlnjunZrppUAorZ_NSArray_4 addObject:bSDKYFaZjraQdxdj_NSArray_5];
+                    NSMutableArray *sRoudvvKTqirdNuK_NSArray_5 = [[NSMutableArray alloc] init];
+                    [sRoudvvKTqirdNuK_NSArray_5 addObject:[NSNull null]];
+                    [sRoudvvKTqirdNuK_NSArray_5 addObject:@"(9)(11)(\\d{4})(\\d{4})"];
+                    [sRoudvvKTqirdNuK_NSArray_5 addObject:@"$2 15 $3-$4"];
+                        NSMutableArray *ThcvSXvIbgQgVZnt_NSArray_6 = [[NSMutableArray alloc] init];
+                        [ThcvSXvIbgQgVZnt_NSArray_6 addObject:@"911"];
+                    [sRoudvvKTqirdNuK_NSArray_5 addObject:ThcvSXvIbgQgVZnt_NSArray_6];
+                    [sRoudvvKTqirdNuK_NSArray_5 addObject:@"0$1"];
+                    [sRoudvvKTqirdNuK_NSArray_5 addObject:@""];
+                    [sRoudvvKTqirdNuK_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [BIlnjunZrppUAorZ_NSArray_4 addObject:sRoudvvKTqirdNuK_NSArray_5];
+                    NSMutableArray *HUYfMBWXNsoVDBdl_NSArray_5 = [[NSMutableArray alloc] init];
+                    [HUYfMBWXNsoVDBdl_NSArray_5 addObject:[NSNull null]];
+                    [HUYfMBWXNsoVDBdl_NSArray_5 addObject:@"(9)(\\d{4})(\\d{2})(\\d{4})"];
+                    [HUYfMBWXNsoVDBdl_NSArray_5 addObject:@"$2 $3-$4"];
+                        NSMutableArray *KlOtOIEuymVVJcyh_NSArray_6 = [[NSMutableArray alloc] init];
+                        [KlOtOIEuymVVJcyh_NSArray_6 addObject:@"9(?:1[02-9]|[23])"];
+                    [HUYfMBWXNsoVDBdl_NSArray_5 addObject:KlOtOIEuymVVJcyh_NSArray_6];
+                    [HUYfMBWXNsoVDBdl_NSArray_5 addObject:@"0$1"];
+                    [HUYfMBWXNsoVDBdl_NSArray_5 addObject:@"0$1 $CC"];
+                    [HUYfMBWXNsoVDBdl_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [BIlnjunZrppUAorZ_NSArray_4 addObject:HUYfMBWXNsoVDBdl_NSArray_5];
+                    NSMutableArray *pDhYzLAwXliDbcqI_NSArray_5 = [[NSMutableArray alloc] init];
+                    [pDhYzLAwXliDbcqI_NSArray_5 addObject:[NSNull null]];
+                    [pDhYzLAwXliDbcqI_NSArray_5 addObject:@"(\\d{3})(\\d{3})(\\d{4})"];
+                    [pDhYzLAwXliDbcqI_NSArray_5 addObject:@"$1-$2-$3"];
+                        NSMutableArray *XhduXwcDOckyLoKF_NSArray_6 = [[NSMutableArray alloc] init];
+                        [XhduXwcDOckyLoKF_NSArray_6 addObject:@"[68]"];
+                    [pDhYzLAwXliDbcqI_NSArray_5 addObject:XhduXwcDOckyLoKF_NSArray_6];
+                    [pDhYzLAwXliDbcqI_NSArray_5 addObject:@"0$1"];
+                    [pDhYzLAwXliDbcqI_NSArray_5 addObject:@""];
+                    [pDhYzLAwXliDbcqI_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [BIlnjunZrppUAorZ_NSArray_4 addObject:pDhYzLAwXliDbcqI_NSArray_5];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:BIlnjunZrppUAorZ_NSArray_4];
+                NSMutableArray *kDvBgxwwKsAUxMca_NSArray_4 = [[NSMutableArray alloc] init];
+                    NSMutableArray *iMQXXYFxmoOWHPnr_NSArray_5 = [[NSMutableArray alloc] init];
+                    [iMQXXYFxmoOWHPnr_NSArray_5 addObject:[NSNull null]];
+                    [iMQXXYFxmoOWHPnr_NSArray_5 addObject:@"(\\d{2})(\\d{4})(\\d{4})"];
+                    [iMQXXYFxmoOWHPnr_NSArray_5 addObject:@"$1 $2-$3"];
+                        NSMutableArray *oLRqnMWefZLFMyar_NSArray_6 = [[NSMutableArray alloc] init];
+                        [oLRqnMWefZLFMyar_NSArray_6 addObject:@"11"];
+                        [oLRqnMWefZLFMyar_NSArray_6 addObject:@"11"];
+                    [iMQXXYFxmoOWHPnr_NSArray_5 addObject:oLRqnMWefZLFMyar_NSArray_6];
+                    [iMQXXYFxmoOWHPnr_NSArray_5 addObject:@"0$1"];
+                    [iMQXXYFxmoOWHPnr_NSArray_5 addObject:@""];
+                    [iMQXXYFxmoOWHPnr_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [kDvBgxwwKsAUxMca_NSArray_4 addObject:iMQXXYFxmoOWHPnr_NSArray_5];
+                    NSMutableArray *iRkjaNQZMMZVddCq_NSArray_5 = [[NSMutableArray alloc] init];
+                    [iRkjaNQZMMZVddCq_NSArray_5 addObject:[NSNull null]];
+                    [iRkjaNQZMMZVddCq_NSArray_5 addObject:@"(\\d{4})(\\d{2})(\\d{4})"];
+                    [iRkjaNQZMMZVddCq_NSArray_5 addObject:@"$1 $2-$3"];
+                        NSMutableArray *PNAnIRbLhRVefAha_NSArray_6 = [[NSMutableArray alloc] init];
+                        [PNAnIRbLhRVefAha_NSArray_6 addObject:@"1[02-9]|[23]"];
+                        [PNAnIRbLhRVefAha_NSArray_6 addObject:@"1[02-9]|[23]"];
+                    [iRkjaNQZMMZVddCq_NSArray_5 addObject:PNAnIRbLhRVefAha_NSArray_6];
+                    [iRkjaNQZMMZVddCq_NSArray_5 addObject:@"0$1"];
+                    [iRkjaNQZMMZVddCq_NSArray_5 addObject:@""];
+                    [iRkjaNQZMMZVddCq_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [kDvBgxwwKsAUxMca_NSArray_4 addObject:iRkjaNQZMMZVddCq_NSArray_5];
+                    NSMutableArray *NJiOvDVbYybdjzbS_NSArray_5 = [[NSMutableArray alloc] init];
+                    [NJiOvDVbYybdjzbS_NSArray_5 addObject:[NSNull null]];
+                    [NJiOvDVbYybdjzbS_NSArray_5 addObject:@"(9)(11)(\\d{4})(\\d{4})"];
+                    [NJiOvDVbYybdjzbS_NSArray_5 addObject:@"$1 $2 $3 $4"];
+                        NSMutableArray *tIkcfAIFVFtwLcpK_NSArray_6 = [[NSMutableArray alloc] init];
+                        [tIkcfAIFVFtwLcpK_NSArray_6 addObject:@"911"];
+                    [NJiOvDVbYybdjzbS_NSArray_5 addObject:tIkcfAIFVFtwLcpK_NSArray_6];
+                [kDvBgxwwKsAUxMca_NSArray_4 addObject:NJiOvDVbYybdjzbS_NSArray_5];
+                    NSMutableArray *bOxuYOEyidIKrhdx_NSArray_5 = [[NSMutableArray alloc] init];
+                    [bOxuYOEyidIKrhdx_NSArray_5 addObject:[NSNull null]];
+                    [bOxuYOEyidIKrhdx_NSArray_5 addObject:@"(9)(\\d{4})(\\d{2})(\\d{4})"];
+                    [bOxuYOEyidIKrhdx_NSArray_5 addObject:@"$1 $2 $3 $4"];
+                        NSMutableArray *JCNlLLJbptzFjurs_NSArray_6 = [[NSMutableArray alloc] init];
+                        [JCNlLLJbptzFjurs_NSArray_6 addObject:@"9(?:1[02-9]|[23])"];
+                    [bOxuYOEyidIKrhdx_NSArray_5 addObject:JCNlLLJbptzFjurs_NSArray_6];
+                [kDvBgxwwKsAUxMca_NSArray_4 addObject:bOxuYOEyidIKrhdx_NSArray_5];
+                    NSMutableArray *CPqxeIrKQhTIzhhW_NSArray_5 = [[NSMutableArray alloc] init];
+                    [CPqxeIrKQhTIzhhW_NSArray_5 addObject:[NSNull null]];
+                    [CPqxeIrKQhTIzhhW_NSArray_5 addObject:@"(\\d{3})(\\d{3})(\\d{4})"];
+                    [CPqxeIrKQhTIzhhW_NSArray_5 addObject:@"$1-$2-$3"];
+                        NSMutableArray *rBtbKgQKZNmLRAYP_NSArray_6 = [[NSMutableArray alloc] init];
+                        [rBtbKgQKZNmLRAYP_NSArray_6 addObject:@"[68]"];
+                        [rBtbKgQKZNmLRAYP_NSArray_6 addObject:@"[68]"];
+                    [CPqxeIrKQhTIzhhW_NSArray_5 addObject:rBtbKgQKZNmLRAYP_NSArray_6];
+                    [CPqxeIrKQhTIzhhW_NSArray_5 addObject:@"0$1"];
+                    [CPqxeIrKQhTIzhhW_NSArray_5 addObject:@""];
+                    [CPqxeIrKQhTIzhhW_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [kDvBgxwwKsAUxMca_NSArray_4 addObject:CPqxeIrKQhTIzhhW_NSArray_5];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:kDvBgxwwKsAUxMca_NSArray_4];
+                NSMutableArray *CrbsqXCLYTqiklPQ_NSArray_4 = [[NSMutableArray alloc] init];
+                [CrbsqXCLYTqiklPQ_NSArray_4 addObject:[NSNull null]];
+                [CrbsqXCLYTqiklPQ_NSArray_4 addObject:[NSNull null]];
+                [CrbsqXCLYTqiklPQ_NSArray_4 addObject:@"NA"];
+                [CrbsqXCLYTqiklPQ_NSArray_4 addObject:@"NA"];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:CrbsqXCLYTqiklPQ_NSArray_4];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:[NSNull null]];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *lxogzTHMgnjGkmAj_NSArray_4 = [[NSMutableArray alloc] init];
+                [lxogzTHMgnjGkmAj_NSArray_4 addObject:[NSNull null]];
+                [lxogzTHMgnjGkmAj_NSArray_4 addObject:[NSNull null]];
+                [lxogzTHMgnjGkmAj_NSArray_4 addObject:@"NA"];
+                [lxogzTHMgnjGkmAj_NSArray_4 addObject:@"NA"];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:lxogzTHMgnjGkmAj_NSArray_4];
+                NSMutableArray *YuFjezGuacVGzDDW_NSArray_4 = [[NSMutableArray alloc] init];
+                [YuFjezGuacVGzDDW_NSArray_4 addObject:[NSNull null]];
+                [YuFjezGuacVGzDDW_NSArray_4 addObject:[NSNull null]];
+                [YuFjezGuacVGzDDW_NSArray_4 addObject:@"NA"];
+                [YuFjezGuacVGzDDW_NSArray_4 addObject:@"NA"];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:YuFjezGuacVGzDDW_NSArray_4];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *qGDLIDfZrySdQCeE_NSArray_4 = [[NSMutableArray alloc] init];
+                [qGDLIDfZrySdQCeE_NSArray_4 addObject:[NSNull null]];
+                [qGDLIDfZrySdQCeE_NSArray_4 addObject:[NSNull null]];
+                [qGDLIDfZrySdQCeE_NSArray_4 addObject:@"NA"];
+                [qGDLIDfZrySdQCeE_NSArray_4 addObject:@"NA"];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:qGDLIDfZrySdQCeE_NSArray_4];
+                NSMutableArray *rMCBjfKjGPhbCMWs_NSArray_4 = [[NSMutableArray alloc] init];
+                [rMCBjfKjGPhbCMWs_NSArray_4 addObject:[NSNull null]];
+                [rMCBjfKjGPhbCMWs_NSArray_4 addObject:[NSNull null]];
+                [rMCBjfKjGPhbCMWs_NSArray_4 addObject:@"NA"];
+                [rMCBjfKjGPhbCMWs_NSArray_4 addObject:@"NA"];
+            [wISVAKNsKXMXuAME_NSArray_3 addObject:rMCBjfKjGPhbCMWs_NSArray_4];
+        [HdYgeMOvimmQrVSk_NSDictionary_2 setObject:wISVAKNsKXMXuAME_NSArray_3 forKey:@"AR"];
+            NSMutableArray *SRPQdcMtHaomngnC_NSArray_3 = [[NSMutableArray alloc] init];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *uMYHXgTAzooYOcPY_NSArray_4 = [[NSMutableArray alloc] init];
+                [uMYHXgTAzooYOcPY_NSArray_4 addObject:[NSNull null]];
+                [uMYHXgTAzooYOcPY_NSArray_4 addObject:[NSNull null]];
+                [uMYHXgTAzooYOcPY_NSArray_4 addObject:@"\\d{9}"];
+                [uMYHXgTAzooYOcPY_NSArray_4 addObject:@"\\d{9}"];
+                [uMYHXgTAzooYOcPY_NSArray_4 addObject:[NSNull null]];
+                [uMYHXgTAzooYOcPY_NSArray_4 addObject:[NSNull null]];
+                [uMYHXgTAzooYOcPY_NSArray_4 addObject:@"123456789"];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:uMYHXgTAzooYOcPY_NSArray_4];
+                NSMutableArray *HWrgtEacClpvIATd_NSArray_4 = [[NSMutableArray alloc] init];
+                [HWrgtEacClpvIATd_NSArray_4 addObject:[NSNull null]];
+                [HWrgtEacClpvIATd_NSArray_4 addObject:[NSNull null]];
+                [HWrgtEacClpvIATd_NSArray_4 addObject:@"NA"];
+                [HWrgtEacClpvIATd_NSArray_4 addObject:@"NA"];
+                [HWrgtEacClpvIATd_NSArray_4 addObject:[NSNull null]];
+                [HWrgtEacClpvIATd_NSArray_4 addObject:[NSNull null]];
+                [HWrgtEacClpvIATd_NSArray_4 addObject:@"123456789"];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:HWrgtEacClpvIATd_NSArray_4];
+                NSMutableArray *FkHVeoNmgWfPBJEx_NSArray_4 = [[NSMutableArray alloc] init];
+                [FkHVeoNmgWfPBJEx_NSArray_4 addObject:[NSNull null]];
+                [FkHVeoNmgWfPBJEx_NSArray_4 addObject:[NSNull null]];
+                [FkHVeoNmgWfPBJEx_NSArray_4 addObject:@"NA"];
+                [FkHVeoNmgWfPBJEx_NSArray_4 addObject:@"NA"];
+                [FkHVeoNmgWfPBJEx_NSArray_4 addObject:[NSNull null]];
+                [FkHVeoNmgWfPBJEx_NSArray_4 addObject:[NSNull null]];
+                [FkHVeoNmgWfPBJEx_NSArray_4 addObject:@"123456789"];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:FkHVeoNmgWfPBJEx_NSArray_4];
+                NSMutableArray *OZOxmZDwIgMmrFyZ_NSArray_4 = [[NSMutableArray alloc] init];
+                [OZOxmZDwIgMmrFyZ_NSArray_4 addObject:[NSNull null]];
+                [OZOxmZDwIgMmrFyZ_NSArray_4 addObject:[NSNull null]];
+                [OZOxmZDwIgMmrFyZ_NSArray_4 addObject:@"NA"];
+                [OZOxmZDwIgMmrFyZ_NSArray_4 addObject:@"NA"];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:OZOxmZDwIgMmrFyZ_NSArray_4];
+                NSMutableArray *enartODuQtToxToG_NSArray_4 = [[NSMutableArray alloc] init];
+                [enartODuQtToxToG_NSArray_4 addObject:[NSNull null]];
+                [enartODuQtToxToG_NSArray_4 addObject:[NSNull null]];
+                [enartODuQtToxToG_NSArray_4 addObject:@"\\d{9}"];
+                [enartODuQtToxToG_NSArray_4 addObject:@"\\d{9}"];
+                [enartODuQtToxToG_NSArray_4 addObject:[NSNull null]];
+                [enartODuQtToxToG_NSArray_4 addObject:[NSNull null]];
+                [enartODuQtToxToG_NSArray_4 addObject:@"123456789"];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:enartODuQtToxToG_NSArray_4];
+                NSMutableArray *iqChtBBFDFBPiBvu_NSArray_4 = [[NSMutableArray alloc] init];
+                [iqChtBBFDFBPiBvu_NSArray_4 addObject:[NSNull null]];
+                [iqChtBBFDFBPiBvu_NSArray_4 addObject:[NSNull null]];
+                [iqChtBBFDFBPiBvu_NSArray_4 addObject:@"NA"];
+                [iqChtBBFDFBPiBvu_NSArray_4 addObject:@"NA"];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:iqChtBBFDFBPiBvu_NSArray_4];
+                NSMutableArray *VYqncpSMPMwCPOuC_NSArray_4 = [[NSMutableArray alloc] init];
+                [VYqncpSMPMwCPOuC_NSArray_4 addObject:[NSNull null]];
+                [VYqncpSMPMwCPOuC_NSArray_4 addObject:[NSNull null]];
+                [VYqncpSMPMwCPOuC_NSArray_4 addObject:@"NA"];
+                [VYqncpSMPMwCPOuC_NSArray_4 addObject:@"NA"];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:VYqncpSMPMwCPOuC_NSArray_4];
+                NSMutableArray *UEdeIODdtXreCdPs_NSArray_4 = [[NSMutableArray alloc] init];
+                [UEdeIODdtXreCdPs_NSArray_4 addObject:[NSNull null]];
+                [UEdeIODdtXreCdPs_NSArray_4 addObject:[NSNull null]];
+                [UEdeIODdtXreCdPs_NSArray_4 addObject:@"NA"];
+                [UEdeIODdtXreCdPs_NSArray_4 addObject:@"NA"];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:UEdeIODdtXreCdPs_NSArray_4];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:@"001"];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:[NSNumber numberWithLongLong:979]];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:@""];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:[NSNull null]];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:[NSNull null]];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:[NSNull null]];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:[NSNull null]];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:[NSNull null]];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:[NSNull null]];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:[NSNumber numberWithLongLong:1]];
+                NSMutableArray *GAqHvOBVQzEWjkOD_NSArray_4 = [[NSMutableArray alloc] init];
+                    NSMutableArray *tbrOzQWHLdOGECWq_NSArray_5 = [[NSMutableArray alloc] init];
+                    [tbrOzQWHLdOGECWq_NSArray_5 addObject:[NSNull null]];
+                    [tbrOzQWHLdOGECWq_NSArray_5 addObject:@"(\\d)(\\d{4})(\\d{4})"];
+                    [tbrOzQWHLdOGECWq_NSArray_5 addObject:@"$1 $2 $3"];
+                    [tbrOzQWHLdOGECWq_NSArray_5 addObject:[NSNull null]];
+                    [tbrOzQWHLdOGECWq_NSArray_5 addObject:@""];
+                    [tbrOzQWHLdOGECWq_NSArray_5 addObject:@""];
+                    [tbrOzQWHLdOGECWq_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [GAqHvOBVQzEWjkOD_NSArray_4 addObject:tbrOzQWHLdOGECWq_NSArray_5];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:GAqHvOBVQzEWjkOD_NSArray_4];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *oKRuTYhdAtmxljIb_NSArray_4 = [[NSMutableArray alloc] init];
+                [oKRuTYhdAtmxljIb_NSArray_4 addObject:[NSNull null]];
+                [oKRuTYhdAtmxljIb_NSArray_4 addObject:[NSNull null]];
+                [oKRuTYhdAtmxljIb_NSArray_4 addObject:@"NA"];
+                [oKRuTYhdAtmxljIb_NSArray_4 addObject:@"NA"];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:oKRuTYhdAtmxljIb_NSArray_4];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:[NSNull null]];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *mtGdYXWFtTlWHQLB_NSArray_4 = [[NSMutableArray alloc] init];
+                [mtGdYXWFtTlWHQLB_NSArray_4 addObject:[NSNull null]];
+                [mtGdYXWFtTlWHQLB_NSArray_4 addObject:[NSNull null]];
+                [mtGdYXWFtTlWHQLB_NSArray_4 addObject:@"NA"];
+                [mtGdYXWFtTlWHQLB_NSArray_4 addObject:@"NA"];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:mtGdYXWFtTlWHQLB_NSArray_4];
+                NSMutableArray *wGklGZghvyfttgVh_NSArray_4 = [[NSMutableArray alloc] init];
+                [wGklGZghvyfttgVh_NSArray_4 addObject:[NSNull null]];
+                [wGklGZghvyfttgVh_NSArray_4 addObject:[NSNull null]];
+                [wGklGZghvyfttgVh_NSArray_4 addObject:@"NA"];
+                [wGklGZghvyfttgVh_NSArray_4 addObject:@"NA"];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:wGklGZghvyfttgVh_NSArray_4];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *gsLIlRFuqgDcFFPH_NSArray_4 = [[NSMutableArray alloc] init];
+                [gsLIlRFuqgDcFFPH_NSArray_4 addObject:[NSNull null]];
+                [gsLIlRFuqgDcFFPH_NSArray_4 addObject:[NSNull null]];
+                [gsLIlRFuqgDcFFPH_NSArray_4 addObject:@"NA"];
+                [gsLIlRFuqgDcFFPH_NSArray_4 addObject:@"NA"];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:gsLIlRFuqgDcFFPH_NSArray_4];
+                NSMutableArray *GlahnTgQRVmTsjbU_NSArray_4 = [[NSMutableArray alloc] init];
+                [GlahnTgQRVmTsjbU_NSArray_4 addObject:[NSNull null]];
+                [GlahnTgQRVmTsjbU_NSArray_4 addObject:[NSNull null]];
+                [GlahnTgQRVmTsjbU_NSArray_4 addObject:@"NA"];
+                [GlahnTgQRVmTsjbU_NSArray_4 addObject:@"NA"];
+            [SRPQdcMtHaomngnC_NSArray_3 addObject:GlahnTgQRVmTsjbU_NSArray_4];
+        [HdYgeMOvimmQrVSk_NSDictionary_2 setObject:SRPQdcMtHaomngnC_NSArray_3 forKey:@"979"];
+            NSMutableArray *NyZButhXhwTvAqJe_NSArray_3 = [[NSMutableArray alloc] init];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *DIIKHzkAmIUwpRPy_NSArray_4 = [[NSMutableArray alloc] init];
+                [DIIKHzkAmIUwpRPy_NSArray_4 addObject:[NSNull null]];
+                [DIIKHzkAmIUwpRPy_NSArray_4 addObject:[NSNull null]];
+                [DIIKHzkAmIUwpRPy_NSArray_4 addObject:@"\\d{10}"];
+                [DIIKHzkAmIUwpRPy_NSArray_4 addObject:@"\\d{6,10}"];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:DIIKHzkAmIUwpRPy_NSArray_4];
+                NSMutableArray *JOTYMFFeKTXMGlUn_NSArray_4 = [[NSMutableArray alloc] init];
+                [JOTYMFFeKTXMGlUn_NSArray_4 addObject:[NSNull null]];
+                [JOTYMFFeKTXMGlUn_NSArray_4 addObject:[NSNull null]];
+                [JOTYMFFeKTXMGlUn_NSArray_4 addObject:@"[1-6]\\d{9}"];
+                [JOTYMFFeKTXMGlUn_NSArray_4 addObject:@"\\d{6,10}"];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:JOTYMFFeKTXMGlUn_NSArray_4];
+                NSMutableArray *kcxYKErdaRqToELf_NSArray_4 = [[NSMutableArray alloc] init];
+                [kcxYKErdaRqToELf_NSArray_4 addObject:[NSNull null]];
+                [kcxYKErdaRqToELf_NSArray_4 addObject:[NSNull null]];
+                [kcxYKErdaRqToELf_NSArray_4 addObject:@"7[1-57-9]\\d{8}"];
+                [kcxYKErdaRqToELf_NSArray_4 addObject:@"\\d{10}"];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:kcxYKErdaRqToELf_NSArray_4];
+                NSMutableArray *VSQvdSKeSckKHGrJ_NSArray_4 = [[NSMutableArray alloc] init];
+                [VSQvdSKeSckKHGrJ_NSArray_4 addObject:[NSNull null]];
+                [VSQvdSKeSckKHGrJ_NSArray_4 addObject:[NSNull null]];
+                [VSQvdSKeSckKHGrJ_NSArray_4 addObject:@"80\\d{8}"];
+                [VSQvdSKeSckKHGrJ_NSArray_4 addObject:@"\\d{10}"];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:VSQvdSKeSckKHGrJ_NSArray_4];
+                NSMutableArray *uosaGTLArpLrFUWD_NSArray_4 = [[NSMutableArray alloc] init];
+                [uosaGTLArpLrFUWD_NSArray_4 addObject:[NSNull null]];
+                [uosaGTLArpLrFUWD_NSArray_4 addObject:[NSNull null]];
+                [uosaGTLArpLrFUWD_NSArray_4 addObject:@"9[018]\\d{8}"];
+                [uosaGTLArpLrFUWD_NSArray_4 addObject:@"\\d{10}"];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:uosaGTLArpLrFUWD_NSArray_4];
+                NSMutableArray *muRYWaogBfJREaED_NSArray_4 = [[NSMutableArray alloc] init];
+                [muRYWaogBfJREaED_NSArray_4 addObject:[NSNull null]];
+                [muRYWaogBfJREaED_NSArray_4 addObject:[NSNull null]];
+                [muRYWaogBfJREaED_NSArray_4 addObject:@"8(?:4[3-5]|7[0-2])\\d{7}"];
+                [muRYWaogBfJREaED_NSArray_4 addObject:@"\\d{10}"];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:muRYWaogBfJREaED_NSArray_4];
+                NSMutableArray *dhRwZUwdXAAgQMZl_NSArray_4 = [[NSMutableArray alloc] init];
+                [dhRwZUwdXAAgQMZl_NSArray_4 addObject:[NSNull null]];
+                [dhRwZUwdXAAgQMZl_NSArray_4 addObject:[NSNull null]];
+                [dhRwZUwdXAAgQMZl_NSArray_4 addObject:@"70\\d{8}"];
+                [dhRwZUwdXAAgQMZl_NSArray_4 addObject:@"\\d{10}"];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:dhRwZUwdXAAgQMZl_NSArray_4];
+                NSMutableArray *IXTnGfUpoyKhVwnW_NSArray_4 = [[NSMutableArray alloc] init];
+                [IXTnGfUpoyKhVwnW_NSArray_4 addObject:[NSNull null]];
+                [IXTnGfUpoyKhVwnW_NSArray_4 addObject:[NSNull null]];
+                [IXTnGfUpoyKhVwnW_NSArray_4 addObject:@"56\\d{8}"];
+                [IXTnGfUpoyKhVwnW_NSArray_4 addObject:@"\\d{10}"];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:IXTnGfUpoyKhVwnW_NSArray_4];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:@"GB"];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:[NSNumber numberWithLongLong:44]];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:@"00"];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:@"0"];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:[NSNull null]];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:[NSNull null]];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:@"0"];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:[NSNull null]];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:[NSNull null]];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *VoeGdviSAhvXZvUk_NSArray_4 = [[NSMutableArray alloc] init];
+                    NSMutableArray *oSeuAoMsemblohfN_NSArray_5 = [[NSMutableArray alloc] init];
+                    [oSeuAoMsemblohfN_NSArray_5 addObject:[NSNull null]];
+                    [oSeuAoMsemblohfN_NSArray_5 addObject:@"(\\d{2})(\\d{4})(\\d{4})"];
+                    [oSeuAoMsemblohfN_NSArray_5 addObject:@"$1 $2 $3"];
+                        NSMutableArray *IDtpCLaoVNGVQmYV_NSArray_6 = [[NSMutableArray alloc] init];
+                        [IDtpCLaoVNGVQmYV_NSArray_6 addObject:@"[1-59]|[78]0"];
+                    [oSeuAoMsemblohfN_NSArray_5 addObject:IDtpCLaoVNGVQmYV_NSArray_6];
+                    [oSeuAoMsemblohfN_NSArray_5 addObject:@"(0$1)"];
+                    [oSeuAoMsemblohfN_NSArray_5 addObject:@""];
+                    [oSeuAoMsemblohfN_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [VoeGdviSAhvXZvUk_NSArray_4 addObject:oSeuAoMsemblohfN_NSArray_5];
+                    NSMutableArray *vcvOTkZJzCkRhjKB_NSArray_5 = [[NSMutableArray alloc] init];
+                    [vcvOTkZJzCkRhjKB_NSArray_5 addObject:[NSNull null]];
+                    [vcvOTkZJzCkRhjKB_NSArray_5 addObject:@"(\\d)(\\d{3})(\\d{3})(\\d{3})"];
+                    [vcvOTkZJzCkRhjKB_NSArray_5 addObject:@"$1 $2 $3 $4"];
+                        NSMutableArray *XYTfrKSYjtDShWpA_NSArray_6 = [[NSMutableArray alloc] init];
+                        [XYTfrKSYjtDShWpA_NSArray_6 addObject:@"6"];
+                    [vcvOTkZJzCkRhjKB_NSArray_5 addObject:XYTfrKSYjtDShWpA_NSArray_6];
+                    [vcvOTkZJzCkRhjKB_NSArray_5 addObject:@"(0$1)"];
+                    [vcvOTkZJzCkRhjKB_NSArray_5 addObject:@""];
+                    [vcvOTkZJzCkRhjKB_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [VoeGdviSAhvXZvUk_NSArray_4 addObject:vcvOTkZJzCkRhjKB_NSArray_5];
+                    NSMutableArray *syfsziHMLXzszgIJ_NSArray_5 = [[NSMutableArray alloc] init];
+                    [syfsziHMLXzszgIJ_NSArray_5 addObject:[NSNull null]];
+                    [syfsziHMLXzszgIJ_NSArray_5 addObject:@"(\\d{4})(\\d{3})(\\d{3})"];
+                    [syfsziHMLXzszgIJ_NSArray_5 addObject:@"$1 $2 $3"];
+                        NSMutableArray *SsQEoeCpFOLfpKZF_NSArray_6 = [[NSMutableArray alloc] init];
+                        [SsQEoeCpFOLfpKZF_NSArray_6 addObject:@"7[1-57-9]"];
+                    [syfsziHMLXzszgIJ_NSArray_5 addObject:SsQEoeCpFOLfpKZF_NSArray_6];
+                    [syfsziHMLXzszgIJ_NSArray_5 addObject:@"(0$1)"];
+                    [syfsziHMLXzszgIJ_NSArray_5 addObject:@""];
+                    [syfsziHMLXzszgIJ_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [VoeGdviSAhvXZvUk_NSArray_4 addObject:syfsziHMLXzszgIJ_NSArray_5];
+                    NSMutableArray *DoDdHauYnnMGShqS_NSArray_5 = [[NSMutableArray alloc] init];
+                    [DoDdHauYnnMGShqS_NSArray_5 addObject:[NSNull null]];
+                    [DoDdHauYnnMGShqS_NSArray_5 addObject:@"(\\d{3})(\\d{3})(\\d{4})"];
+                    [DoDdHauYnnMGShqS_NSArray_5 addObject:@"$1 $2 $3"];
+                        NSMutableArray *AfyfkwMABFuGBZgy_NSArray_6 = [[NSMutableArray alloc] init];
+                        [AfyfkwMABFuGBZgy_NSArray_6 addObject:@"8[47]"];
+                    [DoDdHauYnnMGShqS_NSArray_5 addObject:AfyfkwMABFuGBZgy_NSArray_6];
+                    [DoDdHauYnnMGShqS_NSArray_5 addObject:@"(0$1)"];
+                    [DoDdHauYnnMGShqS_NSArray_5 addObject:@""];
+                    [DoDdHauYnnMGShqS_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [VoeGdviSAhvXZvUk_NSArray_4 addObject:DoDdHauYnnMGShqS_NSArray_5];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:VoeGdviSAhvXZvUk_NSArray_4];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *aHgOhFkGfUVAsYdK_NSArray_4 = [[NSMutableArray alloc] init];
+                [aHgOhFkGfUVAsYdK_NSArray_4 addObject:[NSNull null]];
+                [aHgOhFkGfUVAsYdK_NSArray_4 addObject:[NSNull null]];
+                [aHgOhFkGfUVAsYdK_NSArray_4 addObject:@"NA"];
+                [aHgOhFkGfUVAsYdK_NSArray_4 addObject:@"NA"];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:aHgOhFkGfUVAsYdK_NSArray_4];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:[NSNull null]];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *YoNYpThXmfexzgkA_NSArray_4 = [[NSMutableArray alloc] init];
+                [YoNYpThXmfexzgkA_NSArray_4 addObject:[NSNull null]];
+                [YoNYpThXmfexzgkA_NSArray_4 addObject:[NSNull null]];
+                [YoNYpThXmfexzgkA_NSArray_4 addObject:@"NA"];
+                [YoNYpThXmfexzgkA_NSArray_4 addObject:@"NA"];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:YoNYpThXmfexzgkA_NSArray_4];
+                NSMutableArray *xwssqzTWvSjrSODk_NSArray_4 = [[NSMutableArray alloc] init];
+                [xwssqzTWvSjrSODk_NSArray_4 addObject:[NSNull null]];
+                [xwssqzTWvSjrSODk_NSArray_4 addObject:[NSNull null]];
+                [xwssqzTWvSjrSODk_NSArray_4 addObject:@"NA"];
+                [xwssqzTWvSjrSODk_NSArray_4 addObject:@"NA"];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:xwssqzTWvSjrSODk_NSArray_4];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *LbQhGWHoUSMRsazu_NSArray_4 = [[NSMutableArray alloc] init];
+                [LbQhGWHoUSMRsazu_NSArray_4 addObject:[NSNull null]];
+                [LbQhGWHoUSMRsazu_NSArray_4 addObject:[NSNull null]];
+                [LbQhGWHoUSMRsazu_NSArray_4 addObject:@"NA"];
+                [LbQhGWHoUSMRsazu_NSArray_4 addObject:@"NA"];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:LbQhGWHoUSMRsazu_NSArray_4];
+                NSMutableArray *RAOHMcQKlumztqQI_NSArray_4 = [[NSMutableArray alloc] init];
+                [RAOHMcQKlumztqQI_NSArray_4 addObject:[NSNull null]];
+                [RAOHMcQKlumztqQI_NSArray_4 addObject:[NSNull null]];
+                [RAOHMcQKlumztqQI_NSArray_4 addObject:@"NA"];
+                [RAOHMcQKlumztqQI_NSArray_4 addObject:@"NA"];
+            [NyZButhXhwTvAqJe_NSArray_3 addObject:RAOHMcQKlumztqQI_NSArray_4];
+        [HdYgeMOvimmQrVSk_NSDictionary_2 setObject:NyZButhXhwTvAqJe_NSArray_3 forKey:@"GB"];
+            NSMutableArray *qxIDdwcOPnBbZjzj_NSArray_3 = [[NSMutableArray alloc] init];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *BlsKnXiRvizytCAT_NSArray_4 = [[NSMutableArray alloc] init];
+                [BlsKnXiRvizytCAT_NSArray_4 addObject:[NSNull null]];
+                [BlsKnXiRvizytCAT_NSArray_4 addObject:[NSNull null]];
+                [BlsKnXiRvizytCAT_NSArray_4 addObject:@"[1-9]\\d{5}"];
+                [BlsKnXiRvizytCAT_NSArray_4 addObject:@"\\d{6}"];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:BlsKnXiRvizytCAT_NSArray_4];
+                NSMutableArray *wYefzrbzhNjjUeWd_NSArray_4 = [[NSMutableArray alloc] init];
+                [wYefzrbzhNjjUeWd_NSArray_4 addObject:[NSNull null]];
+                [wYefzrbzhNjjUeWd_NSArray_4 addObject:[NSNull null]];
+                [wYefzrbzhNjjUeWd_NSArray_4 addObject:@"[1-9]\\d{5}"];
+                [wYefzrbzhNjjUeWd_NSArray_4 addObject:@"\\d{6}"];
+                [wYefzrbzhNjjUeWd_NSArray_4 addObject:[NSNull null]];
+                [wYefzrbzhNjjUeWd_NSArray_4 addObject:[NSNull null]];
+                [wYefzrbzhNjjUeWd_NSArray_4 addObject:@"112345"];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:wYefzrbzhNjjUeWd_NSArray_4];
+                NSMutableArray *ghqbKkMNsqNRBKfh_NSArray_4 = [[NSMutableArray alloc] init];
+                [ghqbKkMNsqNRBKfh_NSArray_4 addObject:[NSNull null]];
+                [ghqbKkMNsqNRBKfh_NSArray_4 addObject:[NSNull null]];
+                [ghqbKkMNsqNRBKfh_NSArray_4 addObject:@"[1-9]\\d{5}"];
+                [ghqbKkMNsqNRBKfh_NSArray_4 addObject:@"\\d{6}"];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:ghqbKkMNsqNRBKfh_NSArray_4];
+                NSMutableArray *TFfXEOOqjTxDwVmV_NSArray_4 = [[NSMutableArray alloc] init];
+                [TFfXEOOqjTxDwVmV_NSArray_4 addObject:[NSNull null]];
+                [TFfXEOOqjTxDwVmV_NSArray_4 addObject:[NSNull null]];
+                [TFfXEOOqjTxDwVmV_NSArray_4 addObject:@"NA"];
+                [TFfXEOOqjTxDwVmV_NSArray_4 addObject:@"NA"];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:TFfXEOOqjTxDwVmV_NSArray_4];
+                NSMutableArray *YWOvEdXjBfdfRcDe_NSArray_4 = [[NSMutableArray alloc] init];
+                [YWOvEdXjBfdfRcDe_NSArray_4 addObject:[NSNull null]];
+                [YWOvEdXjBfdfRcDe_NSArray_4 addObject:[NSNull null]];
+                [YWOvEdXjBfdfRcDe_NSArray_4 addObject:@"NA"];
+                [YWOvEdXjBfdfRcDe_NSArray_4 addObject:@"NA"];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:YWOvEdXjBfdfRcDe_NSArray_4];
+                NSMutableArray *qNmwSEqvZitffQly_NSArray_4 = [[NSMutableArray alloc] init];
+                [qNmwSEqvZitffQly_NSArray_4 addObject:[NSNull null]];
+                [qNmwSEqvZitffQly_NSArray_4 addObject:[NSNull null]];
+                [qNmwSEqvZitffQly_NSArray_4 addObject:@"NA"];
+                [qNmwSEqvZitffQly_NSArray_4 addObject:@"NA"];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:qNmwSEqvZitffQly_NSArray_4];
+                NSMutableArray *KiMACuvvBFCrwKUX_NSArray_4 = [[NSMutableArray alloc] init];
+                [KiMACuvvBFCrwKUX_NSArray_4 addObject:[NSNull null]];
+                [KiMACuvvBFCrwKUX_NSArray_4 addObject:[NSNull null]];
+                [KiMACuvvBFCrwKUX_NSArray_4 addObject:@"NA"];
+                [KiMACuvvBFCrwKUX_NSArray_4 addObject:@"NA"];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:KiMACuvvBFCrwKUX_NSArray_4];
+                NSMutableArray *uCRQrqKdPPFXmdXR_NSArray_4 = [[NSMutableArray alloc] init];
+                [uCRQrqKdPPFXmdXR_NSArray_4 addObject:[NSNull null]];
+                [uCRQrqKdPPFXmdXR_NSArray_4 addObject:[NSNull null]];
+                [uCRQrqKdPPFXmdXR_NSArray_4 addObject:@"NA"];
+                [uCRQrqKdPPFXmdXR_NSArray_4 addObject:@"NA"];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:uCRQrqKdPPFXmdXR_NSArray_4];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:@"BY"];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:[NSNumber numberWithLongLong:375]];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:@"810"];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:@"8"];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:[NSNull null]];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:[NSNull null]];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:@"80?|99999"];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:[NSNull null]];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:[NSNull null]];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:[NSNumber numberWithLongLong:1]];
+                NSMutableArray *IPHfQcPooMTFZYoo_NSArray_4 = [[NSMutableArray alloc] init];
+                    NSMutableArray *tRUWFinBPbjfYtlZ_NSArray_5 = [[NSMutableArray alloc] init];
+                    [tRUWFinBPbjfYtlZ_NSArray_5 addObject:[NSNull null]];
+                    [tRUWFinBPbjfYtlZ_NSArray_5 addObject:@"(\\d{4})"];
+                    [tRUWFinBPbjfYtlZ_NSArray_5 addObject:@"$1"];
+                        NSMutableArray *xabaAOUsksttayBT_NSArray_6 = [[NSMutableArray alloc] init];
+                        [xabaAOUsksttayBT_NSArray_6 addObject:@"[1-8]"];
+                    [tRUWFinBPbjfYtlZ_NSArray_5 addObject:xabaAOUsksttayBT_NSArray_6];
+                    [tRUWFinBPbjfYtlZ_NSArray_5 addObject:@"8 $1"];
+                    [tRUWFinBPbjfYtlZ_NSArray_5 addObject:@""];
+                    [tRUWFinBPbjfYtlZ_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [IPHfQcPooMTFZYoo_NSArray_4 addObject:tRUWFinBPbjfYtlZ_NSArray_5];
+                    NSMutableArray *KLjbREoDXlYfqWQJ_NSArray_5 = [[NSMutableArray alloc] init];
+                    [KLjbREoDXlYfqWQJ_NSArray_5 addObject:[NSNull null]];
+                    [KLjbREoDXlYfqWQJ_NSArray_5 addObject:@"(\\d{2})(\\d{3})"];
+                    [KLjbREoDXlYfqWQJ_NSArray_5 addObject:@"$1 $2"];
+                        NSMutableArray *daDHdIjrXeoriZpN_NSArray_6 = [[NSMutableArray alloc] init];
+                        [daDHdIjrXeoriZpN_NSArray_6 addObject:@"[1-8]"];
+                    [KLjbREoDXlYfqWQJ_NSArray_5 addObject:daDHdIjrXeoriZpN_NSArray_6];
+                    [KLjbREoDXlYfqWQJ_NSArray_5 addObject:@"8$1"];
+                    [KLjbREoDXlYfqWQJ_NSArray_5 addObject:@""];
+                    [KLjbREoDXlYfqWQJ_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [IPHfQcPooMTFZYoo_NSArray_4 addObject:KLjbREoDXlYfqWQJ_NSArray_5];
+                    NSMutableArray *qOpqHcEwDIUrkoba_NSArray_5 = [[NSMutableArray alloc] init];
+                    [qOpqHcEwDIUrkoba_NSArray_5 addObject:[NSNull null]];
+                    [qOpqHcEwDIUrkoba_NSArray_5 addObject:@"(\\d{3})(\\d{3})"];
+                    [qOpqHcEwDIUrkoba_NSArray_5 addObject:@"$1 $2"];
+                        NSMutableArray *YzcawacGJLgOaDWH_NSArray_6 = [[NSMutableArray alloc] init];
+                        [YzcawacGJLgOaDWH_NSArray_6 addObject:@"[1-8]"];
+                    [qOpqHcEwDIUrkoba_NSArray_5 addObject:YzcawacGJLgOaDWH_NSArray_6];
+                    [qOpqHcEwDIUrkoba_NSArray_5 addObject:@"8 $1"];
+                    [qOpqHcEwDIUrkoba_NSArray_5 addObject:@""];
+                    [qOpqHcEwDIUrkoba_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [IPHfQcPooMTFZYoo_NSArray_4 addObject:qOpqHcEwDIUrkoba_NSArray_5];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:IPHfQcPooMTFZYoo_NSArray_4];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *xOcYgnXeZAAYssER_NSArray_4 = [[NSMutableArray alloc] init];
+                [xOcYgnXeZAAYssER_NSArray_4 addObject:[NSNull null]];
+                [xOcYgnXeZAAYssER_NSArray_4 addObject:[NSNull null]];
+                [xOcYgnXeZAAYssER_NSArray_4 addObject:@"NA"];
+                [xOcYgnXeZAAYssER_NSArray_4 addObject:@"NA"];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:xOcYgnXeZAAYssER_NSArray_4];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:[NSNull null]];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *vFdSsHWtHNFokyqb_NSArray_4 = [[NSMutableArray alloc] init];
+                [vFdSsHWtHNFokyqb_NSArray_4 addObject:[NSNull null]];
+                [vFdSsHWtHNFokyqb_NSArray_4 addObject:[NSNull null]];
+                [vFdSsHWtHNFokyqb_NSArray_4 addObject:@"NA"];
+                [vFdSsHWtHNFokyqb_NSArray_4 addObject:@"NA"];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:vFdSsHWtHNFokyqb_NSArray_4];
+                NSMutableArray *CNjAcnEKjoBIzmAZ_NSArray_4 = [[NSMutableArray alloc] init];
+                [CNjAcnEKjoBIzmAZ_NSArray_4 addObject:[NSNull null]];
+                [CNjAcnEKjoBIzmAZ_NSArray_4 addObject:[NSNull null]];
+                [CNjAcnEKjoBIzmAZ_NSArray_4 addObject:@"NA"];
+                [CNjAcnEKjoBIzmAZ_NSArray_4 addObject:@"NA"];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:CNjAcnEKjoBIzmAZ_NSArray_4];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *TPJUDPPXMdraDYEZ_NSArray_4 = [[NSMutableArray alloc] init];
+                [TPJUDPPXMdraDYEZ_NSArray_4 addObject:[NSNull null]];
+                [TPJUDPPXMdraDYEZ_NSArray_4 addObject:[NSNull null]];
+                [TPJUDPPXMdraDYEZ_NSArray_4 addObject:@"NA"];
+                [TPJUDPPXMdraDYEZ_NSArray_4 addObject:@"NA"];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:TPJUDPPXMdraDYEZ_NSArray_4];
+                NSMutableArray *qgFWhRwfaNpwVqsl_NSArray_4 = [[NSMutableArray alloc] init];
+                [qgFWhRwfaNpwVqsl_NSArray_4 addObject:[NSNull null]];
+                [qgFWhRwfaNpwVqsl_NSArray_4 addObject:[NSNull null]];
+                [qgFWhRwfaNpwVqsl_NSArray_4 addObject:@"NA"];
+                [qgFWhRwfaNpwVqsl_NSArray_4 addObject:@"NA"];
+            [qxIDdwcOPnBbZjzj_NSArray_3 addObject:qgFWhRwfaNpwVqsl_NSArray_4];
+        [HdYgeMOvimmQrVSk_NSDictionary_2 setObject:qxIDdwcOPnBbZjzj_NSArray_3 forKey:@"BY"];
+            NSMutableArray *IkgewBlvSmUPpxHl_NSArray_3 = [[NSMutableArray alloc] init];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *wLWEtxiDHZAmKQXt_NSArray_4 = [[NSMutableArray alloc] init];
+                [wLWEtxiDHZAmKQXt_NSArray_4 addObject:[NSNull null]];
+                [wLWEtxiDHZAmKQXt_NSArray_4 addObject:[NSNull null]];
+                [wLWEtxiDHZAmKQXt_NSArray_4 addObject:@"[268]\\d{8}"];
+                [wLWEtxiDHZAmKQXt_NSArray_4 addObject:@"\\d{9}"];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:wLWEtxiDHZAmKQXt_NSArray_4];
+                NSMutableArray *rqLTBczXASSjfMfP_NSArray_4 = [[NSMutableArray alloc] init];
+                [rqLTBczXASSjfMfP_NSArray_4 addObject:[NSNull null]];
+                [rqLTBczXASSjfMfP_NSArray_4 addObject:[NSNull null]];
+                [rqLTBczXASSjfMfP_NSArray_4 addObject:@"262\\d{6}"];
+                [rqLTBczXASSjfMfP_NSArray_4 addObject:@"\\d{9}"];
+                [rqLTBczXASSjfMfP_NSArray_4 addObject:[NSNull null]];
+                [rqLTBczXASSjfMfP_NSArray_4 addObject:[NSNull null]];
+                [rqLTBczXASSjfMfP_NSArray_4 addObject:@"262161234"];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:rqLTBczXASSjfMfP_NSArray_4];
+                NSMutableArray *rvjvjVEStZBangNp_NSArray_4 = [[NSMutableArray alloc] init];
+                [rvjvjVEStZBangNp_NSArray_4 addObject:[NSNull null]];
+                [rvjvjVEStZBangNp_NSArray_4 addObject:[NSNull null]];
+                [rvjvjVEStZBangNp_NSArray_4 addObject:@"6(?:9[23]|47)\\d{6}"];
+                [rvjvjVEStZBangNp_NSArray_4 addObject:@"\\d{9}"];
+                [rvjvjVEStZBangNp_NSArray_4 addObject:[NSNull null]];
+                [rvjvjVEStZBangNp_NSArray_4 addObject:[NSNull null]];
+                [rvjvjVEStZBangNp_NSArray_4 addObject:@"692123456"];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:rvjvjVEStZBangNp_NSArray_4];
+                NSMutableArray *XnVAiimIrIjNeHFN_NSArray_4 = [[NSMutableArray alloc] init];
+                [XnVAiimIrIjNeHFN_NSArray_4 addObject:[NSNull null]];
+                [XnVAiimIrIjNeHFN_NSArray_4 addObject:[NSNull null]];
+                [XnVAiimIrIjNeHFN_NSArray_4 addObject:@"80\\d{7}"];
+                [XnVAiimIrIjNeHFN_NSArray_4 addObject:@"\\d{9}"];
+                [XnVAiimIrIjNeHFN_NSArray_4 addObject:[NSNull null]];
+                [XnVAiimIrIjNeHFN_NSArray_4 addObject:[NSNull null]];
+                [XnVAiimIrIjNeHFN_NSArray_4 addObject:@"801234567"];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:XnVAiimIrIjNeHFN_NSArray_4];
+                NSMutableArray *vzcPQeprxwZbAzNb_NSArray_4 = [[NSMutableArray alloc] init];
+                [vzcPQeprxwZbAzNb_NSArray_4 addObject:[NSNull null]];
+                [vzcPQeprxwZbAzNb_NSArray_4 addObject:[NSNull null]];
+                [vzcPQeprxwZbAzNb_NSArray_4 addObject:@"8(?:1[01]|2[0156]|84|9[0-37-9])\\d{6}"];
+                [vzcPQeprxwZbAzNb_NSArray_4 addObject:@"\\d{9}"];
+                [vzcPQeprxwZbAzNb_NSArray_4 addObject:[NSNull null]];
+                [vzcPQeprxwZbAzNb_NSArray_4 addObject:[NSNull null]];
+                [vzcPQeprxwZbAzNb_NSArray_4 addObject:@"810123456"];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:vzcPQeprxwZbAzNb_NSArray_4];
+                NSMutableArray *titmVFmERPPLEHfY_NSArray_4 = [[NSMutableArray alloc] init];
+                [titmVFmERPPLEHfY_NSArray_4 addObject:[NSNull null]];
+                [titmVFmERPPLEHfY_NSArray_4 addObject:[NSNull null]];
+                [titmVFmERPPLEHfY_NSArray_4 addObject:@"NA"];
+                [titmVFmERPPLEHfY_NSArray_4 addObject:@"NA"];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:titmVFmERPPLEHfY_NSArray_4];
+                NSMutableArray *TfKpVWdSpjVTlrLF_NSArray_4 = [[NSMutableArray alloc] init];
+                [TfKpVWdSpjVTlrLF_NSArray_4 addObject:[NSNull null]];
+                [TfKpVWdSpjVTlrLF_NSArray_4 addObject:[NSNull null]];
+                [TfKpVWdSpjVTlrLF_NSArray_4 addObject:@"NA"];
+                [TfKpVWdSpjVTlrLF_NSArray_4 addObject:@"NA"];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:TfKpVWdSpjVTlrLF_NSArray_4];
+                NSMutableArray *voxhOjyYQxuJodcB_NSArray_4 = [[NSMutableArray alloc] init];
+                [voxhOjyYQxuJodcB_NSArray_4 addObject:[NSNull null]];
+                [voxhOjyYQxuJodcB_NSArray_4 addObject:[NSNull null]];
+                [voxhOjyYQxuJodcB_NSArray_4 addObject:@"NA"];
+                [voxhOjyYQxuJodcB_NSArray_4 addObject:@"NA"];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:voxhOjyYQxuJodcB_NSArray_4];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:@"RE"];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:[NSNumber numberWithLongLong:262]];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:@"00"];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:@"0"];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:[NSNull null]];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:[NSNull null]];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:@"0"];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:[NSNull null]];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:[NSNull null]];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *jpxEviMoEPWoqfAR_NSArray_4 = [[NSMutableArray alloc] init];
+                    NSMutableArray *YwPhiPAnkRKDjRBI_NSArray_5 = [[NSMutableArray alloc] init];
+                    [YwPhiPAnkRKDjRBI_NSArray_5 addObject:[NSNull null]];
+                    [YwPhiPAnkRKDjRBI_NSArray_5 addObject:@"([268]\\d{2})(\\d{2})(\\d{2})(\\d{2})"];
+                    [YwPhiPAnkRKDjRBI_NSArray_5 addObject:@"$1 $2 $3 $4"];
+                    [YwPhiPAnkRKDjRBI_NSArray_5 addObject:[NSNull null]];
+                    [YwPhiPAnkRKDjRBI_NSArray_5 addObject:@"0$1"];
+                    [YwPhiPAnkRKDjRBI_NSArray_5 addObject:@""];
+                    [YwPhiPAnkRKDjRBI_NSArray_5 addObject:[NSNumber numberWithLongLong:0]];
+                [jpxEviMoEPWoqfAR_NSArray_4 addObject:YwPhiPAnkRKDjRBI_NSArray_5];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:jpxEviMoEPWoqfAR_NSArray_4];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *EOnnCYrqdRnXJuNz_NSArray_4 = [[NSMutableArray alloc] init];
+                [EOnnCYrqdRnXJuNz_NSArray_4 addObject:[NSNull null]];
+                [EOnnCYrqdRnXJuNz_NSArray_4 addObject:[NSNull null]];
+                [EOnnCYrqdRnXJuNz_NSArray_4 addObject:@"NA"];
+                [EOnnCYrqdRnXJuNz_NSArray_4 addObject:@"NA"];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:EOnnCYrqdRnXJuNz_NSArray_4];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:[NSNull null]];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:@"262|6(?:9[23]|47)|8"];
+                NSMutableArray *GaAQokaHlGlnDMgB_NSArray_4 = [[NSMutableArray alloc] init];
+                [GaAQokaHlGlnDMgB_NSArray_4 addObject:[NSNull null]];
+                [GaAQokaHlGlnDMgB_NSArray_4 addObject:[NSNull null]];
+                [GaAQokaHlGlnDMgB_NSArray_4 addObject:@"NA"];
+                [GaAQokaHlGlnDMgB_NSArray_4 addObject:@"NA"];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:GaAQokaHlGlnDMgB_NSArray_4];
+                NSMutableArray *JhNAZJXQucqatQka_NSArray_4 = [[NSMutableArray alloc] init];
+                [JhNAZJXQucqatQka_NSArray_4 addObject:[NSNull null]];
+                [JhNAZJXQucqatQka_NSArray_4 addObject:[NSNull null]];
+                [JhNAZJXQucqatQka_NSArray_4 addObject:@"NA"];
+                [JhNAZJXQucqatQka_NSArray_4 addObject:@"NA"];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:JhNAZJXQucqatQka_NSArray_4];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:[NSNull null]];
+                NSMutableArray *UQdbOEIVTGEjNbbu_NSArray_4 = [[NSMutableArray alloc] init];
+                [UQdbOEIVTGEjNbbu_NSArray_4 addObject:[NSNull null]];
+                [UQdbOEIVTGEjNbbu_NSArray_4 addObject:[NSNull null]];
+                [UQdbOEIVTGEjNbbu_NSArray_4 addObject:@"NA"];
+                [UQdbOEIVTGEjNbbu_NSArray_4 addObject:@"NA"];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:UQdbOEIVTGEjNbbu_NSArray_4];
+                NSMutableArray *DtthihkArUfZaWHF_NSArray_4 = [[NSMutableArray alloc] init];
+                [DtthihkArUfZaWHF_NSArray_4 addObject:[NSNull null]];
+                [DtthihkArUfZaWHF_NSArray_4 addObject:[NSNull null]];
+                [DtthihkArUfZaWHF_NSArray_4 addObject:@"NA"];
+                [DtthihkArUfZaWHF_NSArray_4 addObject:@"NA"];
+            [IkgewBlvSmUPpxHl_NSArray_3 addObject:DtthihkArUfZaWHF_NSArray_4];
+        [HdYgeMOvimmQrVSk_NSDictionary_2 setObject:IkgewBlvSmUPpxHl_NSArray_3 forKey:@"RE"];
+    [ZWlERJoKREubROiz_NSDictionary_1 setObject:HdYgeMOvimmQrVSk_NSDictionary_2 forKey:@"countryToMetadata"];
+        NSMutableDictionary *uXGIefpPPBgyhPsR_NSDictionary_2 = [[NSMutableDictionary alloc] init];
+            NSMutableArray *xjvkyLEWSCLfTSWW_NSArray_3 = [[NSMutableArray alloc] init];
+            [xjvkyLEWSCLfTSWW_NSArray_3 addObject:@"AO"];
+        [uXGIefpPPBgyhPsR_NSDictionary_2 setObject:xjvkyLEWSCLfTSWW_NSArray_3 forKey:@"244"];
+            NSMutableArray *ZZFiBUYmwUrhJUSR_NSArray_3 = [[NSMutableArray alloc] init];
+            [ZZFiBUYmwUrhJUSR_NSArray_3 addObject:@"NZ"];
+        [uXGIefpPPBgyhPsR_NSDictionary_2 setObject:ZZFiBUYmwUrhJUSR_NSArray_3 forKey:@"64"];
+            NSMutableArray *NnfBUftMNCGbEvVx_NSArray_3 = [[NSMutableArray alloc] init];
+            [NnfBUftMNCGbEvVx_NSArray_3 addObject:@"RE"];
+            [NnfBUftMNCGbEvVx_NSArray_3 addObject:@"YT"];
+        [uXGIefpPPBgyhPsR_NSDictionary_2 setObject:NnfBUftMNCGbEvVx_NSArray_3 forKey:@"262"];
+            NSMutableArray *UgFPZrZbfPWVlThy_NSArray_3 = [[NSMutableArray alloc] init];
+            [UgFPZrZbfPWVlThy_NSArray_3 addObject:@"JP"];
+        [uXGIefpPPBgyhPsR_NSDictionary_2 setObject:UgFPZrZbfPWVlThy_NSArray_3 forKey:@"81"];
+            NSMutableArray *qABDQiZZQRIxguMP_NSArray_3 = [[NSMutableArray alloc] init];
+            [qABDQiZZQRIxguMP_NSArray_3 addObject:@"PL"];
+        [uXGIefpPPBgyhPsR_NSDictionary_2 setObject:qABDQiZZQRIxguMP_NSArray_3 forKey:@"48"];
+            NSMutableArray *fHDsXPzYCknaNrXj_NSArray_3 = [[NSMutableArray alloc] init];
+            [fHDsXPzYCknaNrXj_NSArray_3 addObject:@"AR"];
+        [uXGIefpPPBgyhPsR_NSDictionary_2 setObject:fHDsXPzYCknaNrXj_NSArray_3 forKey:@"54"];
+            NSMutableArray *UuHmZCwdTvZVLjQu_NSArray_3 = [[NSMutableArray alloc] init];
+            [UuHmZCwdTvZVLjQu_NSArray_3 addObject:@"SG"];
+        [uXGIefpPPBgyhPsR_NSDictionary_2 setObject:UuHmZCwdTvZVLjQu_NSArray_3 forKey:@"65"];
+            NSMutableArray *CycmEvjYTvCqsUNw_NSArray_3 = [[NSMutableArray alloc] init];
+            [CycmEvjYTvCqsUNw_NSArray_3 addObject:@"GB"];
+        [uXGIefpPPBgyhPsR_NSDictionary_2 setObject:CycmEvjYTvCqsUNw_NSArray_3 forKey:@"44"];
+            NSMutableArray *DFoyptgYbEOdlFiW_NSArray_3 = [[NSMutableArray alloc] init];
+            [DFoyptgYbEOdlFiW_NSArray_3 addObject:@"KR"];
+        [uXGIefpPPBgyhPsR_NSDictionary_2 setObject:DFoyptgYbEOdlFiW_NSArray_3 forKey:@"82"];
+            NSMutableArray *AsFEgHxcIJRVKTkg_NSArray_3 = [[NSMutableArray alloc] init];
+            [AsFEgHxcIJRVKTkg_NSArray_3 addObject:@"DE"];
+        [uXGIefpPPBgyhPsR_NSDictionary_2 setObject:AsFEgHxcIJRVKTkg_NSArray_3 forKey:@"49"];
+            NSMutableArray *DtFdTOyhIKLzFhBJ_NSArray_3 = [[NSMutableArray alloc] init];
+            [DtFdTOyhIKLzFhBJ_NSArray_3 addObject:@"BR"];
+        [uXGIefpPPBgyhPsR_NSDictionary_2 setObject:DtFdTOyhIKLzFhBJ_NSArray_3 forKey:@"55"];
+            NSMutableArray *UpBLRQlkZNZMQMtJ_NSArray_3 = [[NSMutableArray alloc] init];
+            [UpBLRQlkZNZMQMtJ_NSArray_3 addObject:@"AU"];
+        [uXGIefpPPBgyhPsR_NSDictionary_2 setObject:UpBLRQlkZNZMQMtJ_NSArray_3 forKey:@"61"];
+            NSMutableArray *LiSwYGhAYRVtsUiw_NSArray_3 = [[NSMutableArray alloc] init];
+            [LiSwYGhAYRVtsUiw_NSArray_3 addObject:@"IT"];
+        [uXGIefpPPBgyhPsR_NSDictionary_2 setObject:LiSwYGhAYRVtsUiw_NSArray_3 forKey:@"39"];
+            NSMutableArray *MBpSLLxyCWDhLhZq_NSArray_3 = [[NSMutableArray alloc] init];
+            [MBpSLLxyCWDhLhZq_NSArray_3 addObject:@"BY"];
+        [uXGIefpPPBgyhPsR_NSDictionary_2 setObject:MBpSLLxyCWDhLhZq_NSArray_3 forKey:@"375"];
+            NSMutableArray *ZuucZkqYqLkFvEnm_NSArray_3 = [[NSMutableArray alloc] init];
+            [ZuucZkqYqLkFvEnm_NSArray_3 addObject:@"AD"];
+        [uXGIefpPPBgyhPsR_NSDictionary_2 setObject:ZuucZkqYqLkFvEnm_NSArray_3 forKey:@"376"];
+            NSMutableArray *TPYbpuqMQzBsQamZ_NSArray_3 = [[NSMutableArray alloc] init];
+            [TPYbpuqMQzBsQamZ_NSArray_3 addObject:@"001"];
+        [uXGIefpPPBgyhPsR_NSDictionary_2 setObject:TPYbpuqMQzBsQamZ_NSArray_3 forKey:@"800"];
+            NSMutableArray *yeMeVrMYYrRdlEke_NSArray_3 = [[NSMutableArray alloc] init];
+            [yeMeVrMYYrRdlEke_NSArray_3 addObject:@"001"];
+        [uXGIefpPPBgyhPsR_NSDictionary_2 setObject:yeMeVrMYYrRdlEke_NSArray_3 forKey:@"979"];
+            NSMutableArray *zwVsOrelYWpiaqpa_NSArray_3 = [[NSMutableArray alloc] init];
+            [zwVsOrelYWpiaqpa_NSArray_3 addObject:@"US"];
+            [zwVsOrelYWpiaqpa_NSArray_3 addObject:@"BS"];
+        [uXGIefpPPBgyhPsR_NSDictionary_2 setObject:zwVsOrelYWpiaqpa_NSArray_3 forKey:@"1"];
+            NSMutableArray *FtYxydgzUfILMMOx_NSArray_3 = [[NSMutableArray alloc] init];
+            [FtYxydgzUfILMMOx_NSArray_3 addObject:@"MX"];
+        [uXGIefpPPBgyhPsR_NSDictionary_2 setObject:FtYxydgzUfILMMOx_NSArray_3 forKey:@"52"];
+    [ZWlERJoKREubROiz_NSDictionary_1 setObject:uXGIefpPPBgyhPsR_NSDictionary_2 forKey:@"countryCodeToRegionCodeMap"];
+
+    
+    [self setMetadata:ZWlERJoKREubROiz_NSDictionary_1];
 }
 
 

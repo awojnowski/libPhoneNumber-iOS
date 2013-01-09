@@ -3205,10 +3205,15 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
                    nationalNumber:(NSString**)nationalNumber keepRawInput:(BOOL)keepRawInput
                       phoneNumber:(NBPhoneNumber**)phoneNumber error:(NSError**)error
 {
+    if (nationalNumber == NULL || phoneNumber == NULL)
+    {
+        return 0;
+    }
+    
     UInt32 res = 0;
     @try {
         res = [self maybeExtractCountryCode:number metadata:defaultRegionMetadata
-                             nationalNumber:&(*nationalNumber) keepRawInput:keepRawInput phoneNumber:&(*phoneNumber)];
+                             nationalNumber:nationalNumber keepRawInput:keepRawInput phoneNumber:phoneNumber];
     }
     @catch (NSException *exception) {
         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:exception.reason
@@ -3223,7 +3228,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
                    nationalNumber:(NSString**)nationalNumber keepRawInput:(BOOL)keepRawInput
                       phoneNumber:(NBPhoneNumber**)phoneNumber
 {
-    if (number.length <= 0)
+    if (nationalNumber == NULL || phoneNumber == NULL || number.length <= 0)
     {
         return 0;
     }
@@ -3329,6 +3334,11 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  */
 - (BOOL)parsePrefixAsIdd:(NSString*)iddPattern sourceString:(NSString**)number
 {
+    if (number == NULL)
+    {
+        return NO;
+    }
+    
     NSString *numberStr = [(*number) copy];
     
     if ([self stringPositionByRegex:numberStr regex:iddPattern] == 0)
@@ -3377,9 +3387,14 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  */
 - (NBECountryCodeSource)maybeStripInternationalPrefixAndNormalize:(NSString**)numberStr possibleIddPrefix:(NSString*)possibleIddPrefix error:(NSError**)error
 {
+    if (numberStr == NULL)
+    {
+        return 0;
+    }
+    
     NBECountryCodeSource res = 0;
     @try {
-        res = [self maybeStripInternationalPrefixAndNormalize:&(*numberStr) possibleIddPrefix:possibleIddPrefix];
+        res = [self maybeStripInternationalPrefixAndNormalize:numberStr possibleIddPrefix:possibleIddPrefix];
     }
     @catch (NSException *exception) {
         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:exception.reason
@@ -3391,7 +3406,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
 
 - (NBECountryCodeSource)maybeStripInternationalPrefixAndNormalize:(NSString**)numberStr possibleIddPrefix:(NSString*)possibleIddPrefix
 {
-    if ((*numberStr).length == 0)
+    if (numberStr == NULL || (*numberStr).length == 0)
     {
         return NBECountryCodeSourceFROM_DEFAULT_COUNTRY;
     }
@@ -3408,9 +3423,9 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     
     // Attempt to parse the first digits as an international prefix.
     NSString *iddPattern = [possibleIddPrefix copy];
-    [self normalizeSB:&(*numberStr)];
+    [self normalizeSB:numberStr];
 
-    return [self parsePrefixAsIdd:iddPattern sourceString:&(*numberStr)] ? NBECountryCodeSourceFROM_NUMBER_WITH_IDD : NBECountryCodeSourceFROM_DEFAULT_COUNTRY;
+    return [self parsePrefixAsIdd:iddPattern sourceString:numberStr] ? NBECountryCodeSourceFROM_NUMBER_WITH_IDD : NBECountryCodeSourceFROM_DEFAULT_COUNTRY;
 }
 
 
@@ -3428,9 +3443,14 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  */
 - (BOOL)maybeStripNationalPrefixAndCarrierCode:(NSString**)number metadata:(NBPhoneMetaData*)metadata carrierCode:(NSString**)carrierCode error:(NSError**)error
 {
+    if (number == NULL)
+    {
+        return NO;
+    }
+    
     BOOL res = NO;
     @try {
-        res = [self maybeStripNationalPrefixAndCarrierCode:&(*number) metadata:metadata carrierCode:&(*carrierCode)];
+        res = [self maybeStripNationalPrefixAndCarrierCode:number metadata:metadata carrierCode:carrierCode];
     }
     @catch (NSException *exception) {
         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:exception.reason
@@ -3443,6 +3463,11 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
 
 - (BOOL)maybeStripNationalPrefixAndCarrierCode:(NSString**)number metadata:(NBPhoneMetaData*)metadata carrierCode:(NSString**)carrierCode
 {
+    if (number == NULL)
+    {
+        return NO;
+    }
+    
     NSString *numberStr = [(*number) copy];
     int numberLength = numberStr.length;
     NSString *possibleNationalPrefix = metadata.nationalPrefixForParsing;
@@ -3494,14 +3519,14 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         
         if ((noTransform && numOfGroups > 0 && [self hasValue:firstMatchStringWithGroup]) || (!noTransform && numOfGroups > 1))
         {
-            if (carrierCode != nil || (*carrierCode) != nil)
+            if (carrierCode != NULL && (*carrierCode) != nil)
             {
                 (*carrierCode) = [(*carrierCode) stringByAppendingString:firstMatchStringWithGroup];
             }
         }
         else if ((noTransform && numOfGroups > 0 && [self hasValue:firstMatchString]) || (!noTransform && numOfGroups > 1))
         {
-            if (carrierCode != nil || (*carrierCode) != nil)
+            if (carrierCode != NULL && (*carrierCode) != nil)
             {
                 (*carrierCode) = [(*carrierCode) stringByAppendingString:firstMatchString];
             }
@@ -3525,6 +3550,11 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  */
 - (NSString*)maybeStripExtension:(NSString**)number
 {
+    if (number == NULL)
+    {
+        return @"";
+    }
+    
     NSString *numberStr = [(*number) copy];
     int mStart = [self stringPositionByRegex:numberStr regex:self.EXTN_PATTERN_];
     
@@ -3613,7 +3643,8 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     @catch (NSException *exception) {
         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:exception.reason
                                                              forKey:NSLocalizedDescriptionKey];
-        (*error) = [NSError errorWithDomain:exception.name code:0 userInfo:userInfo];
+        if (error != NULL)
+            (*error) = [NSError errorWithDomain:exception.name code:0 userInfo:userInfo];
     }
     
     return phoneNumber;
@@ -3646,7 +3677,8 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     @catch (NSException *exception) {
         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:exception.reason
                                                              forKey:NSLocalizedDescriptionKey];
-        (*error) = [NSError errorWithDomain:exception.name code:0 userInfo:userInfo];
+        if (error != NULL)
+            (*error) = [NSError errorWithDomain:exception.name code:0 userInfo:userInfo];
     }
     return res;
 }
@@ -3698,7 +3730,8 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     @catch (NSException *exception) {
         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:exception.reason
                                                              forKey:NSLocalizedDescriptionKey];
-        (*error) = [NSError errorWithDomain:exception.name code:0 userInfo:userInfo];
+        if (error != NULL)
+            (*error) = [NSError errorWithDomain:exception.name code:0 userInfo:userInfo];
     }
     return res;
 }
@@ -3867,6 +3900,9 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  */
 - (void)buildNationalNumberForParsing:(NSString*)numberToParse nationalNumber:(NSString**)nationalNumber
 {
+    if (nationalNumber == NULL)
+        return;
+    
     int indexOfPhoneContext = [self indexOfStringByString:numberToParse target:RFC3966_PHONE_CONTEXT_];
     if (indexOfPhoneContext > 0)
     {
@@ -3954,7 +3990,8 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     @catch (NSException *exception) {
         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:exception.reason
                                                              forKey:NSLocalizedDescriptionKey];
-        (*error) = [NSError errorWithDomain:exception.name code:0 userInfo:userInfo];
+        if (error != NULL)
+            (*error) = [NSError errorWithDomain:exception.name code:0 userInfo:userInfo];
     }
     return res;
 }
@@ -4148,7 +4185,8 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     @catch (NSException *exception) {
         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:exception.reason
                                                              forKey:NSLocalizedDescriptionKey];
-        (*error) = [NSError errorWithDomain:exception.name code:0 userInfo:userInfo];
+        if (error != NULL)
+            (*error) = [NSError errorWithDomain:exception.name code:0 userInfo:userInfo];
     }
     return res;
 }

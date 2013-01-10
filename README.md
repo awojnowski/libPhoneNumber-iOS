@@ -28,7 +28,7 @@
 #### Step3. Generate Objective-C source code using MetadataGenerator
     Output - "NBPhoneNumberMetadata.plist" and "NBPhoneNumberMetadataForTesting.plist"
 
-#### Step4. Update exists "NBPhoneNumberMetadata.h .m" and "NBPhoneNumberMetadataForTesting.h .m" files
+#### Step4. Update exists "NBPhoneNumberMetadata.plist" and "NBPhoneNumberMetadataForTesting.plist" files
 
 ## Rule for porting from javascript libPhonenumber
 * **Remain** javascript libPhonenumber algorithms & codes(like comments etc) as possible for maintenance with *.js

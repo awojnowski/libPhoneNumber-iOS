@@ -1,5 +1,5 @@
 # libPhoneNumber for iOS
-* NBPhoneMetaDataGenerator (NSDictionaey from JSON from metadata.js)
+
 * NBPhoneNumber, NBNumberFormat, NBPhoneNumberDesc, NBPhoneMetaData (Metadata classes) 
 
 * NBPhoneNumberUtil (from phonenumberutil.js)
@@ -25,7 +25,7 @@
 #### Step2. Convert Javascript Object to JSON using PHP scripts 
     Output - "PhoneNumberMetaData.json" and "PhoneNumberMetaDataForTesting.json"
 
-#### Step3. Generate Objective-C source code using MetadataGenerator
+#### Step3. Generate Objective-C source code
     Output - "NBPhoneNumberMetadata.plist" and "NBPhoneNumberMetadataForTesting.plist"
 
 #### Step4. Update exists "NBPhoneNumberMetadata.plist" and "NBPhoneNumberMetadataForTesting.plist" files

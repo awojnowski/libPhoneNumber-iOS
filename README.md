@@ -30,5 +30,5 @@
 
 #### Step4. Update exists "NBPhoneNumberMetadata.plist" and "NBPhoneNumberMetadataForTesting.plist" files
 
-## Rule for porting from javascript libPhonenumber
-* **Remain** javascript libPhonenumber algorithms & codes(like comments etc) as possible for maintenance with *.js
+## Porting Rules
+* **Remain** javascript libPhonenumber code logic (and comments etc) as possible for maintenance with *.js

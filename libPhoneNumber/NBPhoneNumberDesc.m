@@ -41,6 +41,26 @@
 }
 
 
+- (id)initWithCoder:(NSCoder*)coder
+{
+    if (self = [super init])
+    {
+        self.nationalNumberPattern = [coder decodeObjectForKey:@"nationalNumberPattern"];
+        self.possibleNumberPattern = [coder decodeObjectForKey:@"possibleNumberPattern"];
+        self.exampleNumber = [coder decodeObjectForKey:@"exampleNumber"];
+    }
+    return self;
+}
+
+
+- (void)encodeWithCoder:(NSCoder*)coder
+{
+    [coder encodeObject:self.nationalNumberPattern forKey:@"nationalNumberPattern"];
+    [coder encodeObject:self.possibleNumberPattern forKey:@"possibleNumberPattern"];
+    [coder encodeObject:self.exampleNumber forKey:@"exampleNumber"];
+}
+
+
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"nationalNumberPattern[%@] possibleNumberPattern[%@] exampleNumber[%@]", self.nationalNumberPattern, self.possibleNumberPattern, self.exampleNumber];

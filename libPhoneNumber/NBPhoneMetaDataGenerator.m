@@ -7,7 +7,7 @@
 //
 
 #import "NBPhoneMetaDataGenerator.h"
-#import "NBPhoneNumberMetadataForTesting.h"
+#import "NBPhoneMetaData.h"
 
 #define INDENT_TAB @"    "
 NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -35,14 +35,28 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     
     @try
     {
-        if ([[NSFileManager defaultManager] createDirectoryAtPath:@"src" withIntermediateDirectories:YES attributes:nil error:nil] == NO )
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:@"src"];
+        
+        if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath])
         {
-            NSLog(@"Fail to create directory");
-            return;
+            
+            NSError* error;
+            if( [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error])
+            {
+            }
+            else
+            {
+                NSLog(@"[%@] ERROR: attempting to write create MyFolder directory", [self class]);
+            }
         }
         
-        [self createClassWithDictionary:realMetadata name:@"NBPhoneNumberMetadata"];
-        [self createClassWithDictionary:testMetadata name:@"NBPhoneNumberMetadataForTesting"];        
+        NSDictionary *mappedRealData = [self mappingObject:realMetadata];
+        NSDictionary *mappedTestData = [self mappingObject:testMetadata];
+        
+        [self createClassWithDictionary:mappedRealData name:@"NBPhoneNumberMetadata"];
+        [self createClassWithDictionary:mappedTestData name:@"NBPhoneNumberMetadataForTesting"];
     }
     @catch (NSException *exception)
     {
@@ -53,12 +67,15 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 - (void)createClassWithDictionary:(NSDictionary*)data name:(NSString*)name
 {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:@"src"];
     
-    NSString *curDir = [[NSFileManager defaultManager] currentDirectoryPath];
-    NSString *filePathHeader = [NSString stringWithFormat:@"%@/src/%@.h", curDir, name];
-    NSString *filePathSource = [NSString stringWithFormat:@"%@/src/%@.m", curDir, name];
+    NSString *filePathData = [NSString stringWithFormat:@"%@/%@.plist", dataPath, name];
+    NSData *objData = [NSKeyedArchiver archivedDataWithRootObject:data];
+    [objData writeToFile:filePathData atomically:YES];
     
+    /*
     NSString *codeStringHeader = [self generateSourceCodeWith:data name:name type:0];
     NSString *codeStringSource = [self generateSourceCodeWith:data name:name type:1];
     
@@ -67,11 +84,104 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     
     dataToWrite = [codeStringSource dataUsingEncoding:NSUTF8StringEncoding];
     [fileManager createFileAtPath:filePathSource contents:dataToWrite attributes:nil];
+    */
     
-    NSLog(@"Create file to...\n* %@\n* %@", filePathHeader, filePathSource);
+    NSData *fileData = [NSData dataWithContentsOfFile:filePathData];
+    NSDictionary *unarchiveData = [NSKeyedUnarchiver unarchiveObjectWithData:fileData];
+    
+    NSLog(@"Created file to...[%@ / %d]", filePathData, [unarchiveData count]);
 }
 
 
+- (NSDictionary*)mappingObject:(NSDictionary*)parsedJSONData
+{
+    NSMutableDictionary *resMedata = [[NSMutableDictionary alloc] init];
+    NSDictionary *countryCodeToRegionCodeMap = [parsedJSONData objectForKey:@"countryCodeToRegionCodeMap"];
+    NSDictionary *countryToMetadata = [parsedJSONData objectForKey:@"countryToMetadata"];
+    NSLog(@"- countryCodeToRegionCodeMap count [%d]", [countryCodeToRegionCodeMap count]);
+    NSLog(@"- countryToMetadata          count [%d]", [countryToMetadata count]);
+    
+    NSMutableDictionary *genetatedMetaData = [[NSMutableDictionary alloc] init];
+    
+    for (id key in [countryToMetadata allKeys])
+    {
+        id metaData = [countryToMetadata objectForKey:key];
+        
+        NBPhoneMetaData *newMetaData = [[NBPhoneMetaData alloc] init];
+        [newMetaData buildData:metaData];
+        
+        [genetatedMetaData setObject:newMetaData forKey:key];
+    }
+    
+    [resMedata setObject:countryCodeToRegionCodeMap forKey:@"countryCodeToRegionCodeMap"];
+    [resMedata setObject:genetatedMetaData forKey:@"countryToMetadata"];
+    
+    return resMedata;
+}
+
+
+- (NSString *)genRandStringLength:(int)len
+{
+    NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
+    
+    for (int i=0; i<len; i++) {
+        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random() % [letters length]]];
+    }
+    
+    return randomString;
+}
+
+
+- (NSString*)indentTab:(int)depth
+{
+    NSMutableString *resTab = [[NSMutableString alloc] initWithString:@""];
+    for (int i=0; i<depth; i++)
+    {
+        [resTab appendString:INDENT_TAB];
+    }
+    return resTab;
+}
+
+
+- (NSString *)documentsDirectory
+{
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	return [paths objectAtIndex:0];
+}
+
+
+- (NSDictionary *)generateMetaData
+{
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"PhoneNumberMetaData" ofType:@"json"];
+    return [self parseJSON:filePath];
+}
+
+
+- (NSDictionary *)generateMetaDataWithTest
+{
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"PhoneNumberMetaDataForTesting" ofType:@"json"];
+    return [self parseJSON:filePath];
+}
+
+
+- (NSDictionary *)parseJSON:(NSString*)filePath
+{
+    NSDictionary *jsonRes = nil;
+    
+    @try {
+        NSData *jsonData = [NSData dataWithContentsOfFile:filePath];
+        NSError *error = nil;
+        jsonRes = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Error : %@", exception.reason);
+    }
+    
+    return jsonRes;
+}
+
+
+/*
 - (NSString *)generateSourceCodeWith:(NSDictionary*)data name:(NSString*)name type:(int)type
 {
     NSString *srcCode = @"";
@@ -95,7 +205,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         
         // source code
         NSString *instanceName = @"";
-        [srcImplement appendString:[self encodeNSDictionary:data indent:1 createdInstanceName:&instanceName]];
+        [srcImplement appendString:[self encodeNSDictionary:data indent:0 createdInstanceName:&instanceName]];
         
         srcCode = [NSString stringWithFormat:stringContent, name, name, name, srcImplement, instanceName];
     }
@@ -103,29 +213,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     return srcCode;
 }
 
-- (NSString *)genRandStringLength:(int)len {
-    
-    NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
-    
-    for (int i=0; i<len; i++) {
-        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random() % [letters length]]];
-    }
-    
-    return randomString;
-}
-
-
-- (NSString*)indentTab:(int)depth
-{
-    NSMutableString *resTab = [[NSMutableString alloc] initWithString:@""];
-    for (int i=0; i<depth; i++)
-    {
-        [resTab appendString:INDENT_TAB];
-    }
-    return resTab;
-}
-
-
+ 
 - (NSString*)encodeNSDictionary:(NSDictionary*)object indent:(int)depth createdInstanceName:(NSString**)instanceName
 {
     NSMutableString *curImplement = [[NSMutableString alloc] initWithString:@""];
@@ -155,17 +243,21 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         }
         else if ([curObject isKindOfClass:[NSArray class]])
         {
+            [curImplement appendFormat:@"%@{\n", [self indentTab:depth]];
             NSString *tempArrayInstanceName = @"";
             buildedSyntax = [self encodeNSArray:curObject indent:depth+1 createdInstanceName:&tempArrayInstanceName];
             [curImplement appendString:buildedSyntax];
-            [curImplement appendString:[NSString stringWithFormat:currentSyntaxFormat, [self indentTab:depth], tempInstanceName, tempArrayInstanceName, curKey]];
+            [curImplement appendString:[NSString stringWithFormat:currentSyntaxFormat, [self indentTab:depth + 1], tempInstanceName, tempArrayInstanceName, curKey]];
+            [curImplement appendFormat:@"%@}\n", [self indentTab:depth]];
         }
         else if ([curObject isKindOfClass:[NSDictionary class]])
         {
+            [curImplement appendFormat:@"%@{\n", [self indentTab:depth]];
             NSString *tempDictionaryInstanceName = @"";
             buildedSyntax = [self encodeNSDictionary:curObject indent:depth+1 createdInstanceName:&tempDictionaryInstanceName];
             [curImplement appendString:buildedSyntax];
-            [curImplement appendString:[NSString stringWithFormat:currentSyntaxFormat, [self indentTab:depth], tempInstanceName, tempDictionaryInstanceName, curKey]];
+            [curImplement appendString:[NSString stringWithFormat:currentSyntaxFormat, [self indentTab:depth + 1], tempInstanceName, tempDictionaryInstanceName, curKey]];
+            [curImplement appendFormat:@"%@}\n", [self indentTab:depth]];
         }
         else if ([curObject isKindOfClass:[NSNumber class]])
         {
@@ -216,17 +308,21 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         }
         else if ([data isKindOfClass:[NSArray class]])
         {
+            [curImplement appendFormat:@"%@{\n", [self indentTab:depth]];
             NSString *tempArrayInstanceName = @"";
             buildedSyntax = [self encodeNSArray:data indent:depth+1 createdInstanceName:&tempArrayInstanceName];
             [curImplement appendString:buildedSyntax];
-            [curImplement appendString:[NSString stringWithFormat:currentSyntaxFormat, [self indentTab:depth], tempInstanceName, tempArrayInstanceName]];
+            [curImplement appendString:[NSString stringWithFormat:currentSyntaxFormat, [self indentTab:depth + 1], tempInstanceName, tempArrayInstanceName]];
+            [curImplement appendFormat:@"%@}\n", [self indentTab:depth]];
         }
         else if ([data isKindOfClass:[NSDictionary class]])
         {
+            [curImplement appendFormat:@"%@{\n", [self indentTab:depth]];
             NSString *tempDictionaryInstanceName = @"";
             buildedSyntax = [self encodeNSDictionary:data indent:depth+1 createdInstanceName:&tempDictionaryInstanceName];
             [curImplement appendString:buildedSyntax];
-            [curImplement appendString:[NSString stringWithFormat:currentSyntaxFormat, [self indentTab:depth], tempInstanceName, tempDictionaryInstanceName]];
+            [curImplement appendString:[NSString stringWithFormat:currentSyntaxFormat, [self indentTab:depth + 1], tempInstanceName, tempDictionaryInstanceName]];
+            [curImplement appendFormat:@"%@}\n", [self indentTab:depth]];
         }
         else if ([data isKindOfClass:[NSNull class]])
         {
@@ -260,39 +356,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 {
     return [NSString stringWithFormat:@"[NSNumber numberWithLongLong:%@]", object];
 }
-
-
-- (NSDictionary *)generateMetaData
-{
-    NSString *curDir = [[NSFileManager defaultManager] currentDirectoryPath];
-    NSString *filePath = [NSString stringWithFormat:@"%@/%@", curDir, @"resources/PhoneNumberMetaData.json"];
-    return [self parseJSON:filePath];
-}
-
-
-- (NSDictionary *)generateMetaDataWithTest
-{
-    NSString *curDir = [[NSFileManager defaultManager] currentDirectoryPath];
-    NSString *filePath = [NSString stringWithFormat:@"%@/%@", curDir, @"resources/PhoneNumberMetaDataForTesting.json"];
-    return [self parseJSON:filePath];
-}
-
-
-- (NSDictionary *)parseJSON:(NSString*)filePath
-{
-    NSDictionary *jsonRes = nil;
-    
-    @try {
-        NSData *jsonData = [NSData dataWithContentsOfFile:filePath];
-        NSError *error = nil;
-        jsonRes = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
-    }
-    @catch (NSException *exception) {
-        NSLog(@"Error : %@", exception.reason);
-    }
-    
-    return jsonRes;
-}
+*/
 
 
 @end

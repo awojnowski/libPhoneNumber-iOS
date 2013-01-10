@@ -99,6 +99,32 @@
 }
 
 
+- (id)initWithCoder:(NSCoder*)coder
+{
+    if (self = [super init])
+    {
+        self.pattern = [coder decodeObjectForKey:@"pattern"];
+        self.format = [coder decodeObjectForKey:@"format"];
+        self.leadingDigitsPatterns = [coder decodeObjectForKey:@"leadingDigitsPatterns"];
+        self.nationalPrefixFormattingRule = [coder decodeObjectForKey:@"nationalPrefixFormattingRule"];
+        self.nationalPrefixOptionalWhenFormatting = [[coder decodeObjectForKey:@"nationalPrefixOptionalWhenFormatting"] boolValue];
+        self.domesticCarrierCodeFormattingRule = [coder decodeObjectForKey:@"domesticCarrierCodeFormattingRule"];
+    }
+    return self;
+}
+
+
+- (void)encodeWithCoder:(NSCoder*)coder
+{
+    [coder encodeObject:self.pattern forKey:@"pattern"];
+    [coder encodeObject:self.format forKey:@"format"];
+    [coder encodeObject:self.leadingDigitsPatterns forKey:@"leadingDigitsPatterns"];
+    [coder encodeObject:self.nationalPrefixFormattingRule forKey:@"nationalPrefixFormattingRule"];
+    [coder encodeObject:[NSNumber numberWithBool:self.nationalPrefixOptionalWhenFormatting] forKey:@"nationalPrefixOptionalWhenFormatting"];
+    [coder encodeObject:self.domesticCarrierCodeFormattingRule forKey:@"domesticCarrierCodeFormattingRule"];
+}
+
+
 - (void)setData:(id)data
 {
     if ([data isKindOfClass:[NSArray class]] || [data isKindOfClass:[NSMutableArray class]])

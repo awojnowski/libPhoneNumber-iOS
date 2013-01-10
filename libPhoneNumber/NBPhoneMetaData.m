@@ -79,6 +79,75 @@
     }
 }
 
+
+- (id)initWithCoder:(NSCoder*)coder
+{
+    if (self = [super init])
+    {
+        self.generalDesc = [coder decodeObjectForKey:@"generalDesc"];
+        self.fixedLine = [coder decodeObjectForKey:@"fixedLine"];
+        self.mobile = [coder decodeObjectForKey:@"mobile"];
+        self.tollFree = [coder decodeObjectForKey:@"tollFree"];
+        self.premiumRate = [coder decodeObjectForKey:@"premiumRate"];
+        self.sharedCost = [coder decodeObjectForKey:@"sharedCost"];
+        self.personalNumber = [coder decodeObjectForKey:@"personalNumber"];
+        self.voip = [coder decodeObjectForKey:@"voip"];
+        self.pager = [coder decodeObjectForKey:@"pager"];
+        self.uan = [coder decodeObjectForKey:@"uan"];
+        self.emergency = [coder decodeObjectForKey:@"emergency"];
+        self.voicemail = [coder decodeObjectForKey:@"voicemail"];
+        self.noInternationalDialling = [coder decodeObjectForKey:@"noInternationalDialling"];
+        self.codeID = [coder decodeObjectForKey:@"codeID"];
+        self.countryCode = [[coder decodeObjectForKey:@"countryCode"] longValue];
+        self.internationalPrefix = [coder decodeObjectForKey:@"internationalPrefix"];
+        self.preferredInternationalPrefix = [coder decodeObjectForKey:@"preferredInternationalPrefix"];
+        self.nationalPrefix = [coder decodeObjectForKey:@"nationalPrefix"];
+        self.preferredExtnPrefix = [coder decodeObjectForKey:@"preferredExtnPrefix"];
+        self.nationalPrefixForParsing = [coder decodeObjectForKey:@"nationalPrefixForParsing"];
+        self.nationalPrefixTransformRule = [coder decodeObjectForKey:@"nationalPrefixTransformRule"];
+        self.sameMobileAndFixedLinePattern = [[coder decodeObjectForKey:@"sameMobileAndFixedLinePattern"] boolValue];
+        self.numberFormats = [coder decodeObjectForKey:@"numberFormats"];
+        self.intlNumberFormats = [coder decodeObjectForKey:@"intlNumberFormats"];
+        self.mainCountryForCode = [[coder decodeObjectForKey:@"mainCountryForCode"] boolValue];
+        self.leadingDigits = [coder decodeObjectForKey:@"leadingDigits"];
+        self.leadingZeroPossible = [[coder decodeObjectForKey:@"leadingZeroPossible"] boolValue];
+    }
+    return self;
+}
+
+
+- (void)encodeWithCoder:(NSCoder*)coder
+{
+    [coder encodeObject:self.generalDesc forKey:@"generalDesc"];
+    [coder encodeObject:self.fixedLine forKey:@"fixedLine"];
+    [coder encodeObject:self.mobile forKey:@"mobile"];
+    [coder encodeObject:self.tollFree forKey:@"tollFree"];
+    [coder encodeObject:self.premiumRate forKey:@"premiumRate"];
+    [coder encodeObject:self.sharedCost forKey:@"sharedCost"];
+    [coder encodeObject:self.personalNumber forKey:@"personalNumber"];
+    [coder encodeObject:self.voip forKey:@"voip"];
+    [coder encodeObject:self.pager forKey:@"pager"];
+    [coder encodeObject:self.uan forKey:@"uan"];
+    [coder encodeObject:self.emergency forKey:@"emergency"];
+    [coder encodeObject:self.voicemail forKey:@"voicemail"];
+    [coder encodeObject:self.noInternationalDialling forKey:@"noInternationalDialling"];
+    [coder encodeObject:self.codeID forKey:@"codeID"];
+    [coder encodeObject:[NSNumber numberWithLong:self.countryCode] forKey:@"countryCode"];
+    [coder encodeObject:self.internationalPrefix forKey:@"internationalPrefix"];
+    [coder encodeObject:self.preferredInternationalPrefix forKey:@"preferredInternationalPrefix"];
+    [coder encodeObject:self.nationalPrefix forKey:@"nationalPrefix"];
+    [coder encodeObject:self.preferredExtnPrefix forKey:@"preferredExtnPrefix"];
+    [coder encodeObject:self.nationalPrefixForParsing forKey:@"nationalPrefixForParsing"];
+    [coder encodeObject:self.nationalPrefixTransformRule forKey:@"nationalPrefixTransformRule"];
+    [coder encodeObject:[NSNumber numberWithBool:self.sameMobileAndFixedLinePattern] forKey:@"sameMobileAndFixedLinePattern"];
+    [coder encodeObject:self.numberFormats forKey:@"numberFormats"];
+    [coder encodeObject:self.intlNumberFormats forKey:@"intlNumberFormats"];
+    [coder encodeObject:[NSNumber numberWithBool:self.mainCountryForCode] forKey:@"mainCountryForCode"];
+    [coder encodeObject:self.leadingDigits forKey:@"leadingDigits"];
+    [coder encodeObject:[NSNumber numberWithBool:self.leadingZeroPossible] forKey:@"leadingZeroPossible"];
+}
+
+
 - (NSMutableArray*)numberFormatArrayFromData:(id)data
 {
     NSMutableArray *resArray = [[NSMutableArray alloc] init];

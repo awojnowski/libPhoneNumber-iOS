@@ -13,9 +13,6 @@
 #import "NBPhoneMetaData.h"
 #import "math.h"
 
-#import "NBPhoneNumberMetadata.h"
-#import "NBPhoneNumberMetadataForTesting.h"
-
 
 #pragma mark - Static Int variables -
 const static UInt32 NANPA_COUNTRY_CODE_ = 1;
@@ -391,8 +388,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         [self initRegularExpressionSet];
         [self initNormalizationMappings];
         
-        NBPhoneNumberMetadata *metaClass = [[NBPhoneNumberMetadata alloc] init];
-        NSDictionary *resData = [self generateMetadata:metaClass];
+        NSDictionary *resData = [self loadMetadata:@"NBPhoneNumberMetadata"];
         _coreMetaData = [resData objectForKey:@"countryToMetadata"];
         _mapCN2CCode = [resData objectForKey:@"countryCodeToRegionCodeMap"];
 
@@ -411,8 +407,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         [self initRegularExpressionSet];
         [self initNormalizationMappings];
         
-        NBPhoneNumberMetadataForTesting *metaClass = [[NBPhoneNumberMetadataForTesting alloc] init];
-        NSDictionary *resData = [self generateMetadata:metaClass];
+        NSDictionary *resData = [self loadMetadata:@"NBPhoneNumberMetadataForTesting"];
         _coreMetaData = [resData objectForKey:@"countryToMetadata"];
         _mapCN2CCode = [resData objectForKey:@"countryCodeToRegionCodeMap"];
         
@@ -423,6 +418,23 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
 }
 
 
+- (NSDictionary*)loadMetadata:(NSString*)name
+{
+    NSDictionary *unarchiveData = nil;
+    
+    @try {
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:name ofType:@"plist"];
+        NSData *fileData = [NSData dataWithContentsOfFile:filePath];
+        unarchiveData = [NSKeyedUnarchiver unarchiveObjectWithData:fileData];
+    }
+    @catch (NSException *exception) {
+        return unarchiveData;
+    }
+
+    return unarchiveData;
+}
+
+/*
 - (NSDictionary*)generateMetadata:(id)metaClass
 {
     NSMutableDictionary *resMedata = [[NSMutableDictionary alloc] init];
@@ -463,6 +475,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     
     return resMedata;
 }
+*/
 
 
 - (void)initRegularExpressionSet

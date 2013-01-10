@@ -30,20 +30,26 @@
 		FD7A066416771A54004BBEB6 /* NBPhoneNumberDesc.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7A066216771A54004BBEB6 /* NBPhoneNumberDesc.m */; };
 		FD7A066716771AFD004BBEB6 /* NBPhoneMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7A066616771AFD004BBEB6 /* NBPhoneMetaData.m */; };
 		FD7A066816771AFD004BBEB6 /* NBPhoneMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7A066616771AFD004BBEB6 /* NBPhoneMetaData.m */; };
-		FD88100E169ADECA007E507A /* PhoneNumberMetaData.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = FDBCAD1E1694402F005E0334 /* PhoneNumberMetaData.json */; };
-		FD88100F169ADECA007E507A /* PhoneNumberMetaDataForTesting.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = FDBCAD1B16943BC0005E0334 /* PhoneNumberMetaDataForTesting.json */; };
+		FD9E3ADC169E5176007E06CC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7A0622167715A0004BBEB6 /* Foundation.framework */; };
+		FD9E3AE7169E51A2007E06CC /* NBNumberFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7A065E167715FD004BBEB6 /* NBNumberFormat.m */; };
+		FD9E3AE8169E51A2007E06CC /* NBPhoneMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7A066616771AFD004BBEB6 /* NBPhoneMetaData.m */; };
+		FD9E3AE9169E51A2007E06CC /* NBPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0BD7771679DDA600B19065 /* NBPhoneNumber.m */; };
+		FD9E3AEA169E51A2007E06CC /* NBPhoneNumberDesc.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7A066216771A54004BBEB6 /* NBPhoneNumberDesc.m */; };
+		FD9E3AEB169E51A2007E06CC /* NBPhoneNumberUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7A0656167715B2004BBEB6 /* NBPhoneNumberUtil.m */; };
+		FD9E3AEE169E51D1007E06CC /* NBNumberFormat.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD7A065D167715FD004BBEB6 /* NBNumberFormat.h */; };
+		FD9E3AEF169E51D1007E06CC /* NBPhoneMetaData.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD7A066516771AFD004BBEB6 /* NBPhoneMetaData.h */; };
+		FD9E3AF0169E51D1007E06CC /* NBPhoneNumber.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD0BD7761679DDA600B19065 /* NBPhoneNumber.h */; };
+		FD9E3AF1169E51D1007E06CC /* NBPhoneNumberDefines.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FDBCAD2016954FE4005E0334 /* NBPhoneNumberDefines.h */; };
+		FD9E3AF2169E51D1007E06CC /* NBPhoneNumberDesc.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD7A066116771A54004BBEB6 /* NBPhoneNumberDesc.h */; };
+		FD9E3AF3169E51D1007E06CC /* NBPhoneNumberUtil.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD7A0655167715B2004BBEB6 /* NBPhoneNumberUtil.h */; };
+		FD9E3AF6169E62B6007E06CC /* NBPhoneMetaDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7A066E167736BD004BBEB6 /* NBPhoneMetaDataGenerator.m */; };
+		FD9E3AF9169E80C3007E06CC /* NBPhoneNumberMetadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD9E3AF7169E80C3007E06CC /* NBPhoneNumberMetadata.plist */; };
+		FD9E3AFA169E80C3007E06CC /* NBPhoneNumberMetadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD9E3AF7169E80C3007E06CC /* NBPhoneNumberMetadata.plist */; };
+		FD9E3AFB169E80C3007E06CC /* NBPhoneNumberMetadataForTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD9E3AF8169E80C3007E06CC /* NBPhoneNumberMetadataForTesting.plist */; };
+		FD9E3AFC169E80C3007E06CC /* NBPhoneNumberMetadataForTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD9E3AF8169E80C3007E06CC /* NBPhoneNumberMetadataForTesting.plist */; };
 		FDAACB55167F3F11002DB4D4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7A0624167715A0004BBEB6 /* CoreGraphics.framework */; };
-		FDB5E0E9169BB8A100AB88AE /* PhoneNumberTemplateClass.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FDB5E0E6169BB10A00AB88AE /* PhoneNumberTemplateClass.h */; };
-		FDB5E0EA169BB8A100AB88AE /* PhoneNumberTemplateClass.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = FDB5E0E7169BB10A00AB88AE /* PhoneNumberTemplateClass.m */; };
-		FDB5E10D169BE41800AB88AE /* NBPhoneNumberMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB5E10A169BE41800AB88AE /* NBPhoneNumberMetadata.m */; };
-		FDB5E10E169BE41800AB88AE /* NBPhoneNumberMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB5E10A169BE41800AB88AE /* NBPhoneNumberMetadata.m */; };
-		FDB5E10F169BE41800AB88AE /* NBPhoneNumberMetadataForTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB5E10C169BE41800AB88AE /* NBPhoneNumberMetadataForTesting.m */; };
-		FDB5E110169BE41800AB88AE /* NBPhoneNumberMetadataForTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB5E10C169BE41800AB88AE /* NBPhoneNumberMetadataForTesting.m */; };
 		FDBCAD1C16943BC0005E0334 /* PhoneNumberMetaDataForTesting.json in Resources */ = {isa = PBXBuildFile; fileRef = FDBCAD1B16943BC0005E0334 /* PhoneNumberMetaDataForTesting.json */; };
 		FDBCAD1F16944030005E0334 /* PhoneNumberMetaData.json in Resources */ = {isa = PBXBuildFile; fileRef = FDBCAD1E1694402F005E0334 /* PhoneNumberMetaData.json */; };
-		FDC61F3F169AC79B00A105A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7A0622167715A0004BBEB6 /* Foundation.framework */; };
-		FDC61F4C169AC80B00A105A7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC61F4B169AC80B00A105A7 /* main.m */; };
-		FDC61F5B169AC90400A105A7 /* NBPhoneMetaDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7A066E167736BD004BBEB6 /* NBPhoneMetaDataGenerator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,16 +63,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		FDC61F3B169AC79B00A105A7 /* CopyFiles */ = {
+		FD9E3AD9169E5176007E06CC /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
-			dstPath = ./resources;
-			dstSubfolderSpec = 6;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
 			files = (
-				FDB5E0E9169BB8A100AB88AE /* PhoneNumberTemplateClass.h in CopyFiles */,
-				FDB5E0EA169BB8A100AB88AE /* PhoneNumberTemplateClass.m in CopyFiles */,
-				FD88100E169ADECA007E507A /* PhoneNumberMetaData.json in CopyFiles */,
-				FD88100F169ADECA007E507A /* PhoneNumberMetaDataForTesting.json in CopyFiles */,
+				FD9E3AEE169E51D1007E06CC /* NBNumberFormat.h in CopyFiles */,
+				FD9E3AEF169E51D1007E06CC /* NBPhoneMetaData.h in CopyFiles */,
+				FD9E3AF0169E51D1007E06CC /* NBPhoneNumber.h in CopyFiles */,
+				FD9E3AF1169E51D1007E06CC /* NBPhoneNumberDefines.h in CopyFiles */,
+				FD9E3AF2169E51D1007E06CC /* NBPhoneNumberDesc.h in CopyFiles */,
+				FD9E3AF3169E51D1007E06CC /* NBPhoneNumberUtil.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,20 +112,15 @@
 		FD7A066216771A54004BBEB6 /* NBPhoneNumberDesc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPhoneNumberDesc.m; sourceTree = "<group>"; };
 		FD7A066516771AFD004BBEB6 /* NBPhoneMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneMetaData.h; sourceTree = "<group>"; };
 		FD7A066616771AFD004BBEB6 /* NBPhoneMetaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPhoneMetaData.m; sourceTree = "<group>"; };
-		FD7A066D167736BD004BBEB6 /* NBPhoneMetaDataGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NBPhoneMetaDataGenerator.h; path = ../libPhoneNumber/NBPhoneMetaDataGenerator.h; sourceTree = "<group>"; };
-		FD7A066E167736BD004BBEB6 /* NBPhoneMetaDataGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NBPhoneMetaDataGenerator.m; path = ../libPhoneNumber/NBPhoneMetaDataGenerator.m; sourceTree = "<group>"; };
-		FDB5E0E6169BB10A00AB88AE /* PhoneNumberTemplateClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PhoneNumberTemplateClass.h; path = MetadataGenerator/PhoneNumberTemplateClass.h; sourceTree = SOURCE_ROOT; };
-		FDB5E0E7169BB10A00AB88AE /* PhoneNumberTemplateClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PhoneNumberTemplateClass.m; path = MetadataGenerator/PhoneNumberTemplateClass.m; sourceTree = SOURCE_ROOT; };
-		FDB5E109169BE41800AB88AE /* NBPhoneNumberMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneNumberMetadata.h; sourceTree = "<group>"; };
-		FDB5E10A169BE41800AB88AE /* NBPhoneNumberMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPhoneNumberMetadata.m; sourceTree = "<group>"; };
-		FDB5E10B169BE41800AB88AE /* NBPhoneNumberMetadataForTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneNumberMetadataForTesting.h; sourceTree = "<group>"; };
-		FDB5E10C169BE41800AB88AE /* NBPhoneNumberMetadataForTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPhoneNumberMetadataForTesting.m; sourceTree = "<group>"; };
-		FDBCAD1B16943BC0005E0334 /* PhoneNumberMetaDataForTesting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PhoneNumberMetaDataForTesting.json; path = ../libPhoneNumber/PhoneNumberMetaDataForTesting.json; sourceTree = "<group>"; };
-		FDBCAD1E1694402F005E0334 /* PhoneNumberMetaData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PhoneNumberMetaData.json; path = ../libPhoneNumber/PhoneNumberMetaData.json; sourceTree = "<group>"; };
+		FD7A066D167736BD004BBEB6 /* NBPhoneMetaDataGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneMetaDataGenerator.h; sourceTree = "<group>"; };
+		FD7A066E167736BD004BBEB6 /* NBPhoneMetaDataGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPhoneMetaDataGenerator.m; sourceTree = "<group>"; };
+		FD9E3ADB169E5176007E06CC /* liblibPhoneNumberiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibPhoneNumberiOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD9E3ADF169E5176007E06CC /* libPhoneNumberiOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "libPhoneNumberiOS-Prefix.pch"; sourceTree = "<group>"; };
+		FD9E3AF7169E80C3007E06CC /* NBPhoneNumberMetadata.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = NBPhoneNumberMetadata.plist; sourceTree = "<group>"; };
+		FD9E3AF8169E80C3007E06CC /* NBPhoneNumberMetadataForTesting.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = NBPhoneNumberMetadataForTesting.plist; sourceTree = "<group>"; };
+		FDBCAD1B16943BC0005E0334 /* PhoneNumberMetaDataForTesting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PhoneNumberMetaDataForTesting.json; sourceTree = "<group>"; };
+		FDBCAD1E1694402F005E0334 /* PhoneNumberMetaData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PhoneNumberMetaData.json; sourceTree = "<group>"; };
 		FDBCAD2016954FE4005E0334 /* NBPhoneNumberDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBPhoneNumberDefines.h; sourceTree = "<group>"; };
-		FDC61F3D169AC79B00A105A7 /* metadataGenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = metadataGenerator; sourceTree = BUILT_PRODUCTS_DIR; };
-		FDC61F4A169AC7FC00A105A7 /* metadataGenerator-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "metadataGenerator-Prefix.pch"; sourceTree = "<group>"; };
-		FDC61F4B169AC80B00A105A7 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,11 +145,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FDC61F3A169AC79B00A105A7 /* Frameworks */ = {
+		FD9E3AD8169E5176007E06CC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDC61F3F169AC79B00A105A7 /* Foundation.framework in Frameworks */,
+				FD9E3ADC169E5176007E06CC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,7 +190,7 @@
 				FD7A061F167715A0004BBEB6 /* Frameworks */,
 				FD7A0626167715A0004BBEB6 /* libPhoneNumber */,
 				FD7A0644167715A1004BBEB6 /* libPhoneNumber UnitTest */,
-				FDC61F40169AC79B00A105A7 /* metadataGenerator */,
+				FD9E3ADD169E5176007E06CC /* libPhoneNumberiOS */,
 				FD7A061D167715A0004BBEB6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -197,7 +200,7 @@
 			children = (
 				FD7A061C167715A0004BBEB6 /* libPhoneNumber.app */,
 				FD7A063D167715A1004BBEB6 /* libPhoneNumberTests.octest */,
-				FDC61F3D169AC79B00A105A7 /* metadataGenerator */,
+				FD9E3ADB169E5176007E06CC /* liblibPhoneNumberiOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -228,13 +231,18 @@
 		FD7A0627167715A0004BBEB6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FD2014DF169A8A88003491D9 /* Javascript Object to JSON Converter (PHP) */,
+				FDBCAD1E1694402F005E0334 /* PhoneNumberMetaData.json */,
+				FDBCAD1B16943BC0005E0334 /* PhoneNumberMetaDataForTesting.json */,
+				FD7A066D167736BD004BBEB6 /* NBPhoneMetaDataGenerator.h */,
+				FD7A066E167736BD004BBEB6 /* NBPhoneMetaDataGenerator.m */,
+				FD7A062C167715A0004BBEB6 /* main.m */,
+				FD7A062E167715A0004BBEB6 /* libPhoneNumber-Prefix.pch */,
+				FD7A0628167715A0004BBEB6 /* libPhoneNumber-Info.plist */,
 				FD7A0636167715A0004BBEB6 /* Default-568h@2x.png */,
 				FD7A0632167715A0004BBEB6 /* Default.png */,
 				FD7A0634167715A0004BBEB6 /* Default@2x.png */,
 				FD7A0629167715A0004BBEB6 /* InfoPlist.strings */,
-				FD7A0628167715A0004BBEB6 /* libPhoneNumber-Info.plist */,
-				FD7A062E167715A0004BBEB6 /* libPhoneNumber-Prefix.pch */,
-				FD7A062C167715A0004BBEB6 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -259,47 +267,29 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		FD9E3ADD169E5176007E06CC /* libPhoneNumberiOS */ = {
+			isa = PBXGroup;
+			children = (
+				FD9E3ADE169E5176007E06CC /* Supporting Files */,
+			);
+			path = libPhoneNumberiOS;
+			sourceTree = "<group>";
+		};
+		FD9E3ADE169E5176007E06CC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FD9E3ADF169E5176007E06CC /* libPhoneNumberiOS-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		FDB5E108169BE40C00AB88AE /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				FDB5E109169BE41800AB88AE /* NBPhoneNumberMetadata.h */,
-				FDB5E10A169BE41800AB88AE /* NBPhoneNumberMetadata.m */,
-				FDB5E10B169BE41800AB88AE /* NBPhoneNumberMetadataForTesting.h */,
-				FDB5E10C169BE41800AB88AE /* NBPhoneNumberMetadataForTesting.m */,
+				FD9E3AF7169E80C3007E06CC /* NBPhoneNumberMetadata.plist */,
+				FD9E3AF8169E80C3007E06CC /* NBPhoneNumberMetadataForTesting.plist */,
 			);
 			name = Metadata;
-			sourceTree = "<group>";
-		};
-		FDB5E111169BE47300AB88AE /* Metadata Template Class */ = {
-			isa = PBXGroup;
-			children = (
-				FDB5E0E6169BB10A00AB88AE /* PhoneNumberTemplateClass.h */,
-				FDB5E0E7169BB10A00AB88AE /* PhoneNumberTemplateClass.m */,
-			);
-			name = "Metadata Template Class";
-			sourceTree = "<group>";
-		};
-		FDC61F40169AC79B00A105A7 /* metadataGenerator */ = {
-			isa = PBXGroup;
-			children = (
-				FD2014DF169A8A88003491D9 /* Javascript Object to JSON Converter (PHP) */,
-				FDB5E111169BE47300AB88AE /* Metadata Template Class */,
-				FD7A066D167736BD004BBEB6 /* NBPhoneMetaDataGenerator.h */,
-				FD7A066E167736BD004BBEB6 /* NBPhoneMetaDataGenerator.m */,
-				FDC61F43169AC79B00A105A7 /* Supporting Files */,
-			);
-			path = metadataGenerator;
-			sourceTree = "<group>";
-		};
-		FDC61F43169AC79B00A105A7 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				FDC61F4B169AC80B00A105A7 /* main.m */,
-				FDC61F4A169AC7FC00A105A7 /* metadataGenerator-Prefix.pch */,
-				FDBCAD1E1694402F005E0334 /* PhoneNumberMetaData.json */,
-				FDBCAD1B16943BC0005E0334 /* PhoneNumberMetaDataForTesting.json */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,22 +331,22 @@
 			productReference = FD7A063D167715A1004BBEB6 /* libPhoneNumberTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
-		FDC61F3C169AC79B00A105A7 /* metadataGenerator */ = {
+		FD9E3ADA169E5176007E06CC /* libPhoneNumberiOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FDC61F47169AC79B00A105A7 /* Build configuration list for PBXNativeTarget "metadataGenerator" */;
+			buildConfigurationList = FD9E3AE4169E5176007E06CC /* Build configuration list for PBXNativeTarget "libPhoneNumberiOS" */;
 			buildPhases = (
-				FDC61F39169AC79B00A105A7 /* Sources */,
-				FDC61F3A169AC79B00A105A7 /* Frameworks */,
-				FDC61F3B169AC79B00A105A7 /* CopyFiles */,
+				FD9E3AD7169E5176007E06CC /* Sources */,
+				FD9E3AD8169E5176007E06CC /* Frameworks */,
+				FD9E3AD9169E5176007E06CC /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = metadataGenerator;
-			productName = metadataGenerator;
-			productReference = FDC61F3D169AC79B00A105A7 /* metadataGenerator */;
-			productType = "com.apple.product-type.tool";
+			name = libPhoneNumberiOS;
+			productName = libPhoneNumberiOS;
+			productReference = FD9E3ADB169E5176007E06CC /* liblibPhoneNumberiOS.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -381,7 +371,7 @@
 			targets = (
 				FD7A061B167715A0004BBEB6 /* libPhoneNumber */,
 				FD7A063C167715A1004BBEB6 /* libPhoneNumberTests */,
-				FDC61F3C169AC79B00A105A7 /* metadataGenerator */,
+				FD9E3ADA169E5176007E06CC /* libPhoneNumberiOS */,
 			);
 		};
 /* End PBXProject section */
@@ -397,6 +387,8 @@
 				FD7A0637167715A0004BBEB6 /* Default-568h@2x.png in Resources */,
 				FDBCAD1C16943BC0005E0334 /* PhoneNumberMetaDataForTesting.json in Resources */,
 				FDBCAD1F16944030005E0334 /* PhoneNumberMetaData.json in Resources */,
+				FD9E3AF9169E80C3007E06CC /* NBPhoneNumberMetadata.plist in Resources */,
+				FD9E3AFB169E80C3007E06CC /* NBPhoneNumberMetadataForTesting.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +397,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD7A0649167715A1004BBEB6 /* InfoPlist.strings in Resources */,
+				FD9E3AFA169E80C3007E06CC /* NBPhoneNumberMetadata.plist in Resources */,
+				FD9E3AFC169E80C3007E06CC /* NBPhoneNumberMetadataForTesting.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +425,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD9E3AF6169E62B6007E06CC /* NBPhoneMetaDataGenerator.m in Sources */,
 				FD7A062D167715A0004BBEB6 /* main.m in Sources */,
 				FD7A0631167715A0004BBEB6 /* AppDelegate.m in Sources */,
 				FD7A0657167715B2004BBEB6 /* NBPhoneNumberUtil.m in Sources */,
@@ -438,8 +433,6 @@
 				FD7A066316771A54004BBEB6 /* NBPhoneNumberDesc.m in Sources */,
 				FD7A066716771AFD004BBEB6 /* NBPhoneMetaData.m in Sources */,
 				FD0BD7781679DDA700B19065 /* NBPhoneNumber.m in Sources */,
-				FDB5E10D169BE41800AB88AE /* NBPhoneNumberMetadata.m in Sources */,
-				FDB5E10F169BE41800AB88AE /* NBPhoneNumberMetadataForTesting.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,17 +445,18 @@
 				FD7A0660167715FD004BBEB6 /* NBNumberFormat.m in Sources */,
 				FD7A066416771A54004BBEB6 /* NBPhoneNumberDesc.m in Sources */,
 				FD7A066816771AFD004BBEB6 /* NBPhoneMetaData.m in Sources */,
-				FDB5E10E169BE41800AB88AE /* NBPhoneNumberMetadata.m in Sources */,
-				FDB5E110169BE41800AB88AE /* NBPhoneNumberMetadataForTesting.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FDC61F39169AC79B00A105A7 /* Sources */ = {
+		FD9E3AD7169E5176007E06CC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDC61F5B169AC90400A105A7 /* NBPhoneMetaDataGenerator.m in Sources */,
-				FDC61F4C169AC80B00A105A7 /* main.m in Sources */,
+				FD9E3AE7169E51A2007E06CC /* NBNumberFormat.m in Sources */,
+				FD9E3AE8169E51A2007E06CC /* NBPhoneMetaData.m in Sources */,
+				FD9E3AE9169E51A2007E06CC /* NBPhoneNumber.m in Sources */,
+				FD9E3AEA169E51A2007E06CC /* NBPhoneNumberDesc.m in Sources */,
+				FD9E3AEB169E51A2007E06CC /* NBPhoneNumberUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -613,34 +607,29 @@
 			};
 			name = Release;
 		};
-		FDC61F48169AC79B00A105A7 /* Debug */ = {
+		FD9E3AE5169E5176007E06CC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				DSTROOT = /tmp/libPhoneNumberiOS.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "metadataGenerator/metadataGenerator-Prefix.pch";
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				HEADER_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				GCC_PREFIX_HEADER = "libPhoneNumberiOS/libPhoneNumberiOS-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
-		FDC61F49169AC79B00A105A7 /* Release */ = {
+		FD9E3AE6169E5176007E06CC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				DSTROOT = /tmp/libPhoneNumberiOS.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "metadataGenerator/metadataGenerator-Prefix.pch";
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				HEADER_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				GCC_PREFIX_HEADER = "libPhoneNumberiOS/libPhoneNumberiOS-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -674,14 +663,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FDC61F47169AC79B00A105A7 /* Build configuration list for PBXNativeTarget "metadataGenerator" */ = {
+		FD9E3AE4169E5176007E06CC /* Build configuration list for PBXNativeTarget "libPhoneNumberiOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FDC61F48169AC79B00A105A7 /* Debug */,
-				FDC61F49169AC79B00A105A7 /* Release */,
+				FD9E3AE5169E5176007E06CC /* Debug */,
+				FD9E3AE6169E5176007E06CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

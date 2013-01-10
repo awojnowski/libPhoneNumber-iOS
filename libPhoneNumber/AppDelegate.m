@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "NBPhoneMetaDataGenerator.h"
 
 @implementation AppDelegate
 
@@ -15,6 +16,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];
+    
+    NBPhoneMetaDataGenerator *generator = [[NBPhoneMetaDataGenerator alloc] init];
+    [generator generateMetadataClasses];
     
     return YES;
 }

@@ -47,9 +47,11 @@
 		FD9E3AFA169E80C3007E06CC /* NBPhoneNumberMetadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD9E3AF7169E80C3007E06CC /* NBPhoneNumberMetadata.plist */; };
 		FD9E3AFB169E80C3007E06CC /* NBPhoneNumberMetadataForTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD9E3AF8169E80C3007E06CC /* NBPhoneNumberMetadataForTesting.plist */; };
 		FD9E3AFC169E80C3007E06CC /* NBPhoneNumberMetadataForTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD9E3AF8169E80C3007E06CC /* NBPhoneNumberMetadataForTesting.plist */; };
+		FD9E3B08169E8A7D007E06CC /* PhoneNumberMetaData.json in Resources */ = {isa = PBXBuildFile; fileRef = FD9E3B06169E8A7D007E06CC /* PhoneNumberMetaData.json */; };
+		FD9E3B09169E8A7D007E06CC /* PhoneNumberMetaData.json in Resources */ = {isa = PBXBuildFile; fileRef = FD9E3B06169E8A7D007E06CC /* PhoneNumberMetaData.json */; };
+		FD9E3B0A169E8A7D007E06CC /* PhoneNumberMetaDataForTesting.json in Resources */ = {isa = PBXBuildFile; fileRef = FD9E3B07169E8A7D007E06CC /* PhoneNumberMetaDataForTesting.json */; };
+		FD9E3B0B169E8A7D007E06CC /* PhoneNumberMetaDataForTesting.json in Resources */ = {isa = PBXBuildFile; fileRef = FD9E3B07169E8A7D007E06CC /* PhoneNumberMetaDataForTesting.json */; };
 		FDAACB55167F3F11002DB4D4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7A0624167715A0004BBEB6 /* CoreGraphics.framework */; };
-		FDBCAD1C16943BC0005E0334 /* PhoneNumberMetaDataForTesting.json in Resources */ = {isa = PBXBuildFile; fileRef = FDBCAD1B16943BC0005E0334 /* PhoneNumberMetaDataForTesting.json */; };
-		FDBCAD1F16944030005E0334 /* PhoneNumberMetaData.json in Resources */ = {isa = PBXBuildFile; fileRef = FDBCAD1E1694402F005E0334 /* PhoneNumberMetaData.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,8 +120,8 @@
 		FD9E3ADF169E5176007E06CC /* libPhoneNumberiOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "libPhoneNumberiOS-Prefix.pch"; sourceTree = "<group>"; };
 		FD9E3AF7169E80C3007E06CC /* NBPhoneNumberMetadata.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = NBPhoneNumberMetadata.plist; sourceTree = "<group>"; };
 		FD9E3AF8169E80C3007E06CC /* NBPhoneNumberMetadataForTesting.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = NBPhoneNumberMetadataForTesting.plist; sourceTree = "<group>"; };
-		FDBCAD1B16943BC0005E0334 /* PhoneNumberMetaDataForTesting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PhoneNumberMetaDataForTesting.json; sourceTree = "<group>"; };
-		FDBCAD1E1694402F005E0334 /* PhoneNumberMetaData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PhoneNumberMetaData.json; sourceTree = "<group>"; };
+		FD9E3B06169E8A7D007E06CC /* PhoneNumberMetaData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PhoneNumberMetaData.json; sourceTree = "<group>"; };
+		FD9E3B07169E8A7D007E06CC /* PhoneNumberMetaDataForTesting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PhoneNumberMetaDataForTesting.json; sourceTree = "<group>"; };
 		FDBCAD2016954FE4005E0334 /* NBPhoneNumberDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBPhoneNumberDefines.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -232,8 +234,6 @@
 			isa = PBXGroup;
 			children = (
 				FD2014DF169A8A88003491D9 /* Javascript Object to JSON Converter (PHP) */,
-				FDBCAD1E1694402F005E0334 /* PhoneNumberMetaData.json */,
-				FDBCAD1B16943BC0005E0334 /* PhoneNumberMetaDataForTesting.json */,
 				FD7A066D167736BD004BBEB6 /* NBPhoneMetaDataGenerator.h */,
 				FD7A066E167736BD004BBEB6 /* NBPhoneMetaDataGenerator.m */,
 				FD7A062C167715A0004BBEB6 /* main.m */,
@@ -286,6 +286,8 @@
 		FDB5E108169BE40C00AB88AE /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				FD9E3B06169E8A7D007E06CC /* PhoneNumberMetaData.json */,
+				FD9E3B07169E8A7D007E06CC /* PhoneNumberMetaDataForTesting.json */,
 				FD9E3AF7169E80C3007E06CC /* NBPhoneNumberMetadata.plist */,
 				FD9E3AF8169E80C3007E06CC /* NBPhoneNumberMetadataForTesting.plist */,
 			);
@@ -385,10 +387,10 @@
 				FD7A0633167715A0004BBEB6 /* Default.png in Resources */,
 				FD7A0635167715A0004BBEB6 /* Default@2x.png in Resources */,
 				FD7A0637167715A0004BBEB6 /* Default-568h@2x.png in Resources */,
-				FDBCAD1C16943BC0005E0334 /* PhoneNumberMetaDataForTesting.json in Resources */,
-				FDBCAD1F16944030005E0334 /* PhoneNumberMetaData.json in Resources */,
 				FD9E3AF9169E80C3007E06CC /* NBPhoneNumberMetadata.plist in Resources */,
 				FD9E3AFB169E80C3007E06CC /* NBPhoneNumberMetadataForTesting.plist in Resources */,
+				FD9E3B08169E8A7D007E06CC /* PhoneNumberMetaData.json in Resources */,
+				FD9E3B0A169E8A7D007E06CC /* PhoneNumberMetaDataForTesting.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +401,8 @@
 				FD7A0649167715A1004BBEB6 /* InfoPlist.strings in Resources */,
 				FD9E3AFA169E80C3007E06CC /* NBPhoneNumberMetadata.plist in Resources */,
 				FD9E3AFC169E80C3007E06CC /* NBPhoneNumberMetadataForTesting.plist in Resources */,
+				FD9E3B09169E8A7D007E06CC /* PhoneNumberMetaData.json in Resources */,
+				FD9E3B0B169E8A7D007E06CC /* PhoneNumberMetaDataForTesting.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,6 +674,7 @@
 				FD9E3AE6169E5176007E06CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

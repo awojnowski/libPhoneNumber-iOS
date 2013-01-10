@@ -1531,6 +1531,13 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         // for Movistar. Instead they must be dialled in national format.
         formattedNumber = [self format:numberNoExt numberFormat:NBEPhoneNumberFormatNATIONAL];
     }
+    else if ([regionCode isEqualToString:@"AE"] && [regionCallingFrom isEqualToString:@"AE"] && (numberType == NBEPhoneNumberTypeUAN))
+    {
+        // In the United Arab Emirates, numbers with the prefix 600 (UAN numbers)
+        // cannot be dialled using E164 format. Instead they must be dialled in
+        // national format.
+        formattedNumber = [self format:numberNoExt numberFormat:NBEPhoneNumberFormatNATIONAL];
+    }
     else if ([regionCode isEqualToString:@"BR"] && [regionCallingFrom isEqualToString:@"BR"] &&
                ((numberType == NBEPhoneNumberTypeFIXED_LINE) || (numberType == NBEPhoneNumberTypeMOBILE) || (numberType == NBEPhoneNumberTypeFIXED_LINE_OR_MOBILE)))
     {

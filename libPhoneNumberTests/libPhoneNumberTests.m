@@ -92,6 +92,10 @@
     ALPHA_NUMERIC_NUMBER.countryCode = 1;
     ALPHA_NUMERIC_NUMBER.nationalNumber = 80074935247;
     
+    NBPhoneNumber *AE_UAN = [[NBPhoneNumber alloc] init];
+    AE_UAN.countryCode = 971;
+    AE_UAN.nationalNumber = 600123456;
+    
     NBPhoneNumber *AR_MOBILE = [[NBPhoneNumber alloc] init];
     AR_MOBILE.countryCode = 54;
     AR_MOBILE.nationalNumber = 91187654321;
@@ -808,6 +812,8 @@
         STAssertEqualObjects(@"*2345", [phoneUtil formatNumberForMobileDialing:JP_STAR_NUMBER regionCallingFrom:@"JP" withFormatting:YES], nil);
         STAssertEqualObjects(@"+80012345678", [phoneUtil formatNumberForMobileDialing:INTERNATIONAL_TOLL_FREE regionCallingFrom:@"JP" withFormatting:NO], nil);
         STAssertEqualObjects(@"+800 1234 5678", [phoneUtil formatNumberForMobileDialing:INTERNATIONAL_TOLL_FREE regionCallingFrom:@"JP" withFormatting:YES], nil);
+        STAssertEqualObjects(@"+971600123456", [phoneUtil formatNumberForMobileDialing:AE_UAN regionCallingFrom:@"JP" withFormatting:NO], nil);
+        STAssertEqualObjects(@"600123456", [phoneUtil formatNumberForMobileDialing:AE_UAN regionCallingFrom:@"AE" withFormatting:NO], nil);
     }
 
     

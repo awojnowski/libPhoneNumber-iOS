@@ -16,6 +16,38 @@
 #import "NBNumberFormat.h"
 
 
+@interface NBPhoneNumberUtil (FOR_UNIT_TEST)
+
+- (NBPhoneNumber*)getExampleNumber:(NSString*)regionCode;
+- (NBPhoneNumber*)getExampleNumberForType:(NSString*)regionCode type:(NBEPhoneNumberType)type;
+- (NBPhoneNumber*)getExampleNumberForNonGeoEntity:(UInt32)countryCallingCode;
+- (NBPhoneMetaData*)getMetadataForRegion:(NSString*)regionCode;
+- (BOOL)canBeInternationallyDialled:(NBPhoneNumber*)number;
+- (BOOL)truncateTooLongNumber:(NBPhoneNumber*)number;
+- (NBEValidationResult)isPossibleNumberWithReason:(NBPhoneNumber*)number;
+- (BOOL)isPossibleNumber:(NBPhoneNumber*)number;
+- (BOOL)isPossibleNumberString:(NSString*)number regionDialingFrom:(NSString*)regionDialingFrom;
+- (NBEMatchType)isNumberMatch:(id)firstNumberIn second:(id)secondNumberIn;
+- (int)getLengthOfGeographicalAreaCode:(NBPhoneNumber*)phoneNumber;
+- (int)getLengthOfNationalDestinationCode:(NBPhoneNumber*)phoneNumber;
+- (BOOL)maybeStripNationalPrefixAndCarrierCode:(NSString**)numberStr metadata:(NBPhoneMetaData*)metadata carrierCode:(NSString**)carrierCode;
+- (NBECountryCodeSource)maybeStripInternationalPrefixAndNormalize:(NSString**)numberStr possibleIddPrefix:(NSString*)possibleIddPrefix;
+- (UInt32)maybeExtractCountryCode:(NSString*)number metadata:(NBPhoneMetaData*)defaultRegionMetadata
+                   nationalNumber:(NSString**)nationalNumber keepRawInput:(BOOL)keepRawInput phoneNumber:(NBPhoneNumber**)phoneNumber;
+- (NBPhoneNumber*)parse:(NSString*)numberToParse defaultRegion:(NSString*)defaultRegion;
+- (NBPhoneNumber*)parseAndKeepRawInput:(NSString*)numberToParse defaultRegion:(NSString*)defaultRegion;
+- (NSString*)format:(NBPhoneNumber*)phoneNumber numberFormat:(NBEPhoneNumberFormat)numberFormat;
+- (NSString*)formatByPattern:(NBPhoneNumber*)number numberFormat:(NBEPhoneNumberFormat)numberFormat userDefinedFormats:(NSArray*)userDefinedFormats;
+- (NSString*)formatNumberForMobileDialing:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom withFormatting:(BOOL)withFormatting;
+- (NSString*)formatOutOfCountryCallingNumber:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom;
+- (NSString*)formatOutOfCountryKeepingAlphaChars:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom;
+- (NSString*)formatNationalNumberWithCarrierCode:(NBPhoneNumber*)number carrierCode:(NSString*)carrierCode;
+- (NSString*)formatInOriginalFormat:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom;
+- (NSString*)formatNationalNumberWithPreferredCarrierCode:(NBPhoneNumber*)number fallbackCarrierCode:(NSString*)fallbackCarrierCode;
+
+@end
+
+
 @implementation libPhoneNumberTests
 
 - (void)setUp

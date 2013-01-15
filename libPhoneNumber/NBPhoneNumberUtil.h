@@ -45,22 +45,22 @@
 - (NSArray*)getRegionCodesForCountryCode:(UInt32)countryCallingCode;
 - (NSString*)getRegionCodeForNumber:(NBPhoneNumber*)phoneNumber;
 
-- (NBPhoneNumber*)getExampleNumber:(NSString*)regionCode;
+- (NBPhoneNumber*)getExampleNumber:(NSString*)regionCode DEPRECATED_ATTRIBUTE;
 - (NBPhoneNumber*)getExampleNumber:(NSString*)regionCode error:(NSError**)error;
 
-- (NBPhoneNumber*)getExampleNumberForType:(NSString*)regionCode type:(NBEPhoneNumberType)type;
+- (NBPhoneNumber*)getExampleNumberForType:(NSString*)regionCode type:(NBEPhoneNumberType)type DEPRECATED_ATTRIBUTE;
 - (NBPhoneNumber*)getExampleNumberForType:(NSString*)regionCode type:(NBEPhoneNumberType)type error:(NSError**)error;
 
-- (NBPhoneNumber*)getExampleNumberForNonGeoEntity:(UInt32)countryCallingCode;
+- (NBPhoneNumber*)getExampleNumberForNonGeoEntity:(UInt32)countryCallingCode DEPRECATED_ATTRIBUTE;
 - (NBPhoneNumber*)getExampleNumberForNonGeoEntity:(UInt32)countryCallingCode error:(NSError**)error;
 
-- (NBPhoneMetaData*)getMetadataForRegion:(NSString*)regionCode;
+- (NBPhoneMetaData*)getMetadataForRegion:(NSString*)regionCode DEPRECATED_ATTRIBUTE;
 - (NBPhoneMetaData*)getMetadataForNonGeographicalRegion:(UInt32)countryCallingCode;
 
-- (BOOL)canBeInternationallyDialled:(NBPhoneNumber*)number;
+- (BOOL)canBeInternationallyDialled:(NBPhoneNumber*)number DEPRECATED_ATTRIBUTE;
 - (BOOL)canBeInternationallyDialled:(NBPhoneNumber*)number error:(NSError**)error;
 
-- (BOOL)truncateTooLongNumber:(NBPhoneNumber*)number;
+- (BOOL)truncateTooLongNumber:(NBPhoneNumber*)number DEPRECATED_ATTRIBUTE;
 - (BOOL)truncateTooLongNumber:(NBPhoneNumber*)number error:(NSError**)error;
 
 - (BOOL)isValidNumber:(NBPhoneNumber*)number;
@@ -70,63 +70,63 @@
 - (BOOL)isNANPACountry:(NSString*)regionCode;
 - (BOOL)isLeadingZeroPossible:(UInt32)countryCallingCode;
 
-- (NBEValidationResult)isPossibleNumberWithReason:(NBPhoneNumber*)number;
+- (NBEValidationResult)isPossibleNumberWithReason:(NBPhoneNumber*)number DEPRECATED_ATTRIBUTE;
 - (NBEValidationResult)isPossibleNumberWithReason:(NBPhoneNumber*)number error:(NSError**)error;
 
-- (BOOL)isPossibleNumber:(NBPhoneNumber*)number;
+- (BOOL)isPossibleNumber:(NBPhoneNumber*)number DEPRECATED_ATTRIBUTE;
 - (BOOL)isPossibleNumber:(NBPhoneNumber*)number error:(NSError**)error;
 
-- (BOOL)isPossibleNumberString:(NSString*)number regionDialingFrom:(NSString*)regionDialingFrom;
+- (BOOL)isPossibleNumberString:(NSString*)number regionDialingFrom:(NSString*)regionDialingFrom DEPRECATED_ATTRIBUTE;
 - (BOOL)isPossibleNumberString:(NSString*)number regionDialingFrom:(NSString*)regionDialingFrom error:(NSError**)error;
 
-- (NBEMatchType)isNumberMatch:(id)firstNumberIn second:(id)secondNumberIn;
+- (NBEMatchType)isNumberMatch:(id)firstNumberIn second:(id)secondNumberIn DEPRECATED_ATTRIBUTE;
 - (NBEMatchType)isNumberMatch:(id)firstNumberIn second:(id)secondNumberIn error:(NSError**)error;
 
-- (int)getLengthOfGeographicalAreaCode:(NBPhoneNumber*)phoneNumber;
+- (int)getLengthOfGeographicalAreaCode:(NBPhoneNumber*)phoneNumber DEPRECATED_ATTRIBUTE;
 - (int)getLengthOfGeographicalAreaCode:(NBPhoneNumber*)phoneNumber error:(NSError**)error;
 
-- (int)getLengthOfNationalDestinationCode:(NBPhoneNumber*)phoneNumber;
+- (int)getLengthOfNationalDestinationCode:(NBPhoneNumber*)phoneNumber DEPRECATED_ATTRIBUTE;
 - (int)getLengthOfNationalDestinationCode:(NBPhoneNumber*)phoneNumber error:(NSError**)error;
 
-- (BOOL)maybeStripNationalPrefixAndCarrierCode:(NSString**)numberStr metadata:(NBPhoneMetaData*)metadata carrierCode:(NSString**)carrierCode;
+- (BOOL)maybeStripNationalPrefixAndCarrierCode:(NSString**)numberStr metadata:(NBPhoneMetaData*)metadata carrierCode:(NSString**)carrierCode DEPRECATED_ATTRIBUTE;
 - (BOOL)maybeStripNationalPrefixAndCarrierCode:(NSString**)numberStr metadata:(NBPhoneMetaData*)metadata carrierCode:(NSString**)carrierCode error:(NSError**)error;
 
-- (NBECountryCodeSource)maybeStripInternationalPrefixAndNormalize:(NSString**)numberStr possibleIddPrefix:(NSString*)possibleIddPrefix;
+- (NBECountryCodeSource)maybeStripInternationalPrefixAndNormalize:(NSString**)numberStr possibleIddPrefix:(NSString*)possibleIddPrefix DEPRECATED_ATTRIBUTE;
 - (NBECountryCodeSource)maybeStripInternationalPrefixAndNormalize:(NSString**)numberStr possibleIddPrefix:(NSString*)possibleIddPrefix error:(NSError**)error;
 
 - (UInt32)maybeExtractCountryCode:(NSString*)number metadata:(NBPhoneMetaData*)defaultRegionMetadata
-                   nationalNumber:(NSString**)nationalNumber keepRawInput:(BOOL)keepRawInput phoneNumber:(NBPhoneNumber**)phoneNumber;
+                   nationalNumber:(NSString**)nationalNumber keepRawInput:(BOOL)keepRawInput phoneNumber:(NBPhoneNumber**)phoneNumber DEPRECATED_ATTRIBUTE;
 - (UInt32)maybeExtractCountryCode:(NSString*)number metadata:(NBPhoneMetaData*)defaultRegionMetadata
                    nationalNumber:(NSString**)nationalNumber keepRawInput:(BOOL)keepRawInput phoneNumber:(NBPhoneNumber**)phoneNumber error:(NSError**)error;
 
-- (NBPhoneNumber*)parse:(NSString*)numberToParse defaultRegion:(NSString*)defaultRegion;
+- (NBPhoneNumber*)parse:(NSString*)numberToParse defaultRegion:(NSString*)defaultRegion DEPRECATED_ATTRIBUTE;
 - (NBPhoneNumber*)parse:(NSString*)numberToParse defaultRegion:(NSString*)defaultRegion error:(NSError**)error;
 
-- (NBPhoneNumber*)parseAndKeepRawInput:(NSString*)numberToParse defaultRegion:(NSString*)defaultRegion;
+- (NBPhoneNumber*)parseAndKeepRawInput:(NSString*)numberToParse defaultRegion:(NSString*)defaultRegion DEPRECATED_ATTRIBUTE;
 - (NBPhoneNumber*)parseAndKeepRawInput:(NSString*)numberToParse defaultRegion:(NSString*)defaultRegion error:(NSError**)error;
 
-- (NSString*)format:(NBPhoneNumber*)phoneNumber numberFormat:(NBEPhoneNumberFormat)numberFormat;
+- (NSString*)format:(NBPhoneNumber*)phoneNumber numberFormat:(NBEPhoneNumberFormat)numberFormat DEPRECATED_ATTRIBUTE;
 - (NSString*)format:(NBPhoneNumber*)phoneNumber numberFormat:(NBEPhoneNumberFormat)numberFormat error:(NSError**)error;
 
-- (NSString*)formatByPattern:(NBPhoneNumber*)number numberFormat:(NBEPhoneNumberFormat)numberFormat userDefinedFormats:(NSArray*)userDefinedFormats;
+- (NSString*)formatByPattern:(NBPhoneNumber*)number numberFormat:(NBEPhoneNumberFormat)numberFormat userDefinedFormats:(NSArray*)userDefinedFormats DEPRECATED_ATTRIBUTE;
 - (NSString*)formatByPattern:(NBPhoneNumber*)number numberFormat:(NBEPhoneNumberFormat)numberFormat userDefinedFormats:(NSArray*)userDefinedFormats error:(NSError**)error;
 
 - (NSString*)formatNumberForMobileDialing:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom withFormatting:(BOOL)withFormatting;
 - (NSString*)formatNumberForMobileDialing:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom withFormatting:(BOOL)withFormatting error:(NSError**)error;
 
-- (NSString*)formatOutOfCountryCallingNumber:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom;
+- (NSString*)formatOutOfCountryCallingNumber:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom DEPRECATED_ATTRIBUTE;
 - (NSString*)formatOutOfCountryCallingNumber:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom error:(NSError**)error;
 
-- (NSString*)formatOutOfCountryKeepingAlphaChars:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom;
+- (NSString*)formatOutOfCountryKeepingAlphaChars:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom DEPRECATED_ATTRIBUTE;
 - (NSString*)formatOutOfCountryKeepingAlphaChars:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom error:(NSError**)error;
 
-- (NSString*)formatNationalNumberWithCarrierCode:(NBPhoneNumber*)number carrierCode:(NSString*)carrierCode;
+- (NSString*)formatNationalNumberWithCarrierCode:(NBPhoneNumber*)number carrierCode:(NSString*)carrierCode DEPRECATED_ATTRIBUTE;
 - (NSString*)formatNationalNumberWithCarrierCode:(NBPhoneNumber*)number carrierCode:(NSString*)carrierCode error:(NSError**)error;
 
-- (NSString*)formatInOriginalFormat:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom;
+- (NSString*)formatInOriginalFormat:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom DEPRECATED_ATTRIBUTE;
 - (NSString*)formatInOriginalFormat:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom error:(NSError**)error;
 
-- (NSString*)formatNationalNumberWithPreferredCarrierCode:(NBPhoneNumber*)number fallbackCarrierCode:(NSString*)fallbackCarrierCode;
+- (NSString*)formatNationalNumberWithPreferredCarrierCode:(NBPhoneNumber*)number fallbackCarrierCode:(NSString*)fallbackCarrierCode DEPRECATED_ATTRIBUTE;
 - (NSString*)formatNationalNumberWithPreferredCarrierCode:(NBPhoneNumber*)number fallbackCarrierCode:(NSString*)fallbackCarrierCode error:(NSError**)error;
 
 @end

@@ -16,6 +16,8 @@
     - NBPhoneNumberMetadata.h, .m
     - NBPhoneNumberMetadataForTesting.h, .m
 
+    See sample test code from "libPhoneNumber-iOS / libPhoneNumberTests / libPhoneNumberTests.m"
+
 ### Visit http://code.google.com/p/libphonenumber/ for more information
 
 ## Metadata managing (updating metadata) 

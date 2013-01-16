@@ -1,9 +1,8 @@
 //
 //  NBPhoneNumber.h
 //  libPhoneNumber
-//
-//  Created by ishtar on 12. 12. 13..
-//  Copyright (c) 2012년 NHN. All rights reserved.
+//  
+//  Created by NHN Corp. Last Edited by BAND dev team (band_dev@nhn.com)
 //
 
 #import <Foundation/Foundation.h>

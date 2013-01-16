@@ -2,8 +2,7 @@
 //  NBPhoneNumberDefines.h
 //  libPhoneNumber
 //
-//  Created by ishtar on 13. 1. 3..
-//  Copyright (c) 2013년 NHN. All rights reserved.
+//  Created by NHN Corp. Last Edited by BAND dev team (band_dev@nhn.com)
 //
 
 #ifndef libPhoneNumber_NBPhoneNumberDefines_h

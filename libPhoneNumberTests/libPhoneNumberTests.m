@@ -3,8 +3,7 @@
 //  libPhoneNumberTests.m
 //  libPhoneNumberTests
 //
-//  Created by ishtar on 12. 12. 11..
-//  Copyright (c) 2012년 NHN. All rights reserved.
+//  Created by NHN Corp. Last Edited by BAND dev team (band_dev@nhn.com)
 //
 
 #import "libPhoneNumberTests.h"
@@ -96,7 +95,7 @@
     NSLog(@"-------------- customTest");
     
     NSError *aError = nil;
-    NBPhoneNumber *myNumber1 = [phoneUtil parse:@"01065134242" defaultRegion:@"KR" error:&aError];
+    NBPhoneNumber *myNumber1 = [phoneUtil parse:@"0000" defaultRegion:@"KR" error:&aError];
     if (aError == nil)
     {
         NSLog(@"isValidPhoneNumber ? [%@]", [phoneUtil isValidNumber:myNumber1] ? @"YES":@"NO");

@@ -25,7 +25,7 @@
 #### Step2. Convert Javascript Object to JSON using PHP scripts 
     Output - "PhoneNumberMetaData.json" and "PhoneNumberMetaDataForTesting.json"
 
-#### Step3. Generate Objective-C source code
+#### Step3. Generate binary file from NBPhoneMetaDataGenerator
     Output - "NBPhoneNumberMetadata.plist" and "NBPhoneNumberMetadataForTesting.plist"
 
 #### Step4. Update exists "NBPhoneNumberMetadata.plist" and "NBPhoneNumberMetadataForTesting.plist" files

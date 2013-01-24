@@ -95,7 +95,7 @@
     NSLog(@"-------------- customTest");
     
     NSError *aError = nil;
-    NBPhoneNumber *myNumber1 = [phoneUtil parse:@"0000" defaultRegion:@"KR" error:&aError];
+    NBPhoneNumber *myNumber1 = [phoneUtil parse:@"6766077303" defaultRegion:@"AT" error:&aError];
     if (aError == nil)
     {
         NSLog(@"isValidPhoneNumber ? [%@]", [phoneUtil isValidNumber:myNumber1] ? @"YES":@"NO");

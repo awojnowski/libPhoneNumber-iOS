@@ -3155,7 +3155,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
  */
 - (UInt32)extractCountryCode:(NSString*)fullNumber nationalNumber:(NSString**)nationalNumber
 {
-    if (nationalNumber == NULL || (fullNumber.length == 0) || ([[fullNumber substringToIndex:1] isEqualToString:@"0"]))
+    if ((fullNumber.length == 0) || ([[fullNumber substringToIndex:1] isEqualToString:@"0"]))
     {
         // Country codes do not begin with a '0'.
         return 0;
@@ -3171,7 +3171,8 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         NSArray *regionCodes = [self regionCodeFromCountryCode:potentialCountryCode];
         if (regionCodes != nil && regionCodes.count > 0)
         {
-            (*nationalNumber) = [NSString stringWithFormat:@"%@%@", (*nationalNumber), [fullNumber substringFromIndex:i]];
+            if (nationalNumber != NULL)
+                (*nationalNumber) = [NSString stringWithFormat:@"%@%@", (*nationalNumber), [fullNumber substringFromIndex:i]];
             return potentialCountryCode;
         }
     }

@@ -3172,7 +3172,12 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         if (regionCodes != nil && regionCodes.count > 0)
         {
             if (nationalNumber != NULL)
-                (*nationalNumber) = [NSString stringWithFormat:@"%@%@", (*nationalNumber), [fullNumber substringFromIndex:i]];
+            {
+                if ((*nationalNumber) == nil)
+                    (*nationalNumber) = [NSString stringWithFormat:@"%@", [fullNumber substringFromIndex:i]];
+                else
+                    (*nationalNumber) = [NSString stringWithFormat:@"%@%@", (*nationalNumber), [fullNumber substringFromIndex:i]];
+            }
             return potentialCountryCode;
         }
     }

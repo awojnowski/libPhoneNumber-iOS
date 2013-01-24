@@ -108,6 +108,11 @@
     {
         NSLog(@"Error : %@", [aError localizedDescription]);
     }
+    
+    NSLog (@"extractCountryCode [%ld]", [phoneUtil extractCountryCode:@"823213123123" nationalNumber:nil]);
+    NSString *res = nil;
+    UInt32 dRes = [phoneUtil extractCountryCode:@"823213123123" nationalNumber:&res];
+    NSLog (@"extractCountryCode [%lu] [%@]", dRes, res);
 }
 
 

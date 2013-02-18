@@ -1724,6 +1724,8 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         if (error != NULL)
             (*error) = [NSError errorWithDomain:exception.name code:0 userInfo:userInfo];
     }
+    
+    return res;
 }
 
 

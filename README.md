@@ -15,6 +15,8 @@
     
     - NBPhoneNumberMetadata.h, .m
     - NBPhoneNumberMetadataForTesting.h, .m
+    
+    - Add "NBPhoneNumberMetadata.plist" and "NBPhoneNumberMetadataForTesting.plist" to bundle resources
 
     See sample test code from "libPhoneNumber-iOS / libPhoneNumberTests / libPhoneNumberTests.m"
 

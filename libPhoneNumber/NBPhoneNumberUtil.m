@@ -2704,7 +2704,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
 - (NSString*)getRegionCodeForCountryCode:(UInt32)countryCallingCode
 {
     NSArray *regionCodes = [self regionCodeFromCountryCode:countryCallingCode];
-    return regionCodes == nil ? UNKNOWN_REGION_ : regionCodes[0];
+    return regionCodes == nil ? UNKNOWN_REGION_ : [regionCodes objectAtIndex:0];
 }
 
 
@@ -3378,9 +3378,9 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
         NSRegularExpression *currentPattern = self.CAPTURING_DIGIT_PATTERN;
         NSArray *matchedGroups = [currentPattern matchesInString:remainString options:0 range:NSMakeRange(0, remainString.length)];
         
-        if (matchedGroups && [matchedGroups count] > 0 && matchedGroups[0] != nil)
+        if (matchedGroups && [matchedGroups count] > 0 && [matchedGroups objectAtIndex:0] != nil)
         {
-            NSString *digitMatched = [remainString substringWithRange:((NSTextCheckingResult*)matchedGroups[0]).range];
+            NSString *digitMatched = [remainString substringWithRange:((NSTextCheckingResult*)[matchedGroups objectAtIndex:0]).range];
             if (digitMatched.length > 0)
             {
                 NSString *normalizedGroup = [self normalizeDigitsOnly:digitMatched];

@@ -12,6 +12,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/me2day/libPhoneNumber-iOS.git", :tag => "0.5.3" }
   s.platform     = :ios, '4.3'
   s.requires_arc = true
-  s.source_files = 'libPhoneNumber/NBPhoneNumber.{h,m}', 'libPhoneNumber/NBNumberFormat.{h,m}', 'libPhoneNumber/NBPhoneNumberDesc.{h,m}', 'libPhoneNumber/NBPhoneMetaData.{h,m}', 'libPhoneNumber/NBPhoneNumberUtil.{h,m}', Eo'libPhoneNumber/NBPhoneNumberDefines.h'
+  s.source_files = 'libPhoneNumber/NBPhoneNumber.{h,m}', 'libPhoneNumber/NBNumberFormat.{h,m}', 'libPhoneNumber/NBPhoneNumberDesc.{h,m}', 'libPhoneNumber/NBPhoneMetaData.{h,m}', 'libPhoneNumber/NBPhoneNumberUtil.{h,m}', 'libPhoneNumber/NBPhoneNumberDefines.h'
   s.resources = "libPhoneNumber/**/PhoneNumberMetaData.json"
 end

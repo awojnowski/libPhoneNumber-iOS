@@ -1,4 +1,3 @@
-
 //
 //  libPhoneNumberTests.m
 //  libPhoneNumberTests
@@ -70,7 +69,7 @@
     switch (type) {
         case 0: return @"FIXED_LINE";
         case 1: return @"MOBILE";
-        case 2: return @"FIXE_LINE_OR_MOBILE";
+        case 2: return @"FIXED_LINE_OR_MOBILE";
         case 3: return @"TOLL_FREE";
         case 4: return @"PREMIUM_RATE";
         case 5: return @"SHARED_COST";

@@ -4,6 +4,9 @@
 
 * NBPhoneNumberUtil (from phonenumberutil.js)
 
+## Install
+### Use [CocoaPods](http://cocoapods.org/?q=libPhoneNumber-iOS)
+
 ## Usage
 ### Add source files to your projects from libPhoneNumber
     - NBPhoneNumberUtil.h, .m

@@ -1,0 +1,1093 @@
+//
+//  NBAsYouTypeFormatter.m
+//  libPhoneNumber
+//
+//  Created by ishtar on 13. 2. 25..
+//  Copyright (c) 2013년 NHN. All rights reserved.
+//
+
+#import "NBAsYouTypeFormatter.h"
+#import "NBPhoneMetaData.h"
+#import "NBNumberFormat.h"
+
+
+@interface NBAsYouTypeFormatter ()
+
+@property (nonatomic, strong, readwrite) NSString *DIGIT_PLACEHOLDER_;
+@property (nonatomic, strong, readwrite) NSString *currentOutput_;
+@property (nonatomic, strong, readwrite) NSString *currentFormattingPattern_;
+
+@end
+
+
+@implementation NBAsYouTypeFormatter
+
+- (id)init
+{
+    self = [super init];
+    
+    if (self)
+    {
+        /**
+         * The digits that have not been entered yet will be represented by a \u2008,
+         * the punctuation space.
+         * @const
+         * @type {string}
+         * @private
+         */
+        self.DIGIT_PLACEHOLDER_ = @"\u2008";
+        
+        /**
+         * @type {string}
+         * @private
+         */
+        self.currentOutput_ = @"";
+        
+        /**
+         * @type {!goog.string.StringBuffer}
+         * @private
+         self.formattingTemplate_ = new goog.string.StringBuffer();
+         */
+        
+        /**
+         * @type {RegExp}
+         * @private
+         self.DIGIT_PATTERN_ = new RegExp(self.DIGIT_PLACEHOLDER_);
+         */
+        
+        /**
+         * The pattern from numberFormat that is currently used to create
+         * formattingTemplate.
+         * @type {string}
+         * @private
+         */
+        self.currentFormattingPattern_ = @"";
+        
+        /**
+         * @type {!goog.string.StringBuffer}
+         * @private
+         */
+        self.accruedInput_ = new goog.string.StringBuffer();
+        
+        /**
+         * @type {!goog.string.StringBuffer}
+         * @private
+         */
+        self.accruedInputWithoutFormatting_ = new goog.string.StringBuffer();
+        
+        /**
+         * This indicates whether AsYouTypeFormatter is currently doing the
+         * formatting.
+         * @type {boolean}
+         * @private
+         */
+        self.ableToFormat_ = true;
+        
+        /**
+         * Set to true when users enter their own formatting. AsYouTypeFormatter will
+         * do no formatting at all when this is set to true.
+         * @type {boolean}
+         * @private
+         */
+        self.inputHasFormatting_ = false;
+        
+        /**
+         * This is set to true when we know the user is entering a full national
+         * significant number, since we have either detected a national prefix or an
+         * international dialing prefix. When this is true, we will no longer use
+         * local number formatting patterns.
+         * @type {boolean}
+         * @private
+         */
+        self.isCompleteNumber_ = false;
+        
+        /**
+         * @type {boolean}
+         * @private
+         */
+        self.isExpectingCountryCallingCode_ = false;
+        
+        /**
+         * @type {i18n.phonenumbers.PhoneNumberUtil}
+         * @private
+         */
+        self.phoneUtil_ = i18n.phonenumbers.PhoneNumberUtil.getInstance();
+        
+        /**
+         * @type {number}
+         * @private
+         */
+        self.lastMatchPosition_ = 0;
+        
+        /**
+         * The position of a digit upon which inputDigitAndRememberPosition is most
+         * recently invoked, as found in the original sequence of characters the user
+         * entered.
+         * @type {number}
+         * @private
+         */
+        self.originalPosition_ = 0;
+        
+        /**
+         * The position of a digit upon which inputDigitAndRememberPosition is most
+         * recently invoked, as found in accruedInputWithoutFormatting.
+         * entered.
+         * @type {number}
+         * @private
+         */
+        self.positionToRemember_ = 0;
+        
+        /**
+         * This contains anything that has been entered so far preceding the national
+         * significant number, and it is formatted (e.g. with space inserted). For
+         * example, this can contain IDD, country code, and/or NDD, etc.
+         * @type {!goog.string.StringBuffer}
+         * @private
+         */
+        self.prefixBeforeNationalNumber_ = new goog.string.StringBuffer();
+        
+        /**
+         * @type {boolean}
+         * @private
+         */
+        self.shouldAddSpaceAfterNationalPrefix_ = false;
+        
+        /**
+         * This contains the national prefix that has been extracted. It contains only
+         * digits without formatting.
+         * @type {string}
+         * @private
+         */
+        self.nationalPrefixExtracted_ = @"";
+        
+        /**
+         * @type {!goog.string.StringBuffer}
+         * @private
+         */
+        self.nationalNumber_ = new goog.string.StringBuffer();
+        
+        /**
+         * @type {Array.<i18n.phonenumbers.NumberFormat>}
+         * @private
+         */
+        self.possibleFormats_ = [];
+    }
+    
+    return self;
+}
+
+/**
+ * Constructs an AsYouTypeFormatter for the specific region.
+ *
+ * @param {string} regionCode the ISO 3166-1 two-letter region code that denotes
+ *     the region where the phone number is being entered.
+ * @constructor
+ */
+
+- (id)initWithRegionCode:(NSString*)regionCode
+{
+    self = [self init];
+    
+    if (self)
+    {
+        /**
+         * @type {string}
+         * @private
+         */
+        self.defaultCountry_ = regionCode;
+        self.currentMetaData_ = self.getMetadataForRegion_(self.defaultCountry_);
+        /**
+         * @type {i18n.phonenumbers.PhoneMetadata}
+         * @private
+         */
+        self.defaultMetaData_ = self.currentMetaData_;
+        
+        /**
+         * @const
+         * @type {i18n.phonenumbers.PhoneMetadata}
+         * @private
+         NBPhoneMetaData *EMPTY_METADATA_ = [[NBPhoneMetaData alloc] init];
+         EMPTY_METADATA_
+         .EMPTY_METADATA_
+         .setInternationalPrefix('NA');
+         */
+        
+        /**
+         * A pattern that is used to match character classes in regular expressions.
+         * An example of a character class is [1-4].
+         * @const
+         * @type {RegExp}
+         * @private
+         .CHARACTER_CLASS_PATTERN_ =
+         /\[([^\[\]])*\]/g;
+         */
+        
+        /**
+         * Any digit in a regular expression that actually denotes a digit. For
+         * example, in the regular expression 80[0-2]\d{6,10}, the first 2 digits
+         * (8 and 0) are standalone digits, but the rest are not.
+         * Two look-aheads are needed because the number following \\d could be a
+         * two-digit number, since the phone number can be as long as 15 digits.
+         * @const
+         * @type {RegExp}
+         * @private
+         .STANDALONE_DIGIT_PATTERN_ =
+         /\d(?=[^,}][^,}])/g;
+         */
+        
+        /**
+         * A pattern that is used to determine if a numberFormat under availableFormats
+         * is eligible to be used by the AYTF. It is eligible when the format element
+         * under numberFormat contains groups of the dollar sign followed by a single
+         * digit, separated by valid phone number punctuation. This prevents invalid
+         * punctuation (such as the star sign in Israeli star numbers) getting into the
+         * output of the AYTF.
+         * @const
+         * @type {RegExp}
+         * @private
+         .ELIGIBLE_FORMAT_PATTERN_ = new RegExp(
+         '^[' + i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION + ']*' +
+         '(\\$\\d[' + i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION + ']*)+$');
+         */
+    }
+    
+    return self;
+}
+
+
+/**
+ * Character used when appropriate to separate a prefix, such as a long NDD or a
+ * country calling code, from the national number.
+ * @const
+ * @type {string}
+ * @private
+ */
+NSString *SEPARATOR_BEFORE_NATIONAL_NUMBER_ = @" ";
+
+
+/**
+ * A set of characters that, if found in a national prefix formatting rules, are
+ * an indicator to us that we should separate the national prefix from the
+ * number when formatting.
+ * @const
+ * @type {RegExp}
+ * @private
+ */
+NSString *NATIONAL_PREFIX_SEPARATORS_PATTERN_ = @"/[- ]/";
+
+
+/**
+ * This is the minimum length of national number accrued that is required to
+ * trigger the formatter. The first element of the leadingDigitsPattern of
+ * each numberFormat contains a regular expression that matches up to this
+ * number of digits.
+ * @const
+ * @type {number}
+ * @private
+ */
+int MIN_LEADING_DIGITS_LENGTH_ = 3;
+
+
+/**
+ * The metadata needed by this class is the same for all regions sharing the
+ * same country calling code. Therefore, we return the metadata for "main"
+ * region for this country calling code.
+ * @param {string} regionCode an ISO 3166-1 two-letter region code.
+ * @return {i18n.phonenumbers.PhoneMetadata} main metadata for this region.
+ * @private
+ */
+- (NBPhoneMetadata*)getMetadataForRegion
+{
+    
+    /** @type {number} */
+    var countryCallingCode = self.phoneUtil_.getCountryCodeForRegion(regionCode);
+    /** @type {string} */
+    var mainCountry =
+    self.phoneUtil_.getRegionCodeForCountryCode(countryCallingCode);
+    /** @type {i18n.phonenumbers.PhoneMetadata} */
+    var metadata = self.phoneUtil_.getMetadataForRegion(mainCountry);
+    if (metadata != null) {
+        return metadata;
+    }
+    // Set to a default instance of the metadata. This allows us to function with
+    // an incorrect region code, even if formatting only works for numbers
+    // specified with '+'.
+    return .EMPTY_METADATA_;
+};
+
+
+/**
+ * @return {boolean} true if a new template is created as opposed to reusing the
+ *     existing template.
+ * @private
+ */
+- (BOOL)maybeCreateNewTemplate
+{    
+    // When there are multiple available formats, the formatter uses the first
+    // format where a formatting template could be created.
+    /** @type {number} */
+    var possibleFormatsLength = self.possibleFormats_.length;
+    for (var i = 0; i < possibleFormatsLength; ++i) {
+        /** @type {i18n.phonenumbers.NumberFormat} */
+        var numberFormat = self.possibleFormats_[i];
+        /** @type {string} */
+        var pattern = numberFormat.getPatternOrDefault();
+        if (self.currentFormattingPattern_ == pattern) {
+            return false;
+        }
+        if (self.createFormattingTemplate_(numberFormat)) {
+            self.currentFormattingPattern_ = pattern;
+            self.shouldAddSpaceAfterNationalPrefix_ =
+            .
+            NATIONAL_PREFIX_SEPARATORS_PATTERN_.test(
+                                                     numberFormat.getNationalPrefixFormattingRule());
+            // With a new formatting template, the matched position using the old
+            // template needs to be reset.
+            self.lastMatchPosition_ = 0;
+            return true;
+        }
+    }
+    self.ableToFormat_ = false;
+    return false;
+};
+
+
+/**
+ * @param {string} leadingThreeDigits first three digits of entered number.
+ * @private
+ */
+.prototype.getAvailableFormats_ =
+function(leadingThreeDigits) {
+    
+    /** @type {Array.<i18n.phonenumbers.NumberFormat>} */
+    var formatList =
+    (self.isCompleteNumber_ &&
+     self.currentMetaData_.intlNumberFormatCount() > 0) ?
+    self.currentMetaData_.intlNumberFormatArray() :
+    self.currentMetaData_.numberFormatArray();
+    /** @type {number} */
+    var formatListLength = formatList.length;
+    for (var i = 0; i < formatListLength; ++i) {
+        /** @type {i18n.phonenumbers.NumberFormat} */
+        var format = formatList[i];
+        /** @type {boolean} */
+        var nationalPrefixIsUsedByCountry =
+        self.currentMetaData_.hasNationalPrefix();
+        if (!nationalPrefixIsUsedByCountry || self.isCompleteNumber_ ||
+            format.getNationalPrefixOptionalWhenFormatting() ||
+            self.phoneUtil_.formattingRuleHasFirstGroupOnly(
+                                                            format.getNationalPrefixFormattingRuleOrDefault())) {
+                if (self.isFormatEligible_(format.getFormatOrDefault())) {
+                    self.possibleFormats_.push(format);
+                }
+            }
+    }
+    self.narrowDownPossibleFormats_(leadingThreeDigits);
+};
+
+
+/**
+ * @param {string} format
+ * @return {boolean}
+ * @private
+ */
+- (BOOL)isFormatEligible
+{
+    return self.ELIGIBLE_FORMAT_PATTERN_.test(format);
+};
+
+
+/**
+ * @param {string} leadingDigits
+ * @private
+ */
+.prototype.narrowDownPossibleFormats_ =
+function(leadingDigits) {
+    
+    /** @type {Array.<i18n.phonenumbers.NumberFormat>} */
+    var possibleFormats = [];
+    /** @type {number} */
+    var indexOfLeadingDigitsPattern =
+    leadingDigits.length -
+    .MIN_LEADING_DIGITS_LENGTH_;
+    /** @type {number} */
+    var possibleFormatsLength = self.possibleFormats_.length;
+    for (var i = 0; i < possibleFormatsLength; ++i) {
+        /** @type {i18n.phonenumbers.NumberFormat} */
+        var format = self.possibleFormats_[i];
+        if (format.leadingDigitsPatternCount() > indexOfLeadingDigitsPattern) {
+            /** @type {string} */
+            var leadingDigitsPattern =
+            format.getLeadingDigitsPatternOrDefault(indexOfLeadingDigitsPattern);
+            if (leadingDigits.search(leadingDigitsPattern) == 0) {
+                possibleFormats.push(self.possibleFormats_[i]);
+            }
+        } else {
+            // else the particular format has no more specific leadingDigitsPattern,
+            // and it should be retained.
+            possibleFormats.push(self.possibleFormats_[i]);
+        }
+    }
+    self.possibleFormats_ = possibleFormats;
+};
+
+
+/**
+ * @param {i18n.phonenumbers.NumberFormat} format
+ * @return {boolean}
+ * @private
+ */
+- (BOOL)createFormattingTemplate
+{    
+    /** @type {string} */
+    var numberPattern = format.getPatternOrDefault();
+    
+    // The formatter doesn't format numbers when numberPattern contains '|', e.g.
+    // (20|3)\d{4}. In those cases we quickly return.
+    if (numberPattern.indexOf('|') != -1) {
+        return false;
+    }
+    
+    // Replace anything in the form of [..] with \d
+    numberPattern = numberPattern.replace(
+                                          .CHARACTER_CLASS_PATTERN_, '\\d');
+    
+    // Replace any standalone digit (not the one in d{}) with \d
+    numberPattern = numberPattern.replace(
+                                          .STANDALONE_DIGIT_PATTERN_, '\\d');
+    self.formattingTemplate_.clear();
+    /** @type {string} */
+    var tempTemplate = self.getFormattingTemplate_(numberPattern,
+                                                   format.getFormatOrDefault());
+    if (tempTemplate.length > 0) {
+        self.formattingTemplate_.append(tempTemplate);
+        return true;
+    }
+    return false;
+};
+
+
+/**
+ * Gets a formatting template which can be used to efficiently format a
+ * partial number where digits are added one by one.
+ *
+ * @param {string} numberPattern
+ * @param {string} numberFormat
+ * @return {string}
+ * @private
+ */
+- (NSString*)getFormattingTemplate(numberPattern, numberFormat)
+{
+    // Creates a phone number consisting only of the digit 9 that matches the
+    // numberPattern by applying the pattern to the longestPhoneNumber string.
+    /** @type {string} */
+    var longestPhoneNumber = '999999999999999';
+    /** @type {Array.<string>} */
+    var m = longestPhoneNumber.match(numberPattern);
+    // this match will always succeed
+    /** @type {string} */
+    var aPhoneNumber = m[0];
+    // No formatting template can be created if the number of digits entered so
+    // far is longer than the maximum the current formatting rule can accommodate.
+    if (aPhoneNumber.length < self.nationalNumber_.getLength()) {
+        return '';
+    }
+    // Formats the number according to numberFormat
+    /** @type {string} */
+    var template = aPhoneNumber.replace(new RegExp(numberPattern, 'g'),
+                                        numberFormat);
+    // Replaces each digit with character DIGIT_PLACEHOLDER
+    template = template.replace(new RegExp('9', 'g'), self.DIGIT_PLACEHOLDER_);
+    return template;
+};
+
+
+/**
+ * Clears the internal state of the formatter, so it can be reused.
+ */
+- (void)clear
+{
+    self.currentOutput_ = '';
+    self.accruedInput_.clear();
+    self.accruedInputWithoutFormatting_.clear();
+    self.formattingTemplate_.clear();
+    self.lastMatchPosition_ = 0;
+    self.currentFormattingPattern_ = '';
+    self.prefixBeforeNationalNumber_.clear();
+    self.nationalPrefixExtracted_ = '';
+    self.nationalNumber_.clear();
+    self.ableToFormat_ = true;
+    self.inputHasFormatting_ = false;
+    self.positionToRemember_ = 0;
+    self.originalPosition_ = 0;
+    self.isCompleteNumber_ = false;
+    self.isExpectingCountryCallingCode_ = false;
+    self.possibleFormats_ = [];
+    self.shouldAddSpaceAfterNationalPrefix_ = false;
+    if (self.currentMetaData_ != self.defaultMetaData_) {
+        self.currentMetaData_ = self.getMetadataForRegion_(self.defaultCountry_);
+    }
+}
+
+
+/**
+ * Formats a phone number on-the-fly as each digit is entered.
+ *
+ * @param {string} nextChar the most recently entered digit of a phone number.
+ *     Formatting characters are allowed, but as soon as they are encountered
+ *     this method formats the number as entered and not 'as you type' anymore.
+ *     Full width digits and Arabic-indic digits are allowed, and will be shown
+ *     as they are.
+ * @return {string} the partially formatted phone number.
+ */
+- (NSString*)inputDigit = function(nextChar)
+{
+    self.currentOutput_ =
+    self.inputDigitWithOptionToRememberPosition_(nextChar, false);
+    return self.currentOutput_;
+}
+
+
+/**
+ * Same as {@link #inputDigit}, but remembers the position where
+ * {@code nextChar} is inserted, so that it can be retrieved later by using
+ * {@link #getRememberedPosition}. The remembered position will be automatically
+ * adjusted if additional formatting characters are later inserted/removed in
+ * front of {@code nextChar}.
+ *
+ * @param {string} nextChar
+ * @return {string}
+ */
+- (NSString*)inputDigitAndRememberPosition =
+function(nextChar) {
+    
+    self.currentOutput_ =
+    self.inputDigitWithOptionToRememberPosition_(nextChar, true);
+    return self.currentOutput_;
+};
+
+
+/**
+ * @param {string} nextChar
+ * @param {boolean} rememberPosition
+ * @return {string}
+ * @private
+ */
+- (NSString*)inputDigitWithOptionToRememberPosition_ = function(nextChar,
+                                                   rememberPosition) {
+    
+    self.accruedInput_.append(nextChar);
+    if (rememberPosition) {
+        self.originalPosition_ = self.accruedInput_.getLength();
+    }
+    // We do formatting on-the-fly only when each character entered is either a
+    // digit, or a plus sign (accepted at the start of the number only).
+    if (!self.isDigitOrLeadingPlusSign_(nextChar)) {
+        self.ableToFormat_ = false;
+        self.inputHasFormatting_ = true;
+    } else {
+        nextChar = self.normalizeAndAccrueDigitsAndPlusSign_(nextChar,
+                                                             rememberPosition);
+    }
+    if (!self.ableToFormat_) {
+        // When we are unable to format because of reasons other than that
+        // formatting chars have been entered, it can be due to really long IDDs or
+        // NDDs. If that is the case, we might be able to do formatting again after
+        // extracting them.
+        if (self.inputHasFormatting_) {
+            return self.accruedInput_.toString();
+        } else if (self.attemptToExtractIdd_()) {
+            if (self.attemptToExtractCountryCallingCode_()) {
+                return self.attemptToChoosePatternWithPrefixExtracted_();
+            }
+        } else if (self.ableToExtractLongerNdd_()) {
+            // Add an additional space to separate long NDD and national significant
+            // number for readability. We don't set shouldAddSpaceAfterNationalPrefix_
+            // to true, since we don't want this to change later when we choose
+            // formatting templates.
+            self.prefixBeforeNationalNumber_.append(
+                                                    .
+                                                    SEPARATOR_BEFORE_NATIONAL_NUMBER_);
+            return self.attemptToChoosePatternWithPrefixExtracted_();
+        }
+        return self.accruedInput_.toString();
+    }
+    
+    // We start to attempt to format only when at least MIN_LEADING_DIGITS_LENGTH
+    // digits (the plus sign is counted as a digit as well for this purpose) have
+    // been entered.
+    switch (self.accruedInputWithoutFormatting_.getLength()) {
+        case 0:
+        case 1:
+        case 2:
+            return self.accruedInput_.toString();
+        case 3:
+            if (self.attemptToExtractIdd_()) {
+                self.isExpectingCountryCallingCode_ = true;
+            } else {
+                // No IDD or plus sign is found, might be entering in national format.
+                self.nationalPrefixExtracted_ =
+                self.removeNationalPrefixFromNationalNumber_();
+                return self.attemptToChooseFormattingPattern_();
+            }
+        default:
+            if (self.isExpectingCountryCallingCode_) {
+                if (self.attemptToExtractCountryCallingCode_()) {
+                    self.isExpectingCountryCallingCode_ = false;
+                }
+                return self.prefixBeforeNationalNumber_.toString() +
+                self.nationalNumber_.toString();
+            }
+            if (self.possibleFormats_.length > 0) {
+                // The formatting pattern is already chosen.
+                /** @type {string} */
+                var tempNationalNumber = self.inputDigitHelper_(nextChar);
+                // See if the accrued digits can be formatted properly already. If not,
+                // use the results from inputDigitHelper, which does formatting based on
+                // the formatting pattern chosen.
+                /** @type {string} */
+                var formattedNumber = self.attemptToFormatAccruedDigits_();
+                if (formattedNumber.length > 0) {
+                    return formattedNumber;
+                }
+                self.narrowDownPossibleFormats_(self.nationalNumber_.toString());
+                if (self.maybeCreateNewTemplate_()) {
+                    return self.inputAccruedNationalNumber_();
+                }
+                return self.ableToFormat_ ?
+                self.appendNationalNumber_(tempNationalNumber) :
+                self.accruedInput_.toString();
+            } else {
+                return self.attemptToChooseFormattingPattern_();
+            }
+    }
+};
+
+
+/**
+ * @return {string}
+ * @private
+ */
+- (NSString*)attemptToChoosePatternWithPrefixExtracted_  {
+    
+    self.ableToFormat_ = true;
+    self.isExpectingCountryCallingCode_ = false;
+    self.possibleFormats_ = [];
+    return self.attemptToChooseFormattingPattern_();
+};
+
+
+/**
+ * Some national prefixes are a substring of others. If extracting the shorter
+ * NDD doesn't result in a number we can format, we try to see if we can extract
+ * a longer version here.
+ * @return {boolean}
+ * @private
+ */
+- (BOOL)ableToExtractLongerNdd_ =
+function() {
+    if (self.nationalPrefixExtracted_.length > 0) {
+        // Put the extracted NDD back to the national number before attempting to
+        // extract a new NDD.
+        /** @type {string} */
+        var nationalNumberStr = self.nationalNumber_.toString();
+        self.nationalNumber_.clear();
+        self.nationalNumber_.append(self.nationalPrefixExtracted_);
+        self.nationalNumber_.append(nationalNumberStr);
+        // Remove the previously extracted NDD from prefixBeforeNationalNumber. We
+        // cannot simply set it to empty string because people sometimes incorrectly
+        // enter national prefix after the country code, e.g. +44 (0)20-1234-5678.
+        /** @type {string} */
+        var prefixBeforeNationalNumberStr =
+        self.prefixBeforeNationalNumber_.toString();
+        /** @type {number} */
+        var indexOfPreviousNdd = prefixBeforeNationalNumberStr.lastIndexOf(
+                                                                           self.nationalPrefixExtracted_);
+        self.prefixBeforeNationalNumber_.clear();
+        self.prefixBeforeNationalNumber_.append(
+                                                prefixBeforeNationalNumberStr.substring(0, indexOfPreviousNdd));
+    }
+    return self.nationalPrefixExtracted_ !=
+    self.removeNationalPrefixFromNationalNumber_();
+};
+
+
+/**
+ * @param {string} nextChar
+ * @return {boolean}
+ * @private
+ */
+- (BOOL)isDigitOrLeadingPlusSign_ =
+function(nextChar) {
+    return i18n.phonenumbers.PhoneNumberUtil.CAPTURING_DIGIT_PATTERN
+    .test(nextChar) ||
+    (self.accruedInput_.getLength() == 1 &&
+     i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_PATTERN.test(nextChar));
+};
+
+
+/**
+ * Check to see if there is an exact pattern match for these digits. If so, we
+ * should use this instead of any other formatting template whose
+ * leadingDigitsPattern also matches the input.
+ * @return {string}
+ * @private
+ */
+- (NSString*)attemptToFormatAccruedDigits_ =
+function() {
+    
+    /** @type {string} */
+    var nationalNumber = self.nationalNumber_.toString();
+    /** @type {number} */
+    var possibleFormatsLength = self.possibleFormats_.length;
+    for (var i = 0; i < possibleFormatsLength; ++i) {
+        /** @type {i18n.phonenumbers.NumberFormat} */
+        var numberFormat = self.possibleFormats_[i];
+        /** @type {string} */
+        var pattern = numberFormat.getPatternOrDefault();
+        /** @type {RegExp} */
+        var patternRegExp = new RegExp('^(?:' + pattern + ')$');
+        if (patternRegExp.test(nationalNumber)) {
+            self.shouldAddSpaceAfterNationalPrefix_ =
+            .
+            NATIONAL_PREFIX_SEPARATORS_PATTERN_.test(
+                                                     numberFormat.getNationalPrefixFormattingRule());
+            /** @type {string} */
+            var formattedNumber = nationalNumber.replace(new RegExp(pattern, 'g'),
+                                                         numberFormat.getFormat());
+            return self.appendNationalNumber_(formattedNumber);
+        }
+    }
+    return '';
+};
+
+
+/**
+ * Combines the national number with any prefix (IDD/+ and country code or
+ * national prefix) that was collected. A space will be inserted between them if
+ * the current formatting template indicates this to be suitable.
+ * @param {string} nationalNumber The number to be appended.
+ * @return {string} The combined number.
+ * @private
+ */
+- (NSString*)appendNationalNumber_ =
+function(nationalNumber) {
+    /** @type {number} */
+    var prefixBeforeNationalNumberLength =
+    self.prefixBeforeNationalNumber_.getLength();
+    if (self.shouldAddSpaceAfterNationalPrefix_ &&
+        prefixBeforeNationalNumberLength > 0 &&
+        self.prefixBeforeNationalNumber_.toString().charAt(
+                                                           prefixBeforeNationalNumberLength - 1) !=
+        .SEPARATOR_BEFORE_NATIONAL_NUMBER_) {
+        // We want to add a space after the national prefix if the national prefix
+        // formatting rule indicates that this would normally be done, with the
+        // exception of the case where we already appended a space because the NDD
+        // was surprisingly long.
+        return self.prefixBeforeNationalNumber_ +
+        .SEPARATOR_BEFORE_NATIONAL_NUMBER_ +
+        nationalNumber;
+    } else {
+        return self.prefixBeforeNationalNumber_ + nationalNumber;
+    }
+};
+
+
+/**
+ * Returns the current position in the partially formatted phone number of the
+ * character which was previously passed in as the parameter of
+ * {@link #inputDigitAndRememberPosition}.
+ *
+ * @return {number}
+ */
+- (int)getRememberedPosition =
+function() {
+    
+    if (!self.ableToFormat_) {
+        return self.originalPosition_;
+    }
+    /** @type {number} */
+    var accruedInputIndex = 0;
+    /** @type {number} */
+    var currentOutputIndex = 0;
+    /** @type {string} */
+    var accruedInputWithoutFormatting =
+    self.accruedInputWithoutFormatting_.toString();
+    /** @type {string} */
+    var currentOutput = self.currentOutput_.toString();
+    while (accruedInputIndex < self.positionToRemember_ &&
+           currentOutputIndex < currentOutput.length) {
+        if (accruedInputWithoutFormatting.charAt(accruedInputIndex) ==
+            currentOutput.charAt(currentOutputIndex)) {
+            accruedInputIndex++;
+        }
+        currentOutputIndex++;
+    }
+    return currentOutputIndex;
+};
+
+
+/**
+ * Attempts to set the formatting template and returns a string which contains
+ * the formatted version of the digits entered so far.
+ *
+ * @return {string}
+ * @private
+ */
+- (NSString*)attemptToChooseFormattingPattern_  {
+    
+    /** @type {string} */
+    var nationalNumber = self.nationalNumber_.toString();
+    // We start to attempt to format only when as least MIN_LEADING_DIGITS_LENGTH
+    // digits of national number (excluding national prefix) have been entered.
+    if (nationalNumber.length >=
+        .MIN_LEADING_DIGITS_LENGTH_) {
+        self.getAvailableFormats_(
+                                  nationalNumber.substring(0,
+                                                           .MIN_LEADING_DIGITS_LENGTH_));
+        return self.maybeCreateNewTemplate_() ?
+        self.inputAccruedNationalNumber_() : self.accruedInput_.toString();
+    } else {
+        return self.appendNationalNumber_(nationalNumber);
+    }
+};
+
+
+/**
+ * Invokes inputDigitHelper on each digit of the national number accrued, and
+ * returns a formatted string in the end.
+ *
+ * @return {string}
+ * @private
+ */
+- (NSString*)inputAccruedNationalNumber_ =
+function() {
+    
+    /** @type {string} */
+    var nationalNumber = self.nationalNumber_.toString();
+    /** @type {number} */
+    var lengthOfNationalNumber = nationalNumber.length;
+    if (lengthOfNationalNumber > 0) {
+        /** @type {string} */
+        var tempNationalNumber = '';
+        for (var i = 0; i < lengthOfNationalNumber; i++) {
+            tempNationalNumber =
+            self.inputDigitHelper_(nationalNumber.charAt(i));
+        }
+        return self.ableToFormat_ ?
+        self.appendNationalNumber_(tempNationalNumber) :
+        self.accruedInput_.toString();
+    } else {
+        return self.prefixBeforeNationalNumber_.toString();
+    }
+};
+
+
+/**
+ * @return {boolean} true if the current country is a NANPA country and the
+ *     national number begins with the national prefix.
+ * @private
+ */
+- (BOOL)isNanpaNumberWithNationalPrefix_  {
+    // For NANPA numbers beginning with 1[2-9], treat the 1 as the national
+    // prefix. The reason is that national significant numbers in NANPA always
+    // start with [2-9] after the national prefix. Numbers beginning with 1[01]
+    // can only be short/emergency numbers, which don't need the national prefix.
+    if (self.currentMetaData_.getCountryCode() != 1) {
+        return false;
+    }
+    /** @type {string} */
+    var nationalNumber = self.nationalNumber_.toString();
+    return (nationalNumber.charAt(0) == '1') &&
+    (nationalNumber.charAt(1) != '0') &&
+    (nationalNumber.charAt(1) != '1');
+};
+
+
+/**
+ * Returns the national prefix extracted, or an empty string if it is not
+ * present.
+ * @return {string}
+ * @private
+ */
+- (NSString*)removeNationalPrefixFromNationalNumber_  {
+    
+    /** @type {string} */
+    var nationalNumber = self.nationalNumber_.toString();
+    /** @type {number} */
+    var startOfNationalNumber = 0;
+    if (self.isNanpaNumberWithNationalPrefix_()) {
+        startOfNationalNumber = 1;
+        self.prefixBeforeNationalNumber_.append('1').append(
+                                                            .SEPARATOR_BEFORE_NATIONAL_NUMBER_);
+        self.isCompleteNumber_ = true;
+    } else if (self.currentMetaData_.hasNationalPrefixForParsing()) {
+        /** @type {RegExp} */
+        var nationalPrefixForParsing = new RegExp(
+                                                  '^(?:' + self.currentMetaData_.getNationalPrefixForParsing() + ')');
+        /** @type {Array.<string>} */
+        var m = nationalNumber.match(nationalPrefixForParsing);
+        if (m != null && m[0] != null && m[0].length > 0) {
+            // When the national prefix is detected, we use international formatting
+            // rules instead of national ones, because national formatting rules could
+            // contain local formatting rules for numbers entered without area code.
+            self.isCompleteNumber_ = true;
+            startOfNationalNumber = m[0].length;
+            self.prefixBeforeNationalNumber_.append(nationalNumber.substring(0,
+                                                                             startOfNationalNumber));
+        }
+    }
+    self.nationalNumber_.clear();
+    self.nationalNumber_.append(nationalNumber.substring(startOfNationalNumber));
+    return nationalNumber.substring(0, startOfNationalNumber);
+};
+
+
+/**
+ * Extracts IDD and plus sign to prefixBeforeNationalNumber when they are
+ * available, and places the remaining input into nationalNumber.
+ *
+ * @return {boolean} true when accruedInputWithoutFormatting begins with the
+ *     plus sign or valid IDD for defaultCountry.
+ * @private
+ */
+- (BOOL)attemptToExtractIdd_ =
+function() {
+    
+    /** @type {string} */
+    var accruedInputWithoutFormatting =
+    self.accruedInputWithoutFormatting_.toString();
+    /** @type {RegExp} */
+    var internationalPrefix = new RegExp(
+                                         '^(?:' + '\\' + i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN + '|' +
+                                         self.currentMetaData_.getInternationalPrefix() + ')');
+    /** @type {Array.<string>} */
+    var m = accruedInputWithoutFormatting.match(internationalPrefix);
+    if (m != null && m[0] != null && m[0].length > 0) {
+        self.isCompleteNumber_ = true;
+        /** @type {number} */
+        var startOfCountryCallingCode = m[0].length;
+        self.nationalNumber_.clear();
+        self.nationalNumber_.append(
+                                    accruedInputWithoutFormatting.substring(startOfCountryCallingCode));
+        self.prefixBeforeNationalNumber_.clear();
+        self.prefixBeforeNationalNumber_.append(
+                                                accruedInputWithoutFormatting.substring(0, startOfCountryCallingCode));
+        if (accruedInputWithoutFormatting.charAt(0) !=
+            i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN) {
+            self.prefixBeforeNationalNumber_.append(
+                                                    .
+                                                    SEPARATOR_BEFORE_NATIONAL_NUMBER_);
+        }
+        return true;
+    }
+    return false;
+};
+
+
+/**
+ * Extracts the country calling code from the beginning of nationalNumber to
+ * prefixBeforeNationalNumber when they are available, and places the remaining
+ * input into nationalNumber.
+ *
+ * @return {boolean} true when a valid country calling code can be found.
+ * @private
+ */
+- (BOOL)attemptToExtractCountryCallingCode_  {
+    
+    if (self.nationalNumber_.getLength() == 0) {
+        return false;
+    }
+    /** @type {!goog.string.StringBuffer} */
+    var numberWithoutCountryCallingCode = new goog.string.StringBuffer();
+    /** @type {number} */
+    var countryCode = self.phoneUtil_.extractCountryCode(
+                                                         self.nationalNumber_, numberWithoutCountryCallingCode);
+    if (countryCode == 0) {
+        return false;
+    }
+    self.nationalNumber_.clear();
+    self.nationalNumber_.append(numberWithoutCountryCallingCode.toString());
+    /** @type {string} */
+    var newRegionCode = self.phoneUtil_.getRegionCodeForCountryCode(countryCode);
+    if (i18n.phonenumbers.PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY ==
+        newRegionCode) {
+        self.currentMetaData_ =
+        self.phoneUtil_.getMetadataForNonGeographicalRegion(countryCode);
+    } else if (newRegionCode != self.defaultCountry_) {
+        self.currentMetaData_ = self.getMetadataForRegion_(newRegionCode);
+    }
+    /** @type {string} */
+    var countryCodeString = '' + countryCode;
+    self.prefixBeforeNationalNumber_.append(countryCodeString).append(
+                                                                      .SEPARATOR_BEFORE_NATIONAL_NUMBER_);
+    return true;
+};
+
+
+/**
+ * Accrues digits and the plus sign to accruedInputWithoutFormatting for later
+ * use. If nextChar contains a digit in non-ASCII format (e.g. the full-width
+ * version of digits), it is first normalized to the ASCII version. The return
+ * value is nextChar itself, or its normalized version, if nextChar is a digit
+ * in non-ASCII format. This method assumes its input is either a digit or the
+ * plus sign.
+ *
+ * @param {string} nextChar
+ * @param {boolean} rememberPosition
+ * @return {string}
+ * @private
+ */
+- (NSString*)normalizeAndAccrueDigitsAndPlusSign_ = function(nextChar,
+                                                rememberPosition) {
+    
+    /** @type {string} */
+    var normalizedChar;
+    if (nextChar == i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN) {
+        normalizedChar = nextChar;
+        self.accruedInputWithoutFormatting_.append(nextChar);
+    } else {
+        normalizedChar = i18n.phonenumbers.PhoneNumberUtil.DIGIT_MAPPINGS[nextChar];
+        self.accruedInputWithoutFormatting_.append(normalizedChar);
+        self.nationalNumber_.append(normalizedChar);
+    }
+    if (rememberPosition) {
+        self.positionToRemember_ = self.accruedInputWithoutFormatting_.getLength();
+    }
+    return normalizedChar;
+};
+
+
+/**
+ * @param {string} nextChar
+ * @return {string}
+ * @private
+ */
+- (NSString*)inputDigitHelper_ =
+function(nextChar) {
+    
+    /** @type {string} */
+    var formattingTemplate = self.formattingTemplate_.toString();
+    if (formattingTemplate.substring(self.lastMatchPosition_)
+        .search(self.DIGIT_PATTERN_) >= 0) {
+        /** @type {number} */
+        var digitPatternStart = formattingTemplate.search(self.DIGIT_PATTERN_);
+        /** @type {string} */
+        var tempTemplate =
+        formattingTemplate.replace(self.DIGIT_PATTERN_, nextChar);
+        self.formattingTemplate_.clear();
+        self.formattingTemplate_.append(tempTemplate);
+        self.lastMatchPosition_ = digitPatternStart;
+        return tempTemplate.substring(0, self.lastMatchPosition_ + 1);
+    } else {
+        if (self.possibleFormats_.length == 1) {
+            // More digits are entered than we could handle, and there are no other
+            // valid patterns to try.
+            self.ableToFormat_ = false;
+        }  // else, we just reset the formatting pattern.
+        self.currentFormattingPattern_ = '';
+        return self.accruedInput_.toString();
+    }
+};
+
+@end

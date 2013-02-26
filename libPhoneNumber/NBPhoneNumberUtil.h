@@ -49,6 +49,7 @@
 - (NBPhoneNumber*)getExampleNumberForNonGeoEntity:(UInt32)countryCallingCode error:(NSError**)error;
 
 - (NBPhoneMetaData*)getMetadataForNonGeographicalRegion:(UInt32)countryCallingCode;
+- (NBPhoneMetaData*)getMetadataForRegion:(NSString*)regionCode;
 
 - (BOOL)canBeInternationallyDialled:(NBPhoneNumber*)number error:(NSError**)error;
 
@@ -87,5 +88,7 @@
 - (NSString*)formatNationalNumberWithCarrierCode:(NBPhoneNumber*)number carrierCode:(NSString*)carrierCode error:(NSError**)error;
 - (NSString*)formatInOriginalFormat:(NBPhoneNumber*)number regionCallingFrom:(NSString*)regionCallingFrom error:(NSError**)error;
 - (NSString*)formatNationalNumberWithPreferredCarrierCode:(NBPhoneNumber*)number fallbackCarrierCode:(NSString*)fallbackCarrierCode error:(NSError**)error;
+
+- (BOOL)formattingRuleHasFirstGroupOnly:(NSString*)nationalPrefixFormattingRule;
 
 @end

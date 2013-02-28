@@ -4,10 +4,10 @@
 
 * NBPhoneNumberUtil (from phonenumberutil.js)
 
-## Install
+## Install with CocoaPods
 ### Use [CocoaPods](http://cocoapods.org/?q=libPhoneNumber-iOS)
 
-## Usage
+## Install without CocoaPods
 ### Add source files to your projects from libPhoneNumber
     - NBPhoneNumberUtil.h, .m
     
@@ -22,6 +22,32 @@
     - Add "NBPhoneNumberMetadata.plist" and "NBPhoneNumberMetadataForTesting.plist" to bundle resources
 
     See sample test code from "libPhoneNumber-iOS / libPhoneNumberTests / libPhoneNumberTests.m"
+
+## Sample Usage
+    NBPhoneNumberUtil *phoneUtil = [NBPhoneNumberUtil sharedInstance];
+    
+    NSError *aError = nil;
+    NBPhoneNumber *myNumber = [phoneUtil parse:@"6766077303" defaultRegion:@"AT" error:&aError];
+    if (aError == nil)
+    {
+        NSLog(@"isValidPhoneNumber ? [%@]", [phoneUtil isValidNumber:myNumber] ? @"YES":@"NO");
+        NSLog(@"E164          : %@", [phoneUtil format:myNumber numberFormat:NBEPhoneNumberFormatE164]);
+        NSLog(@"INTERNATIONAL : %@", [phoneUtil format:myNumber numberFormat:NBEPhoneNumberFormatINTERNATIONAL]);
+        NSLog(@"NATIONAL      : %@", [phoneUtil format:myNumber numberFormat:NBEPhoneNumberFormatNATIONAL]);
+        NSLog(@"RFC3966       : %@", [phoneUtil format:myNumber numberFormat:NBEPhoneNumberFormatRFC3966]);
+    }
+    else
+    {
+        NSLog(@"Error : %@", [aError localizedDescription]);
+    }
+    
+    NSLog (@"extractCountryCode [%ld]", [phoneUtil extractCountryCode:@"823213123123" nationalNumber:nil]);
+    
+    NSString *res = nil;
+    UInt32 dRes = [phoneUtil extractCountryCode:@"823213123123" nationalNumber:&res];
+    
+    NSLog (@"extractCountryCode [%lu] [%@]", dRes, res);
+
 
 ### Visit http://code.google.com/p/libphonenumber/ for more information
 

@@ -91,4 +91,6 @@
 
 - (BOOL)formattingRuleHasFirstGroupOnly:(NSString*)nationalPrefixFormattingRule;
 
+@property (nonatomic, strong, readonly) NSString *VALID_PUNCTUATION;
+
 @end

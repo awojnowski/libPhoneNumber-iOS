@@ -41,7 +41,6 @@ NSString *DEFAULT_EXTN_PREFIX_ = @" ext. ";
 NSString *REGION_CODE_FOR_NON_GEO_ENTITY = @"001";
 NSString *VALID_ALPHA_ = @"A-Za-z";
 NSString *VALID_DIGITS_ = @"0-9０-９٠-٩۰-۹";
-NSString *VALID_PUNCTUATION = @"-x‐-―−ー－-／  ­​⁠　()（）［］.\\[\\]/~⁓∼～*";
 
 #pragma mark - Static regular expression strings -
 NSString *NON_DIGITS_PATTERN_ = @"\\D+";
@@ -479,6 +478,8 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
 
 - (void)initRegularExpressionSet
 {
+    _VALID_PUNCTUATION = @"-x‐-―−ー－-／  ­​⁠　()（）［］.\\[\\]/~⁓∼～*";
+    
     NSString *EXTN_PATTERNS_FOR_PARSING_ = @"(?:;ext=([0-9０-９٠-٩۰-۹]{1,7})|[  \\t,]*(?:e?xt(?:ensi(?:ó?|ó))?n?|ｅ?ｘｔｎ?|[,xｘX#＃~～]|int|anexo|ｉｎｔ)[:\\.．]?[  \\t,-]*([0-9０-９٠-٩۰-۹]{1,7})#?|[- ]+([0-9０-９٠-٩۰-۹]{1,5})#)$";
     
     NSError *error = nil;
@@ -502,7 +503,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
     _EXTN_PATTERN_ = [NSString stringWithFormat:@"(?:%@)$", EXTN_PATTERNS_FOR_PARSING_];
 
     
-    _SEPARATOR_PATTERN_ = [NSString stringWithFormat:@"[%@]+", VALID_PUNCTUATION];
+    _SEPARATOR_PATTERN_ = [NSString stringWithFormat:@"[%@]+", _VALID_PUNCTUATION];
     
     _VALID_PHONE_NUMBER_PATTERN_ = @"^[0-9０-９٠-٩۰-۹]{2}$|^[+＋]*(?:[-x‐-―−ー－-／  ­​⁠　()（）［］.\\[\\]/~⁓∼～*]*[0-9０-９٠-٩۰-۹]){3,}[-x‐-―−ー－-／  ­​⁠　()（）［］.\\[\\]/~⁓∼～*A-Za-z0-9０-９٠-٩۰-۹]*(?:;ext=([0-9０-９٠-٩۰-۹]{1,7})|[  \\t,]*(?:e?xt(?:ensi(?:ó?|ó))?n?|ｅ?ｘｔｎ?|[,xｘ#＃~～]|int|anexo|ｉｎｔ)[:\\.．]?[  \\t,-]*([0-9０-９٠-٩۰-۹]{1,7})#?|[- ]+([0-9０-９٠-٩۰-۹]{1,5})#)?$";
 }

@@ -43,6 +43,19 @@
 }
 
 
+- (BOOL)isEqualToObject:(NBPhoneNumber*)otherObj
+{
+    return [self isEqual:otherObj];
+}
+
+
+- (NSUInteger)hash
+{
+    NSData *selfObject = [NSKeyedArchiver archivedDataWithRootObject:self];
+    return [selfObject hash];
+}
+
+
 - (BOOL)isEqual:(id)object
 {
     if ([object isKindOfClass:[NBPhoneNumber class]] == NO)

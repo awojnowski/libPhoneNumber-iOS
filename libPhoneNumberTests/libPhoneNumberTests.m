@@ -86,6 +86,32 @@
 }
 
 
+- (void)testNSDictionaryalbeKey
+{
+    NBPhoneNumberUtil *phoneUtil = [NBPhoneNumberUtil sharedInstance];
+    NSError *aError = nil;
+
+    NBPhoneNumber *myNumber1 = [phoneUtil parse:@"971600123456" defaultRegion:@"AE" error:&aError];
+    NBPhoneNumber *myNumber2 = [phoneUtil parse:@"5491187654321" defaultRegion:@"AR" error:&aError];
+    NBPhoneNumber *myNumber3 = [phoneUtil parse:@"12423570000" defaultRegion:@"BS" error:&aError];
+    NBPhoneNumber *myNumber4 = [phoneUtil parse:@"39236618300" defaultRegion:@"IT" error:&aError];
+    NBPhoneNumber *myNumber5 = [phoneUtil parse:@"16502530000" defaultRegion:@"US" error:&aError];
+    
+    NSMutableDictionary *dicTest = [[NSMutableDictionary alloc] init];
+    [dicTest setObject:@"AE" forKey:myNumber1];
+    [dicTest setObject:@"AR" forKey:myNumber2];
+    [dicTest setObject:@"BS" forKey:myNumber3];
+    [dicTest setObject:@"IT" forKey:myNumber4];
+    [dicTest setObject:@"US" forKey:myNumber5];
+    
+    NSLog(@"%@", [dicTest objectForKey:myNumber1]);
+    NSLog(@"%@", [dicTest objectForKey:myNumber2]);
+    NSLog(@"%@", [dicTest objectForKey:myNumber3]);
+    NSLog(@"%@", [dicTest objectForKey:myNumber4]);
+    NSLog(@"%@", [dicTest objectForKey:myNumber5]);
+}
+
+
 - (void)testWithRealData
 {
     NBPhoneNumberUtil *phoneUtil = [NBPhoneNumberUtil sharedInstance];
@@ -94,14 +120,14 @@
     NSLog(@"-------------- customTest");
     
     NSError *aError = nil;
-    NBPhoneNumber *myNumber1 = [phoneUtil parse:@"6766077303" defaultRegion:@"AT" error:&aError];
+    NBPhoneNumber *myNumber = [phoneUtil parse:@"6766077303" defaultRegion:@"AT" error:&aError];
     if (aError == nil)
     {
-        NSLog(@"isValidPhoneNumber ? [%@]", [phoneUtil isValidNumber:myNumber1] ? @"YES":@"NO");
-        NSLog(@"E164          : %@", [phoneUtil format:myNumber1 numberFormat:NBEPhoneNumberFormatE164]);
-        NSLog(@"INTERNATIONAL : %@", [phoneUtil format:myNumber1 numberFormat:NBEPhoneNumberFormatINTERNATIONAL]);
-        NSLog(@"NATIONAL      : %@", [phoneUtil format:myNumber1 numberFormat:NBEPhoneNumberFormatNATIONAL]);
-        NSLog(@"RFC3966       : %@", [phoneUtil format:myNumber1 numberFormat:NBEPhoneNumberFormatRFC3966]);
+        NSLog(@"isValidPhoneNumber ? [%@]", [phoneUtil isValidNumber:myNumber] ? @"YES":@"NO");
+        NSLog(@"E164          : %@", [phoneUtil format:myNumber numberFormat:NBEPhoneNumberFormatE164]);
+        NSLog(@"INTERNATIONAL : %@", [phoneUtil format:myNumber numberFormat:NBEPhoneNumberFormatINTERNATIONAL]);
+        NSLog(@"NATIONAL      : %@", [phoneUtil format:myNumber numberFormat:NBEPhoneNumberFormatNATIONAL]);
+        NSLog(@"RFC3966       : %@", [phoneUtil format:myNumber numberFormat:NBEPhoneNumberFormatRFC3966]);
     }
     else
     {

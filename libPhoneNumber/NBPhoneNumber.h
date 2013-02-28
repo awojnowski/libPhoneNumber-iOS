@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "NBPhoneNumberDefines.h"
 
-@interface NBPhoneNumber : NSObject
+@interface NBPhoneNumber : NSObject <NSCopying>
 
 // from phonemetadata.pb.js
 /* 1 */ @property (nonatomic, assign, readwrite) UInt32 countryCode;

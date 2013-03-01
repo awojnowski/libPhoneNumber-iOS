@@ -359,7 +359,7 @@ NSString *UNIQUE_INTERNATIONAL_PREFIX_ = @"[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)
 }
 
 
-- (NSString*)countryCodeFromRregionCode:(NSString*)regionCode
+- (NSString*)countryCodeFromRegionCode:(NSString*)regionCode
 {
     if (self.mapCCode2CN == nil || [self.mapCCode2CN count] <= 0)
     {

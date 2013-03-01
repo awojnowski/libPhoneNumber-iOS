@@ -19,7 +19,7 @@
 
 //- (NSString*)numbersOnly:(NSString*)phoneNumber;
 - (NSArray*)regionCodeFromCountryCode:(UInt32)countryCodeNumber;
-- (NSString*)countryCodeFromRregionCode:(NSString*)regionCode;
+- (NSString*)countryCodeFromRegionCode:(NSString*)regionCode;
 
 
 // libPhoneNumber Util functions
